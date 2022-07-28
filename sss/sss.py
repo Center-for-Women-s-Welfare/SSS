@@ -11,18 +11,83 @@ import os
 
 import numpy as np
 import pandas as pd
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy import (
-    create_engine,
-    MetaData,
     Column,
     Integer,
     String,
     Float,
     Boolean)
 
-import preprocess
+import preprocess 
+from base import Base, sss_session_maker
+
+#TODO: Add docstrings to classes
+
+# create class
+class sss(Base):
+    __tablename__ = 'self_sufficiency_standard'
+    family_type = Column('family_type', String, primary_key=True)
+    state = Column('state', String, primary_key=True)
+    place = Column('place', String, primary_key=True)
+    year = Column('year', Integer, primary_key=True)
+    analysis_type =  Column('analysis_type', String, primary_key=True)
+    adult = Column('adult', Integer)
+    infant = Column('infant', Integer)
+    preschooler = Column('preschooler', Integer)
+    schoolager = Column('schoolager', Integer)
+    teenager = Column('teenager', Integer)
+    weighted_child_count = Column('weighted_child_count', Integer)
+    housing = Column('housing', Float)
+    child_care = Column('child_care', Float)
+    transportation = Column('transportation', Float)
+    health_care = Column('health_care', Float)
+    miscellaneous = Column('miscellaneous', Float)
+    taxes = Column('taxes', Float)
+    earned_income_tax_credit = Column('earned_income_tax_credit',
+                                        Float)
+    child_care_tax_credit = Column('child_care_tax_credit', Float)
+    child_tax_credit = Column('child_tax_credit', Float)
+    hourly_self_sufficiency_wage = Column(
+        'hourly_self_sufficiency_wage', Float)
+    monthly_self_sufficiency_wage = Column(
+        'monthly_self_sufficiency_wage', Float)
+    annual_self_sufficiency_wage = Column(
+        'annual_self_sufficiency_wage', Float)
+    emergency_savings = Column('emergency_savings', Float)
+    
+    miscellaneous_is_secondary = Column(
+        'miscellaneous_is_secondary', Boolean)
+    health_care_is_secondary = Column(
+        'health_care_is_secondary', Boolean)
+
+# declare table columns and data type
+class HealthCare(Base):
+    __tablename__ = "health_care"
+    family_type = Column("family_type", String, primary_key = True)
+    state = Column("state", String, primary_key = True)
+    place = Column("place", String, primary_key = True)
+    year = Column("year", Integer, primary_key = True)
+    analysis =  Column("analysis", String, primary_key = True)
+    premium = Column("premium", Float)
+    out_of_pocket = Column("out_of_pocket", Float)
+
+
+# declare table columns and data type
+class Miscellaneous(Base):
+    __tablename__ = "miscellaneous"
+    family_type = Column("family_type", String, primary_key = True)
+    place = Column("place", String, primary_key = True)
+    state = Column("state", String, primary_key = True)
+    year = Column("year", String, primary_key = True)
+    analysis =  Column("analysis", String, primary_key = True)
+    broadband_and_cell_phone = Column("broadband_and_cell_phone", Float)
+    other_necessities = Column("other_necessities", Float)
+
+#TODO: Add ARPA table definition
+
+# map the excel file to the database
+session.bulk_insert_mappings(HealthCare,health_cost_clean_col.to_dict(orient="records"))
+
 
 
 def read_file(file):
@@ -163,6 +228,8 @@ def create_database(data_folder):
 
     """
     data_folder = glob.glob(os.path.join(data_folder, "*.xls*"))
+    session = sss_session_maker()
+
     for i in data_folder:
         # read file and conduct pre-processing
         df, file = read_file(i)
@@ -183,63 +250,16 @@ def create_database(data_folder):
                 if 'c' not in i]),
                 'weighted_child_count'] = np.nan
 
-        # removing duplicate rows
+        # removing duplicate rows, want to move this
         df = df.drop_duplicates(subset=['analysis_type', 'family_type',
                                         'state', 'year', 'place'])
         df.reset_index(inplace=True, drop=True)
-        
-        # access sqlite
-        engine = create_engine('sqlite:///sss.sqlite', echo=False)
-        m = MetaData(bind=engine)
-        Base = declarative_base(metadata=m)    
-        
-        # create class
-        class sss(Base):
-            __tablename__ = 'self_sufficiency_standard'
-            family_type = Column('family_type', String, primary_key=True)
-            state = Column('state', String, primary_key=True)
-            place = Column('place', String, primary_key=True)
-            year = Column('year', Integer, primary_key=True)
-            analysis_type =  Column('analysis_type', String, primary_key=True)
-            adult = Column('adult', Integer)
-            infant = Column('infant', Integer)
-            preschooler = Column('preschooler', Integer)
-            schoolager = Column('schoolager', Integer)
-            teenager = Column('teenager', Integer)
-            weighted_child_count = Column('weighted_child_count', Integer)
-            housing = Column('housing', Float)
-            child_care = Column('child_care', Float)
-            transportation = Column('transportation', Float)
-            health_care = Column('health_care', Float)
-            miscellaneous = Column('miscellaneous', Float)
-            taxes = Column('taxes', Float)
-            earned_income_tax_credit = Column('earned_income_tax_credit',
-                                              Float)
-            child_care_tax_credit = Column('child_care_tax_credit', Float)
-            child_tax_credit = Column('child_tax_credit', Float)
-            hourly_self_sufficiency_wage = Column(
-                'hourly_self_sufficiency_wage', Float)
-            monthly_self_sufficiency_wage = Column(
-                'monthly_self_sufficiency_wage', Float)
-            annual_self_sufficiency_wage = Column(
-                'annual_self_sufficiency_wage', Float)
-            emergency_savings = Column('emergency_savings', Float)
-            
-            miscellaneous_is_secondary = Column(
-                'miscellaneous_is_secondary', Boolean)
-            health_care_is_secondary = Column(
-                'health_care_is_secondary', Boolean)
 
         print(file.split('/')[-1])
 
-        Base.metadata.create_all(engine)
-        Session = sessionmaker(bind=engine)
-        session = Session()
         df_dic = df.to_dict(orient="records")
-
+        #TODO: bulk insert with the other classes (miscellaneous, healthcare)
         session.bulk_insert_mappings(sss, df_dic)
         session.commit()
-
-data_folder = '/Users/azizamirsaidova/Documents/GitHub/dssg_sss copy/Selected/'
-print(create_database(data_folder))
+    session.close()
 # TODO: Having issues with reading repeat files
