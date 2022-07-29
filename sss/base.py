@@ -1,3 +1,6 @@
+from abc import ABCMeta
+
+from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy import (
@@ -5,11 +8,73 @@ from sqlalchemy import (
     MetaData
 )
 
-# access sqlite
+db_url = 'sqlite:///sss.sqlite'
+Base = declarative_base()
 
-engine = create_engine('sqlite:///sss.sqlite', echo=False)
-m = MetaData(bind=engine)
-Base = declarative_base(metadata=m)   
+class DB(object, metaclass=ABCMeta):
+    """
+    Abstract base class for SSS database object.
 
-Base.metadata.create_all(engine)
-sss_session_maker = sessionmaker(bind=engine)
+    This ABC is only instantiated through the AutomappedDB or DeclarativeDB
+    subclasses.
+
+    """
+
+    engine = None
+    sessionmaker = sessionmaker()
+    sqlalchemy_base = None
+
+    def __init__(self, sqlalchemy_base, db_url):  # noqa
+        self.sqlalchemy_base = Base
+        self.engine = create_engine(db_url)
+        self.sessionmaker.configure(bind=self.engine)
+
+
+class DeclarativeDB(DB):
+    """
+    Declarative database object -- to create database tables.
+
+    Parameters
+    ----------
+    db_url : str
+        Database location.
+
+    """
+
+    def __init__(self, db_url):
+        super(DeclarativeDB, self).__init__(Base, db_url)
+
+    def create_tables(self):
+        """Create all tables."""
+        self.sqlalchemy_base.metadata.create_all(self.engine)
+
+    def drop_tables(self):
+        """Drop all tables."""
+        self.sqlalchemy_base.metadata.bind = self.engine
+        self.sqlalchemy_base.metadata.drop_all(self.engine)
+
+
+class AutomappedDB(DB):
+    """Automapped database object -- attaches to an existing database.
+
+    This is intended for use with the production database. __init__()
+    raises an exception if the existing database does not match the schema
+    defined in the SQLAlchemy initialization magic.
+
+    Parameters
+    ----------
+    db_url : str
+        Database location.
+
+    """
+
+    def __init__(self, db_url):
+        super(AutomappedDB, self).__init__(automap_base(), db_url)
+
+        from .db_check import is_valid_database
+
+        with self.sessionmaker() as session:
+            if not is_valid_database(Base, session):
+                raise RuntimeError(
+                    "database {0} does not match expected schema".format(db_url)
+                )

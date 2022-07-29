@@ -18,8 +18,8 @@ from sqlalchemy import (
     Float,
     Boolean)
 
-import preprocess 
-from base import Base, sss_session_maker
+from . import preprocess 
+from .base import Base, DB
 
 #TODO: Add docstrings to classes
 
@@ -100,7 +100,7 @@ class ARPA(Base):
     total_annual_resources = Column('total_annual_resources', Float)
 
 # map the excel file to the database
-session.bulk_insert_mappings(HealthCare,health_cost_clean_col.to_dict(orient="records"))
+# session.bulk_insert_mappings(HealthCare,health_cost_clean_col.to_dict(orient="records"))
 
 
 
@@ -242,7 +242,7 @@ def create_database(data_folder):
 
     """
     data_folder = glob.glob(os.path.join(data_folder, "*.xls*"))
-    session = sss_session_maker()
+    session = DB.sessionmaker()
 
     for i in data_folder:
         # read file and conduct pre-processing
