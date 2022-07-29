@@ -24,7 +24,7 @@ from base import Base, sss_session_maker
 #TODO: Add docstrings to classes
 
 # create class
-class sss(Base):
+class SSS(Base):
     __tablename__ = 'self_sufficiency_standard'
     family_type = Column('family_type', String, primary_key=True)
     state = Column('state', String, primary_key=True)
@@ -83,7 +83,21 @@ class Miscellaneous(Base):
     broadband_and_cell_phone = Column("broadband_and_cell_phone", Float)
     other_necessities = Column("other_necessities", Float)
 
-#TODO: Add ARPA table definition
+#TODO: Add docstring
+class ARPA(Base):
+    __tablename__ = 'arpa'
+    family_type = Column('family_type', String, primary_key = True)
+    state = Column('state', String, primary_key = True)
+    place = Column('place', String, primary_key = True)
+    year = Column('year', Integer, primary_key = True)
+    analysis =  Column('analysis', String, primary_key = True)
+    federal_oregon_eitc = Column('federal_state_eitc', Float)
+    #federal_state_eitc = Column('federal_state_eitc', Float)
+    federal_cdctc = Column('federal_cdctc', Float)
+    federal_income_taxes = Column('federal_income_taxes', Float)
+    payroll_taxes = Column('payroll_taxes', Float)
+    state_sales_taxes = Column('state_sales_taxes', Float)
+    total_annual_resources = Column('total_annual_resources', Float)
 
 # map the excel file to the database
 session.bulk_insert_mappings(HealthCare,health_cost_clean_col.to_dict(orient="records"))
