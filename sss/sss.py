@@ -19,7 +19,8 @@ from sqlalchemy import (
     Boolean)
 
 from . import preprocess 
-from .base import Base, DB
+from .base import Base, DB, DeclarativeDB
+
 
 #TODO: Add docstrings to classes
 
@@ -214,9 +215,9 @@ def check_extra_columns(df):
     return df, miscellaneous, health_care, arpa
 
 
-def create_database(data_folder):
+def data_folder_to_database(data_folder):
     """
-    Reads folder of data, adds data to SQL table
+    Reads path of folder of data, adds data to SQL table
 
     Here, we are using a file path to loop through a folder of the SSS data.
     We create the pandas.dataframe from the file being read.
@@ -273,7 +274,19 @@ def create_database(data_folder):
 
         df_dic = df.to_dict(orient="records")
         #TODO: bulk insert with the other classes (miscellaneous, healthcare)
-        session.bulk_insert_mappings(sss, df_dic)
+        session.bulk_insert_mappings(SSS, df_dic)
         session.commit()
     session.close()
-# TODO: Having issues with reading repeat files
+
+
+# to create the primary table (declaratively)
+# we need to import DeclarativeDB
+# we need to create an object
+sss_declare = DeclarativeDB('sqlite:///sss.sqlite')
+# then we call the create table function 
+sss_declare.create_tables()
+# then we call this function to insert data from folder of interest
+# need to insert a path name that holds all the data
+data_folder_to_database()
+
+# TODO: Handle different type of values
