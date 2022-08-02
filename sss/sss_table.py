@@ -102,6 +102,22 @@ class ARPA(Base):
     state_sales_taxes = Column('state_sales_taxes', Float)
     total_annual_resources = Column('total_annual_resources', Float)
 
+# declare PUMA data columns and data type
+class PUMA(Base):
+    __tablename__ = 'puma'
+    sl = Column('sl', String)
+    state_fips = Column('state_fips', String, primary_key = True)
+    puma_code = Column('puma_code', String, primary_key = True)
+    county_fips = Column('county_fips', String)
+    county_sub_fips =  Column('county_sub_fips', String)
+    county_sub = Column('county_sub', String)
+    county = Column('county', String)
+    puma_area = Column('puma_area', String)
+    place = Column('place', String, primary_key = True)
+    population_self = Column('population', Integer)
+    weight = Column('weight', Float)
+    year = Column('year', Float)
+
 # map the excel file to the database
 # session.bulk_insert_mappings(HealthCare,health_cost_clean_col.to_dict(orient="records"))
 
