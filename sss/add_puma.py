@@ -5,6 +5,22 @@ import warnings
 from pandas.core.common import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
+# declare PUMA data columns and data type
+class PUMA(Base):
+    __tablename__ = 'puma'
+    sl = Column('sl', String)
+    state_fips = Column('state_fips', String)
+    state = Column('state', String, primary_key = True)
+    puma_code = Column('puma_code', String, primary_key = True)
+    county_fips = Column('county_fips', String)
+    county_sub_fips =  Column('county_sub_fips', String)
+    county_sub = Column('county_sub', String)
+    county = Column('county', String)
+    puma_area = Column('puma_area', String)
+    place = Column('place', String, primary_key = True)
+    population_self = Column('population', Integer)
+    weight = Column('weight', Float)
+    year = Column('year', Float)
 
 
 def read_puma(path):
@@ -33,6 +49,16 @@ def read_puma(path):
     df['house_number'] = df['house_number'].astype('float')
     # add a column called year
     df['year'] = 2010
+    state_names = {'53': 'WA','10': 'DE','11': 'DC','55': 'WI','54': 'WV','15': 'HI',
+               '12': 'FL','56': 'WY','72': 'PR','34': 'NJ','35': 'NM','48': 'TX',
+               '22': 'LA','37': 'NC','38': 'ND','31': 'NE','47': 'TN','36': 'NY',
+               '42': 'PA','02': 'AK','32': 'NV','33': 'NH','51': 'VA','08': 'CO',
+               '06': 'CA','01': 'AL','05': 'AR','50': 'VT','17': 'IL','13': 'GA',
+               '18': 'IN','19': 'IA','25': 'MA','04': 'AZ','16': 'ID','09': 'CT',
+               '23': 'ME','24': 'MD','40': 'OK','39': 'OH','49': 'UT','29': 'MO',
+               '27': 'MN','26': 'MI','44': 'RI','20': 'KS','30': 'MT','28': 'MS',
+               '45': 'SC','21': 'KY','41': 'OR','46': 'SD'}
+    df['state'] = df['state_fips'].map(state_names)
     return df
 
 def puma_crosswalk(path, nyc_wa_path):
@@ -80,7 +106,7 @@ def puma_crosswalk(path, nyc_wa_path):
         crosswalk = county_sub.merge(county, how='left')
         crosswalk = crosswalk.merge(puma, how='left')
         # only keep columns of interests
-        crosswalk = crosswalk[['sl', 'state_fips', 'puma_code','county_fips', 'county_sub_fips',
+        crosswalk = crosswalk[['sl', 'state_fips', 'state', 'puma_code','county_fips', 'county_sub_fips',
                'county_sub', 'county', 'puma_area','population','year']]
         crosswalk['place'] = crosswalk['county_sub']
     # if the area is not in new england, only use puma and county 
@@ -96,7 +122,7 @@ def puma_crosswalk(path, nyc_wa_path):
         # left join county and puma by puma code
         crosswalk = county.merge(puma, how='left')
         # only keep columns of interests
-        crosswalk = crosswalk[['sl', 'state_fips', 'puma_code','county_fips', 'county', 'puma_area','population']]
+        crosswalk = crosswalk[['sl', 'state_fips', 'state','puma_code','county_fips', 'county', 'puma_area','population']]
         #creat place(sssplace)
         crosswalk['place'] = crosswalk['county']
     # attach population of each puma to the crosswalk file
@@ -138,3 +164,11 @@ def puma_crosswalk(path, nyc_wa_path):
         crosswalk.rename(columns={'new_place':'place'}, inplace=True)
     
     return crosswalk
+
+
+for file in txt_files:
+    df_puma = create_sssplace(puma_crosswalk(file))
+    session.bulk_insert_mappings(PUMA, df_puma.to_dict(orient="records"))
+    session.commit()
+session = DB.sessionmaker()
+
