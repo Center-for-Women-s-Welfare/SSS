@@ -1,4 +1,3 @@
-
 """
 Creates a primary table for SSS data.
 
@@ -20,7 +19,6 @@ from sqlalchemy import (
 
 from . import preprocess 
 from .base import Base, DB, DeclarativeDB
-
 
 #TODO: Add docstrings to classes
 
@@ -61,6 +59,9 @@ class SSS(Base):
     health_care_is_secondary = Column(
         'health_care_is_secondary', Boolean)
 
+    analysis_is_secondary = Column(
+        'analysis_is_secondary', Boolean)
+    
 # declare table columns and data type
 class HealthCare(Base):
     __tablename__ = "health_care"
@@ -204,14 +205,25 @@ def check_extra_columns(df):
     create analysis_is_secondary columns
 
     """
+    # these are the columns found exclusively in the arpa file
+    arpa_columns = ['federal_income_taxes', 'payroll_taxes', 'state_sales_taxes', 
+                'state_income_taxes', 'federal_child_tax_credit', 
+                'federal_and_oregon_eitc', 'federal_cdctc', 
+                'oregon_wfhdc', 'total_annual_resources']
     arpa = pd.DataFrame()
+    # we check whether these arpa columns are found in a file
+    if  set(arpa_columns).issubset(list(df.columns)):
+        # updates anaylisis_type if arpa columns found
+        df['analysis_type'] = 'ARPA'
+        arpa = df[[ 'family_type','state','place','year','analysis_type']] 
+        arpa = pd.concat([arpa, df['analysis_type']],axis=1)
     if 'Full' or 'Partial' in df['analysis_type']:
+        df['analysis_is_secondary'] = False
+    else:
         df['analysis_is_secondary'] = True
         arpa = df[[ 'family_type','state','place','year','analysis_type']] 
         arpa = pd.concat([arpa, df['analysis_type']],axis=1)
-    else:
-         df['analysis_is_secondary'] = False
-
+        
     return df, miscellaneous, health_care, arpa
 
 
@@ -243,6 +255,7 @@ def data_folder_to_database(data_folder):
 
     """
     data_folder = glob.glob(os.path.join(data_folder, "*.xls*"))
+
     session = DB.sessionmaker()
 
     for i in data_folder:
