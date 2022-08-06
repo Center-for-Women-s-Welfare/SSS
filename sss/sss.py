@@ -18,7 +18,8 @@ from sqlalchemy import (
     Boolean)
 
 from . import preprocess 
-from .base import Base, DB, DeclarativeDB
+from .base import Base, AutomappedDB, DeclarativeDB
+from .base import db_url as default_db_url
 
 #TODO: Add docstrings to classes
 
@@ -227,7 +228,7 @@ def check_extra_columns(df):
     return df, miscellaneous, health_care, arpa
 
 
-def data_folder_to_database(data_folder):
+def data_folder_to_database(data_folder, db_url=default_db_url):
     """
     Reads path of folder of data, adds data to SQL table
 
@@ -245,8 +246,7 @@ def data_folder_to_database(data_folder):
     Parameters
     ----------
     data_folder: str
-        path name of the folder that we want to create the database from
-
+        path name of the folder or file that we want to read into the database
 
     Returns
     -------
@@ -254,11 +254,17 @@ def data_folder_to_database(data_folder):
         the returned dataframe has columns similar to that of the primary table 
 
     """
-    data_folder = glob.glob(os.path.join(data_folder, "*.xls*"))
+    if os.path.isfile(data_folder):
+        data_files = [data_folder]
+    elif os.path.isdir(data_folder):
+        data_files = glob.glob(os.path.join(data_folder, "*.xls*"))
+    else:
+        raise ValueError("data_folder must be a file or a folder on this system")
 
-    session = DB.sessionmaker()
+    db = AutomappedDB(db_url)
+    session = db.sessionmaker()
 
-    for i in data_folder:
+    for i in data_files:
         # read file and conduct pre-processing
         df, file = read_file(i)
 
@@ -295,11 +301,13 @@ def data_folder_to_database(data_folder):
 # to create the primary table (declaratively)
 # we need to import DeclarativeDB
 # we need to create an object
-sss_declare = DeclarativeDB('sqlite:///sss.sqlite')
+# from .base import db_url
+# sss_declare = DeclarativeDB(db_url)
 # then we call the create table function 
-sss_declare.create_tables()
+# sss_declare.create_tables()
 # then we call this function to insert data from folder of interest
 # need to insert a path name that holds all the data
-data_folder_to_database()
+# data_folder_to_database('/Users/hec20/Desktop/Life/Professional Life/2022/UW Data Science for Social Good/Data/OR2018_SSS_Partial.xlsx')
+
 
 # TODO: Handle different type of values
