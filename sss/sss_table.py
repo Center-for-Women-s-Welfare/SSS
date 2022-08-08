@@ -180,6 +180,8 @@ def check_extra_columns(df):
         these columns indicate whether there is a secondary table
 
     """
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError("df should be a pandas dataframe.")
 
     miscellaneous = pd.DataFrame()
     if ('other_necessities'or'broadband_and_cell_phone') in df.columns:
