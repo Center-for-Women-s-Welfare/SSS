@@ -7,7 +7,7 @@ Scipt for creating the primary table
 
 import argparse
 
-from sss.sss import data_folder_to_database
+from sss.sss_table import data_folder_to_database
 from sss.base import db_url
 
 # creating parser object 
