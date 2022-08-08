@@ -124,6 +124,8 @@ def read_file(file):
     -------
     pandas.datafranme
         the returned dataframe has columns similar to that of the primary table
+    files: str
+        file name that was read into the dataframe
 
     """
     try:
