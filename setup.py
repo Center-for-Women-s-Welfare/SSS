@@ -14,7 +14,7 @@ opts = dict(
     use_scm_version=True,
     packages=PACKAGES,
     include_package_data=True,
-    install_requires= ['sqlalchemy', 'pandas', 'numpy']
+    install_requires= ['sqlalchemy', 'pandas', 'numpy', "setuptools_scm"]
 )
 
 
