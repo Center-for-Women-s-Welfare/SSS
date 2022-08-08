@@ -1,7 +1,6 @@
 import sys
 import os
-from setuptools import setup, find_packages
-PACKAGES = find_packages()
+from setuptools import setup, find_namespace_packages
 
 opts = dict(
     name='sss',
@@ -12,7 +11,8 @@ opts = dict(
     #classifiers=CLASSIFIERS,
     author='Cheng Ren, Aziza Mirsaidova, Priyana Patel, Hector Sosa, Bryna Hazelton',
     use_scm_version=True,
-    packages=PACKAGES,
+    package_dir={"sss": "sss"},
+    packages=find_namespace_packages(),
     include_package_data=True,
     install_requires= ['sqlalchemy', 'pandas', 'numpy', "setuptools_scm"]
 )
