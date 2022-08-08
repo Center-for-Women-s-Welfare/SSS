@@ -25,6 +25,97 @@ from .base import default_db_file
 
 # create class
 class SSS(Base):
+    """
+    Used to create primary table for our database
+
+    ...
+
+    Attributes
+    ----------
+    __tablename__  : str
+        Name of our table in the database. 
+    
+    family_type : str
+        One of our primary keys, the family type as seen in the standard SSS classification.
+    
+    state : str
+        One of our primary keys, which what state this data is taken from.
+
+    place : str
+        One of our primary keys, which either the town or county where the data was collected. 
+
+    year : int
+        One of our primary keys, the year the data is from. 
+
+    analysis_type : str
+        One of our primary keys, whether the file is either a town or county.
+    
+    adult : int
+        Number of adults in the household. 
+    
+    infant : int
+        Number of infants in the household.
+
+    preschooler : int
+        Number of preschoolers in the household.
+    
+    schoolager : int
+        Number of schoolagers in the household.
+
+    teenager : int
+        Number of teenagers in the househould.
+    
+    weighted_child_count : int
+        Number of total children in the household.
+        A value is only present when the family type is a*c*.
+    
+    housing : float
+        Cost of housing, specfic to the primary keys.
+    
+    child_care : float
+        Cost of child care. 
+    
+    transportation : float
+        Cost of transportation. 
+    
+    health_care : float
+        Cost of health care. 
+    
+    miscellaneous : float
+        Cost of miscellaneous costs. 
+    
+    taxes : float 
+        Cost of taxes paid.
+
+    earned_income_tax_credit : float
+        Amount of tax credit earned through work. 
+    
+    child_care_tax_credit : float
+        Amount of tax credit earned through child care cost.
+    
+    child_tax_credit : float
+        Amount of tax credit earned through number of children. 
+
+    hourly_self_sufficiency_wage : float
+        The hourly wage needed to reach self-sufficiency. 
+    
+    monthly_self_sufficiency_wage : float 
+        The monthly wage needed to reach self-sufficiency. 
+
+    annual_self_sufficiency_wage : float 
+        The annual wage needed reach self-sufficiency.
+
+    emergency_savings : float 
+        The amount needed to cover random expenses. 
+    
+    miscellaneous_is_secondary : boolean
+        The boolean value represents whether we have a secondary table that breaksdown miscellaneous costs. 
+    
+    health_care_is_secondary : column
+
+    
+
+    """
     __tablename__ = 'self_sufficiency_standard'
     family_type = Column('family_type', String, primary_key=True)
     state = Column('state', String, primary_key=True)
@@ -54,12 +145,10 @@ class SSS(Base):
     annual_self_sufficiency_wage = Column(
         'annual_self_sufficiency_wage', Float)
     emergency_savings = Column('emergency_savings', Float)
-    
     miscellaneous_is_secondary = Column(
         'miscellaneous_is_secondary', Boolean)
     health_care_is_secondary = Column(
         'health_care_is_secondary', Boolean)
-
     analysis_is_secondary = Column(
         'analysis_is_secondary', Boolean)
     
