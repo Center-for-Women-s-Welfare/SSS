@@ -11,7 +11,7 @@ from sss.sss import data_folder_to_database
 from sss.base import db_url
 
 # creating parser object 
-parser = argparse.ArgumentParser(description = "Creating the SSS database")
+parser = argparse.ArgumentParser(description = "Add file(s) to the SSS database")
 
 #defining arguements for the parser object
 parser.add_argument("data_folder", type = str,
