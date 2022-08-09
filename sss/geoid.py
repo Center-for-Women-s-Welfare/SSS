@@ -15,10 +15,10 @@ from .base import db_url as default_db_url
 #from sss import GEOID
 
 
-# declare GeoId data columns and data type
-class GeoId(Base):
+# declare GeoID data columns and data type
+class GeoID(Base):
     """
-    declare GeoId data columns
+    declare GeoID data columns
 
     state: String Column
         name of the state, e.g. WA
@@ -50,10 +50,10 @@ def geo_identifier_creator(county_table, cpi_table):
 
     Parameters
     ----------
-    county_table : string
+    county_file : string
             The path of the county table including FIPS code
-    cpi_table : string
-            The path of the cpi_table including capi region
+    cpi_file : string
+            The path of the cpi_table including cpi region
     Returns
     -------
     df_combine : dataframe
@@ -62,7 +62,7 @@ def geo_identifier_creator(county_table, cpi_table):
     Raises
     ------
     ValueError
-        Column name may not exist when merging
+        If columns are not named properly in the input files
 
     """
 
@@ -87,7 +87,7 @@ def geo_identifier_creator(county_table, cpi_table):
         df_combine = df_l.merge(df_r,left_on = 'state_alpha', right_on = 'USPS Abbreviation', how='left')
         df_combine = df_combine.rename(columns={"state_alpha": "state", "CPI Region": "cpi_region","CPI SSS_Place":"place"})
         if df_combine.shape[0] != df_l.shape[0]:
-            print('Merge sucessfully but new rows were created due to duplicaitons in right(CPI) table')
+            print('Merge sucessfully but new rows were created due to duplications in right(CPI) table')
     except:
         raise ValueError('Cannot merge, please check the two columns are named as "state_alpha" and "USPS Abbreviation"')
 
@@ -101,9 +101,9 @@ def geoid_to_db(county_table, cpi_table, db_url=default_db_url):
     
     Parameters
     ----------
-    county_table : string
+    county_file: string
             The path of the county table including FIPS code
-    cpi_table : string
+    cpi_file : string
             The path of the cpi_table including capi region
     
     Returns

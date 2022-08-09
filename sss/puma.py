@@ -23,7 +23,7 @@ class PUMA(Base):
     
     Attributes
     ----------
-    sl: String Column
+    summary_level: String Column
         Summary Level Code
     state_fips: String Column
         State FIPS Code
@@ -52,7 +52,7 @@ class PUMA(Base):
         
     """
     __tablename__ = 'puma'
-    sl = Column('sl', String)
+    summary_level = Column('summary_level', String)
     state_fips = Column('state_fips', String)
     state = Column('state', String, primary_key = True)
     puma_code = Column('puma_code', String, primary_key = True)
@@ -76,7 +76,7 @@ def read_puma(path, year):
     path: str
         path name of txt puma file
     year: int
-    year of the puma data collected
+        year of the puma data collected
     
     Returns
     -------
@@ -84,9 +84,9 @@ def read_puma(path, year):
         the returned dataframe has different levels of fips, population size etc. from txt file
     """
 
-    # Please refer 2010_PUMA_Equivalency_Format_Layout to check he record layouts for each field 
+    # Please refer 2010_PUMA_Equivalency_Format_Layout to check the record layouts for each field 
     colspecs = [(0,3),(3,5),(5,13),(13,18),(18,21),(21,29),(29,34),(34,42),(42,47),(47,55),(55,61),(61,70),(70,79),(79,178)]
-    names = ['sl','state_fips','state_national_standards','puma_code','county_fips','county_national_standards',
+    names = ['summary_level','state_fips','state_national_standards','puma_code','county_fips','county_national_standards',
         'county_sub_fips','county_sub_national_standards','place_fips','place_national_standards','tract_code',
         'population','house_number','area_name']
     # Read a table of fixed-width formatted lines from .txt into DataFrame.
@@ -108,10 +108,10 @@ def read_puma(path, year):
     df['state'] = df['state_fips'].map(state_names)
     return df
 
-def puma_crosswalk(path, nyc_wa_path, year):
+def puma_crosswalk(path, year, nyc_wa_path = None):
     """
     This function is to create a puma crosswalk with county and subcounty.
-    If the puma is in Aew England Area, use sub county(level 797) as sss_place(place).
+    If the puma is in New England Area, use sub county(level 797) as sss_place(place).
     Otherwise the county is assigned to sss_place(place).
     For State of Washington and New York City, some puma code area names are replace by more meaningful names.
     
@@ -138,17 +138,17 @@ def puma_crosswalk(path, nyc_wa_path, year):
     a_set = set(puma_txt['state_fips'])
     matches = ['25','09','23','33','44','50']
     # if the area is in new england area, use sub county(level 797) as place
-    if ('797' in set(puma_txt['sl'])) and (any(x in a_set for x in matches)):
+    if ('797' in set(puma_txt['summary_level'])) and (any(x in a_set for x in matches)):
         # retrieve sub county information
-        county_sub = puma_txt[puma_txt['sl'] == '797']
+        county_sub = puma_txt[puma_txt['summary_level'] == '797']
         county_sub.rename(columns={'area_name':'county_sub'}, inplace=True)
         # retrieve sub county fips code and area name
-        county = puma_txt[puma_txt['sl'] == '796']
+        county = puma_txt[puma_txt['summary_level'] == '796']
         county =county[['county_fips','area_name']]
         county = county.drop_duplicates()
         county.columns=['county_fips','county']
         # retrieve puma code and area name
-        puma = puma_txt[puma_txt['sl'] == '795']
+        puma = puma_txt[puma_txt['summary_level'] == '795']
         puma =puma[['puma_code','area_name']]
         puma = puma.drop_duplicates()
         puma.columns=['puma_code','puma_area']
@@ -156,23 +156,23 @@ def puma_crosswalk(path, nyc_wa_path, year):
         crosswalk = county_sub.merge(county, how='left')
         crosswalk = crosswalk.merge(puma, how='left')
         # only keep columns of interests
-        crosswalk = crosswalk[['sl', 'state_fips', 'state', 'puma_code','county_fips', 'county_sub_fips',
+        crosswalk = crosswalk[['summary_level', 'state_fips', 'state', 'puma_code','county_fips', 'county_sub_fips',
                'county_sub', 'county', 'puma_area','population','year']]
         crosswalk['place'] = crosswalk['county_sub']
     # if the area is not in new england, only use puma and county 
     else:
         # retrieve sub county information
-        county = puma_txt[puma_txt['sl'] == '796']
+        county = puma_txt[puma_txt['summary_level'] == '796']
         county.rename(columns={'area_name':'county'}, inplace=True)
         # retrieve puma code and area name
-        puma = puma_txt[puma_txt['sl'] == '795']
+        puma = puma_txt[puma_txt['summary_level'] == '795']
         puma =puma[['puma_code','area_name']]
         puma = puma.drop_duplicates()
         puma.columns=['puma_code','puma_area']
         # left join county and puma by puma code
         crosswalk = county.merge(puma, how='left')
         # only keep columns of interests
-        crosswalk = crosswalk[['sl', 'state_fips', 'state','puma_code','county_fips', 'county', 'puma_area','population']]
+        crosswalk = crosswalk[['summary_level', 'state_fips', 'state','puma_code','county_fips', 'county', 'puma_area','population']]
         #creat place(sssplace)
         crosswalk['place'] = crosswalk['county']
     # attach population of each puma to the crosswalk file
@@ -182,6 +182,8 @@ def puma_crosswalk(path, nyc_wa_path, year):
 
     # TODO: if the puma name and city file is better designed, the code could be easier
     #if the file is State of Washington, replace some 'place' name to meaningful names e.g. "King(part)"-->"Seattle"
+    if (('53' in set(crosswalk['state_fips'])) or ('36' in set(crosswalk['state_fips']))) and (nyc_wa_path is None):
+        raise ValueError('Must pass the nyc_wa_path if proessing NY or WA')
     if '53' in set(crosswalk['state_fips']):
         # read file and sheet_name 0 is the state of washington
         wa = pd.read_excel(nyc_wa_path, sheet_name = 0)
@@ -217,7 +219,7 @@ def puma_crosswalk(path, nyc_wa_path, year):
 
 
 
-def puma_to_db(puma_folder, nyc_wa_path, year, db_url= default_db_url):
+def puma_to_db(puma_folder, ear, nyc_wa_path=None, db_url= default_db_url):
     """
     This function is to put puma into database
     
@@ -225,10 +227,10 @@ def puma_to_db(puma_folder, nyc_wa_path, year, db_url= default_db_url):
     ----------
     path: str
         path name of txt puma file
-    nyc_wa_path: str
-        excel file path of nyc and statement of washington replacement name list 
     year: int
         year of the puma data collected
+    nyc_wa_path: str
+        excel file path of nyc and statement of washington replacement name list 
 
     """
     if os.path.isfile(puma_folder):
