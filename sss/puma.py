@@ -1,12 +1,54 @@
 import os
 import glob
+
 import pandas as pd
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+    Float,
+    Boolean)
+
 import warnings
 from pandas.core.common import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
+from .base import Base, AutomappedDB, DeclarativeDB
+from .base import db_url as default_db_url
+#from sss import PUMA
 
 # declare PUMA data columns and data type
 class PUMA(Base):
+    '''
+    Attributes
+    ----------
+    sl: str
+        Summary Level Code
+    state_fips: str
+        State FIPS Code
+    state: str
+        state name, e.g. WA
+    puma_code: str
+        PUMA Code
+    county_fips: str
+        County FIPS Code
+    county_sub_fips: str
+        County Subdivision FIPS Code
+    county_sub: str
+        name of the county sub
+    county: str
+         name of the county
+    puma_area: str
+        name of the puma area
+    place: str
+        name of the sss place
+    population: int
+        population of the puma
+    weight: float
+        weight of population based on puma
+    year: int
+        the year of population
+        
+    '''
     __tablename__ = 'puma'
     sl = Column('sl', String)
     state_fips = Column('state_fips', String)
@@ -20,10 +62,10 @@ class PUMA(Base):
     place = Column('place', String, primary_key = True)
     population_self = Column('population', Integer)
     weight = Column('weight', Float)
-    year = Column('year', Float)
+    year = Column('year', Integer)
 
 
-def read_puma(path):
+def read_puma(path, year):
     """
     Reads puma data into data frame. The puma data stores by states in txt format.
     
@@ -31,6 +73,9 @@ def read_puma(path):
     ----------
     path: str
         path name of txt puma file
+    year: int
+    year of the puma data collected
+    
     Returns
     -------
     pandas.datafranme
@@ -48,7 +93,7 @@ def read_puma(path):
     df['population'] = df['population'].astype('float')
     df['house_number'] = df['house_number'].astype('float')
     # add a column called year
-    df['year'] = 2010
+    df['year'] = year
     state_names = {'53': 'WA','10': 'DE','11': 'DC','55': 'WI','54': 'WV','15': 'HI',
                '12': 'FL','56': 'WY','72': 'PR','34': 'NJ','35': 'NM','48': 'TX',
                '22': 'LA','37': 'NC','38': 'ND','31': 'NE','47': 'TN','36': 'NY',
@@ -61,7 +106,7 @@ def read_puma(path):
     df['state'] = df['state_fips'].map(state_names)
     return df
 
-def puma_crosswalk(path, nyc_wa_path):
+def puma_crosswalk(path, nyc_wa_path, year):
     """
     This function is to create a puma crosswalk with county and subcounty.
     If the puma is in Aew England Area, use sub county(level 797) as sss_place(place).
@@ -74,6 +119,9 @@ def puma_crosswalk(path, nyc_wa_path):
         path name of txt puma file
     nyc_wa_path: str
         excel file path of nyc and statement of washington replacement name list 
+    year: int
+        year of the puma data collected
+    
     Returns
     -------
     pandas.datafranme
@@ -82,7 +130,7 @@ def puma_crosswalk(path, nyc_wa_path):
     """
 
     # read txt file into datdframe
-    puma_txt = read_puma(path)
+    puma_txt = read_puma(path,year)
     # save the population of each puma are
     puma_pop = puma_txt[['puma_code','population']].groupby('puma_code').agg('max').reset_index()
     a_set = set(puma_txt['state_fips'])
@@ -138,14 +186,14 @@ def puma_crosswalk(path, nyc_wa_path):
         # the length of puma code should be 5. Some are not due to data type. 
         # If it is not 5 digits, add "0" s to make it len()==5
         wa['PUMA'] = wa['PUMA'].astype('int').astype('str').str.zfill(5)
-        wa = wa[['PUMA','Place']]
-        wa.columns = ['puma_code','new_place']
+        wa = wa[['PUMA','Place','Area_Name']]
+        wa.columns = ['puma_code','new_place','part_county']
         # left join between crosswalk and wa
-        crosswalk = crosswalk.merge(wa, how='left')
+        crosswalk = crosswalk.merge(wa, left_on = ['puma_code','county'],right_on = ['puma_code','part_county'], how='left')
         # meaningful names are in the column 'new_place'. If it is NA in 'new_place', filled by old 'place'
         crosswalk['new_place'] = crosswalk['new_place'].fillna(crosswalk['place'])
         # drop 'place'
-        crosswalk = crosswalk.drop('place',axis=1)
+        crosswalk = crosswalk.drop(['place','part_county'],axis=1)
         # rename new_place --> place 
         crosswalk.rename(columns={'new_place':'place'}, inplace=True)
 
@@ -166,9 +214,19 @@ def puma_crosswalk(path, nyc_wa_path):
     return crosswalk
 
 
-for file in txt_files:
-    df_puma = create_sssplace(puma_crosswalk(file))
-    session.bulk_insert_mappings(PUMA, df_puma.to_dict(orient="records"))
-    session.commit()
-session = DB.sessionmaker()
 
+def puma_to_db(puma_folder, nyc_wa_path, year, db_url= default_db_url):
+    if os.path.isfile(puma_folder):
+        data_files = [puma_folder]
+    elif os.path.isdir(puma_folder):
+        data_files = glob.glob(os.path.join(puma_folder, "*.txt"))
+    else:
+        raise ValueError("data_folder must be a file or a folder on this system")
+    db = AutomappedDB(db_url)
+    session = db.sessionmaker()
+    for file in data_files:
+        print(file)
+        df_puma = puma_crosswalk(file, nyc_wa_path, year)
+        session.bulk_insert_mappings(PUMA, df_puma.to_dict(orient="records"))
+        session.commit()
+    session.close()
