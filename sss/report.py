@@ -17,26 +17,28 @@ from .base import Base,DB, DeclarativeDB
 from .base import db_url as default_db_url
 #from sss import REPORT
 
-# declare REPORT data columns and data type
-class REPORT(Base):
-    '''
+# declare Report data columns and data type
+class Report(Base):
+    """
+    declare columns in Report table in the database
+    
     Attributes
     ----------
-    year: int
+    year: Integer Column
         year of report
-    state: str
+    state: String Column
         name of state
-    analysis_type: str
+    analysis_type: String Column
         analysis type of sss, e.g. full, partial
-    cpi_month: str
+    cpi_month: String Column
         cpi month of the report
-    cpi_year
+    cpi_year: String Column
         cpi year of the report
-    update_date: date
+    update_date: Date Column
         update date
-    update_person: str
+    update_person: String Column
         who update the report
-    '''
+    """
     __tablename__ = 'report'
     year = Column('year', Integer, primary_key = True)
     state = Column('state', String, primary_key = True)
@@ -49,10 +51,12 @@ class REPORT(Base):
 def add_report(path):
     """
     Reads report data into data frame and perprare for database report table
+    
     Parameters
     ----------
     path: str
         path name of report excel file
+    
     Returns
     -------
     pandas.datafranme
@@ -74,6 +78,14 @@ def add_report(path):
     return df 
 
 def report_to_db(path, db_url= default_db_url):
+    """
+    Insert report file to the report table in the db
+    
+    Parameters
+    ----------
+    path: str
+        path name of report excel file
+    """
     db = AutomappedDB(db_url)
     session = db.sessionmaker()
     df_report = add_report(path)

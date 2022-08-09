@@ -17,22 +17,26 @@ from .base import db_url as default_db_url
 #from sss import CITY
 
 # declare CITY data columns and data type
-class CITY(Base):
-    '''
-    state: str
+class City(Base):
+    """
+    Declare the attributes for city table
+
+    Attributes
+    ----------
+    state: String Column
         name of the state, e.g. WA
-    place: str
+    place: String Column
         SSS place name
-    city: str
+    city: String Column
         sss_city, some cities of sss place
-    census_name: str
+    census_name: String Column
         the census name of the city
-    population: int
+    population: Integer Column
         number of the population of the city
-    public_transit: bool
+    public_transit: Boolean Column
         whether the city is public transit or not
 
-    '''
+    """
     __tablename__ = 'city'
     #state = Column('state', String, ForeignKey("self_sufficiency_standard.state"),primary_key = True)
     #place = Column('place', String, ForeignKey("self_sufficiency_standard.place"), primary_key = True)
@@ -45,9 +49,8 @@ class CITY(Base):
 
 
 def add_city(path, year):
-    
     """
-    Reads city data into data frame and perprare for database table
+    Reads city data into data frame and prepare for database table
     
     Parameters
     ----------
@@ -60,7 +63,8 @@ def add_city(path, year):
     -------
     pandas.datafranme
         the returned dataframe has population size by city
-    Raise
+    
+    Raises
     -----
         ValueError
         if the state cannot be extracted from SSS_city

@@ -15,23 +15,25 @@ from .base import db_url as default_db_url
 #from sss import GEOID
 
 
-# declare GEOID data columns and data type
-class GEOID(Base):
-    '''
-    state: str
+# declare GeoId data columns and data type
+class GeoId(Base):
+    """
+    declare GeoId data columns
+
+    state: String Column
         name of the state, e.g. WA
     place: str
         SSS place name
-    state_fips: str
+    state_fips: String Column
         fips code of state
-    county_fips: str
+    county_fips: String Column
         fips code of county
-    place_fips: str
+    place_fips: String Column
         fips code of place
-    cpi_region: str
-        name of cip region
+    cpi_region: String Column
+        name of cpi region
 
-    '''
+    """
     __tablename__ = 'geo_identifier'
     state = Column('state', String ,primary_key = True)
     place = Column('place', String , primary_key = True)
@@ -43,9 +45,10 @@ class GEOID(Base):
     cpi_region = Column('cpi_region', String)
     
 def geo_identifier_creator(county_table, cpi_table):
-    """The function to create geoidentifier
-   
-   Parameters
+    """
+    The function to create geoidentifier
+
+    Parameters
     ----------
     county_table : string
             The path of the county table including FIPS code
