@@ -18,37 +18,39 @@ from .base import db_url as default_db_url
 
 # declare PUMA data columns and data type
 class PUMA(Base):
-    '''
+    """
+    declare PUMA(Public Use Microdata Area) attributes
+    
     Attributes
     ----------
-    sl: str
+    sl: String Column
         Summary Level Code
-    state_fips: str
+    state_fips: String Column
         State FIPS Code
-    state: str
+    state: String Column
         state name, e.g. WA
-    puma_code: str
+    puma_code: String Column
         PUMA Code
-    county_fips: str
+    county_fips: String Column
         County FIPS Code
-    county_sub_fips: str
+    county_sub_fips: String Column
         County Subdivision FIPS Code
-    county_sub: str
+    county_sub: String Column
         name of the county sub
-    county: str
+    county: String Column
          name of the county
-    puma_area: str
+    puma_area: String Column
         name of the puma area
-    place: str
+    place: String Column
         name of the sss place
-    population: int
+    population: Integer Column
         population of the puma
-    weight: float
+    weight: Float Column
         weight of population based on puma
-    year: int
+    year: Integer Column
         the year of population
         
-    '''
+    """
     __tablename__ = 'puma'
     sl = Column('sl', String)
     state_fips = Column('state_fips', String)
@@ -216,6 +218,19 @@ def puma_crosswalk(path, nyc_wa_path, year):
 
 
 def puma_to_db(puma_folder, nyc_wa_path, year, db_url= default_db_url):
+    """
+    This function is to put puma into database
+    
+    Parameters
+    ----------
+    path: str
+        path name of txt puma file
+    nyc_wa_path: str
+        excel file path of nyc and statement of washington replacement name list 
+    year: int
+        year of the puma data collected
+
+    """
     if os.path.isfile(puma_folder):
         data_files = [puma_folder]
     elif os.path.isdir(puma_folder):
