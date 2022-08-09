@@ -91,9 +91,6 @@ def city_to_db(data_path, year, db_url=default_db_url):
         path name of city excel file
     year: int
         year of the population data collected
-    
-    Returns
-    -------
     """
     db = AutomappedDB(db_url)
     session = db.sessionmaker()

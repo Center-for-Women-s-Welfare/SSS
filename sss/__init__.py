@@ -1,7 +1,7 @@
 from setuptools_scm import get_version
 
 from .city import City
-from .geoid import GeoId
+from .geoid import GeoID
 from .sss_table import SSS, HealthCare, Miscellaneous, ARPA
 from .puma import PUMA
 from .report import Report
