@@ -95,7 +95,7 @@ def city_to_db(data_path, year, db_url=default_db_url):
     db = AutomappedDB(db_url)
     session = db.sessionmaker()
     df_city = add_city(data_path, year)
-    session.bulk_insert_mappings(CITY, df_city.to_dict(orient="records"))
+    session.bulk_insert_mappings(City, df_city.to_dict(orient="records"))
     session.commit()
     session.close()
 
