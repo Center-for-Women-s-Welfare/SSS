@@ -90,7 +90,11 @@ def geo_identifier_creator(county_table, cpi_table):
             print('Merge sucessfully but new rows were created due to duplications in right(CPI) table')
     except:
         raise ValueError('Cannot merge, please check the two columns are named as "state_alpha" and "USPS Abbreviation"')
-
+    if df_combine.duplicated(['state','place']).sum()>0:
+        places = df_combine.loc[df_combine.duplicated(['state','place'],keep=False),'place'].values
+        counties = df_combine.loc[df_combine.duplicated(['state','place'],keep=False),'countyname'].values
+        value_com = places +' (' + counties +')'
+        df_combine.loc[df_combine.duplicated(['state','place'],keep=False),'place'] = value_com
     return df_combine
 
 
@@ -112,8 +116,6 @@ def geoid_to_db(county_table, cpi_table, db_url=default_db_url):
     db = AutomappedDB(db_url)
     session = db.sessionmaker()
     df_geoid = geo_identifier_creator(county_table, cpi_table)
-    if df_geoid.duplicated(['state','place']).sum()>0:
-        raise ValueError('this place code %s is not unique' %(df_geoid[df_geoid.duplicated(['state','place'])]['place']))
     session.bulk_insert_mappings(GEOID, df_geoid.to_dict(orient="records"))
     session.commit()
     session.close()
