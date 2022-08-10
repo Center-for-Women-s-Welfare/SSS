@@ -172,7 +172,7 @@ def puma_crosswalk(path, year, nyc_wa_path = None):
         # left join county and puma by puma code
         crosswalk = county.merge(puma, how='left')
         # only keep columns of interests
-        crosswalk = crosswalk[['summary_level', 'state_fips', 'state','puma_code','county_fips', 'county', 'puma_area','population']]
+        crosswalk = crosswalk[['summary_level', 'state_fips', 'state','puma_code','county_fips', 'county', 'puma_area','population','year']]
         #creat place(sssplace)
         crosswalk['place'] = crosswalk['county']
     # attach population of each puma to the crosswalk file
