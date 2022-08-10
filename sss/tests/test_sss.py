@@ -29,9 +29,14 @@ def test_check_extra_columns(setup_and_teardown_package):
 
     columns_to_check = ['miscellaneous_is_secondary', 'health_care_is_secondary', 'analysis_is_secondary']
 
-    for col in columns_to_check:
-        assert col in df.columns
+    is_df_empty = not df.empty
+    is_mics_empty = not miscellaneous.empty
+    is_hc_empty = not health_care.empty
+    is_arap_empty = not arpa.empty
 
+    assert is_df_empty, is_mics_empty
+    assert is_hc_empty, is_arap_empty
+    
 def test_check_extra_columns_error(setup_and_teardown_package):
     """ Test occurency of the error in checking the etxra column """
     with pytest.raises(ValueError, match="df should be a pandas dataframe."):
@@ -45,6 +50,7 @@ def test_data_folder_to_database(setup_and_teardown_package):
     result = session.query(SSS).filter(SSS.state == 'FL').all()
     assert len(result) == 4
     session.close()
+
 
 
 # def test_create_database():
