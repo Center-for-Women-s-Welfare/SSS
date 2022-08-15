@@ -10,7 +10,6 @@ opts = dict(
     license='CC0 1.0',
     #classifiers=CLASSIFIERS,
     author='Cheng Ren, Aziza Mirsaidova, Priyana Patel, Hector Sosa, Bryna Hazelton',
-    use_scm_version=True,
     package_dir={"sss": "sss"},
     packages=find_namespace_packages(),
     include_package_data=True,
