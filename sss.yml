@@ -18,3 +18,5 @@ dependencies:
   - pylint
   - setuptools_scm
   - pytest
+  - sphinx
+  - pypandoc
