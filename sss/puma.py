@@ -13,7 +13,7 @@ import warnings
 from pandas.core.common import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 from .base import Base, AutomappedDB, DeclarativeDB
-from .base import db_url as default_db_url
+from .base import db_file
 #from sss import PUMA
 
 # declare PUMA data columns and data type
@@ -219,7 +219,7 @@ def puma_crosswalk(path, year, nyc_wa_path = None):
 
 
 
-def puma_to_db(puma_folder, ear, nyc_wa_path=None, db_url= default_db_url):
+def puma_to_db(puma_folder, year, nyc_wa_path=None, db_file=db_file):
     """
     This function is to put puma into database
     
@@ -239,7 +239,7 @@ def puma_to_db(puma_folder, ear, nyc_wa_path=None, db_url= default_db_url):
         data_files = glob.glob(os.path.join(puma_folder, "*.txt"))
     else:
         raise ValueError("data_folder must be a file or a folder on this system")
-    db = AutomappedDB(db_url)
+    db = AutomappedDB(db_file)
     session = db.sessionmaker()
     for file in data_files:
         print(file)
