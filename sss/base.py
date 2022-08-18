@@ -8,7 +8,7 @@ from sqlalchemy import (
     MetaData
 )
 
-db_url = 'sqlite:///sss.sqlite'
+default_db_file = 'sss.sqlite'
 Base = declarative_base()
 
 class DB(object, metaclass=ABCMeta):
@@ -18,13 +18,19 @@ class DB(object, metaclass=ABCMeta):
     This ABC is only instantiated through the AutomappedDB or DeclarativeDB
     subclasses.
 
+    Parameters
+    ----------
+    db_file : str
+        Database file name, ends with '.sqlite'.
+
     """
 
     engine = None
     sessionmaker = sessionmaker()
     sqlalchemy_base = None
 
-    def __init__(self, sqlalchemy_base, db_url):  # noqa
+    def __init__(self, sqlalchemy_base, db_file=default_db_file):  # noqa
+        db_url = 'sqlite:///' + db_file
         self.sqlalchemy_base = Base
         self.engine = create_engine(db_url)
         self.sessionmaker.configure(bind=self.engine)
@@ -36,13 +42,13 @@ class DeclarativeDB(DB):
 
     Parameters
     ----------
-    db_url : str
-        Database location.
+    db_file : str
+        Database file name, ends with '.sqlite'.
 
     """
 
-    def __init__(self, db_url):
-        super(DeclarativeDB, self).__init__(Base, db_url)
+    def __init__(self, db_file=default_db_file):
+        super(DeclarativeDB, self).__init__(Base, db_file)
 
     def create_tables(self):
         """Create all tables."""
@@ -63,18 +69,18 @@ class AutomappedDB(DB):
 
     Parameters
     ----------
-    db_url : str
-        Database location.
+    db_file : str
+        Database file name, ends with '.sqlite'.
 
     """
 
-    def __init__(self, db_url):
-        super(AutomappedDB, self).__init__(automap_base(), db_url)
+    def __init__(self, db_file=default_db_file):
+        super(AutomappedDB, self).__init__(automap_base(), db_file)
 
         from .db_check import is_valid_database
 
         with self.sessionmaker() as session:
             if not is_valid_database(Base, session):
                 raise RuntimeError(
-                    "database {0} does not match expected schema".format(db_url)
+                    "database {0} does not match expected schema".format(db_file)
                 )

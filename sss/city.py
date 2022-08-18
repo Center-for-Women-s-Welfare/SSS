@@ -13,7 +13,7 @@ from sqlalchemy import (
 
 from . import preprocess 
 from .base import Base, AutomappedDB, DeclarativeDB
-from .base import db_url as default_db_url
+from .base import db_file
 #from sss import CITY
 
 # declare CITY data columns and data type
@@ -143,7 +143,7 @@ def add_city(path, year):
     return df
 
 
-def city_to_db(data_path, year, db_url=default_db_url):
+def city_to_db(data_path, year, db_file=db_file):
     """
     Reads city data into data frame and insert it to database
     
@@ -154,7 +154,7 @@ def city_to_db(data_path, year, db_url=default_db_url):
     year: int
         year of the population data collected
     """
-    db = AutomappedDB(db_url)
+    db = AutomappedDB(db_file)
     session = db.sessionmaker()
     df_city = add_city(data_path, year)
     session.bulk_insert_mappings(City, df_city.to_dict(orient="records"))

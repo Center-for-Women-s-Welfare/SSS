@@ -12,9 +12,11 @@ from sqlalchemy import (
     Boolean,
     Date)
 
+from sss import db_check
+
 from . import preprocess 
-from .base import Base,DB, DeclarativeDB, AutomappedDB
-from .base import db_url as default_db_url
+from .base import Base, AutomappedDB
+from .base import db_file
 #from sss import REPORT
 
 # declare Report data columns and data type
@@ -77,7 +79,7 @@ def add_report(path):
     df = df[['year', 'state', 'analysis_type', 'cpi_month','cpi_year','update_date','update_person']]
     return df 
 
-def report_to_db(path, db_url= default_db_url):
+def report_to_db(path, db_file=db_file):
     """
     Insert report file to the report table in the db
     
@@ -86,7 +88,7 @@ def report_to_db(path, db_url= default_db_url):
     path: str
         path name of report excel file
     """
-    db = AutomappedDB(db_url)
+    db = AutomappedDB(db_file)
     session = db.sessionmaker()
     df_report = add_report(path)
     session.bulk_insert_mappings(Report, df_report.to_dict(orient="records"))

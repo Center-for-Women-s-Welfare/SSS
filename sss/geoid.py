@@ -11,7 +11,7 @@ from sqlalchemy import (
     ForeignKey)
 
 from .base import Base, AutomappedDB, DeclarativeDB
-from .base import db_url as default_db_url
+from .base import db_file
 #from sss import GEOID
 
 
@@ -99,7 +99,7 @@ def geo_identifier_creator(county_table, cpi_table):
 
 
 
-def geoid_to_db(county_table, cpi_table, db_url=default_db_url):
+def geoid_to_db(county_table, cpi_table, db_file=db_file):
     """
     Reads city data into data frame and insert it to database
     
@@ -113,10 +113,10 @@ def geoid_to_db(county_table, cpi_table, db_url=default_db_url):
     Returns
     -------
     """
-    db = AutomappedDB(db_url)
+    db = AutomappedDB(db_file)
     session = db.sessionmaker()
     df_geoid = geo_identifier_creator(county_table, cpi_table)
-    session.bulk_insert_mappings(GEOID, df_geoid.to_dict(orient="records"))
+    session.bulk_insert_mappings(GeoID, df_geoid.to_dict(orient="records"))
     session.commit()
     session.close()
 
