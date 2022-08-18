@@ -32,7 +32,7 @@ class Report(Base):
         analysis type of sss, e.g. full, partial
     cpi_month: String Column
         cpi month of the report
-    cpi_year: String Column
+    cpi_year: Integer Column
         cpi year of the report
     update_date: Date Column
         update date
@@ -89,10 +89,75 @@ def report_to_db(path, db_url= default_db_url):
     db = AutomappedDB(db_url)
     session = db.sessionmaker()
     df_report = add_report(path)
-    print(df_report)
-    session.bulk_insert_mappings(REPORT, df_report.to_dict(orient="records"))
+    session.bulk_insert_mappings(Report, df_report.to_dict(orient="records"))
     session.commit()
     session.close()
 
+def add_one_entry_reportdb(year, 
+                           state,
+                           analysis_type,
+                           cpi_month,
+                           cpi_year,
+                           update_date,
+                           update_person,
+                           db_url=default_db_url):
+    """
+    This function inserts one record into report table
+    
+    Parameters
+    ----------
+    year: Integer
+        year of report
+    state: String
+        name of state
+    analysis_type: String
+        analysis type of sss, e.g. full, partial
+    cpi_month: String
+        cpi month of the report, like May
+    cpi_year: int
+        cpi year of the report
+    update_date: Date
+        update date, the format is date(2021,6,22)
+    update_person: String Column
+        who update the report
+    """
+        db = AutomappedDB(db_url)
+        session = db.sessionmaker()
+        new_record = Report(year = int(year),
+                            state=  str(state),
+                            analysis_type = str(analysis_type),
+                            cpi_month = str(cpi_month),
+                            cpi_year = int(cpi_year),
+                            update_date = update_date,
+                            update_person = str(update_person))
+        #add to db
+        session.add(new_record)
+        session.commit()
+        session.close()
 
 
+def delete_one_entry_reportdb(year,
+                              state,
+                              analysis_type,
+                              db_url=default_db_url):
+    """
+    This function delete one record. In case some records were insert accidently. 
+    
+    Parameters
+    ----------
+    year: Integer
+        year of report
+    state: String
+        name of state
+    analysis_type: String
+        analysis type of sss, e.g. full, partial
+    """
+        db = AutomappedDB(db_url)
+        session = db.sessionmaker()
+        #delete the records that meets criteria
+        session.query(Report).filter(Report.year == year, 
+                                     Report.state == state, 
+                                     Report.analysis_type == analysis_type).delete()
+        session.commit()
+        session.close()
+    
