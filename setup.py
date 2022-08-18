@@ -13,7 +13,10 @@ opts = dict(
     package_dir={"sss": "sss"},
     packages=find_namespace_packages(),
     include_package_data=True,
-    install_requires= ['sqlalchemy', 'pandas', 'numpy', "setuptools_scm"]
+    install_requires= ['sqlalchemy', 'pandas', 'numpy', "setuptools_scm"],
+    extras_require={
+        "doc": ["sphinx", "pypandoc"]
+    }
 )
 
 
