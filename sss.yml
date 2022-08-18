@@ -20,3 +20,4 @@ dependencies:
   - pytest
   - sphinx
   - pypandoc
+  - plotly
