@@ -13,7 +13,7 @@ from sqlalchemy import (
     Date)
 
 from . import preprocess 
-from .base import Base,DB, DeclarativeDB
+from .base import Base,DB, DeclarativeDB, AutomappedDB
 from .base import db_url as default_db_url
 #from sss import REPORT
 
