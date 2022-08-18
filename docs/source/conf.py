@@ -41,7 +41,10 @@ html_static_path = ['_static']
 
 def build_custom_docs(app):
     sys.path.append(os.getcwd())
-    from source import make_index, make_computer_setup
+    try:
+        import make_index, make_computer_setup
+    except:
+        from source import make_index, make_computer_setup
 
     make_index.write_index_rst(readme_file=readme_file, write_file=index_file)
     make_computer_setup.write_computer_setup_rst(input_file=computer_setup_in, write_file=computer_setup_out)
