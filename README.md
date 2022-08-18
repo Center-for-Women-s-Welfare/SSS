@@ -1,3 +1,6 @@
+![](https://github.com/Center-for-Women-s-Welfare/SSS/actions/workflows/tests.yml/badge.svg)
+[![codecov](https://codecov.io/gh/Center-for-Women-s-Welfare/SSS/branch/main/graph/badge.svg?token=ZRL342TOLY)](https://codecov.io/gh/Center-for-Women-s-Welfare/SSS)
+
 # Self-Sufficiency Standard Database
 
 ## Background
@@ -11,7 +14,7 @@ With your machine set up, we recommend working with your terminal to clone the r
 First, you would want to choose the directory where you want the code to be located. You can use `ls` to list the folders in the current directory and then use `cd [directory_path]` to enter the directory you want to host the repository.
 
 Next, you would clone the repository using the following command `git clone https://github.com/Center-for-Women-s-Welfare/SSS.git`. 
-
+Center-for-Women-s-Welfare/SSS
 ### Creating the Conda Environment
 Now that you are in the repository folder, you would want to create your conda environment using the sss.yml file. To do so, you would use `conda env create -f sss.yml`.
 
