@@ -10,3 +10,6 @@ dependencies:
   - pip
   - setuptools_scm
   - pytest
+  - coverage 
+  - pytest-cov
+
