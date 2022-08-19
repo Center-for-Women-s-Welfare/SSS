@@ -7,6 +7,7 @@
 [The Self-Sufficiency Standard](https://selfsufficiencystandard.org/)(SSS) was created by the Center of Women's Welfare (CWW) at the University of Washington as an alternative to the Official Poverty Measure (OPM). The Self-Sufficiency Standard data is spread across the CWW website and this repository creates a database to hold the Self-Sufficiency Standard data. 
 
 ## Setting Up Computer
+See directions [here](docs/computer_setup.md)
 
 ### Cloning the Repository
 With your machine set up, we recommend working with your terminal to clone the repository. All the following instructions will be ran exclusively in the terminal. 
@@ -15,6 +16,7 @@ First, you would want to choose the directory where you want the code to be loca
 
 Next, you would clone the repository using the following command `git clone https://github.com/Center-for-Women-s-Welfare/SSS.git`. 
 Center-for-Women-s-Welfare/SSS
+
 ### Creating the Conda Environment
 Now that you are in the repository folder, you would want to create your conda environment using the sss.yml file. To do so, you would use `conda env create -f sss.yml`.
 

@@ -26,10 +26,10 @@ def write_index_rst(readme_file=None, write_file=None):
     readme_text = pypandoc.convert_file(readme_file, "rst")
 
     # convert relative links in readme to explicit links
-    # readme_text = readme_text.replace(
-    #     "<docs/",
-    #     "<https://github.com/RadioAstronomySoftwareGroup/pyradiosky/tree/main/docs/",
-    # )
+    readme_text = readme_text.replace(
+        "`here <docs/computer_setup.md>`__",
+        ":ref:`here <comp_setup>`",
+    )
 
     # readme_text = readme_text.replace(
     #     "<.github/",
