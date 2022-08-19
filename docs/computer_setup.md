@@ -2,7 +2,7 @@
 How to set up your system, environment, and upload file(s) into the database
 
 ## Setting up operating system
-Make sure you have an up-to-date web browser. Follow the directions here to set up a bash shell, git, and python 3 (please set up all three). (add miniconda)
+Make sure you have an up-to-date web browser. Follow the directions [here] (https://docs.microsoft.com/en-us/windows/wsl/install) to set up a bash shell, git, and python 3 (please set up all three). (add miniconda)
 * Run as administrator 
 	*  If using cmd, right-click on the program and click “Run as Administrator”
 * Skip distribution
@@ -36,7 +36,7 @@ Press the Start taskbar button. Select All apps on the Start menu. Scroll down t
 
 
 ## Setting up environment 
-* Download miniconda from [here](https://docs.conda.io/en/latest/miniconda.html) (click the first link)
+* Download miniconda from [here](https://docs.conda.io/en/latest/miniconda.html) (click the first Linux link)
 	* If using Windows Subsystem for Linux on Windows, use the Linux installer
 * Install miniconda
 	* Change directories to the folder where you downloaded miniconda
