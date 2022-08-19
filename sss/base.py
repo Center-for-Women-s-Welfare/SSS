@@ -11,6 +11,7 @@ from sqlalchemy import (
 default_db_file = 'sss.sqlite'
 Base = declarative_base()
 
+
 class DB(object, metaclass=ABCMeta):
     """
     Abstract base class for SSS database object.
