@@ -121,19 +121,19 @@ def add_one_entry_reportdb(year,
     update_person: String Column
         who update the report
     """
-        db = AutomappedDB(db_url)
-        session = db.sessionmaker()
-        new_record = Report(year = int(year),
-                            state=  str(state),
-                            analysis_type = str(analysis_type),
-                            cpi_month = str(cpi_month),
-                            cpi_year = int(cpi_year),
-                            update_date = update_date,
-                            update_person = str(update_person))
-        #add to db
-        session.add(new_record)
-        session.commit()
-        session.close()
+    db = AutomappedDB(db_url)
+    session = db.sessionmaker()
+    new_record = Report(year = int(year),
+                        state=  str(state),
+                        analysis_type = str(analysis_type),
+                        cpi_month = str(cpi_month),
+                        cpi_year = int(cpi_year),
+                        update_date = update_date,
+                        update_person = str(update_person))
+    #add to db
+    session.add(new_record)
+    session.commit()
+    session.close()
 
 
 def delete_one_entry_reportdb(year,
@@ -152,12 +152,12 @@ def delete_one_entry_reportdb(year,
     analysis_type: String
         analysis type of sss, e.g. full, partial
     """
-        db = AutomappedDB(db_url)
-        session = db.sessionmaker()
-        #delete the records that meets criteria
-        session.query(Report).filter(Report.year == year, 
-                                     Report.state == state, 
-                                     Report.analysis_type == analysis_type).delete()
-        session.commit()
-        session.close()
+    db = AutomappedDB(db_url)
+    session = db.sessionmaker()
+    #delete the records that meets criteria
+    session.query(Report).filter(Report.year == year, 
+                                 Report.state == state, 
+                                 Report.analysis_type == analysis_type).delete()
+    session.commit()
+    session.close()
     
