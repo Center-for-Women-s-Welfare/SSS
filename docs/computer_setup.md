@@ -1,4 +1,4 @@
-#Self-Sufficiency Standard Documentation
+# Self-Sufficiency Standard Documentation
 How to set up your system, environment, and upload file(s) into the database
 
 ## Setting up operating system
