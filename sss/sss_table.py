@@ -405,7 +405,6 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     Then we call a previous function to add boolean columns.
     We then create the SQL table.
 
-
     Parameters
     ----------
     data_folder: str

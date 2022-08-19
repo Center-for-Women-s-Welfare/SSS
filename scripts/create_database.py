@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description = "Creating the SSS database")
 
 parser.add_argument("-d","--db_file", type = str,
                     help = "Enter the database file that the data should be put in",
-                    default=base.db_file)
+                    default=base.default_db_file)
 
 args = parser.parse_args()
 

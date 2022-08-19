@@ -6,7 +6,7 @@ Script for creating the tables
 
 import argparse
 from sss.city import city_to_db
-from sss.base import db_file
+from sss.base import default_db_file
 
 # creating parser object 
 parser = argparse.ArgumentParser(description = "Creating the CITY database")
@@ -20,7 +20,7 @@ parser.add_argument("year", type = int,
 
 parser.add_argument("-d","--db_file", type = str,
                     help = "Enter the database file that the data should be put in",
-                    default=db_file)
+                    default=default_db_file)
 
 args = parser.parse_args()
 
