@@ -109,8 +109,8 @@ def geoid_to_db(county_table, cpi_table, db_file=default_db_file):
             The path of the county table including FIPS code
     cpi_file : string
             The path of the cpi_table including capi region
-    
-    Returns
+    db_file : str
+            database file name, ends with '.sqlite'.
     -------
     """
     db = AutomappedDB(db_file)

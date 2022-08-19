@@ -232,6 +232,9 @@ def puma_to_db(puma_folder, year, nyc_wa_path=None, db_file=default_db_file):
     nyc_wa_path: str
         excel file path of nyc and statement of washington replacement name list 
 
+    db_file : str
+        database file name, ends with '.sqlite'.
+
     """
     if os.path.isfile(puma_folder):
         data_files = [puma_folder]
