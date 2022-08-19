@@ -1,1 +1,0 @@
-test_db_file = 'test_sss.sqlite'
