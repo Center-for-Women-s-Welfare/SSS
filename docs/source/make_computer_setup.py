@@ -23,7 +23,8 @@ def write_computer_setup_rst(input_file=None, write_file=None):
         )
         input_file = os.path.join(main_path, "docs", "computer_setup.md")
 
-    input_text = pypandoc.convert_file(input_file, "rst")
+    input_text = ".. _comp_setup:\n\n"
+    input_text += pypandoc.convert_file(input_file, "rst")
 
     # convert relative links in readme to explicit links
     # readme_text = readme_text.replace(
