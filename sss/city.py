@@ -13,7 +13,7 @@ from sqlalchemy import (
 
 from . import preprocess 
 from .base import Base, AutomappedDB, DeclarativeDB
-from .base import db_file
+from .base import default_db_file
 #from sss import CITY
 
 # declare CITY data columns and data type
@@ -143,7 +143,7 @@ def add_city(path, year):
     return df
 
 
-def city_to_db(data_path, year, db_file=db_file):
+def city_to_db(data_path, year, db_file=default_db_file):
     """
     Reads city data into data frame and insert it to database
     

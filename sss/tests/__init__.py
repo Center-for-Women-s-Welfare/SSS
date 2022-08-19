@@ -1,1 +1,1 @@
-test_db_url = 'sqlite:///test_sss.sqlite'
+test_db_file = 'test_sss.sqlite'

@@ -16,7 +16,7 @@ from sss import db_check
 
 from . import preprocess 
 from .base import Base, AutomappedDB
-from .base import db_file
+from .base import default_db_file
 #from sss import REPORT
 
 # declare Report data columns and data type
@@ -79,7 +79,7 @@ def add_report(path):
     df = df[['year', 'state', 'analysis_type', 'cpi_month','cpi_year','update_date','update_person']]
     return df 
 
-def report_to_db(path, db_file=db_file):
+def report_to_db(path, db_file=default_db_file):
     """
     Insert report file to the report table in the db
     

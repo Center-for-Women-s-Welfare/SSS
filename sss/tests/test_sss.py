@@ -2,9 +2,6 @@ import os
 import pytest
 from sss import sss_table
 from sss.data import DATA_PATH
-import sss
-from sss.base import AutomappedDB
-from sss.tests import test_db_url
 from sss import SSS
 import pandas as pd
 
