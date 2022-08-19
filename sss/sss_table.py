@@ -1,7 +1,7 @@
 """
 Creates a primary table for SSS data.
 
-First, reads SSS data and conducts preprocessing. 
+First, reads SSS data and conducts preprocessing.
 Then we create a primary table for SSS data.
 """
 
@@ -219,7 +219,7 @@ class Miscellaneous(Base):
 def read_file(file):
     """
     This function takes in a xls file and makes it into a pandas dataframe.
-    
+
     As a dataframe, we read the sheet of interest (family_type).
     Then we standardize the column names
 
@@ -274,7 +274,7 @@ def check_extra_columns(df):
     broadband_&_cell_phone. If these additional breakdowns are
     present in the dataframe, we fill each of the breakdown
     dataframe. If these breakdowns are not present, the
-    new dataframes will be empty. We then update the boolean column to 
+    new dataframes will be empty. We then update the boolean column to
     represent whether these breakdowns occur in other helper tables.
 
     Parameters
@@ -303,33 +303,34 @@ def check_extra_columns(df):
         raise ValueError("df should be a pandas dataframe.")
 
     # these are the columns found exclusively in the arpa file
-    arpa_columns = ['federal_income_taxes', 'payroll_taxes', 'state_sales_taxes', 
-                'state_income_taxes', 'federal_child_tax_credit', 
-                'federal_and_oregon_eitc', 'federal_cdctc', 
-                'oregon_wfhdc', 'total_annual_resources']
+    arpa_columns = ['federal_income_taxes', 'payroll_taxes',
+                    'state_sales_taxes', 'state_income_taxes',
+                    'federal_child_tax_credit',
+                    'federal_and_oregon_eitc', 'federal_cdctc',
+                    'oregon_wfhdc', 'total_annual_resources']
     arpa = pd.DataFrame()
     # we check whether these arpa columns are found in a file
-    if  set(arpa_columns).issubset(list(df.columns)):
+    if set(arpa_columns).issubset(list(df.columns)):
         # updates anaylisis_type if arpa columns found
         df['analysis_type'] = 'ARPA'
-        arpa = df[[ 'family_type','state','place','year','analysis_type']] 
+        arpa = df[['family_type', 'state', 'place', 'year', 'analysis_type']]
         for i in arpa_columns:
-            arpa = pd.concat([arpa, df[i]],axis=1)
+            arpa = pd.concat([arpa, df[i]], axis=1)
         df['analysis_is_secondary'] = True
-    else: 
+    else:
         df['analysis_is_secondary'] = False
 
     health_care = pd.DataFrame()
     if ('premium' or 'out_of_pocket') in df.columns:
         df['health_care_is_secondary'] = True
-        health_care = df[[ 'family_type','state','place','year','analysis_type']]
+        health_care = df[['family_type', 'state', 'place', 'year',
+                          'analysis_type']]
         if 'out_of_pocket' in df.columns:
-            health_care = pd.concat([health_care, df['out_of_pocket']],axis=1)
+            health_care = pd.concat([health_care, df['out_of_pocket']], axis=1)
         if 'premium' in df.columns:
-            health_care = pd.concat([health_care, df['premium']],axis=1)
+            health_care = pd.concat([health_care, df['premium']], axis=1)
     else:
         df['health_care_is_secondary'] = False
-    
     miscellaneous = pd.DataFrame()
     if ('other_necessities' or 'broadband_and_cell_phone') in df.columns:
         df['miscellaneous_is_secondary'] = True
@@ -337,9 +338,10 @@ def check_extra_columns(df):
                             'analysis_type']]
         if 'broadband_and_cell_phone' in df.columns:
             miscellaneous = pd.concat([miscellaneous,
-                            df['broadband_and_cell_phone']], axis=1)
+                                      df['broadband_and_cell_phone']], axis=1)
         if 'other_necessities' in df.columns:
-            miscellaneous = pd.concat([miscellaneous, df['other_necessities']],axis=1)
+            miscellaneous = pd.concat([miscellaneous, df['other_necessities']],
+                                      axis=1)
     else:
         df['miscellaneous_is_secondary'] = False
 
@@ -350,18 +352,18 @@ def prepare_for_database(df):
     """
     This function takes in a pandas df and prepares it for database
 
-    Specifically, this function takes in the dataframe containing 
-    data for the primary table. The dataframe is prepared by 
-    updating certain columns, adding a new weighted children column, 
-    and by dropping all duplicates. This functions is meant 
+    Specifically, this function takes in the dataframe containing
+    data for the primary table. The dataframe is prepared by
+    updating certain columns, adding a new weighted children column,
+    and by dropping all duplicates. This functions is meant
     to update the dataframe so there are no issues transferring
-    data into the database. 
+    data into the database.
 
 
     Parameters
     ----------
     df: pandas.dataframe
-        this is the dataframe containing datafor 
+        this is the sss dataframe
 
 
     Returns
@@ -370,11 +372,11 @@ def prepare_for_database(df):
         the returned dataframe does not contain duplicates
 
     """
-    # handling some issues with certain columns 
+    # handling some issues with certain columns
     #   (i.e., NJ 2019 has column values of "#NA")
-    df['infant'] = pd.to_numeric(df['infant'],errors='coerce')
+    df['infant'] = pd.to_numeric(df['infant'], errors='coerce')
     df['emergency_savings'] = pd.to_numeric(
-                                df['emergency_savings'],errors='coerce')
+                                df['emergency_savings'], errors='coerce')
 
     # Create a 'weighted_child_count' column from a*c* values
     #   this will take the infant count and move to this column
@@ -382,7 +384,7 @@ def prepare_for_database(df):
     df.loc[df.loc[:, 'family_type'].isin(
         [i for i in df['family_type']
             if 'c' not in i]),
-            'weighted_child_count'] = np.nan 
+            'weighted_child_count'] = np.nan
     df.loc[df.loc[:, 'family_type'].isin(
         [i for i in df['family_type']
             if 'c' not in i]),
@@ -398,7 +400,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     """
     Reads path of the data, adds data to SQL table
 
-    Here, we are using a path that holds the data to loop through a folder of the SSS data.
+    Here, we are using a path that holds the data to loop through the SSS data.
     We create the pandas.dataframe from the file being read.
     Then we call a previous function to add boolean columns.
     We then create the SQL table.
@@ -415,7 +417,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     Returns
     -------
     pandas.datafranme
-        the returned dataframe has columns similar to that of the primary table 
+        the returned dataframe has columns similar to that of the primary table
 
     """
     if os.path.isfile(data_path):
@@ -423,7 +425,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     elif os.path.isdir(data_path):
         data_files = glob.glob(os.path.join(data_path, "*.xls*"))
     else:
-        raise ValueError("data_folder must be a file or a folder on this system")
+        raise ValueError("data_folder must be a file or folder on this system")
 
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
@@ -433,7 +435,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
         df, file = read_file(i)
 
         # store dataframes created
-        df, arpa, health_care,  miscellaneous  = check_extra_columns(df)
+        df, arpa, health_care,  miscellaneous = check_extra_columns(df)
 
         # update the primary table df
         df = prepare_for_database(df)
@@ -443,18 +445,16 @@ def data_folder_to_database(data_path, db_file=default_db_file):
 
         # we are taking the primary table df and making it into a dictionary
         df_dic = df.to_dict(orient="records")
-        
-        # we insert dataframe 
+
+        # we insert dataframe
         session.bulk_insert_mappings(SSS, df_dic)
 
         if not arpa.empty:
             arpa_dict = arpa.to_dict(orient="records")
             session.bulk_insert_mappings(ARPA, arpa_dict)
-        
         if not health_care.empty:
             health_dict = health_care.to_dict(orient="records")
             session.bulk_insert_mappings(HealthCare, health_dict)
-        
         if not miscellaneous.empty:
             miscellaneous_dict = miscellaneous.to_dict(orient="records")
             session.bulk_insert_mappings(Miscellaneous, miscellaneous_dict)
