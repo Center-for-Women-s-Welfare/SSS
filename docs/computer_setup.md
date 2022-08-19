@@ -32,7 +32,8 @@ Here is some basic info about each of the programs:
 Click the Launchpad icon in the Dock, type Terminal in the search field, then click Terminal. In the Finder, open the /Applications/Utilities folder, then double-click Terminal.
 
 *For Windows devices:*
-Press the Start taskbar button. Select All apps on the Start menu. Scroll down the Start menu to the Windows Terminal app shown directly below. Then click Windows Terminal there to open it.
+Press the Start taskbar button. Select All apps on the Start menu. Scroll down the Start menu to the Windows Terminal app or Command Prompt app (Windows Terminal is a little nicer if you have it but not required) shown directly below. Then click Windows Terminal or Command Prompt there to open it.
+
 
 ## Setting up environment 
 * Download miniconda from [here](https://docs.conda.io/en/latest/miniconda.html) (click the first link)
