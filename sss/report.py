@@ -87,6 +87,9 @@ def report_to_db(path, db_file=default_db_file):
     ----------
     path: str
         path name of report excel file
+    
+    db_file : str
+        database file name, ends with '.sqlite'.
     """
     db = AutomappedDB(db_file)
     session = db.sessionmaker()

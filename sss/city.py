@@ -153,6 +153,8 @@ def city_to_db(data_path, year, db_file=default_db_file):
         path name of city excel file
     year: int
         year of the population data collected
+    db_file : str
+        database file name,ends with '.sqlite'
     """
     db = AutomappedDB(db_file)
     session = db.sessionmaker()

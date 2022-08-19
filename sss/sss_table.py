@@ -252,6 +252,9 @@ def data_folder_to_database(data_folder, db_file=default_db_file):
     data_folder: str
         path name of the folder or file that we want to read into the database
 
+    db_file : str
+        database file name, ends with '.sqlite'.
+
     Returns
     -------
     pandas.datafranme

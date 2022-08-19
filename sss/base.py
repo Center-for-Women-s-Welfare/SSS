@@ -43,7 +43,7 @@ class DeclarativeDB(DB):
     Parameters
     ----------
     db_file : str
-        Database file name, ends with '.sqlite'.
+        database file name, ends with '.sqlite'.
 
     """
 
@@ -70,7 +70,7 @@ class AutomappedDB(DB):
     Parameters
     ----------
     db_file : str
-        Database file name, ends with '.sqlite'.
+        database file name, ends with '.sqlite'.
 
     """
 
