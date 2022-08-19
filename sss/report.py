@@ -105,7 +105,7 @@ def add_one_entry_reportdb(year,
                            cpi_year,
                            update_date,
                            update_person,
-                           db_url=default_db_url):
+                           db_file=default_db_file):
     """
     This function inserts one record into report table
     
@@ -126,7 +126,7 @@ def add_one_entry_reportdb(year,
     update_person: String Column
         who update the report
     """
-    db = AutomappedDB(db_url)
+    db = AutomappedDB(db_file)
     session = db.sessionmaker()
     new_record = Report(year = int(year),
                         state=  str(state),
@@ -144,7 +144,7 @@ def add_one_entry_reportdb(year,
 def delete_one_entry_reportdb(year,
                               state,
                               analysis_type,
-                              db_url=default_db_url):
+                              db_file=default_db_file):
     """
     This function delete one record. In case some records were insert accidentally. 
     
@@ -157,7 +157,7 @@ def delete_one_entry_reportdb(year,
     analysis_type: String
         analysis type of sss, e.g. full, partial
     """
-    db = AutomappedDB(db_url)
+    db = AutomappedDB(db_file)
     session = db.sessionmaker()
     #delete the records that meets criteria
     session.query(Report).filter(Report.year == year, 
