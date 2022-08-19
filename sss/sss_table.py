@@ -18,8 +18,9 @@ from sqlalchemy import (
     Boolean)
 
 from . import preprocess 
-from .base import Base, AutomappedDB, DeclarativeDB
+from .base import Base, AutomappedDB
 from .base import default_db_file
+
 
 # create class
 class SSS(Base):
@@ -28,19 +29,19 @@ class SSS(Base):
     Attributes
     ----------
     __tablename__  : String Column
-        Name of our table in the database. 
+        Name of our table in the database.
     family_type : String Column
-        One of our primary keys, the family type as seen in the standard SSS classification.
+        One of our primary keys, the family type as seen in the standard SSS.
     state : String Column
         One of our primary keys, which what state this data is taken from.
     place : String Column
-        One of our primary keys, which either the town or county where the data was collected. 
+        One of our primary keys, either the town or county.
     year : String Column
-        One of our primary keys, the year the data is from. 
+        One of our primary keys, the year the data is from.
     analysis_type : String Column
         One of our primary keys, whether the file is either a town or county.
     adult : Integer Column
-        Number of adults in the household. 
+        Number of adults in the household.
     infant : Integer Column
         Number of infants in the household.
     preschooler : Integer Column
@@ -55,42 +56,42 @@ class SSS(Base):
     housing : Float Column
         Cost of housing.
     child_care : Float Column
-        Cost of child care. 
+        Cost of child care.
     transportation : Float Column
-        Cost of transportation. 
+        Cost of transportation.
     health_care : Float Column
-        Cost of health care. 
+        Cost of health care.
     miscellaneous : Float Column
-        Cost of miscellaneous costs. 
+        Cost of miscellaneous costs.
     taxes : Float Column
         Cost of taxes paid.
     earned_income_tax_credit : Float Column
-        Amount of tax credit earned through work. 
+        Amount of tax credit earned through work.
     child_care_tax_credit : Float Column
         Amount of tax credit earned through child care cost.
     child_tax_credit : Float Column
-        Amount of tax credit earned through number of children. 
+        Amount of tax credit earned through number of children.
     hourly_self_sufficiency_wage : Float Column
-        The hourly wage needed to reach self-sufficiency. 
+        The hourly wage needed to reach self-sufficiency.
     monthly_self_sufficiency_wage : Float Column
-        The monthly wage needed to reach self-sufficiency. 
+        The monthly wage needed to reach self-sufficiency.
     annual_self_sufficiency_wage : Float Column
         The annual wage needed reach self-sufficiency.
     emergency_savings : Float Column
-        The amount needed to cover random expenses. 
+        The amount needed to cover random expenses.
     miscellaneous_is_secondary : Boolean Column
-        The boolean value represents whether we have a secondary table that breaksdown miscellaneous costs. 
+        Value represents whether there is a table breakdown of miscellaneous.
     health_care_is_secondary : Boolean Column
-        The boolean value represents whether we have a secondary table that breaksdown health care 
-    analysis_is_secondary : Boolean Column 
-        The boolean value represents whether we have a secondary table for additional anaylses like arpa.
+        Value represents whether there is a table breakdown of health care.
+    analysis_is_secondary : Boolean Column
+       Value represents whether there is a table breakdown of ARPA.
     """
     __tablename__ = 'self_sufficiency_standard'
     family_type = Column('family_type', String, primary_key=True)
     state = Column('state', String, primary_key=True)
     place = Column('place', String, primary_key=True)
     year = Column('year', Integer, primary_key=True)
-    analysis_type =  Column('analysis_type', String, primary_key=True)
+    analysis_type = Column('analysis_type', String, primary_key=True)
     adult = Column('adult', Integer)
     infant = Column('infant', Integer)
     preschooler = Column('preschooler', Integer)
@@ -103,8 +104,7 @@ class SSS(Base):
     health_care = Column('health_care', Float)
     miscellaneous = Column('miscellaneous', Float)
     taxes = Column('taxes', Float)
-    earned_income_tax_credit = Column('earned_income_tax_credit',
-                                        Float)
+    earned_income_tax_credit = Column('earned_income_tax_credit', Float)
     child_care_tax_credit = Column('child_care_tax_credit', Float)
     child_tax_credit = Column('child_tax_credit', Float)
     hourly_self_sufficiency_wage = Column(
@@ -121,37 +121,38 @@ class SSS(Base):
     analysis_is_secondary = Column(
         'analysis_is_secondary', Boolean)
 
+
 class ARPA(Base):
     """
     Attributes
     ----------
-    state : str column 
+    state : str column
         One of our primary keys, which what state this data is taken from.
     place : str
-        One of our primary keys, which either the town or county where the data was collected. 
-    year : int column 
-        One of our primary keys, the year the data is from. 
-    analysis_type : str column 
+        One of our primary keys, the town or county.
+    year : int column
+        One of our primary keys, the year the data is from.
+    analysis_type : str column
         One of our primary keys, whether the file is either a town or county.
     federal_state_eitc : float column
-        Amount of the "refundable" tax credit based on loss of income. 
-    federal_cdctc : float column 
+        Amount of the "refundable" tax credit based on loss of income.
+    federal_cdctc : float column
         Amount of Child and Dependent Care Tax Credit.
     federal_income_taxes : float column
         Amount of federal income taxes paid.
     payroll_taxes : float column
         Amount of payroll taxes paid.
-    state_sales_taxes : float column 
-        Amount of state sales taxes paid. 
+    state_sales_taxes : float column
+        Amount of state sales taxes paid.
     total_annual_resources : float column
-        An adjusted annual wage to reach self-sufficiency. 
+        An adjusted annual wage to reach self-sufficiency.
     """
     __tablename__ = 'arpa'
-    family_type = Column('family_type', String, primary_key = True)
-    state = Column('state', String, primary_key = True)
-    place = Column('place', String, primary_key = True)
-    year = Column('year', Integer, primary_key = True)
-    analysis_type =  Column('analysis_type', String, primary_key = True)
+    family_type = Column('family_type', String, primary_key=True)
+    state = Column('state', String, primary_key=True)
+    place = Column('place', String, primary_key=True)
+    year = Column('year', Integer, primary_key=True)
+    analysis_type = Column('analysis_type', String, primary_key=True)
     federal_and_oregon_eitc = Column('federal_and_oregon_eitc', Float)
     federal_cdctc = Column('federal_cdctc', Float)
     federal_income_taxes = Column('federal_income_taxes', Float)
@@ -166,13 +167,13 @@ class HealthCare(Base):
     """
     Attributes
     ----------
-    state : str column 
+    state : str column
         One of our primary keys, which what state this data is taken from.
-    place : str
-        One of our primary keys, which either the town or county where the data was collected. 
-    year : int column 
-        One of our primary keys, the year the data is from. 
-    analysis_type : str column 
+    place : str column
+        One of our primary keys, which either the town or county.
+    year : int column
+        One of our primary keys, the year the data is from.
+    analysis_type : str column
         One of our primary keys, whether the file is either a town or county.
     premium : float column
         Price that job covers heatlh_care
@@ -180,11 +181,11 @@ class HealthCare(Base):
         Price that family pays for health care
     """
     __tablename__ = "health_care"
-    family_type = Column("family_type", String, primary_key = True)
-    state = Column("state", String, primary_key = True)
-    place = Column("place", String, primary_key = True)
-    year = Column("year", Integer, primary_key = True)
-    analysis_type =  Column("analysis_type", String, primary_key = True)
+    family_type = Column("family_type", String, primary_key=True)
+    state = Column("state", String, primary_key=True)
+    place = Column("place", String, primary_key=True)
+    year = Column("year", Integer, primary_key=True)
+    analysis_type = Column("analysis_type", String, primary_key=True)
     premium = Column("premium", Float)
     out_of_pocket = Column("out_of_pocket", Float)
 
@@ -194,25 +195,26 @@ class Miscellaneous(Base):
     """
     Attributes
     ----------
-    state : str column 
+    state : str column
         One of our primary keys, which what state this data is taken from.
     place : str
-        One of our primary keys, which either the town or county where the data was collected. 
-    year : int column 
-        One of our primary keys, the year the data is from. 
-    analysis_type : str column 
+        One of our primary keys, which either the town or county.
+    year : int column
+        One of our primary keys, the year the data is from.
+    analysis_type : str column
         One of our primary keys, whether the file is either a town or county.
     broadband_and_cell_phone : float column
-        Cost families spend on broadband and cell phone per month. 
+        Cost families spend on broadband and cell phone per month.
     """
     __tablename__ = "miscellaneous"
-    family_type = Column("family_type", String, primary_key = True)
-    place = Column("place", String, primary_key = True)
-    state = Column("state", String, primary_key = True)
-    year = Column("year", String, primary_key = True)
-    analysis_type =  Column("analysis_type", String, primary_key = True)
+    family_type = Column("family_type", String, primary_key=True)
+    place = Column("place", String, primary_key=True)
+    state = Column("state", String, primary_key=True)
+    year = Column("year", String, primary_key=True)
+    analysis_type = Column("analysis_type", String, primary_key=True)
     broadband_and_cell_phone = Column("broadband_and_cell_phone", Float)
     other_necessities = Column("other_necessities", Float)
+
 
 def read_file(file):
     """
@@ -254,21 +256,26 @@ def read_file(file):
             family_frame = [sheet for sheet in xl.sheet_names
                             if 'Fam' in sheet]
             df = pd.read_excel(file, sheet_name=family_frame[0])
-        
+
         # call the packages from preprocess
         df = preprocess.std_col_names(df)
-    
-    except:
+
+    except Exception:
         print('This file cannot be read' + ' ' + file.split('/')[-1])
     return df, file
 
+
 def check_extra_columns(df):
     """
-    Adds three boolean columns to the sss dataframe to indicate cost breakdown in other tables
+    Adds three boolean columns to dataframe to indicate other cost breakdowns
 
-    Specifically, this function checks if the sss dataframe contains additional cost breakdown 
-    for arpa, health care, and broadband_&_cell_phone. We then
-    update the boolean column to represent whether these breakdowns occur in other helper tables. 
+    Specifically, this function checks if the sss dataframe contains
+    additional cost breakdown for arpa, health care, and
+    broadband_&_cell_phone. If these additional breakdowns are
+    present in the dataframe, we fill each of the breakdown
+    dataframe. If these breakdowns are not present, the
+    new dataframes will be empty. We then update the boolean column to 
+    represent whether these breakdowns occur in other helper tables.
 
     Parameters
     ----------
@@ -283,14 +290,14 @@ def check_extra_columns(df):
         these columns indicate whether there are any secondary tables
 
     arpa: pandas.dataframe
-        this dataframe contains the additional conditional data for the breakdown of arpa costs, if present in df
-    
+       this dataframe contains the additional breakdown of arpa
+
     health_care: pandas.dataframe
-        this dataframe contains the conditional data for the breakdown for health care, if present in df
+        this dataframe contains the additional breakdown of health care
 
     miscellaneous: pandas.dataframe
-        this dataframe contains the additional data for the breakdown for miscellaneous breakdown, if present in df
-    
+        this dataframe contains the additional breakdown of miscellaneous
+
     """
     if not isinstance(df, pd.DataFrame):
         raise ValueError("df should be a pandas dataframe.")
@@ -324,11 +331,13 @@ def check_extra_columns(df):
         df['health_care_is_secondary'] = False
     
     miscellaneous = pd.DataFrame()
-    if ('other_necessities'or'broadband_and_cell_phone') in df.columns:
+    if ('other_necessities' or 'broadband_and_cell_phone') in df.columns:
         df['miscellaneous_is_secondary'] = True
-        miscellaneous = df[[ 'family_type','state','place','year','analysis_type']]
+        miscellaneous = df[['family_type', 'state', 'place', 'year',
+                            'analysis_type']]
         if 'broadband_and_cell_phone' in df.columns:
-            miscellaneous = pd.concat([miscellaneous, df['broadband_and_cell_phone']],axis=1)
+            miscellaneous = pd.concat([miscellaneous,
+                            df['broadband_and_cell_phone']], axis=1)
         if 'other_necessities' in df.columns:
             miscellaneous = pd.concat([miscellaneous, df['other_necessities']],axis=1)
     else:
