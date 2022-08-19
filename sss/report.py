@@ -141,7 +141,7 @@ def delete_one_entry_reportdb(year,
                               analysis_type,
                               db_url=default_db_url):
     """
-    This function delete one record. In case some records were insert accidently. 
+    This function delete one record. In case some records were insert accidentally. 
     
     Parameters
     ----------
