@@ -1,0 +1,17 @@
+library(sf)
+library(tidyverse)
+setwd("~/Downloads/sss")
+state_sp <- st_read("cb_2018_us_state_500k/cb_2018_us_state_500k.shp")
+state_pera <- read.csv('for_vis_statea.csv')
+state_perb <- read.csv('for_vis_stateb.csv')
+state_perc <- read.csv('for_vis_statec.csv')
+state_perd <- read.csv('for_vis_stated.csv')
+state_per = do.call("rbind", list(state_pera, state_perb, state_perc,state_perd))
+state_per <- state_per %>%
+  left_join(state_sp, by = c("states" = "STUSPS"))
+state_per$per_below_sss <- round(state_per$per_below_sss*100,2)
+state_per$per_below_poverty <- round(state_per$per_below_poverty*100,2)
+st_geometry(state_per) <- state_per$geometry
+state_per <- st_transform(state_per, crs = 4326)
+colnames(state_per)<-gsub("([0-9]+)","",colnames(state_per))
+save(state_per, file = "state_per.RData")

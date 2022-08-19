@@ -1,0 +1,14 @@
+name: sss_dssg
+title: sss_dssg
+username:
+account: chengren
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6773456
+bundleId: 6208407
+url: https://chengren.shinyapps.io/sss_dssg/
+when: 1660694224.31981
+lastSyncTime: 1660694224.31981
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|cb_2018_us_state_500k.zip|comb_puma_house.csv|comb_puma_housea.csv|comb_puma_houseb.csv|comb_puma_housec.csv|comb_puma_housed.csv|for_vis_pumaa.csv|for_vis_pumab.csv|for_vis_pumac.csv|for_vis_pumad.csv|for_vis_statea.csv|for_vis_stateb.csv|for_vis_statec.csv|for_vis_stated.csv|us_puma/us_pumas.dbf|us_puma/us_pumas.prj|us_puma/us_pumas.shp|us_puma/us_pumas.shx
