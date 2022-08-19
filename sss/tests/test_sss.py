@@ -23,7 +23,7 @@ def test_check_extra_columns(setup_and_teardown_package):
     """ Test checking the extra columns: miscellaneous_is_secondary, health_care_is_secondary, analysis_is_secondary """
 
     df, file = sss_table.read_file(os.path.join(DATA_PATH, 'OR2021_SSS_ARPA_Full.xlsx'))
-    df, miscellaneous, health_care, arpa = sss_table.check_extra_columns(df)
+    df, arpa, health_care, miscellaneous = sss_table.check_extra_columns(df)
 
     columns_to_check = ['miscellaneous_is_secondary', 'health_care_is_secondary', 'analysis_is_secondary']
 

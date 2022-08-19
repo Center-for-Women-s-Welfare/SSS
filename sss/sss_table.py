@@ -24,95 +24,66 @@ from .base import default_db_file
 # create class
 class SSS(Base):
     """
-    Used to create primary table for our database
-
-    ...
 
     Attributes
     ----------
-    __tablename__  : str
+    __tablename__  : String Column
         Name of our table in the database. 
-    
-    family_type : str
+    family_type : String Column
         One of our primary keys, the family type as seen in the standard SSS classification.
-    
-    state : str
+    state : String Column
         One of our primary keys, which what state this data is taken from.
-
-    place : str
+    place : String Column
         One of our primary keys, which either the town or county where the data was collected. 
-
-    year : int
+    year : String Column
         One of our primary keys, the year the data is from. 
-
-    analysis_type : str
+    analysis_type : String Column
         One of our primary keys, whether the file is either a town or county.
-    
-    adult : int
+    adult : Integer Column
         Number of adults in the household. 
-    
-    infant : int
+    infant : Integer Column
         Number of infants in the household.
-
-    preschooler : int
+    preschooler : Integer Column
         Number of preschoolers in the household.
-    
-    schoolager : int
+    schoolager : Integer Column
         Number of schoolagers in the household.
-
-    teenager : int
+    teenager : Integer Column
         Number of teenagers in the househould.
-    
-    weighted_child_count : int
+    weighted_child_count : Integer Column
         Number of total children in the household.
         A value is only present when the family type is a*c*.
-    
-    housing : float
+    housing : Float Column
         Cost of housing.
-    
-    child_care : float
+    child_care : Float Column
         Cost of child care. 
-    
-    transportation : float
+    transportation : Float Column
         Cost of transportation. 
-    
-    health_care : float
+    health_care : Float Column
         Cost of health care. 
-    
-    miscellaneous : float
+    miscellaneous : Float Column
         Cost of miscellaneous costs. 
-    
-    taxes : float 
+    taxes : Float Column
         Cost of taxes paid.
-
-    earned_income_tax_credit : float
+    earned_income_tax_credit : Float Column
         Amount of tax credit earned through work. 
-    
-    child_care_tax_credit : float
+    child_care_tax_credit : Float Column
         Amount of tax credit earned through child care cost.
-    
-    child_tax_credit : float
+    child_tax_credit : Float Column
         Amount of tax credit earned through number of children. 
-
-    hourly_self_sufficiency_wage : float
+    hourly_self_sufficiency_wage : Float Column
         The hourly wage needed to reach self-sufficiency. 
-    
-    monthly_self_sufficiency_wage : float 
+    monthly_self_sufficiency_wage : Float Column
         The monthly wage needed to reach self-sufficiency. 
-
-    annual_self_sufficiency_wage : float 
+    annual_self_sufficiency_wage : Float Column
         The annual wage needed reach self-sufficiency.
-
-    emergency_savings : float 
+    emergency_savings : Float Column
         The amount needed to cover random expenses. 
-    
-    miscellaneous_is_secondary : boolean
+    miscellaneous_is_secondary : Boolean Column
         The boolean value represents whether we have a secondary table that breaksdown miscellaneous costs. 
-    
-    health_care_is_secondary : column
-
-    
-
+    health_care_is_secondary : Boolean Column
+        The boolean value represents whether we have a secondary table that breaksdown health care 
+    analysis_is_secondary : Boolean Column 
+        The boolean value represents whether we have a secondary table for additional anaylses like arpa.
     """
     __tablename__ = 'self_sufficiency_standard'
     family_type = Column('family_type', String, primary_key=True)
@@ -152,33 +123,26 @@ class SSS(Base):
 
 class ARPA(Base):
     """
+    Attributes
+    ----------
     state : str column 
         One of our primary keys, which what state this data is taken from.
-
     place : str
         One of our primary keys, which either the town or county where the data was collected. 
-
     year : int column 
         One of our primary keys, the year the data is from. 
-
     analysis_type : str column 
         One of our primary keys, whether the file is either a town or county.
-
     federal_state_eitc : float column
         Amount of the "refundable" tax credit based on loss of income. 
-    
     federal_cdctc : float column 
         Amount of Child and Dependent Care Tax Credit.
-
     federal_income_taxes : float column
         Amount of federal income taxes paid.
-    
     payroll_taxes : float column
         Amount of payroll taxes paid.
-    
     state_sales_taxes : float column 
         Amount of state sales taxes paid. 
-
     total_annual_resources : float column
         An adjusted annual wage to reach self-sufficiency. 
     """
@@ -189,8 +153,6 @@ class ARPA(Base):
     year = Column('year', Integer, primary_key = True)
     analysis_type =  Column('analysis_type', String, primary_key = True)
     federal_and_oregon_eitc = Column('federal_and_oregon_eitc', Float)
-    # federal_oregon_eitc = Column('federal_state_eitc', Float)
-    # federal_state_eitc = Column('federal__eitc', Float)
     federal_cdctc = Column('federal_cdctc', Float)
     federal_income_taxes = Column('federal_income_taxes', Float)
     payroll_taxes = Column('payroll_taxes', Float)
@@ -202,21 +164,18 @@ class ARPA(Base):
 # declare table columns and data type
 class HealthCare(Base):
     """
+    Attributes
+    ----------
     state : str column 
         One of our primary keys, which what state this data is taken from.
-
     place : str
         One of our primary keys, which either the town or county where the data was collected. 
-
     year : int column 
         One of our primary keys, the year the data is from. 
-
     analysis_type : str column 
         One of our primary keys, whether the file is either a town or county.
-
     premium : float column
         Price that job covers heatlh_care
-    
     out_of_pocket : float column
         Price that family pays for health care
     """
@@ -233,18 +192,16 @@ class HealthCare(Base):
 # declare table columns and data type
 class Miscellaneous(Base):
     """
+    Attributes
+    ----------
     state : str column 
         One of our primary keys, which what state this data is taken from.
-
     place : str
         One of our primary keys, which either the town or county where the data was collected. 
-
     year : int column 
         One of our primary keys, the year the data is from. 
-
     analysis_type : str column 
         One of our primary keys, whether the file is either a town or county.
-
     broadband_and_cell_phone : float column
         Cost families spend on broadband and cell phone per month. 
     """
@@ -307,11 +264,11 @@ def read_file(file):
 
 def check_extra_columns(df):
     """
-    This function takes in a pandas dataframe and adds a boolean column(s)
+    Adds three boolean columns to the sss dataframe to indicate cost breakdown in other tables
 
-    Specifically, this function checks if the arpa, health care,    
-    broadband_&_cell_phone, and are included the dataframe. We 
-    update the boolean column to represent whether the columns are in dataframe. 
+    Specifically, this function checks if the sss dataframe contains additional cost breakdown 
+    for arpa, health care, and broadband_&_cell_phone. We then
+    update the boolean column to represent whether these breakdowns occur in other helper tables. 
 
     Parameters
     ----------
@@ -321,10 +278,19 @@ def check_extra_columns(df):
 
     Returns
     -------
-    pandas.datafranme
+    df: pandas.datafranme
         the returned dataframe has additional columns
-        these columns indicate whether there is a secondary table
+        these columns indicate whether there are any secondary tables
 
+    arpa: pandas.dataframe
+        this dataframe contains the additional conditional data for the breakdown of arpa costs, if present in df
+    
+    health_care: pandas.dataframe
+        this dataframe contains the conditional data for the breakdown for health care, if present in df
+
+    miscellaneous: pandas.dataframe
+        this dataframe contains the additional data for the breakdown for miscellaneous breakdown, if present in df
+    
     """
     if not isinstance(df, pd.DataFrame):
         raise ValueError("df should be a pandas dataframe.")
@@ -407,7 +373,11 @@ def prepare_for_database(df):
     df.loc[df.loc[:, 'family_type'].isin(
         [i for i in df['family_type']
             if 'c' not in i]),
-            'weighted_child_count'] = np.nan
+            'weighted_child_count'] = np.nan 
+    df.loc[df.loc[:, 'family_type'].isin(
+        [i for i in df['family_type']
+            if 'c' not in i]),
+            'infant'] = 0
 
     # removing duplicate rows
     df = df.drop_duplicates(subset=['analysis_type', 'family_type',
@@ -415,11 +385,11 @@ def prepare_for_database(df):
     df.reset_index(inplace=True, drop=True)
     return df
 
-def data_folder_to_database(data_folder, db_file=default_db_file):
+def data_folder_to_database(data_path, db_file=default_db_file):
     """
     Reads path of the data, adds data to SQL table
 
-    Here, we are using a file path to loop through a folder of the SSS data.
+    Here, we are using a path that holds the data to loop through a folder of the SSS data.
     We create the pandas.dataframe from the file being read.
     Then we call a previous function to add boolean columns.
     We then create the SQL table.
@@ -439,10 +409,10 @@ def data_folder_to_database(data_folder, db_file=default_db_file):
         the returned dataframe has columns similar to that of the primary table 
 
     """
-    if os.path.isfile(data_folder):
-        data_files = [data_folder]
-    elif os.path.isdir(data_folder):
-        data_files = glob.glob(os.path.join(data_folder, "*.xls*"))
+    if os.path.isfile(data_path):
+        data_files = [data_path]
+    elif os.path.isdir(data_path):
+        data_files = glob.glob(os.path.join(data_path, "*.xls*"))
     else:
         raise ValueError("data_folder must be a file or a folder on this system")
 
@@ -460,7 +430,7 @@ def data_folder_to_database(data_folder, db_file=default_db_file):
         df = prepare_for_database(df)
 
         # prints what file we are reading
-        print(file.split('/')[-1])
+        print("We are processing:", file.split('/')[-1])
 
         # we are taking the primary table df and making it into a dictionary
         df_dic = df.to_dict(orient="records")
@@ -479,6 +449,9 @@ def data_folder_to_database(data_folder, db_file=default_db_file):
         if not miscellaneous.empty:
             miscellaneous_dict = miscellaneous.to_dict(orient="records")
             session.bulk_insert_mappings(Miscellaneous, miscellaneous_dict)
+
+        # prints out the name of the file that has been entered to db
+        print(file.split('/')[-1], "has been entered into the database")
 
         session.commit()
     session.close()
