@@ -51,7 +51,7 @@ def add_report(path):
     ----------
     path: str
         path name of report excel file
-    
+
     Returns
     -------
     pandas.datafranme
@@ -77,12 +77,11 @@ def add_report(path):
 def report_to_db(path, db_file=default_db_file):
     """
     Insert report file to the report table in the db
-    
+
     Parameters
     ----------
     path: str
         path name of report excel file
-    
     db_file : str
         database file name, ends with '.sqlite'.
     """
@@ -104,7 +103,7 @@ def add_one_entry_reportdb(year,
                            db_file=default_db_file):
     """
     This function inserts one record into report table
-    
+
     Parameters
     ----------
     year: Integer
@@ -143,7 +142,7 @@ def delete_one_entry_reportdb(year,
                               db_file=default_db_file):
     """
     This deletes one record. In case some records were insert accidentally.
-    
+
     Parameters
     ----------
     year: Integer
