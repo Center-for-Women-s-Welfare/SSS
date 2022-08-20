@@ -18,8 +18,12 @@ from .base import default_db_file
 # declare GeoID data columns and data type
 class GeoID(Base):
     """
-    declare GeoID data columns
+    This class defines the ``geo_identifier`` table.
+    
+    The data for this table comes from the Census.
 
+    Attributes
+    ----------
     state: String Column
         name of the state, e.g. WA
     place: str
@@ -111,7 +115,8 @@ def geoid_to_db(county_table, cpi_table, db_file=default_db_file):
             The path of the cpi_table including capi region
     db_file : str
             database file name, ends with '.sqlite'.
-    -------
+
+
     """
     db = AutomappedDB(db_file)
     session = db.sessionmaker()

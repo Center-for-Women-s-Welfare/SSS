@@ -19,7 +19,9 @@ from .base import default_db_file
 # declare PUMA data columns and data type
 class PUMA(Base):
     """
-    declare PUMA(Public Use Microdata Area) attributes
+    This class defines the ``puma`` table.
+
+    PUMA stands for Public Use Microdata Area from the Census.
     
     Attributes
     ----------

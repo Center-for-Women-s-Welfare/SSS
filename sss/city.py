@@ -19,7 +19,11 @@ from .base import default_db_file
 # declare CITY data columns and data type
 class City(Base):
     """
-    Declare the attributes for city table
+    This class defines the ``city`` table.
+
+    This table links the SSS places to cities and
+    provides population to allow for choosing similar
+    sized cities to compare.
 
     Attributes
     ----------

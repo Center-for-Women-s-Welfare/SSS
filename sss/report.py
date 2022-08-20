@@ -14,7 +14,7 @@ from .base import default_db_file
 # declare Report data columns and data type
 class Report(Base):
     """
-    declare columns in Report table in the database
+    This class defines the ``report`` table.
 
     Attributes
     ----------
