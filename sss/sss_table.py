@@ -1,8 +1,6 @@
 """
-Creates a primary table for SSS data.
+Code to define and interact with tables for SSS data.
 
-First, reads SSS data and conducts preprocessing.
-Then we create a primary table for SSS data.
 """
 
 import glob
@@ -25,11 +23,10 @@ from .base import default_db_file
 # create class
 class SSS(Base):
     """
+    This class defines the ``self_sufficiency_standard`` table.
 
     Attributes
     ----------
-    __tablename__  : String Column
-        Name of our table in the database.
     family_type : String Column
         One of our primary keys, the family type as seen in the standard SSS.
     state : String Column
@@ -124,6 +121,8 @@ class SSS(Base):
 
 class ARPA(Base):
     """
+    This class defines the ``arpa`` table.
+
     Attributes
     ----------
     state : str column
@@ -165,6 +164,8 @@ class ARPA(Base):
 # declare table columns and data type
 class HealthCare(Base):
     """
+    This class defines the ``health_care`` table.
+
     Attributes
     ----------
     state : str column
@@ -193,6 +194,8 @@ class HealthCare(Base):
 # declare table columns and data type
 class Miscellaneous(Base):
     """
+    This class defines the ``miscellaneous`` table.
+
     Attributes
     ----------
     state : str column

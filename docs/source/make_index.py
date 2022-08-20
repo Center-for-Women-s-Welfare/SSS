@@ -42,7 +42,8 @@ def write_index_rst(readme_file=None, write_file=None):
         ".. toctree::\n"
         "   :maxdepth: 1\n\n"
         "   computer_setup\n"
-        "   developer_docs\n"
+        "   table_definitions\n"
+        "   functions\n"
     )
 
     out.replace("\u2018", "'").replace("\u2019", "'").replace("\xa0", " ")
