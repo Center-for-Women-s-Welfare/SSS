@@ -4,13 +4,13 @@ How to set up your system, environment, and upload file(s) into the database
 ## Setting up operating system
 Make sure you have an up-to-date web browser. Follow the directions
 [here](https://docs.microsoft.com/en-us/windows/wsl/install) to set up a bash shell,
-git, and python 3. (add miniconda)
+git, and python 3.
 - Run as administrator 
 	-  If using cmd, right-click on the program and click “Run as Administrator”
 - Skip distribution
 
 Here is some basic info about each of the programs: 
-- Bash shell
+- **Bash shell:**
 	The bash shell is an interface between the user (you) and the operating system.
 	It is a command line interface extensively used in Linux and MacOSX operating
 	systems. Bash (and other command line interfaces) are used when users want to
@@ -25,7 +25,7 @@ Here is some basic info about each of the programs:
 	interfaces are interacted with exclusively via a keyboard (they were invented
 	before mice existed!):
 	
-	- Here are some commonly used commands in the Bash terminal:
+	Here are some commonly used commands in the Bash terminal:
 	- `ls`: list directory contents. The `ls` command allows you to quickly view all
 	files within your current working directory (just run `ls`) or any specified
 	directory (run `ls <path_name>` by replacing `<path_name>` with the path you are
@@ -37,7 +37,7 @@ Here is some basic info about each of the programs:
 	will move to that path. You can confirm that you moved by running `pwd` and you can
 	see what is inside the folder you are currently in by running `ls`.
 
-- Git
+- **Git:**
 	Git is a version control system that lets you track who made changes to what files
 	and at what time. A folder of code that is tracked together by git is called a
 	repository. Git runs locally on your computer and keeps track of the changes you
@@ -46,12 +46,12 @@ Here is some basic info about each of the programs:
 	people. You can access the git via command line (terminal) or a desktop app that
 	has a GUI, such as GitKraken (strongly recommended!). 
 
-- GitHub
+- **GitHub:**
 	- Github is a website that provides hosting of git repositories and adds some very
 	helpful collaboration tools as well. It provides a centrally located, always online,
 	access point for git repositories.
 	
-- Python 
+- **Python:** 
 	- Python is a high-level, general-purpose, interpreted computer programming
 	language. It is widely applied in many fields and it is a relatively easy
 	programming language to learn. Python is particularly good at making it easy to
