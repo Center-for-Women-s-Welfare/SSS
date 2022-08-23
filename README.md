@@ -66,6 +66,7 @@ To create the database, use  the `create_database.py` script.
 The script takes the optional `-d` parameter for the full path where the database file
 should be created. Currently the default is to create a file called `sss.sqlite` in the
 working directory.
+
 ## Inserting Data
 To insert data into the database, use the `data_to_primary.py`, `data_to_city.py` and
 `data_to_puma.py` scripts. These scripts take a file or folder containing the data to
