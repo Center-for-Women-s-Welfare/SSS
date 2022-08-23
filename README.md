@@ -4,33 +4,79 @@
 # Self-Sufficiency Standard Database
 
 ## Background
-[The Self-Sufficiency Standard](https://selfsufficiencystandard.org/)(SSS) was created by the Center of Women's Welfare (CWW) at the University of Washington as an alternative to the Official Poverty Measure (OPM). The Self-Sufficiency Standard data is spread across the CWW website and this repository creates a database to hold the Self-Sufficiency Standard data. 
+[The Self-Sufficiency Standard](https://selfsufficiencystandard.org/)(SSS) was created
+by the Center of Women's Welfare (CWW) at the University of Washington as an alternative
+to the Official Poverty Measure (OPM). The Self-Sufficiency Standard data is spread
+across the CWW website and this repository creates a database to hold the
+Self-Sufficiency Standard data. 
 
-## Setting Up Computer
-See directions [here](docs/computer_setup.md)
+## Computer setup
+See directions [here](docs/computer_setup.md) for detailed instructions for users who
+are not familiar with working with bash, git and python. These instructions also cover
+installation, creating the database and adding data to the database in more detail than
+the brief sections below.
 
-### Cloning the Repository
-With your machine set up, we recommend working with your terminal to clone the repository. All the following instructions will be ran exclusively in the terminal. 
+## Installation
+Clone this repository using
+```git clone https://github.com/Center-for-Women-s-Welfare/SSS.git```, change
+directories into the newly created `SSS` folder and install the package using
+```pip install .``` (including the dot). Note that this will attempt to automatically
+install any missing dependencies. If you use conda you might prefer to first install
+the dependencies as described in [Dependencies](#dependencies).
 
-First, you would want to choose the directory where you want the code to be located. You can use `ls` to list the folders in the current directory and then use `cd [directory_path]` to enter the directory you want to host the repository.
+To install without dependencies, run `pip install --no-deps`
 
-Next, you would clone the repository using the following command `git clone https://github.com/Center-for-Women-s-Welfare/SSS.git`. 
-Center-for-Women-s-Welfare/SSS
+### Dependencies
+If you are using `conda` to manage your environment, you may wish to install the
+following packages before installing `sss`:
 
-### Creating the Conda Environment
-Now that you are in the repository folder, you would want to create your conda environment using the sss.yml file. To do so, you would use `conda env create -f sss.yml`.
+Required:
 
-If you want to add or remove a package, add it to the yaml file and then run: `conda env update -f <path_to_yaml_file> --prune`. 
+* pandas
+* numpy
+* setuptools_scm
+* sqlalchemy
 
-If you have a problem and need to start fresh, you can delete the environment using: `conda remove --name <env_name> --all` (then you can re-make it with the first command). 
+If you want to do development on sss, in addition to the other dependencies
+you will need the following packages:
 
-After we have created the environment, you will type `conda activate sss` to ensure we working in the conda environment that contains all the dependencies that were included in the sss.yml file.
+* pytest
+* pytest-cov
+* coverage
+* sphinx
+* pypandoc
 
-### Install Packages
-From there, you want to install the repository as a package, using the command `pip install .`
+One way to ensure you have all the needed packages is to use the included
+`sss.yaml` file to create a new environment that will
+contain all the optional dependencies along with dependencies required for
+testing and development (```conda env create -f sss.yml```).
+Alternatively, you can specify `dev` when installing sss
+(as in `pip install .[dev]`) to install the packages needed for testing
+and documentation development.
+
+## Tests
+Uses the `pytest` package to execute test suite.
+From the source sss directory run ```pytest``` or ```python -m pytest```.
 
 ## Creating the Database
-It is important to understand that **this is meant to be done once**. To create the database we would call `./scripts/create_database.py` in our terminal. The script also takes an optional parameter of the database_url which would be the name of the database. Currently the default is **'sqlite:///sss.sqlite'** `./scripts/create_database.py -d [url name]`
+In normal use, once you create the database, you will not need to do this again.
+When testing, however, you may need to delete and it re-make it.
 
-## Inserting Data Into an Already Exisiting Database
-To insert data into the database, you would do so with the following `./scripts/data_to_primary.py [path name]`. It is important to note that you are passing a path name that points to a folder that witholds the Self-Sufficiency Standard data. To have the full data (as of August 2022), it must be a folder containing 144 files of the SSS data from 2017-2022, excluding the following files NYC2018_SSS_Full.xlsx and NYC2021_SSS_Full.xlsx. These files are exlcuded becasue they contain repeat information and they do not have unique IDs. It is also important to note that data being inserted into the database must be a new XLSB or XLSX file containing the Self-Sufficiency Standard (SSS). New data is referring to the fact that we are not inserting a file that do not contain repeated primary keys.  
+To create the database, use  the `create_database.py` script.
+The script takes the optional `-d` parameter for the full path where the database file
+should be created. Currently the default is to create a file called `sss.sqlite` in the
+working directory.
+## Inserting Data
+To insert data into the database, use the `data_to_primary.py`, `data_to_city.py` and
+`data_to_puma.py` scripts.
+- The `data_to_primary.py` script will insert Self-Sufficiency
+data into the database. It takes either an excel file or folder as an argument, if a
+folder is passed it will read in all the excel files in that folder.
+    - To have the full data (as of August 2022), it must be a folder containing 144 files
+    of the SSS data from 2017-2022, excluding the following files NYC2018_SSS_Full.xlsx and
+    NYC2021_SSS_Full.xlsx. These files are exlcuded becasue they contain duplicated
+    information.
+- The `data_to_puma.py` script will insert Public Use Microdata Area files from the
+census into the database. It can similarly take a file or folder as an arguement.
+- The `data_to_city.py` script will insert data linking cities to SSS places with
+population into the database. It takes a single excel file in a specific format as input.
