@@ -173,7 +173,11 @@ In normal use, once you create the database, you will not need to do this again.
 When testing, however, you may need to delete and it re-make it.
 
 - Initialize the database (this creates an empty database)
-	- run `python ./scripts/create_database.py`
+	- run `python ./scripts/create_database.py -d <database_path>` by replacing
+	`<database_path>` with a full path to where you want to save the database. The path
+	should end with a filename with the `.sqlite` extension. This same path will used
+	when you add data to the database. If you do not include the `-d <database_path>`
+	the script will create a file called `sss.sqlite` in your working directory.
 - To confirm the script ran successfully:
 	- run `ls`
 	- If the file "sss.sqlite" is present, the create_database.py script did its job
@@ -226,8 +230,13 @@ already existing database (this cannot be done unless the database has already b
 initialized). If you pass a file name here, the data from that file will be inserted
 into the database. If you pass a folder, **all** the files from that folder will be
 inserted (this could take awhile if there are a lot of files):
-	- Type `python ./scripts/data_to_primary.py <path_name>` by replacing `<path_name>`
-	with the full path to the file you found above.
+	- Type `python ./scripts/data_to_primary.py <path_name> -d <database_path>` by
+	replacing `<path_name>` with the full path to the file you found above and 
+	`<database_path>` with a full path to the database files. The database path will be
+	the one you used when you created the database. If you do not include the
+	`-d <database_path>` the script will try to add data to a database file called
+	`sss.sqlite` in your working directory.
+
 	- **Note:** we typically omit NYC2018_SSS_Full.xlsx and NYC2021_SSS_Full.xlsx from
 	the data folder used to fill the database because they have repeating information
 	that is already in other files.
