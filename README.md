@@ -68,7 +68,9 @@ should be created. Currently the default is to create a file called `sss.sqlite`
 working directory.
 ## Inserting Data
 To insert data into the database, use the `data_to_primary.py`, `data_to_city.py` and
-`data_to_puma.py` scripts.
+`data_to_puma.py` scripts. These scripts take a file or folder containing the data to
+upload as an argument and also take the optional `-d` parameter for the full path to
+the database file (the default is a file called `sss.sqlite` in the working directory).
 - The `data_to_primary.py` script will insert Self-Sufficiency
 data into the database. It takes either an excel file or folder as an argument, if a
 folder is passed it will read in all the excel files in that folder.
