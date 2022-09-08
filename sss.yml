@@ -21,3 +21,4 @@ dependencies:
   - sphinx
   - pypandoc
   - plotly
+  - seaborn
