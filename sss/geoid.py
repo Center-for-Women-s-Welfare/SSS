@@ -2,14 +2,7 @@ import os
 import glob
 
 import pandas as pd
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Float,
-    Boolean,
-    ForeignKey)
-
+from sqlalchemy import Column, String
 from .base import Base, AutomappedDB, DeclarativeDB
 from .base import default_db_file
 #from sss import GEOID
@@ -24,17 +17,17 @@ class GeoID(Base):
 
     Attributes
     ----------
-    state: String Column
+    state : String Column
         name of the state, e.g. WA
-    place: str
+    place : String Column
         SSS place name
-    state_fips: String Column
+    state_fips : String Column
         fips code of state
-    county_fips: String Column
+    county_fips : String Column
         fips code of county
-    place_fips: String Column
+    place_fips : String Column
         fips code of place
-    cpi_region: String Column
+    cpi_region : String Column
         name of cpi region
 
     """
@@ -109,13 +102,12 @@ def geoid_to_db(county_table, cpi_table, db_file=default_db_file):
     
     Parameters
     ----------
-    county_file: string
+    county_file : str
             The path of the county table including FIPS code
-    cpi_file : string
+    cpi_file : str
             The path of the cpi_table including cpi region
     db_file : str
             database file name, ends with '.sqlite'.
-
 
     """
     db = AutomappedDB(db_file)

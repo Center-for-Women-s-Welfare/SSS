@@ -2,6 +2,7 @@ name: sss
 channels:
   - conda-forge
 dependencies:
+  - flake8
   - ipython
   - jupyter
   - jupyterlab
@@ -9,16 +10,12 @@ dependencies:
   - numpy
   - openpyxl
   - pandas
-  - pyxlsb
-  - sqlalchemy
-  - scipy
-  - pip
-  - pycodestyle
-  - flake8
-  - pylint
-  - setuptools_scm
-  - pytest
-  - sphinx
-  - pypandoc
   - plotly
+  - pypandoc
+  - pytest
+  - pyxlsb
   - seaborn
+  - setuptools_scm
+  - sphinx
+  - sqlalchemy
+  - pip

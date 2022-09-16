@@ -18,19 +18,19 @@ class Report(Base):
 
     Attributes
     ----------
-    year: Integer Column
+    year : Integer Column
         year of report
-    state: String Column
+    state : String Column
         name of state
-    analysis_type: String Column
+    analysis_type : String Column
         analysis type of sss, e.g. full, partial
-    cpi_month: String Column
+    cpi_month : String Column
         cpi month of the report
-    cpi_year: Integer Column
+    cpi_year : Integer Column
         cpi year of the report
-    update_date: Date Column
+    update_date : Date Column
         update date
-    update_person: String Column
+    update_person : String Column
         who update the report
     """
     __tablename__ = 'report'
@@ -56,6 +56,7 @@ def add_report(path):
     -------
     pandas.datafranme
         the returned dataframe has report record
+
     """
     df = pd.read_excel(path)
     df.columns = df.columns.str.lower().str.replace(' ', '_')
@@ -84,6 +85,7 @@ def report_to_db(path, db_file=default_db_file):
         path name of report excel file
     db_file : str
         database file name, ends with '.sqlite'.
+
     """
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
@@ -93,32 +95,34 @@ def report_to_db(path, db_file=default_db_file):
     session.close()
 
 
-def add_one_entry_reportdb(year,
-                           state,
-                           analysis_type,
-                           cpi_month,
-                           cpi_year,
-                           update_date,
-                           update_person,
-                           db_file=default_db_file):
+def add_one_entry_reportdb(
+    year,
+    state,
+    analysis_type,
+    cpi_month,
+    cpi_year,
+    update_date,
+    update_person,
+    db_file=default_db_file
+):
     """
     This function inserts one record into report table
 
     Parameters
     ----------
-    year: Integer
+    year : int
         year of report
-    state: String
+    state : str
         name of state
-    analysis_type: String
+    analysis_type : str
         analysis type of sss, e.g. full, partial
-    cpi_month: String
+    cpi_month : str
         cpi month of the report, like May
-    cpi_year: int
+    cpi_year : int
         cpi year of the report
-    update_date: Date
+    update_date : date
         update date, the format is date(2021,6,22)
-    update_person: String Column
+    update_person : str
         who update the report
     """
     db = AutomappedDB(db_file)
@@ -136,20 +140,22 @@ def add_one_entry_reportdb(year,
     session.close()
 
 
-def delete_one_entry_reportdb(year,
-                              state,
-                              analysis_type,
-                              db_file=default_db_file):
+def delete_one_entry_reportdb(
+    year,
+    state,
+    analysis_type,
+    db_file=default_db_file
+):
     """
     This deletes one record. In case some records were insert accidentally.
 
     Parameters
     ----------
-    year: Integer
+    year : int
         year of report
-    state: String
+    state : str
         name of state
-    analysis_type: String
+    analysis_type : str
         analysis type of sss, e.g. full, partial
     """
     db = AutomappedDB(db_file)

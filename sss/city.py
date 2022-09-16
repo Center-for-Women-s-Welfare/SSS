@@ -7,9 +7,8 @@ from sqlalchemy import (
     Column,
     Integer,
     String,
-    Float,
     Boolean,
-    ForeignKey)
+)
 
 from . import preprocess 
 from .base import Base, AutomappedDB, DeclarativeDB
@@ -27,17 +26,17 @@ class City(Base):
 
     Attributes
     ----------
-    state: String Column
+    state : String Column
         name of the state, e.g. WA
-    place: String Column
+    place : String Column
         SSS place name
-    city: String Column
+    city : String Column
         sss_city, some cities of sss place
-    census_name: String Column
+    census_name : String Column
         the census name of the city
-    population: Integer Column
+    population : Integer Column
         number of the population of the city
-    public_transit: Boolean Column
+    public_transit : Boolean Column
         whether the city is public transit or not
 
     """

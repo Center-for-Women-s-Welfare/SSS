@@ -13,7 +13,8 @@ parser = argparse.ArgumentParser(description = "Creating the PUMA database")
 
 # defining arguements for the parser object
 parser.add_argument("puma_folder", type = str,
-                    help = "Enter path name that contains the PUMA data so the data can be entered into the PUMA table")
+                    help = "Enter file or folder name that contains the PUMA data so "
+                    "the data can be entered into the PUMA table")
 
 parser.add_argument("nyc_wa_path", type = str,
                     help = "Enter path name of the file with the place breakdown for NYC and WA, so the data can be entered into the PUMA table")
