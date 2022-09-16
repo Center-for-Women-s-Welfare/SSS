@@ -12,7 +12,7 @@ def std_col_names(pd_dataframe):
 
     Parameters
     ----------
-    df: pandas.dataframe
+    df : pandas.dataframe
         dataframe that we want to clean column names
 
     Returns

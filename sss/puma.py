@@ -7,7 +7,7 @@ from sqlalchemy import (
     Integer,
     String,
     Float,
-    Boolean)
+)
 
 import warnings
 from pandas.core.common import SettingWithCopyWarning
@@ -25,31 +25,31 @@ class PUMA(Base):
     
     Attributes
     ----------
-    summary_level: String Column
+    summary_level : String Column
         Summary Level Code
-    state_fips: String Column
+    state_fips : String Column
         State FIPS Code
-    state: String Column
+    state : String Column
         state name, e.g. WA
-    puma_code: String Column
+    puma_code : String Column
         PUMA Code
-    county_fips: String Column
+    county_fips : String Column
         County FIPS Code
-    county_sub_fips: String Column
+    county_sub_fips : String Column
         County Subdivision FIPS Code
-    county_sub: String Column
+    county_sub : String Column
         name of the county sub
-    county: String Column
+    county : String Column
          name of the county
-    puma_area: String Column
+    puma_area : String Column
         name of the puma area
-    place: String Column
+    place : String Column
         name of the sss place
-    population: Integer Column
+    population : Integer Column
         population of the puma
-    weight: Float Column
+    weight : Float Column
         weight of population based on puma
-    year: Integer Column
+    year : Integer Column
         the year of population
         
     """
@@ -75,22 +75,28 @@ def read_puma(path, year):
     
     Parameters
     ----------
-    path: str
+    path : str
         path name of txt puma file
-    year: int
+    year : int
         year of the puma data collected
     
     Returns
     -------
     pandas.datafranme
-        the returned dataframe has different levels of fips, population size etc. from txt file
-    """
+        the returned dataframe has different levels of fips, population size etc. from
+        the puma txt file
 
+    """
     # Please refer 2010_PUMA_Equivalency_Format_Layout to check the record layouts for each field 
-    colspecs = [(0,3),(3,5),(5,13),(13,18),(18,21),(21,29),(29,34),(34,42),(42,47),(47,55),(55,61),(61,70),(70,79),(79,178)]
-    names = ['summary_level','state_fips','state_national_standards','puma_code','county_fips','county_national_standards',
-        'county_sub_fips','county_sub_national_standards','place_fips','place_national_standards','tract_code',
-        'population','house_number','area_name']
+    colspecs = [
+        (0,3),(3,5),(5,13),(13,18),(18,21),(21,29),(29,34),(34,42),(42,47),(47,55),(55,61),(61,70),(70,79),(79,178)
+    ]
+    names = [
+        'summary_level', 'state_fips', 'state_national_standards', 'puma_code',
+        'county_fips', 'county_national_standards', 'county_sub_fips',
+        'county_sub_national_standards','place_fips','place_national_standards',
+        'tract_code', 'population','house_number','area_name'
+    ]
     # Read a table of fixed-width formatted lines from .txt into DataFrame.
     df = pd.read_fwf(path,colspecs=colspecs,names=names,dtype=str,encoding='latin1')
     # change data type of some variables
@@ -112,18 +118,20 @@ def read_puma(path, year):
 
 def puma_crosswalk(path, year, nyc_wa_path = None):
     """
-    This function is to create a puma crosswalk with county and subcounty.
+    Create a puma crosswalk with county and subcounty.
+
     If the puma is in New England Area, use sub county(level 797) as sss_place(place).
     Otherwise the county is assigned to sss_place(place).
-    For State of Washington and New York City, some puma code area names are replace by more meaningful names.
+    For State of Washington and New York City, some puma code area names are replace by
+    more meaningful names.
     
     Parameters
     ----------
-    path: str
+    path : str
         path name of txt puma file
-    nyc_wa_path: str
+    nyc_wa_path : str
         excel file path of nyc and statement of washington replacement name list 
-    year: int
+    year : int
         year of the puma data collected
     
     Returns
@@ -131,8 +139,8 @@ def puma_crosswalk(path, year, nyc_wa_path = None):
     pandas.datafranme
         the returned crosswalk dataframe has variables for database such as county_fips, subcounty_fips, puma_code,
         population, population weight
-    """
 
+    """
     # read txt file into datdframe
     puma_txt = read_puma(path,year)
     # save the population of each puma are
@@ -221,27 +229,27 @@ def puma_crosswalk(path, year, nyc_wa_path = None):
 
 
 
-def puma_to_db(puma_folder, year, nyc_wa_path=None, db_file=default_db_file):
+def puma_to_db(path, year, nyc_wa_path=None, db_file=default_db_file):
     """
     This function is to put puma into database
     
     Parameters
     ----------
-    path: str
-        path name of txt puma file
-    year: int
+    path : str
+        path name of the PUMA .txt file or folder containing puma .txt files to read
+        into the database
+    year : int
         year of the puma data collected
-    nyc_wa_path: str
+    nyc_wa_path : str
         excel file path of nyc and statement of washington replacement name list 
-
     db_file : str
         database file name, ends with '.sqlite'.
 
     """
-    if os.path.isfile(puma_folder):
-        data_files = [puma_folder]
-    elif os.path.isdir(puma_folder):
-        data_files = glob.glob(os.path.join(puma_folder, "*.txt"))
+    if os.path.isfile(path):
+        data_files = [path]
+    elif os.path.isdir(path):
+        data_files = glob.glob(os.path.join(path, "*.txt"))
     else:
         raise ValueError("data_folder must be a file or a folder on this system")
     db = AutomappedDB(db_file)

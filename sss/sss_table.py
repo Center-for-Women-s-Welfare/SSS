@@ -13,7 +13,8 @@ from sqlalchemy import (
     Integer,
     String,
     Float,
-    Boolean)
+    Boolean
+)
 
 from . import preprocess 
 from .base import Base, AutomappedDB
@@ -82,6 +83,7 @@ class SSS(Base):
         Value represents whether there is a table breakdown of health care.
     analysis_is_secondary : Boolean Column
        Value represents whether there is a table breakdown of ARPA.
+
     """
     __tablename__ = 'self_sufficiency_standard'
     family_type = Column('family_type', String, primary_key=True)
@@ -112,11 +114,14 @@ class SSS(Base):
         'annual_self_sufficiency_wage', Float)
     emergency_savings = Column('emergency_savings', Float)
     miscellaneous_is_secondary = Column(
-        'miscellaneous_is_secondary', Boolean)
+        'miscellaneous_is_secondary', Boolean
+    )
     health_care_is_secondary = Column(
-        'health_care_is_secondary', Boolean)
+        'health_care_is_secondary', Boolean
+    )
     analysis_is_secondary = Column(
-        'analysis_is_secondary', Boolean)
+        'analysis_is_secondary', Boolean
+    )
 
 
 class ARPA(Base):
@@ -125,26 +130,27 @@ class ARPA(Base):
 
     Attributes
     ----------
-    state : str column
+    state : String Column
         One of our primary keys, which what state this data is taken from.
-    place : str
+    place : String Column
         One of our primary keys, the town or county.
-    year : int column
+    year : Integer Column
         One of our primary keys, the year the data is from.
-    analysis_type : str column
+    analysis_type : String Column
         One of our primary keys, whether the file is either a town or county.
-    federal_state_eitc : float column
+    federal_state_eitc : Float Column
         Amount of the "refundable" tax credit based on loss of income.
-    federal_cdctc : float column
+    federal_cdctc : Float Column
         Amount of Child and Dependent Care Tax Credit.
-    federal_income_taxes : float column
+    federal_income_taxes : Float Column
         Amount of federal income taxes paid.
-    payroll_taxes : float column
+    payroll_taxes : Float Column
         Amount of payroll taxes paid.
-    state_sales_taxes : float column
+    state_sales_taxes : Float Column
         Amount of state sales taxes paid.
-    total_annual_resources : float column
+    total_annual_resources : Float Column
         An adjusted annual wage to reach self-sufficiency.
+
     """
     __tablename__ = 'arpa'
     family_type = Column('family_type', String, primary_key=True)
@@ -168,18 +174,19 @@ class HealthCare(Base):
 
     Attributes
     ----------
-    state : str column
+    state : String Column
         One of our primary keys, which what state this data is taken from.
-    place : str column
+    place : String Column
         One of our primary keys, which either the town or county.
-    year : int column
+    year : Integer Column
         One of our primary keys, the year the data is from.
-    analysis_type : str column
+    analysis_type : String Column
         One of our primary keys, whether the file is either a town or county.
-    premium : float column
+    premium : Float Column
         Price that job covers heatlh_care
-    out_of_pocket : float column
+    out_of_pocket : Float Column
         Price that family pays for health care
+
     """
     __tablename__ = "health_care"
     family_type = Column("family_type", String, primary_key=True)
@@ -198,15 +205,15 @@ class Miscellaneous(Base):
 
     Attributes
     ----------
-    state : str column
+    state : String Column
         One of our primary keys, which what state this data is taken from.
-    place : str
+    place : String Column
         One of our primary keys, which either the town or county.
-    year : int column
+    year : Integer Column
         One of our primary keys, the year the data is from.
-    analysis_type : str column
+    analysis_type : String Column
         One of our primary keys, whether the file is either a town or county.
-    broadband_and_cell_phone : float column
+    broadband_and_cell_phone : Float Column
         Cost families spend on broadband and cell phone per month.
     """
     __tablename__ = "miscellaneous"
@@ -228,15 +235,14 @@ def read_file(file):
 
     Parameters
     ----------
-    file: str
+    file : str
         file is the path of the file you want to add to the database
-
 
     Returns
     -------
-    pandas.datafranme
+    df : pandas.datafranme
         the returned dataframe has columns similar to that of the primary table
-    files: str
+    file : str
         file name that was read into the dataframe
 
     """
@@ -282,23 +288,20 @@ def check_extra_columns(df):
 
     Parameters
     ----------
-    df: pandas.dataframe
+    df : pandas.dataframe
         this is the dataframe
 
 
     Returns
     -------
-    df: pandas.datafranme
+    df : pandas.datafranme
         the returned dataframe has additional columns
         these columns indicate whether there are any secondary tables
-
-    arpa: pandas.dataframe
+    arpa : pandas.dataframe
        this dataframe contains the additional breakdown of arpa
-
-    health_care: pandas.dataframe
+    health_care : pandas.dataframe
         this dataframe contains the additional breakdown of health care
-
-    miscellaneous: pandas.dataframe
+    miscellaneous : pandas.dataframe
         this dataframe contains the additional breakdown of miscellaneous
 
     """
@@ -362,12 +365,10 @@ def prepare_for_database(df):
     to update the dataframe so there are no issues transferring
     data into the database.
 
-
     Parameters
     ----------
     df: pandas.dataframe
         this is the sss dataframe
-
 
     Returns
     -------
@@ -410,16 +411,10 @@ def data_folder_to_database(data_path, db_file=default_db_file):
 
     Parameters
     ----------
-    data_folder: str
+    data_folder : str
         path name of the folder or file that we want to read into the database
-
     db_file : str
         database file name, ends with '.sqlite'.
-
-    Returns
-    -------
-    pandas.datafranme
-        the returned dataframe has columns similar to that of the primary table
 
     """
     if os.path.isfile(data_path):
@@ -437,7 +432,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
         df, file = read_file(i)
 
         # store dataframes created
-        df, arpa, health_care,  miscellaneous = check_extra_columns(df)
+        df, arpa, health_care, miscellaneous = check_extra_columns(df)
 
         # update the primary table df
         df = prepare_for_database(df)
