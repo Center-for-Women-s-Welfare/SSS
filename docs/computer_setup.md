@@ -184,7 +184,7 @@ When testing, however, you may need to delete and it re-make it.
 - To delete the file
 	- run `rm sss.sqlite` (`rm` is short for "remove")
 
-## Running a script to add data to the database:
+## Running scripts to add data to the database:
 
 - First, we have to find the correct path name. This is not totally obvious on Windows
 using WSL because you can't just use the path to the SSS data files that you find from
@@ -241,6 +241,12 @@ inserted (this could take awhile if there are a lot of files):
 	the data folder used to fill the database because they have repeating information
 	that is already in other files.
 
+- There are similar scripts to insert data into the `geoid`, `puma`, `city` and `report`
+tables. All those scripts require you to pass at least one file or folder and accept the
+`-d` option to pass the database path. You can find out what the script requires as
+input if you call the script with the `-h` (for help) flag 
+(e.g. `python ./scripts/data_to_puma.py -h`). More details about these scripts are in
+the README in the "Inserting Data" section.
 
 ## Getting code updates
 
