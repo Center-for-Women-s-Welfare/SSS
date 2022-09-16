@@ -367,12 +367,12 @@ def prepare_for_database(df):
 
     Parameters
     ----------
-    df: pandas.dataframe
+    df : pandas.dataframe
         this is the sss dataframe
 
     Returns
     -------
-    pandas.datafranme
+    df : pandas.datafranme
         the returned dataframe does not contain duplicates
 
     """
