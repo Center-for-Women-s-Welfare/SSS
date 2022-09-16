@@ -60,7 +60,8 @@ From the source sss directory run ```pytest``` or ```python -m pytest```.
 
 ## Creating the Database
 In normal use, once you create the database, you will not need to do this again.
-When testing, however, you may need to delete and it re-make it.
+When testing, however, you may need to delete it (just delete the sqlite file, with a
+file browser or with `rm` in a terminal) and re-make it.
 
 To create the database, use  the `create_database.py` script.
 The script takes the optional `-d` parameter for the full path where the database file
@@ -75,11 +76,18 @@ the database file (the default is a file called `sss.sqlite` in the working dire
 - The `data_to_primary.py` script will insert Self-Sufficiency
 data into the database. It takes either an excel file or folder as an argument, if a
 folder is passed it will read in all the excel files in that folder.
-    - To have the full data (as of August 2022), it must be a folder containing 144 files
-    of the SSS data from 2017-2022, excluding the following files NYC2018_SSS_Full.xlsx and
-    NYC2021_SSS_Full.xlsx. These files are exlcuded becasue they contain duplicated
-    information.
+    - To have the full data (as of August 2022), it must be a folder containing 144
+    file of the SSS data from 2017-2022, excluding the following files
+    NYC2018_SSS_Full.xlsx and NYC2021_SSS_Full.xlsx. These files are exlcuded because
+    they contain duplicated information.
+- The `data_to_report.py` script will insert data about the SSS reports into the report
+table. It takes a single excel file in a specific format as input.
+- The `data_to_geoid.py` script will insert data linking the SSS places to FIPS codes
+from the census and the CPI regions. It takes two excel files (one for the FIPS info
+and one for the CPI region info) in specific formats as input.
 - The `data_to_puma.py` script will insert Public Use Microdata Area files from the
-census into the database. It can similarly take a file or folder as an arguement.
+census into the database. It can take a file or folder containing the puma files for
+multiple states as input. It also requires a single excel file containing the Washington
+state and New York City SSS place to census place mappings.
 - The `data_to_city.py` script will insert data linking cities to SSS places with
 population into the database. It takes a single excel file in a specific format as input.
