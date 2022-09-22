@@ -13,7 +13,8 @@ from sqlalchemy import (
     Integer,
     String,
     Float,
-    Boolean
+    Boolean,
+    Index,
 )
 
 from . import preprocess 
@@ -123,6 +124,8 @@ class SSS(Base):
         'analysis_is_secondary', Boolean
     )
 
+    Index('idx_state', 'state')
+    Index('idx_year', "year")
 
 class ARPA(Base):
     """
