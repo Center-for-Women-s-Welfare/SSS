@@ -32,7 +32,7 @@ following packages before installing `sss`:
 
 Required:
 
-* pandas
+* pandas >= 1.5.0
 * numpy
 * setuptools_scm
 * sqlalchemy

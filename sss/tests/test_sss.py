@@ -48,16 +48,18 @@ def test_data_folder_to_database(setup_and_teardown_package):
     session = db.sessionmaker()
     result = session.query(SSS).filter(SSS.state == 'FL').all()
     assert len(result) == 4
+    result = session.query(SSS).filter(SSS.state == 'AZ', SSS.year == 2018).all()
+    assert len(result) == 4
     session.close()
 
 def test_columns_and_values_to_match(setup_and_teardown_package):
-     """ Test columns and values to match"""
-     db = setup_and_teardown_package
-     session = db.sessionmaker()
-     query = session.query(SSS).filter(SSS.state == 'AL')
-     df = pd.read_sql(query.statement, db.engine)
-     
-     cols_to_check_for_val = ["housing"]
-     
-     for col in cols_to_check_for_val:
+    """ Test columns and values to match"""
+    db = setup_and_teardown_package
+    session = db.sessionmaker()
+    query = session.query(SSS).filter(SSS.state == 'AL')
+    df = pd.read_sql(query.statement, db.engine)
+    
+    cols_to_check_for_val = ["housing"]
+    
+    for col in cols_to_check_for_val:
         assert col in df.columns

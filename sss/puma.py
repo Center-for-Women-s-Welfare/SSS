@@ -10,7 +10,7 @@ from sqlalchemy import (
 )
 
 import warnings
-from pandas.core.common import SettingWithCopyWarning
+from pandas.errors import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 from .base import Base, AutomappedDB, DeclarativeDB
 from .base import default_db_file
