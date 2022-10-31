@@ -15,6 +15,7 @@ from sqlalchemy import (
     Float,
     Boolean,
     Index,
+    delete,
 )
 
 from . import preprocess 
@@ -464,3 +465,30 @@ def data_folder_to_database(data_path, db_file=default_db_file):
 
         session.commit()
     session.close()
+
+
+
+def remove_state_year(state, year, db_file=default_db_file):
+    """
+    Remove rows for a specific state and year.
+
+    Parameters
+    ----------
+    state : str
+        The state to remove from live database.
+    year : int
+        The year to remove from live database.
+    
+    """
+    if not isinstance(state, str):
+        raise ValueError("State must be a string")
+    if not isinstance(year, int):
+        raise ValueError("Year must be a integer")
+    
+    db = AutomappedDB(db_file)
+    session = db.sessionmaker()
+
+    statement = (delete(SSS).where(SSS.year == year, SSS.state == state))
+    session.execute(statement)
+    session.commit()
+    

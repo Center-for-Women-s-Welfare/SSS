@@ -3,6 +3,7 @@ import pytest
 from sss import sss_table
 from sss.data import DATA_PATH
 from sss import SSS
+from sss.sss_table import remove_state_year, data_folder_to_database
 import pandas as pd
 
 def test_read_file(setup_and_teardown_package):
@@ -63,3 +64,17 @@ def test_columns_and_values_to_match(setup_and_teardown_package):
     
     for col in cols_to_check_for_val:
         assert col in df.columns
+
+
+def test_remove_rows(setup_and_teardown_package):
+    """ Test remove rows """
+    db, db_file = setup_and_teardown_package
+    session = db.sessionmaker()
+    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    assert len(result) == 4
+    remove_state_year("AR", 2022, db_file=db_file) 
+    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    assert len(result) == 0
+    data_folder_to_database(os.path.join(DATA_PATH, 'AR2022_SSS_Full.xlsx'),  db_file = db_file)
+    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    assert len(result) == 4
