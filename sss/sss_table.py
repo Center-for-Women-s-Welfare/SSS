@@ -488,7 +488,17 @@ def remove_state_year(state, year, db_file=default_db_file):
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
 
-    statement = (delete(SSS).where(SSS.year == year, SSS.state == state))
-    session.execute(statement)
+    statement_sss = (delete(SSS).where(SSS.year == year, SSS.state == state))
+    statement_arpa = (delete(ARPA).where(ARPA.year == year, ARPA.state == state))
+    statement_misc = (
+        delete(Miscellaneous).where(
+            Miscellaneous.year == year, Miscellaneous.state == state
+        )
+    )
+    statement_hc = (
+        delete(HealthCare).where(HealthCare.year == year, HealthCare.state == state)
+    )
+    for statement in [statement_sss, statement_arpa, statement_misc, statement_hc]:
+        session.execute(statement)
     session.commit()
     
