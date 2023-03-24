@@ -10,56 +10,20 @@ from sqlalchemy import (
 )
 
 default_db_file = 'sss.sqlite'
-Base = declarative_base()
 
 
-class DB(object, metaclass=ABCMeta):
-    """
-    Abstract base class for SSS database object.
+class Base():
+    """Base table object."""
 
-    This ABC is only instantiated through the AutomappedDB or DeclarativeDB
-    subclasses.
-
-    Parameters
-    ----------
-    db_file : str
-        Database file name, ends with '.sqlite'.
-
-    """
-
-    engine = None
-    sessionmaker = sessionmaker()
-    sqlalchemy_base = None
-
-    def __init__(self, sqlalchemy_base, db_file=default_db_file):  # noqa
-        db_url = 'sqlite:///' + db_file
-        self.sqlalchemy_base = Base
-        self.engine = create_engine(db_url)
-        self.sessionmaker.configure(bind=self.engine)
-
-
-class DeclarativeDB(DB):
-    """
-    Declarative database object -- to create database tables.
-
-    Parameters
-    ----------
-    db_file : str
-        database file name, ends with '.sqlite'.
-
-    """
-
-    def __init__(self, db_file=default_db_file):
-        super(DeclarativeDB, self).__init__(Base, db_file)
-
-    def create_tables(self):
-        """Create all tables."""
-        self.sqlalchemy_base.metadata.create_all(self.engine)
-
-    def drop_tables(self):
-        """Drop all tables."""
-        self.sqlalchemy_base.metadata.bind = self.engine
-        self.sqlalchemy_base.metadata.drop_all(self.engine)
+    def __repr__(self):
+        """Define standard representation."""
+        columns = self.__table__.columns.keys()
+        rep_str = "<" + self.__class__.__name__ + "("
+        for c in columns:
+            rep_str += str(getattr(self, c)) + ", "
+        rep_str = rep_str[0:-2]
+        rep_str += ")>"
+        return rep_str
 
     def isclose(self, other):
         """Test if two objects are nearly equal."""
@@ -119,6 +83,58 @@ class DeclarativeDB(DB):
                         )
                         return False
         return True
+
+
+Base = declarative_base(cls=Base)
+
+
+class DB(object, metaclass=ABCMeta):
+    """
+    Abstract base class for SSS database object.
+
+    This ABC is only instantiated through the AutomappedDB or DeclarativeDB
+    subclasses.
+
+    Parameters
+    ----------
+    db_file : str
+        Database file name, ends with '.sqlite'.
+
+    """
+
+    engine = None
+    sessionmaker = sessionmaker()
+    sqlalchemy_base = None
+
+    def __init__(self, sqlalchemy_base, db_file=default_db_file):  # noqa
+        db_url = 'sqlite:///' + db_file
+        self.sqlalchemy_base = Base
+        self.engine = create_engine(db_url)
+        self.sessionmaker.configure(bind=self.engine)
+
+
+class DeclarativeDB(DB):
+    """
+    Declarative database object -- to create database tables.
+
+    Parameters
+    ----------
+    db_file : str
+        database file name, ends with '.sqlite'.
+
+    """
+
+    def __init__(self, db_file=default_db_file):
+        super(DeclarativeDB, self).__init__(Base, db_file)
+
+    def create_tables(self):
+        """Create all tables."""
+        self.sqlalchemy_base.metadata.create_all(self.engine)
+
+    def drop_tables(self):
+        """Drop all tables."""
+        self.sqlalchemy_base.metadata.bind = self.engine
+        self.sqlalchemy_base.metadata.drop_all(self.engine)
 
 
 class AutomappedDB(DB):
