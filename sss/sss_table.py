@@ -412,6 +412,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     Reads path of the data, adds data to SQL table
 
     Here, we are using a path that holds the data to loop through the SSS data.
+    SSS data is found here: https://selfsufficiencystandard.org/state-data/. 
     We create the pandas.dataframe from the file being read.
     Then we call a previous function to add boolean columns.
     We then create the SQL table.
@@ -505,3 +506,6 @@ def remove_state_year(state, year, db_file=default_db_file):
         session.execute(statement)
     session.commit()
     
+
+#TODO: Create test for GeoID
+#TODO: Create test for PUMA

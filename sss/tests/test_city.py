@@ -1,0 +1,38 @@
+import os
+from numpy import place
+
+import pandas as pd
+
+from sss.data import DATA_PATH
+from sss.city import City
+from sss.city import city_to_db
+
+
+def test_city_to_db(setup_and_teardown_package):
+    """ Test to see if city table was created"""
+    db, db_file = setup_and_teardown_package
+    session = db.sessionmaker()
+    city_to_db(
+        os.path.join(DATA_PATH, "2020_PopulationDatabyCity_20220804_Ama.xlsx"), 2021, db_file=db_file
+    )
+    result = session.query(City).all()
+    assert len(result) == 4
+
+    result = session.query(City).filter(City.place == "Maricopa County").all()
+    assert len(result) == 1
+
+    result = session.query(City).all()
+    expected = {}
+    df = pd.read_excel(os.path.join(DATA_PATH, "2020_PopulationDatabyCity_20220804_Ama.xlsx"))
+    for i in range(len(df)):
+        expected[df.loc[i, "SSS_City"]] = City(
+            state = df.loc[i, "State"], place = df.loc[i, "SSS_Place"], 
+            sss_city = df.loc[i, "SSS_City"], census_name = df.loc[i, "Census_Name"], 
+            population = df.loc[i, "POPESTIMATE2021"], public_transit = df.loc[i, "PublicTransit"])
+
+    for obj in result:
+        assert obj.isclose(expected[obj.sss_city])
+
+
+
+

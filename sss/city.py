@@ -150,6 +150,8 @@ def city_to_db(data_path, year, db_file=default_db_file):
     """
     Reads city data into data frame and insert it to database
     
+    The data file needed is called "2020_PopulationDatabyCity_20220804_Ama.xlsx"
+    
     Parameters
     ----------
     path: str
