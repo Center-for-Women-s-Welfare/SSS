@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pkg_resources import DistributionNotFound, get_distribution
+from importlib.metadata import version, PackageNotFoundError
 from setuptools_scm import get_version
 
 from .city import City
@@ -10,7 +10,7 @@ from .puma import PUMA
 from .report import Report
 from .preprocess import std_col_names
 
-try:  # pragma: nocover
+try:
     # get accurate version for developer installs
     version_str = get_version(Path(__file__).parent.parent)
 
@@ -19,7 +19,7 @@ try:  # pragma: nocover
 except (LookupError, ImportError):
     try:
         # Set the version automatically from the package details.
-        __version__ = get_distribution(__name__).version
-    except DistributionNotFound:  # pragma: nocover
+        __version__ = version("sss")
+    except PackageNotFoundError:  # pragma: nocover
         # package is not installed
         pass
