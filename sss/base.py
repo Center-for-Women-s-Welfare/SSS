@@ -1,5 +1,6 @@
 from abc import ABCMeta
 
+import numpy as np
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm.session import sessionmaker
@@ -59,6 +60,65 @@ class DeclarativeDB(DB):
         """Drop all tables."""
         self.sqlalchemy_base.metadata.bind = self.engine
         self.sqlalchemy_base.metadata.drop_all(self.engine)
+
+    def isclose(self, other):
+        """Test if two objects are nearly equal."""
+        if not isinstance(other, self.__class__):
+            print("not the same class")
+            return False
+
+        self_columns = self.__table__.columns
+        other_columns = other.__table__.columns
+        # the following is structured as an assert because I cannot make it fail but
+        # think it should be checked.
+        assert {col.name for col in self_columns} == {
+            col.name for col in other_columns
+        }, (
+            "Set of columns are not the same. This should not happen, please make an "
+            "issue in our repo."
+        )
+        for col in self_columns:
+            self_col = getattr(self, col.name)
+            other_col = getattr(other, col.name)
+            if not isinstance(other_col, type(self_col)):
+                print(
+                    f"column {col} has different types, left is {type(self_col)}, "
+                    f"right is {type(other_col)}."
+                )
+                return False
+            if isinstance(self_col, int):
+                if self_col != other_col:
+                    print(f"column {col} is int, values are not equal")
+                    return False
+            elif isinstance(self_col, str):
+                if self_col != other_col:
+                    print(f"column {col} is str, values are not equal")
+                    return False
+            elif self_col is None:
+                pass  # nullable columns, both null (otherwise caught as different types)
+            else:
+                if hasattr(self, "tols") and col.name in self.tols.keys():
+                    atol = self.tols[col.name]["atol"]
+                    rtol = self.tols[col.name]["rtol"]
+                else:
+                    # use numpy defaults
+                    atol = 1e-08
+                    rtol = 1e-05
+                if isinstance(self_col, (np.ndarray, list)):
+                    if not np.allclose(self_col, other_col, atol=atol, rtol=rtol):
+                        print(
+                            f"column {col} is float-like or a float-like array, "
+                            "values are not equal"
+                        )
+                        return False
+                else:
+                    if not np.isclose(self_col, other_col, atol=atol, rtol=rtol):
+                        print(
+                            f"column {col} is float-like or a float-like array, "
+                            "values are not equal"
+                        )
+                        return False
+        return True
 
 
 class AutomappedDB(DB):

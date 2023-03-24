@@ -86,7 +86,7 @@ def geo_identifier_creator(county_table, cpi_table):
             print('Merge sucessfully but new rows were created due to duplications in right(CPI) table')
     except:
         raise ValueError('Cannot merge, please check the two columns are named as "state_alpha" and "USPS Abbreviation"')
-
+    print(df_combine.head())
     if df_combine.duplicated(['state','place']).sum()>0:
         places = df_combine.loc[df_combine.duplicated(['state','place'],keep=False),'place'].values
         counties = df_combine.loc[df_combine.duplicated(['state','place'],keep=False),'countyname'].values
