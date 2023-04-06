@@ -57,6 +57,8 @@ class SSS(Base):
         Cost of housing.
     child_care : Float Column
         Cost of child care.
+    food : Float Column
+        Cost of food.
     transportation : Float Column
         Cost of transportation.
     health_care : Float Column
@@ -101,6 +103,7 @@ class SSS(Base):
     weighted_child_count = Column('weighted_child_count', Integer)
     housing = Column('housing', Float)
     child_care = Column('child_care', Float)
+    food = Column('food',Float)
     transportation = Column('transportation', Float)
     health_care = Column('health_care', Float)
     miscellaneous = Column('miscellaneous', Float)
