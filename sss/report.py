@@ -60,6 +60,7 @@ def add_report(path):
     """
     df = pd.read_excel(path)
     df.columns = df.columns.str.lower().str.replace(' ', '_')
+
     # split column into meaningful column
     df['update_person'] = df['upload_status'].str.split(' ').str[0]
     df['update_date'] = df['upload_status'].str.split(' ').str[1]
@@ -78,6 +79,9 @@ def add_report(path):
 def report_to_db(path, db_file=default_db_file):
     """
     Insert report file to the report table in the db
+
+    The report file is named
+    "Year_Type_SSS_CPI month year_20220715_DBu.xlsx"
 
     Parameters
     ----------
@@ -163,6 +167,7 @@ def delete_one_entry_reportdb(
     # delete the records that meets criteria
     session.query(Report).filter(Report.year == year,
                                  Report.state == state,
-                                 Report.analysis_type == analysis_type).delete()
+                                 Report.analysis_type == analysis_type).delete(
+                                 )
     session.commit()
     session.close()
