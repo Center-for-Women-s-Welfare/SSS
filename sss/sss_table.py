@@ -506,6 +506,3 @@ def remove_state_year(state, year, db_file=default_db_file):
         session.execute(statement)
     session.commit()
     
-
-#TODO: Create test for GeoID
-#TODO: Create test for PUMA
