@@ -237,6 +237,11 @@ inserted (this could take awhile if there are a lot of files):
 	`-d <database_path>` the script will try to add data to a database file called
 	`sss.sqlite` in your working directory.
 
+	-**Troubleshooting note:** ValueError: data_folder must be a file or folder on this system. 
+	Solution 1: Insert a \ in front of every space in a file pathway. Shared drives becomes Shared\ drives
+	Solution 2: If uploading several files in succession and tabbing up to get the same file path, make sure that the file type is the same.
+	If a file is saved as .xlsx and you're uploading .xlsb, you will be thwarted. 
+	
 	- **Note:** we typically omit NYC2018_SSS_Full.xlsx and NYC2021_SSS_Full.xlsx from
 	the data folder used to fill the database because they have repeating information
 	that is already in other files.
