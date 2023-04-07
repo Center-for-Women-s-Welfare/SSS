@@ -566,7 +566,6 @@ def update_columns(data_path, columns=None, db_file=default_db_file):
             cols_to_keep = pk_cols + main_columns
             cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
             df.drop(columns=cols_to_drop, inplace=True)
-            print(df)
 
             session.bulk_update_mappings(SSS, df.to_dict('records'))
             session.commit()
