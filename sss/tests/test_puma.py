@@ -4,6 +4,8 @@ from sss.puma import PUMA
 from sss.puma import read_puma, puma_crosswalk, puma_to_db
 from sss.data import DATA_PATH
 
+import pandas as pd
+
 
 def test_read_puma():
     """ Test reading puma text files"""
@@ -50,7 +52,7 @@ def test_puma_crosswalk():
         "county_fips",
         "county",
         "puma_area",
-        "population_self",
+        "population",
         "year",
         "population_max",
         "weight",
@@ -84,24 +86,25 @@ def test_puma_to_db(setup_and_teardown_package):
         os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx")
     )
     # result = session.query(PUMA).filter(PUMA.state == "NY")
-    result = session.query(PUMA).filter.all()
-
+    result = session.query(PUMA).all()
     expected = {}
     for i in range(len(crosswalk)):
-        expected[crosswalk.loc[i, "puma_code"]] = PUMA(
+        key = crosswalk.loc[i, "puma_code"] + "_" + crosswalk.loc[i, "place"]
+        expected[key] = PUMA(
             summary_level=crosswalk.loc[i, "summary_level"],
             state_fips=crosswalk.loc[i, "state_fips"],
             state=crosswalk.loc[i, "state"],
             puma_code=crosswalk.loc[i, "puma_code"],
-            county_fips=crosswalk.loc[i, "crosswalk"],
-            county_sub_fips=crosswalk.loc[i, "county_sub_fip"],
+            county_fips=crosswalk.loc[i, "county_fips"],
+            county_sub_fips= None,
             county=crosswalk.loc[i, "county"],
             puma_area=crosswalk.loc[i, "puma_area"],
             place=crosswalk.loc[i, "place"],
-            population=crosswalk.loc[i, "population"],
+            population=int(crosswalk.loc[i, "population"]),
             weight=crosswalk.loc[i, "weight"],
-            year=crosswalk.loc[i, "year"]
+            year=int(crosswalk.loc[i, "year"])
         )
 
     for obj in result:
-        assert obj.isclose(expected[obj.sss_puma])
+        key = obj.puma_code + "_" + obj.place
+        assert obj.isclose(expected[key])
