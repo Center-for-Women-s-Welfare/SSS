@@ -108,41 +108,62 @@ def test_remove_rows(setup_and_teardown_package):
     assert len(result) == 4
 
 
-def test_add_food_col(setup_and_teardown_package):
+@pytest.mark.parametrize(
+        "columns",
+        [
+            "food",
+            ["food"],
+            ["food", "transportation"],
+            # ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
+        ]
+)
+def test_add_food_col(setup_and_teardown_package, columns):
     db, db_file = setup_and_teardown_package
     session = db.sessionmaker()
 
-    # first check that the food column has good data in it.
+    # first check that the column has good data in it.
     result_init = session.query(SSS).all()
     for obj in result_init:
-        assert obj.food is not None
+        if isinstance(columns, str):
+            assert getattr(obj, columns) is not None
+        else:
+            for col in columns:
+                assert getattr(obj, col) is not None
 
-    # fill the food column with Nones
-    statement = (update(SSS).values(food=None))
-    session.execute(statement)
-    session.commit()
+    # fill the column with Nones
+    if isinstance(columns, str):
+        update_dict = {columns: None}
+        statement = (update(SSS).values(update_dict))
+        session.execute(statement)
+        session.commit()
+    else:
+        for col in columns:
+            update_dict = {col: None}
+            statement = (update(SSS).values(update_dict))
+            session.execute(statement)
+            session.commit()
     result = session.query(SSS).all()
     for obj in result:
-        assert obj.food is None
+        if isinstance(columns, str):
+            assert getattr(obj, columns) is None
+        else:
+            for col in columns:
+                assert getattr(obj, col) is None
 
-    # update the food column
-    data_files = glob.glob(os.path.join(DATA_PATH, "*.xls*"))
-    for file in data_files:
-        df, _ = sss_table.read_file(file)
-        df, _, _, _ = sss_table.check_extra_columns(df)
-        df = sss_table.prepare_for_database(df)
-        pk_cols = ["family_type", "state", "place", "year", "analysis_type"]
+    # update the column
+    sss_table.update_columns(DATA_PATH, columns, db_file)
 
-        cols_to_keep = pk_cols + ["food"]
-        cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
-        df.drop(columns=cols_to_drop, inplace=True)
-
-        session.bulk_update_mappings(SSS, df.to_dict('records'))
-        session.commit()
+    # this commit should not be necessary since it's being done in the function,
+    # but it seems to be required.
+    session.commit()
 
     # check that the food column has good data in it again
     result = session.query(SSS).all()
     for index, obj in enumerate(result):
-        assert obj.food is not None
+        if isinstance(columns, str):
+            assert getattr(obj, columns) is not None
+        else:
+            for col in columns:
+                assert getattr(obj, col) is not None
         # Add the following once the branch that adds the `isclose` method is merged in
         # assert obj.isclose(result_init[index])
