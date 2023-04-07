@@ -3,7 +3,7 @@ import glob
 
 import pandas as pd
 import pytest
-from sqlalchemy import update
+from sqlalchemy import update, bindparam
 
 from sss import sss_table
 from sss.data import DATA_PATH
@@ -111,6 +111,13 @@ def test_remove_rows(setup_and_teardown_package):
 def test_add_food_col(setup_and_teardown_package):
     db, db_file = setup_and_teardown_package
     session = db.sessionmaker()
+
+    # first check that the food column has good data in it.
+    result_init = session.query(SSS).all()
+    for obj in result_init:
+        assert obj.food is not None
+
+    # fill the food column with Nones
     statement = (update(SSS).values(food=None))
     session.execute(statement)
     session.commit()
@@ -118,7 +125,24 @@ def test_add_food_col(setup_and_teardown_package):
     for obj in result:
         assert obj.food is None
 
+    # update the food column
     data_files = glob.glob(os.path.join(DATA_PATH, "*.xls*"))
-    df, file = sss_table.read_file(data_files[0])
-    print(df["food"])
-    assert False
+    for file in data_files:
+        df, _ = sss_table.read_file(file)
+        df, _, _, _ = sss_table.check_extra_columns(df)
+        df = sss_table.prepare_for_database(df)
+        pk_cols = ["family_type", "state", "place", "year", "analysis_type"]
+
+        cols_to_keep = pk_cols + ["food"]
+        cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
+        df.drop(columns=cols_to_drop, inplace=True)
+
+        session.bulk_update_mappings(SSS, df.to_dict('records'))
+        session.commit()
+
+    # check that the food column has good data in it again
+    result = session.query(SSS).all()
+    for index, obj in enumerate(result):
+        assert obj.food is not None
+        # Add the following once the branch that adds the `isclose` method is merged in
+        # assert obj.isclose(result_init[index])
