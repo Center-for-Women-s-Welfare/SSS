@@ -2,8 +2,9 @@
 # TODO: test_delete_one_entry_reportdb()
 
 import os
-from datetime import datetime
+import datetime
 
+import numpy as np
 import pandas as pd
 
 from sss.data import DATA_PATH
@@ -64,12 +65,14 @@ def test_report_to_db(setup_and_teardown_package):
     report_df["year"] = report_df['year'].astype(int)
     report_df["update_person"] = report_df[
         'upload_status'].str.split(' ').str[0]
+    report_df.update_person.replace({np.nan: None}, inplace=True)
     report_df["update_date"] = report_df[
         'upload_status'].str.split(' ').str[1]
+    print(report_df["update_date"])
     report_df["update_date"] = pd.to_datetime(
-        report_df["update_date"])
+        report_df["update_date"], format="mixed", dayfirst=False)
     report_df["update_date"] = report_df[
-        'update_date'].map(lambda x: datetime.date(x))
+        'update_date'].map(lambda x: datetime.datetime.date(x))
 
     for i in range(len(report_df)):
         expected[report_df.loc[i, "state"]] = Report(
@@ -83,8 +86,6 @@ def test_report_to_db(setup_and_teardown_package):
         )
 
     for obj in result:
-        print(obj)
-        print(expected[obj.state])
         assert obj.isclose(expected[obj.state])
 
     # want to read the report file
