@@ -1,4 +1,5 @@
 from abc import ABCMeta
+from datetime import date
 
 import numpy as np
 from sqlalchemy.ext.automap import automap_base
@@ -57,6 +58,10 @@ class Base():
             elif isinstance(self_col, str):
                 if self_col != other_col:
                     print(f"column {col} is str, values are not equal")
+                    return False
+            elif isinstance(self_col, date):
+                if self_col != other_col:
+                    print(f"column {col} is a datetime, values are not equal")
                     return False
             elif self_col is None:
                 pass  # nullable columns, both null (otherwise caught as different types)
