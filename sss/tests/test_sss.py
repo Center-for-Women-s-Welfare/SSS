@@ -1,7 +1,9 @@
 import os
+import glob
 
 import pandas as pd
 import pytest
+from sqlalchemy import update
 
 from sss import sss_table
 from sss.data import DATA_PATH
@@ -104,3 +106,19 @@ def test_remove_rows(setup_and_teardown_package):
     )
     result = session.query(SSS).filter(SSS.state == 'AR').all()
     assert len(result) == 4
+
+
+def test_add_food_col(setup_and_teardown_package):
+    db, db_file = setup_and_teardown_package
+    session = db.sessionmaker()
+    statement = (update(SSS).values(food=None))
+    session.execute(statement)
+    session.commit()
+    result = session.query(SSS).all()
+    for obj in result:
+        assert obj.food is None
+
+    data_files = glob.glob(os.path.join(DATA_PATH, "*.xls*"))
+    df, file = sss_table.read_file(data_files[0])
+    print(df["food"])
+    assert False

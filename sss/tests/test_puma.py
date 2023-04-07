@@ -1,8 +1,6 @@
 import glob
 import os
 
-import pytest
-
 from sss.puma import (
     PUMA,
     read_puma,
