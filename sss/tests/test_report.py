@@ -77,12 +77,14 @@ def test_report_to_db(setup_and_teardown_package):
             state=report_df.loc[i, "state"],
             analysis_type=report_df.loc[i, "type"],
             cpi_month=report_df.loc[i, "cpi_month"],
-            cpi_year=report_df.loc[i, "cpi_year"],
+            cpi_year=int(report_df.loc[i, "cpi_year"]),
             update_date=report_df.loc[i, "update_date"],
             update_person=report_df.loc[i, "update_person"]
         )
 
     for obj in result:
+        print(obj)
+        print(expected[obj.state])
         assert obj.isclose(expected[obj.state])
 
     # want to read the report file

@@ -65,7 +65,7 @@ class PUMA(Base):
     county = Column('county', String)
     puma_area = Column('puma_area', String)
     place = Column('place', String, primary_key=True)
-    population_self = Column('population', Integer)
+    population = Column('population', Integer)
     weight = Column('weight', Float)
     year = Column('year', Integer)
 
@@ -293,11 +293,11 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
         crosswalk['place'] = crosswalk['county']
     # attach population of each puma to the crosswalk file
     crosswalk = crosswalk.merge(
-        puma_pop, on='puma_code', suffixes=('_self', '_max'))
+        puma_pop, on='puma_code', suffixes=('', '_max'))
     # according to population of each row and
     #   population of puma to create a population weight
     crosswalk['weight'] = crosswalk[
-        'population_self']/crosswalk['population_max']
+        'population']/crosswalk['population_max']
 
     # TODO: if puma name & city file is better designed, code could be easier
     # if the file is State of Washington, replace some 'place' name
@@ -352,7 +352,6 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
         crosswalk = crosswalk.drop('place', axis=1)
         # rename new_place --> place
         crosswalk.rename(columns={'new_place': 'place'}, inplace=True)
-    print(crosswalk.columns)
     return crosswalk
 
 
@@ -388,8 +387,7 @@ def puma_to_db(path, year, nyc_wa_path=None, db_file=default_db_file):
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     for file in data_files:
-        # print(file)
-        df_puma = puma_crosswalk(file, nyc_wa_path, year)
+        df_puma = puma_crosswalk(file, year, nyc_wa_path)
         session.bulk_insert_mappings(
             PUMA, df_puma.to_dict(orient="records"))
         session.commit()

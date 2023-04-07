@@ -57,7 +57,7 @@ class SSS(Base):
         Cost of housing.
     child_care : Float Column
         Cost of child care.
-    food : Float column
+    food : Float Column
         Cost of food.
     transportation : Float Column
         Cost of transportation.
