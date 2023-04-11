@@ -13,7 +13,14 @@ opts = dict(
     package_dir={"sss": "sss"},
     packages=find_namespace_packages(),
     include_package_data=True,
-    install_requires= ["pandas>=1.5", "numpy", "setuptools_scm", "sqlalchemy"],
+    install_requires= [
+        "numpy",
+        "openpyxl>=3.1.0,!=3.1.1",
+        "pandas>=1.5",
+        "pyxlsb",
+        "setuptools_scm",
+        "sqlalchemy"
+    ],
     extras_require={
         "doc": ["sphinx", "pypandoc"],
         "dev": ["coverage", "sphinx", "pypandoc", "pytest", "pytest-cov"],
