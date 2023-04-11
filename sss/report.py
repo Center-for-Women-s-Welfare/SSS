@@ -64,9 +64,7 @@ def add_report(path):
     # split column into meaningful column
     df['update_person'] = df['upload_status'].str.split(' ').str[0]
     df['update_date'] = df['upload_status'].str.split(' ').str[1]
-    df["update_date"] = pd.to_datetime(
-        df["update_date"], format="mixed", dayfirst=False
-    )
+    df["update_date"] = pd.to_datetime(df["update_date"], format="%m/%d/%y")
     # convert to datetime that sql can recognize
     df['update_date'] = df['update_date'].map(lambda x: datetime.date(x))
     df['year'] = df['year'].astype(int)
