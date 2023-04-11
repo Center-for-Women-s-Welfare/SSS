@@ -47,7 +47,7 @@ jobs:
       - name: Run Tests
         run: |
           python -m pytest --cov=sss --cov-config=.coveragerc --cov-report xml:./coverage.xml --junitxml=test-reports/xunit.xml
-      - uses: codecov/codecov-action@v2.0.2
+      - uses: codecov/codecov-action@v3
         if: success()
         with:
           token: ${{secrets.CODECOV_TOKEN}} #required

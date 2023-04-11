@@ -32,8 +32,10 @@ following packages before installing `sss`:
 
 Required:
 
-* pandas >= 1.5.0
 * numpy
+* openpyxl>=3.1.0,!=3.1.1
+* pandas >= 1.5.0
+* pyxlsb
 * setuptools_scm
 * sqlalchemy
 
