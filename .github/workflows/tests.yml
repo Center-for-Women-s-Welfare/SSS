@@ -61,7 +61,7 @@ jobs:
     env:
       ENV_NAME: min_versions
       PYTHON: 3.8
-    name: Testing
+    name: min version test
     runs-on: ubuntu-latest
     defaults:
       run:
