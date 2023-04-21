@@ -7,15 +7,15 @@ dependencies:
   - jupyter
   - jupyterlab
   - matplotlib
-  - numpy
+  - numpy>=1.21
   - openpyxl>=3.1.0,!=3.1.1
   - pandas>=1.5.0
   - plotly
   - pypandoc
   - pytest
-  - pyxlsb
+  - pyxlsb>=1.0.8
   - seaborn
-  - setuptools_scm
+  - setuptools_scm>=7.0.3
   - sphinx
-  - sqlalchemy
+  - sqlalchemy>=1.4.16
   - pip

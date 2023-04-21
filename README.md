@@ -32,12 +32,12 @@ following packages before installing `sss`:
 
 Required:
 
-* numpy
+* numpy>=1.21
 * openpyxl>=3.1.0,!=3.1.1
-* pandas >= 1.5.0
-* pyxlsb
-* setuptools_scm
-* sqlalchemy
+* pandas>=1.5.0
+* pyxlsb>=1.0.8
+* setuptools_scm>=7.0.3
+* sqlalchemy>=1.4.16
 
 If you want to do development on sss, in addition to the other dependencies
 you will need the following packages:
