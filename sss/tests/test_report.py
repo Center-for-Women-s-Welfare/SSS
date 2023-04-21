@@ -70,7 +70,7 @@ def test_report_to_db(setup_and_teardown_package):
         'upload_status'].str.split(' ').str[1]
     print(report_df["update_date"])
     report_df["update_date"] = pd.to_datetime(
-        report_df["update_date"], format="mixed", dayfirst=False)
+        report_df["update_date"], format="%m/%d/%y", dayfirst=False)
     report_df["update_date"] = report_df[
         'update_date'].map(lambda x: datetime.datetime.date(x))
 
