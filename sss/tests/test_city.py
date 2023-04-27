@@ -4,7 +4,7 @@ import pandas as pd
 
 from sss.data import DATA_PATH
 from sss.city import City
-from sss.city import add_city, city_to_db
+from sss.city import add_city
 
 
 def test_add_city():
@@ -25,14 +25,7 @@ def test_city_to_db(setup_and_teardown_package):
     """ Test to see if city table was created"""
     db, db_file = setup_and_teardown_package
     session = db.sessionmaker()
-    city_to_db(
-        os.path.join(
-            DATA_PATH,
-            "city_data",
-            "2020_PopulationDatabyCity_20220804_Ama.xlsx"),
-        2021,
-        db_file=db_file
-    )
+
     result = session.query(City).all()
     assert len(result) == 4
 

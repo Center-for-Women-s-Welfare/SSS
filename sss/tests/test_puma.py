@@ -1,10 +1,8 @@
 import os
 
 from sss.puma import PUMA
-from sss.puma import read_puma, puma_crosswalk, puma_to_db
+from sss.puma import read_puma, puma_crosswalk
 from sss.data import DATA_PATH
-
-import pandas as pd
 
 
 def test_read_puma():
@@ -74,18 +72,12 @@ def test_puma_to_db(setup_and_teardown_package):
     db,  db_file = setup_and_teardown_package
     session = db.sessionmaker()
     year = 2021
-    puma_to_db(
-        os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_36.txt"),
-        year,
-        os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx"),
-        db_file=db_file
-    )
+
     crosswalk = puma_crosswalk(
         os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_36.txt"),
         year,
         os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx")
     )
-    # result = session.query(PUMA).filter(PUMA.state == "NY")
     result = session.query(PUMA).all()
     expected = {}
     for i in range(len(crosswalk)):
@@ -96,7 +88,7 @@ def test_puma_to_db(setup_and_teardown_package):
             state=crosswalk.loc[i, "state"],
             puma_code=crosswalk.loc[i, "puma_code"],
             county_fips=crosswalk.loc[i, "county_fips"],
-            county_sub_fips= None,
+            county_sub_fips=None,
             county=crosswalk.loc[i, "county"],
             puma_area=crosswalk.loc[i, "puma_area"],
             place=crosswalk.loc[i, "place"],

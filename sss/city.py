@@ -1,7 +1,3 @@
-import glob
-import os
-
-import numpy as np
 import pandas as pd
 from sqlalchemy import (
     Column,
@@ -10,10 +6,9 @@ from sqlalchemy import (
     Boolean,
 )
 
-from . import preprocess 
-from .base import Base, AutomappedDB, DeclarativeDB
+from .base import Base, AutomappedDB
 from .base import default_db_file
-#from sss import CITY
+
 
 # declare CITY data columns and data type
 class City(Base):
@@ -54,19 +49,19 @@ class City(Base):
 def add_city(path, year):
     """
     Reads city data into data frame and prepare for database table
-    
+
     Parameters
     ----------
     path: str
         path name of city excel file
     year: int
         year of the population data collected
-    
+
     Returns
     -------
     pandas.datafranme
         the returned dataframe has population size by city
-    
+
     Raises
     -----
         ValueError
@@ -149,9 +144,9 @@ def add_city(path, year):
 def city_to_db(data_path, year, db_file=default_db_file):
     """
     Reads city data into data frame and insert it to database
-    
+
     The data file needed is called "2020_PopulationDatabyCity_20220804_Ama.xlsx"
-    
+
     Parameters
     ----------
     path: str
