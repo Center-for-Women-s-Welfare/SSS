@@ -1,19 +1,22 @@
 import os
+import warnings
+
+import pandas as pd
+import pytest
 
 from sss.data import DATA_PATH
 from sss.geoid import GeoID, geo_identifier_creator
 
-import pandas as pd
 
-
+@pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def testgeo_identifier_creator():
     """ Test to see if county_table and cpi_table are joined together"""
     geoid_df = geo_identifier_creator(
-         os.path.join(
+        os.path.join(
             DATA_PATH,
             "geoid_data",
             "SSScounty-place-list_20220720.xlsx"),
-         os.path.join(
+        os.path.join(
             DATA_PATH,
             "geoid_data",
             "StateAbbreviation_Regions_07192022_AKu.xlsx")
@@ -53,6 +56,7 @@ def testgeo_identifier_creator():
                 index=False) == expected_fips[fips]
 
 
+@pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def test_geoid_to_db(setup_and_teardown_package):
     """ Test to see if geoid tabsle was created"""
     db, db_file = setup_and_teardown_package
