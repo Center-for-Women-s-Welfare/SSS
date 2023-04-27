@@ -294,7 +294,7 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
     # attach population of each puma to the crosswalk file
     crosswalk = crosswalk.merge(
         puma_pop, on='puma_code', suffixes=('', '_max'))
-    # according to population of each row and
+    # use the population of each row and
     #   population of puma to create a population weight
     crosswalk['weight'] = crosswalk[
         'population']/crosswalk['population_max']

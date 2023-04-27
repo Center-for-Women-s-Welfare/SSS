@@ -30,10 +30,6 @@ class GeoID(Base):
     __tablename__ = 'geo_identifier'
     state = Column('state', String, primary_key=True)
     place = Column('place', String, primary_key=True)
-    # state = Column('state', String, ForeignKey(
-    #     "self_sufficiency_standard.state"),primary_key = True)
-    # place = Column('place', String, ForeignKey(
-    #     "self_sufficiency_standard.place"), primary_key = True)
     state_fips = Column('state_fips', String)
     county_fips = Column('county_fips', String)
     place_fips = Column('place_fips', String)
@@ -71,7 +67,7 @@ def geo_identifier_creator(county_table, cpi_table):
     df_l = pd.read_excel(county_table, sheet_name=0, dtype=str)
     print(
         "Read the first sheet of COUNTY table" + " " + xl.sheet_names[0]+'.\
-            Please adjust the sheet order if your tagret table is not first')
+            Please adjust the sheet order if your target table is not first')
     df_l['state_fips'] = df_l['fips2010'].str[:2]
     df_l['county_fips'] = df_l['fips2010'].str[2:5]
     df_l['place_fips'] = df_l['fips2010'].str[5:]
@@ -80,7 +76,7 @@ def geo_identifier_creator(county_table, cpi_table):
     # n_sheets_r = len(xl_r.sheet_names)
     df_r = pd.read_excel(cpi_table, sheet_name=0)
     print("Read the first sheet of CPI table"+' ' + xl_r.sheet_names[0]+'.\
-         Please adjust the sheet order if your tagret table is not first')
+         Please adjust the sheet order if your target table is not first')
 
     try:
         df_combine = df_l.merge(
@@ -101,7 +97,6 @@ def geo_identifier_creator(county_table, cpi_table):
         raise ValueError(
             'Cannot merge, please check the two columns are named as \
                 "state_alpha" and "USPS Abbreviation"')
-    print(df_combine.head())
     if df_combine.duplicated(['state', 'place']).sum() > 0:
         places = df_combine.loc[df_combine.duplicated([
             'state', 'place'], keep=False), 'place'].values

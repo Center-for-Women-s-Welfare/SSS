@@ -1,6 +1,3 @@
-# TODO: test_add_one_entry_reportdb()
-# TODO: test_delete_one_entry_reportdb()
-
 import os
 import datetime
 
@@ -8,8 +5,8 @@ import numpy as np
 import pandas as pd
 
 from sss.data import DATA_PATH
-from sss.report import Report
-from sss.report import add_report, report_to_db
+from sss.report import Report, add_report
+from sss.report import add_one_entry_reportdb, delete_one_entry_reportdb
 
 
 def test_add_report():
@@ -43,13 +40,6 @@ def test_report_to_db(setup_and_teardown_package):
     """ Test to see if report table was created"""
     db, db_file = setup_and_teardown_package
     session = db.sessionmaker()
-    report_to_db(
-        os.path.join(
-            DATA_PATH,
-            "report_data",
-            "Year_Type_SSS_CPI month year_20220715_DBu.xlsx"),
-        db_file=db_file
-    )
 
     result = session.query(Report).all()
     assert len(result) == 7
@@ -88,5 +78,31 @@ def test_report_to_db(setup_and_teardown_package):
     for obj in result:
         assert obj.isclose(expected[obj.state])
 
-    # want to read the report file
-    # iterate through each row, for each state, create Report class
+
+def test_add_one_entry_reportdb(setup_and_teardown_package):
+    db, db_file = setup_and_teardown_package
+    session = db.sessionmaker()
+
+    add_one_entry_reportdb(
+        2023,
+        "NY",
+        "Partial",
+        "April",
+        2022,
+        datetime.datetime(2023, 4, 14),
+        "Hector",
+        db_file=db_file
+    )
+    result = session.query(Report).all()
+    assert len(result) == 8
+
+
+def test_delete_one_entry_reportdb(setup_and_teardown_package):
+    db, db_file = setup_and_teardown_package
+    session = db.sessionmaker()
+
+    delete_one_entry_reportdb(2018, "FL", "Full", db_file=db_file)
+
+    result = session.query(Report).all()
+
+    assert len(result) == 7
