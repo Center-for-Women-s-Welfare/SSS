@@ -16,6 +16,63 @@ import warnings
 from pandas.errors import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
+puma_state_numbers_to_abbreviations = {
+    '53': 'WA',
+    '10': 'DE',
+    '11': 'DC',
+    '55': 'WI',
+    '54': 'WV',
+    '15': 'HI',
+    '12': 'FL',
+    '56': 'WY',
+    '72': 'PR',
+    '34': 'NJ',
+    '35': 'NM',
+    '48': 'TX',
+    '22': 'LA',
+    '37': 'NC',
+    '38': 'ND',
+    '31': 'NE',
+    '47': 'TN',
+    '36': 'NY',
+    '42': 'PA',
+    '02': 'AK',
+    '32': 'NV',
+    '33': 'NH',
+    '51': 'VA',
+    '08': 'CO',
+    '06': 'CA',
+    '01': 'AL',
+    '05': 'AR',
+    '50': 'VT',
+    '17': 'IL',
+    '13': 'GA',
+    '18': 'IN',
+    '19': 'IA',
+    '25': 'MA',
+    '04': 'AZ',
+    '16': 'ID',
+    '09': 'CT',
+    '23': 'ME',
+    '24': 'MD',
+    '40': 'OK',
+    '39': 'OH',
+    '49': 'UT',
+    '29': 'MO',
+    '27': 'MN',
+    '26': 'MI',
+    '44': 'RI',
+    '20': 'KS',
+    '30': 'MT',
+    '28': 'MS',
+    '45': 'SC',
+    '21': 'KY',
+    '41': 'OR',
+    '46': 'SD'
+}
+
+new_england_state_nums = ['25', '09', '23', '33', '44', '50']
+
 
 # declare PUMA data columns and data type
 class PUMA(Base):
@@ -135,60 +192,7 @@ def read_puma(path, year):
     df['house_number'] = df['house_number'].astype('float')
     # add a column called year
     df['year'] = year
-    state_names = {
-        '53': 'WA',
-        '10': 'DE',
-        '11': 'DC',
-        '55': 'WI',
-        '54': 'WV',
-        '15': 'HI',
-        '12': 'FL',
-        '56': 'WY',
-        '72': 'PR',
-        '34': 'NJ',
-        '35': 'NM',
-        '48': 'TX',
-        '22': 'LA',
-        '37': 'NC',
-        '38': 'ND',
-        '31': 'NE',
-        '47': 'TN',
-        '36': 'NY',
-        '42': 'PA',
-        '02': 'AK',
-        '32': 'NV',
-        '33': 'NH',
-        '51': 'VA',
-        '08': 'CO',
-        '06': 'CA',
-        '01': 'AL',
-        '05': 'AR',
-        '50': 'VT',
-        '17': 'IL',
-        '13': 'GA',
-        '18': 'IN',
-        '19': 'IA',
-        '25': 'MA',
-        '04': 'AZ',
-        '16': 'ID',
-        '09': 'CT',
-        '23': 'ME',
-        '24': 'MD',
-        '40': 'OK',
-        '39': 'OH',
-        '49': 'UT',
-        '29': 'MO',
-        '27': 'MN',
-        '26': 'MI',
-        '44': 'RI',
-        '20': 'KS',
-        '30': 'MT',
-        '28': 'MS',
-        '45': 'SC',
-        '21': 'KY',
-        '41': 'OR',
-        '46': 'SD'}
-    df['state'] = df['state_fips'].map(state_names)
+    df['state'] = df['state_fips'].map(puma_state_numbers_to_abbreviations)
     return df
 
 
@@ -224,20 +228,13 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
         ['puma_code', 'population']].groupby(
             'puma_code').agg('max').reset_index()
     a_set = set(puma_txt['state_fips'])
-    matches = [
-        '25',
-        '09',
-        '23',
-        '33',
-        '44',
-        '50']
     # if the area is in new england area, use sub county(level 797) as place
     if ('797' in set(
         puma_txt['summary_level'])) and (
-                any(x in a_set for x in matches)):
+                any(x in a_set for x in new_england_state_nums)):
         # retrieve sub county information
         county_sub = puma_txt[puma_txt['summary_level'] == '797']
-        county_sub.rename(columns={'area_name': 'county_sub'}, inplace=True)
+        county_sub = county_sub.rename(columns={'area_name': 'county_sub'})
         # retrieve sub county fips code and area name
         county = puma_txt[puma_txt['summary_level'] == '796']
         county = county[['county_fips', 'area_name']]
@@ -270,7 +267,7 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
     else:
         # retrieve sub county information
         county = puma_txt[puma_txt['summary_level'] == '796']
-        county.rename(columns={'area_name': 'county'}, inplace=True)
+        county = county.rename(columns={'area_name': 'county'})
         # retrieve puma code and area name
         puma = puma_txt[puma_txt['summary_level'] == '795']
         puma = puma[['puma_code', 'area_name']]
@@ -289,7 +286,7 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
             'puma_area',
             'population',
             'year']]
-        # creat place(sssplace)
+        # create place(sssplace)
         crosswalk['place'] = crosswalk['county']
     # attach population of each puma to the crosswalk file
     crosswalk = crosswalk.merge(

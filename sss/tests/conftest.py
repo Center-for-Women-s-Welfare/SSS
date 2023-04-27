@@ -1,5 +1,6 @@
 
 import os
+import warnings
 
 import pytest
 
@@ -30,22 +31,26 @@ def setup_and_teardown_package(tmp_path_factory):
         2021,
         db_file=test_db_file)
 
-    # fill geoid table
-    geoid.geoid_to_db(
-        os.path.join(
-            DATA_PATH,
-            "geoid_data",
-            "SSScounty-place-list_20220720.xlsx"),
-        os.path.join(
-            DATA_PATH,
-            "geoid_data",
-            "StateAbbreviation_Regions_07192022_AKu.xlsx"),
-        db_file=test_db_file
-    )
+    with warnings.catch_warnings():
+        warnings.filterwarnings(
+            "ignore", "Unknown extension is not supported and will be removed"
+        )
+        # fill geoid table
+        geoid.geoid_to_db(
+            os.path.join(
+                DATA_PATH,
+                "geoid_data",
+                "SSScounty-place-list_20220720.xlsx"),
+            os.path.join(
+                DATA_PATH,
+                "geoid_data",
+                "StateAbbreviation_Regions_07192022_AKu.xlsx"),
+            db_file=test_db_file
+        )
 
     # fill puma table
     puma.puma_to_db(
-        os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_36.txt"),
+        os.path.join(DATA_PATH, "puma_data", "puma_text"),
         2021,
         os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx"),
         db_file=test_db_file
