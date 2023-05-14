@@ -62,7 +62,7 @@ def test_check_extra_columns_error():
 
 def test_data_folder_to_database(setup_and_teardown_package):
     """ Test data folder to database """
-    db, _ = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
     result = session.query(SSS).filter(SSS.state == 'FL').all()
     assert len(result) == 4
@@ -74,7 +74,7 @@ def test_data_folder_to_database(setup_and_teardown_package):
 
 def test_columns_and_values_to_match(setup_and_teardown_package):
     """ Test columns and values to match"""
-    db, _ = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
     query = session.query(SSS).filter(SSS.state == 'AL')
     with session.get_bind().connect() as connection:
@@ -88,12 +88,12 @@ def test_columns_and_values_to_match(setup_and_teardown_package):
 
 def test_remove_rows(setup_and_teardown_package):
     """ Test remove rows """
-    db, db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
     result = session.query(SSS).filter(SSS.state == 'AR').all()
     assert len(result) == 4
 
-    remove_state_year("AR", 2022, db_file=db_file)
+    remove_state_year("AR", 2022, testing=True)
     result = session.query(SSS).filter(SSS.state == 'AR').all()
     assert len(result) == 0
 
@@ -102,7 +102,7 @@ def test_remove_rows(setup_and_teardown_package):
             DATA_PATH,
             "sss_data",
             'AR2022_SSS_Full.xlsx'),
-        db_file=db_file
+        testing=True
     )
     result = session.query(SSS).filter(SSS.state == 'AR').all()
     assert len(result) == 4
@@ -118,7 +118,7 @@ def test_remove_rows(setup_and_teardown_package):
         ]
 )
 def test_add_food_col(setup_and_teardown_package, columns):
-    db, db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
 
     # first check that the column has good data in it.
@@ -151,7 +151,7 @@ def test_add_food_col(setup_and_teardown_package, columns):
                 assert getattr(obj, col) is None
 
     # update the column
-    sss_table.update_columns(DATA_PATH, columns, db_file)
+    sss_table.update_columns(os.path.join(DATA_PATH, "sss_data"), columns, testing=True)
 
     # this commit should not be necessary since it's being done in the function,
     # but it seems to be required.
@@ -165,5 +165,4 @@ def test_add_food_col(setup_and_teardown_package, columns):
         else:
             for col in columns:
                 assert getattr(obj, col) is not None
-        # Add the following once the branch that adds the `isclose` method is merged in
-        # assert obj.isclose(result_init[index])
+        assert obj.isclose(result_init[index])

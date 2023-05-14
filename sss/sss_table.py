@@ -19,8 +19,7 @@ from sqlalchemy import (
 )
 
 from . import preprocess 
-from .base import Base, AutomappedDB
-from .base import default_db_file
+from .base import AutomappedDB, Base, get_db_file
 
 
 # create class
@@ -407,7 +406,8 @@ def prepare_for_database(df):
     df.reset_index(inplace=True, drop=True)
     return df
 
-def data_folder_to_database(data_path, db_file=default_db_file):
+
+def data_folder_to_database(data_path, testing=False):
     """
     Reads path of the data, adds data to SQL table
 
@@ -421,8 +421,8 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     ----------
     data_folder : str
         path name of the folder or file that we want to read into the database
-    db_file : str
-        database file name, ends with '.sqlite'.
+    testing : bool
+        If true, use the testing database rather than the default database
 
     """
     if os.path.isfile(data_path):
@@ -431,6 +431,8 @@ def data_folder_to_database(data_path, db_file=default_db_file):
         data_files = glob.glob(os.path.join(data_path, "*.xls*"))
     else:
         raise ValueError("data_folder must be a file or folder on this system")
+
+    db_file = get_db_file(testing=testing)
 
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
@@ -471,7 +473,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     session.close()
 
 
-def remove_state_year(state, year, db_file=default_db_file):
+def remove_state_year(state, year, testing=False):
     """
     Remove rows for a specific state and year.
 
@@ -481,13 +483,17 @@ def remove_state_year(state, year, db_file=default_db_file):
         The state to remove from live database.
     year : int
         The year to remove from live database.
-    
+    testing : bool
+        If true, use the testing database rather than the default database
+
     """
     if not isinstance(state, str):
         raise ValueError("State must be a string")
     if not isinstance(year, int):
         raise ValueError("Year must be a integer")
-    
+
+    db_file = get_db_file(testing=testing)
+
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
 
@@ -507,21 +513,21 @@ def remove_state_year(state, year, db_file=default_db_file):
     session.close()
 
 
-def update_columns(data_path, columns=None, db_file=default_db_file):
+def update_columns(data_path, columns=None, testing=False):
     """
     Updates the specified columns using data in the data_path.
 
     Read in the data from the data_path and update only the specified columns. This
     assumes that the rows for this data already exist in the database.
-    
+
     Parameters
     ----------
     data_folder : str
         path name of the folder or file that we want to read into the database
     columns : list of str
         List of column names to update
-    db_file : str
-        database file name, ends with '.sqlite'.
+    testing : bool
+        If true, use the testing database rather than the default database
 
     """
     if os.path.isfile(data_path):
@@ -530,6 +536,10 @@ def update_columns(data_path, columns=None, db_file=default_db_file):
         data_files = glob.glob(os.path.join(data_path, "*.xls*"))
     else:
         raise ValueError("data_folder must be a file or folder on this system")
+
+    if len(data_files) == 0:
+        raise ValueError(f"No data files identified in {data_path}")
+
     pk_cols = ["family_type", "state", "place", "year", "analysis_type"]
 
     if isinstance(columns, str):
@@ -539,11 +549,12 @@ def update_columns(data_path, columns=None, db_file=default_db_file):
         if col in pk_cols:
             raise ValueError("Cannot update a primary key column.")
 
+    db_file = get_db_file(testing=testing)
+
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
 
     for file in data_files:
-        print(file)
         df, _ = read_file(file)
         df, arpa, health_care, miscellaneous = check_extra_columns(df)
         df = prepare_for_database(df)

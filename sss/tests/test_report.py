@@ -38,7 +38,7 @@ def test_add_report():
 
 def test_report_to_db(setup_and_teardown_package):
     """ Test to see if report table was created"""
-    db, db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
 
     result = session.query(Report).all()
@@ -80,7 +80,7 @@ def test_report_to_db(setup_and_teardown_package):
 
 
 def test_add_one_entry_reportdb(setup_and_teardown_package):
-    db, db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
 
     add_one_entry_reportdb(
@@ -91,17 +91,17 @@ def test_add_one_entry_reportdb(setup_and_teardown_package):
         2022,
         datetime.datetime(2023, 4, 14),
         "Hector",
-        db_file=db_file
+        testing=True,
     )
     result = session.query(Report).all()
     assert len(result) == 8
 
 
 def test_delete_one_entry_reportdb(setup_and_teardown_package):
-    db, db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
 
-    delete_one_entry_reportdb(2018, "FL", "Full", db_file=db_file)
+    delete_one_entry_reportdb(2018, "FL", "Full", testing=True)
 
     result = session.query(Report).all()
 

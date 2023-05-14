@@ -45,9 +45,17 @@ jobs:
           if [[ $PYVER != ${{ env.PYTHON }} ]]; then
             exit 1;
           fi
+
       - name: Install
         run: |
           pip install --no-deps .
+
+      - name: Upgrade Database Schema
+        run: |
+          mkdir ~/.sss
+          cp ci/example_config.json ~/.sss/sss_config.json
+          alembic upgrade head
+
       - name: Run Tests
         run: |
           python -m pytest --cov=sss --cov-config=.coveragerc --cov-report xml:./coverage.xml --junitxml=test-reports/xunit.xml

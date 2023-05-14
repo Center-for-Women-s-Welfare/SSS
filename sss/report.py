@@ -7,8 +7,7 @@ from sqlalchemy import (
     String,
     Date)
 
-from .base import Base, AutomappedDB
-from .base import default_db_file
+from .base import Base, AutomappedDB, get_db_file
 
 
 # declare Report data columns and data type
@@ -76,7 +75,7 @@ def add_report(path):
     return df
 
 
-def report_to_db(path, db_file=default_db_file):
+def report_to_db(path, testing=False):
     """
     Insert report file to the report table in the db
 
@@ -87,10 +86,11 @@ def report_to_db(path, db_file=default_db_file):
     ----------
     path: str
         path name of report excel file
-    db_file : str
-        database file name, ends with '.sqlite'.
+    testing : bool
+        If true, use the testing database rather than the default database
 
     """
+    db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     df_report = add_report(path)
@@ -107,7 +107,7 @@ def add_one_entry_reportdb(
     cpi_year,
     update_date,
     update_person,
-    db_file=default_db_file
+    testing=False,
 ):
     """
     This function inserts one record into report table
@@ -128,7 +128,11 @@ def add_one_entry_reportdb(
         update date, the format is date(2021,6,22)
     update_person : str
         who update the report
+    testing : bool
+        If true, use the testing database rather than the default database
+
     """
+    db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     new_record = Report(year=int(year),
@@ -148,7 +152,7 @@ def delete_one_entry_reportdb(
     year,
     state,
     analysis_type,
-    db_file=default_db_file
+    testing=False,
 ):
     """
     This deletes one record. In case some records were insert accidentally.
@@ -161,7 +165,11 @@ def delete_one_entry_reportdb(
         name of state
     analysis_type : str
         analysis type of sss, e.g. full, partial
+    testing : bool
+        If true, use the testing database rather than the default database
+
     """
+    db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     # delete the records that meets criteria

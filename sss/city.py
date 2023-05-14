@@ -6,8 +6,7 @@ from sqlalchemy import (
     Boolean,
 )
 
-from .base import Base, AutomappedDB
-from .base import default_db_file
+from .base import Base, AutomappedDB, get_db_file
 
 
 # declare CITY data columns and data type
@@ -128,7 +127,6 @@ def add_city(path, year):
     "U.S. Virgin Islands": "VI"
     }
     df['state'] = df['State'].map(us_state_to_abbrev)
-    #df['state'] = df['state'].str.replace('*','')
     if df.state.isna().sum()>0:
         raise ValueError('could not find state in State value %s' % (df[df.state.isna()]['State']))
     df['PublicTransit'] = df['PublicTransit'].astype('bool')
@@ -141,7 +139,7 @@ def add_city(path, year):
     return df
 
 
-def city_to_db(data_path, year, db_file=default_db_file):
+def city_to_db(data_path, year, testing=False):
     """
     Reads city data into data frame and insert it to database
 
@@ -153,14 +151,14 @@ def city_to_db(data_path, year, db_file=default_db_file):
         path name of city excel file
     year: int
         year of the population data collected
-    db_file : str
-        database file name,ends with '.sqlite'
+    testing : bool
+        If true, use the testing database rather than the default database
+
     """
+    db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     df_city = add_city(data_path, year)
     session.bulk_insert_mappings(City, df_city.to_dict(orient="records"))
     session.commit()
     session.close()
-
-

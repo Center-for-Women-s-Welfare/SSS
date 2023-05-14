@@ -5,7 +5,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
-from sss.base import Base
+from sss.base import Base, get_db_file
 
 from alembic import context
 
@@ -13,13 +13,7 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-sqlite_files = glob.glob(os.path.join(".", "*.sqlite*"))
-basenames = [os.path.basename(file) for file in sqlite_files]
-if len(basenames) == 1:
-    db_file = basenames[0]
-elif "sss.sqlite" in basenames:
-    db_file = "sss.sqlite"
-
+db_file = get_db_file()
 db_url = 'sqlite:///' + db_file
 config.set_main_option("sqlalchemy.url", db_url)
 

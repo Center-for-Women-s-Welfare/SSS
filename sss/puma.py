@@ -1,8 +1,7 @@
 import os
 import glob
 
-from .base import Base, AutomappedDB
-from .base import default_db_file
+from .base import Base, AutomappedDB, get_db_file
 
 import pandas as pd
 from sqlalchemy import (
@@ -352,7 +351,7 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
     return crosswalk
 
 
-def puma_to_db(path, year, nyc_wa_path=None, db_file=default_db_file):
+def puma_to_db(path, year, nyc_wa_path=None, testing=False):
     """
     This function is to put puma into database
 
@@ -370,8 +369,8 @@ def puma_to_db(path, year, nyc_wa_path=None, db_file=default_db_file):
         year of the puma data collected
     nyc_wa_path : str
         excel file path of nyc and washington replacement name list
-    db_file : str
-        database file name, ends with '.sqlite'.
+    testing : bool
+        If true, use the testing database rather than the default database
 
     """
     if os.path.isfile(path):
@@ -381,6 +380,7 @@ def puma_to_db(path, year, nyc_wa_path=None, db_file=default_db_file):
     else:
         raise ValueError("data_folder must be a file or a \
             folder on this system")
+    db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     for file in data_files:
