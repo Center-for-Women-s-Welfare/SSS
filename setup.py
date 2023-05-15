@@ -14,6 +14,7 @@ opts = dict(
     packages=find_namespace_packages(),
     include_package_data=True,
     install_requires = [
+        "alembic>=1.10",
         "numpy>=1.21",
         "openpyxl>=3.1.0,!=3.1.1",
         "pandas>=1.5.0",

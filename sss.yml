@@ -2,7 +2,7 @@ name: sss
 channels:
   - conda-forge
 dependencies:
-  - alembic
+  - alembic>=1.10
   - flake8
   - ipython
   - jupyter
