@@ -20,3 +20,5 @@ dependencies:
   - sphinx
   - sqlalchemy>=1.4.16
   - pip
+  - pre-commit
+  - black
