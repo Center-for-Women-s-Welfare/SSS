@@ -34,10 +34,6 @@ parser.add_argument("update_date", type = date,
 parser.add_argument("update_person", type = str,
                     help = "who update the report")
 
-parser.add_argument("-d","--db_file", type = str,
-                    help = "Enter the database file that the data should be put in",
-                    default=default_db_file)
-
 args = parser.parse_args()
 
 # call the function with arguments
@@ -47,5 +43,4 @@ add_one_entry_reportdb( args.year,
                         args.cpi_month,
                         args.cpi_year,
                         args.update_date,
-                        args.update_person,
-                        db_file=args.db_file)
+                        args.update_person)

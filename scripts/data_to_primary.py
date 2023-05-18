@@ -17,12 +17,8 @@ parser = argparse.ArgumentParser(description = "Add file(s) to the SSS database"
 parser.add_argument("data_folder", type = str,
                     help = "Enter path name that contains the SSS data, so it can be entered into table")
 
-parser.add_argument("-d","--db_file", type = str,
-                    help = "Enter the database file that the data should be put in",
-                    default=default_db_file)
-
 args = parser.parse_args()
-data_folder_to_database(args.data_folder, db_file=args.db_file)
+data_folder_to_database(args.data_folder)
     
 
 
