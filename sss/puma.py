@@ -2,6 +2,7 @@ import os
 import glob
 
 from .base import Base, AutomappedDB, get_db_file
+from . import preprocess
 
 import pandas as pd
 from sqlalchemy import (
@@ -373,13 +374,7 @@ def puma_to_db(path, year, nyc_wa_path=None, testing=False):
         If true, use the testing database rather than the default database
 
     """
-    if os.path.isfile(path):
-        data_files = [path]
-    elif os.path.isdir(path):
-        data_files = glob.glob(os.path.join(path, "*.txt"))
-    else:
-        raise ValueError("data_folder must be a file or a \
-            folder on this system")
+    data_files = preprocess.data_path_to_file_list(path, extension_match="txt")
     db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()

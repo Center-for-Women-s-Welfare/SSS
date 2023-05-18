@@ -36,6 +36,7 @@ jobs:
           python-version: ${{ env.PYTHON }}
           environment-file: ci/${{ env.ENV_NAME }}.yml
           activate-environment: ${{ env.ENV_NAME }}
+          run-post: false
 
       - name: Conda Info
         run: |

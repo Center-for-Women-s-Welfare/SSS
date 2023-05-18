@@ -1,5 +1,5 @@
 import os
-import glob
+import re
 
 import pandas as pd
 import pytest
@@ -7,7 +7,7 @@ from sqlalchemy import update, bindparam
 
 from sss import sss_table
 from sss.data import DATA_PATH
-from sss import SSS
+from sss import SSS, ARPA, Miscellaneous, HealthCare
 from sss.sss_table import remove_state_year, data_folder_to_database
 
 
@@ -114,43 +114,59 @@ def test_remove_rows(setup_and_teardown_package):
             "food",
             ["food"],
             ["food", "transportation"],
-            # ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
+            ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
         ]
 )
-def test_add_food_col(setup_and_teardown_package, columns):
+def test_add_column(setup_and_teardown_package, columns):
     db = setup_and_teardown_package
     session = db.sessionmaker()
 
-    # first check that the column has good data in it.
-    result_init = session.query(SSS).all()
-    for obj in result_init:
-        if isinstance(columns, str):
-            assert getattr(obj, columns) is not None
-        else:
-            for col in columns:
-                assert getattr(obj, col) is not None
-
-    # fill the column with Nones
     if isinstance(columns, str):
-        update_dict = {columns: None}
-        statement = (update(SSS).values(update_dict))
-        session.execute(statement)
-        session.commit()
+        columns_list = [columns]
     else:
-        for col in columns:
-            update_dict = {col: None}
-            statement = (update(SSS).values(update_dict))
-            session.execute(statement)
-            session.commit()
-    result = session.query(SSS).all()
-    for obj in result:
-        if isinstance(columns, str):
-            assert getattr(obj, columns) is None
-        else:
-            for col in columns:
-                assert getattr(obj, col) is None
+        columns_list = columns
 
-    # update the column
+    table_dict = {
+        "sss": {
+            "object": SSS,
+        },
+        "arpa": {
+            "object": ARPA,
+        },
+        "health_care": {
+            "object": HealthCare,
+        },
+        "misc": {
+            "object": Miscellaneous,
+        },
+
+    }
+
+    for _, meta_dict in table_dict.items():
+        meta_dict["obj_list"] = session.query(meta_dict["object"]).all()
+
+        meta_dict["col_list"] = []
+        for col in columns_list:
+            if hasattr(meta_dict["obj_list"][0], col):
+                meta_dict["col_list"].append(col)
+
+        if len(meta_dict["col_list"]) > 0:
+            for obj in meta_dict["obj_list"]:
+                for col in meta_dict["col_list"]:
+                    assert getattr(obj, col) is not None
+
+            for col in meta_dict["col_list"]:
+                update_dict = {col: None}
+                statement = (update(meta_dict["object"]).values(update_dict))
+                session.execute(statement)
+                session.commit()
+
+            result = session.query(meta_dict["object"]).all()
+            for obj in result:
+                for col in meta_dict["col_list"]:
+                    assert getattr(obj, col) is None
+
+    # update the columns
     sss_table.update_columns(os.path.join(DATA_PATH, "sss_data"), columns, testing=True)
 
     # this commit should not be necessary since it's being done in the function,
@@ -158,11 +174,27 @@ def test_add_food_col(setup_and_teardown_package, columns):
     session.commit()
 
     # check that the food column has good data in it again
-    result = session.query(SSS).all()
-    for index, obj in enumerate(result):
-        if isinstance(columns, str):
-            assert getattr(obj, columns) is not None
-        else:
-            for col in columns:
-                assert getattr(obj, col) is not None
-        assert obj.isclose(result_init[index])
+    for _, meta_dict in table_dict.items():
+        if len(meta_dict["col_list"]) > 0:
+            result = session.query(meta_dict["object"]).all()
+            for obj in result:
+                for col in meta_dict["col_list"]:
+                    assert getattr(obj, col) is not None
+
+
+def test_add_column_errors(setup_and_teardown_package):
+
+    with pytest.raises(
+        ValueError, match="data_path must be a file or folder on this system"
+    ):
+        sss_table.update_columns("foo", "food", testing=True)
+
+    with pytest.raises(
+        ValueError, match=re.escape(f"No data files identified in {DATA_PATH}")
+    ):
+        sss_table.update_columns(DATA_PATH, "food", testing=True)
+
+    with pytest.raises(ValueError, match="Cannot update a primary key column."):
+        sss_table.update_columns(
+            os.path.join(DATA_PATH, "sss_data"), "state", testing=True
+        )

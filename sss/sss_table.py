@@ -18,7 +18,7 @@ from sqlalchemy import (
     delete,
 )
 
-from . import preprocess 
+from . import preprocess
 from .base import AutomappedDB, Base, get_db_file
 
 
@@ -326,8 +326,9 @@ def check_extra_columns(df):
         # updates anaylisis_type if arpa columns found
         df['analysis_type'] = 'ARPA'
         arpa = df[['family_type', 'state', 'place', 'year', 'analysis_type']]
-        for i in arpa_columns:
-            arpa = pd.concat([arpa, df[i]], axis=1)
+        for col in arpa_columns:
+            arpa = pd.concat([arpa, df[col]], axis=1)
+            df = df.drop(columns=col)
         df['analysis_is_secondary'] = True
     else:
         df['analysis_is_secondary'] = False
@@ -339,8 +340,10 @@ def check_extra_columns(df):
                           'analysis_type']]
         if 'out_of_pocket' in df.columns:
             health_care = pd.concat([health_care, df['out_of_pocket']], axis=1)
+            df = df.drop(columns='out_of_pocket')
         if 'premium' in df.columns:
             health_care = pd.concat([health_care, df['premium']], axis=1)
+            df = df.drop(columns='premium')
     else:
         df['health_care_is_secondary'] = False
     miscellaneous = pd.DataFrame()
@@ -351,9 +354,11 @@ def check_extra_columns(df):
         if 'broadband_and_cell_phone' in df.columns:
             miscellaneous = pd.concat([miscellaneous,
                                       df['broadband_and_cell_phone']], axis=1)
+            df = df.drop(columns='broadband_and_cell_phone')
         if 'other_necessities' in df.columns:
             miscellaneous = pd.concat([miscellaneous, df['other_necessities']],
                                       axis=1)
+            df = df.drop(columns='other_necessities')
     else:
         df['miscellaneous_is_secondary'] = False
 
@@ -425,12 +430,7 @@ def data_folder_to_database(data_path, testing=False):
         If true, use the testing database rather than the default database
 
     """
-    if os.path.isfile(data_path):
-        data_files = [data_path]
-    elif os.path.isdir(data_path):
-        data_files = glob.glob(os.path.join(data_path, "*.xls*"))
-    else:
-        raise ValueError("data_folder must be a file or folder on this system")
+    data_files = preprocess.data_path_to_file_list(data_path, extension_match="xls*")
 
     db_file = get_db_file(testing=testing)
 
@@ -517,12 +517,12 @@ def update_columns(data_path, columns=None, testing=False):
     """
     Updates the specified columns using data in the data_path.
 
-    Read in the data from the data_path and update only the specified columns. This
-    assumes that the rows for this data already exist in the database.
+    Read in the data from the data_path and update only the specified columns.
+    Assumes that the rows for this data already exist in the database.
 
     Parameters
     ----------
-    data_folder : str
+    data_path : str
         path name of the folder or file that we want to read into the database
     columns : list of str
         List of column names to update
@@ -530,12 +530,7 @@ def update_columns(data_path, columns=None, testing=False):
         If true, use the testing database rather than the default database
 
     """
-    if os.path.isfile(data_path):
-        data_files = [data_path]
-    elif os.path.isdir(data_path):
-        data_files = glob.glob(os.path.join(data_path, "*.xls*"))
-    else:
-        raise ValueError("data_folder must be a file or folder on this system")
+    data_files = preprocess.data_path_to_file_list(data_path, extension_match="xls*")
 
     if len(data_files) == 0:
         raise ValueError(f"No data files identified in {data_path}")
@@ -568,9 +563,9 @@ def update_columns(data_path, columns=None, testing=False):
                 main_columns.append(col)
             elif not arpa.empty and col in arpa.columns:
                 arpa_cols.append(col)
-            elif not health_care_cols.empty and col in health_care_cols.columns:
+            elif not health_care.empty and col in health_care.columns:
                 health_care_cols.append(col)
-            elif not miscellaneous_cols.empty and col in miscellaneous_cols.columns:
+            elif not miscellaneous.empty and col in miscellaneous.columns:
                 miscellaneous_cols.append(col)
 
         if len(main_columns) > 0:
@@ -583,7 +578,7 @@ def update_columns(data_path, columns=None, testing=False):
 
         if len(arpa_cols) > 0:
             cols_to_keep = pk_cols + arpa_cols
-            cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
+            cols_to_drop = [col for col in arpa.columns if col not in cols_to_keep]
             arpa.drop(columns=cols_to_drop, inplace=True)
 
             session.bulk_update_mappings(ARPA, arpa.to_dict('records'))
@@ -591,7 +586,7 @@ def update_columns(data_path, columns=None, testing=False):
 
         if len(health_care_cols) > 0:
             cols_to_keep = pk_cols + health_care_cols
-            cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
+            cols_to_drop = [col for col in health_care.columns if col not in cols_to_keep]
             health_care.drop(columns=cols_to_drop, inplace=True)
 
             session.bulk_update_mappings(HealthCare, health_care.to_dict('records'))
@@ -599,7 +594,7 @@ def update_columns(data_path, columns=None, testing=False):
 
         if len(miscellaneous_cols) > 0:
             cols_to_keep = pk_cols + miscellaneous_cols
-            cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
+            cols_to_drop = [col for col in miscellaneous.columns if col not in cols_to_keep]
             miscellaneous.drop(columns=cols_to_drop, inplace=True)
 
             session.bulk_update_mappings(Miscellaneous, miscellaneous.to_dict('records'))
