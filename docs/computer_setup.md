@@ -168,16 +168,34 @@ you to use `wsl`).
 	- **This may need to be re-done if changes are made to the code, see
 	[below](#getting-code-updates).**
 
+## Creating the database configuration file
+- In the terminal, ensure that you are in your home directory by running `cd`.
+- run `mkdir .sss` to make a new folder in your home directory called `.sss`. Since it
+  starts with a dot it will not show up when you run `ls`, but you can see that it is
+  there by running `ls -a`.
+- run `cd .sss` to change directories into the new folder you made.
+- run `nano sss_config.json` to create a new file called `sss_config.json` and open it
+  in the nano text editor.
+- edit the file to look like this, with `<<<path-to-dbfile>>>` replaced with the full
+  path (including the file name) on your machine to the database file and
+  `<<<path-to-test-dbfile>>>` replaced with the full path (including a file name) on your
+  machine to a location where a test database file can be created (one reasonable option
+  is a file named `test_sss.sqlite` inside the top-level folder for the sss package):
+	```
+	{
+	"default_db_file": "<<<path-to-dbfile>>>",
+	"test_db_file": "<<<path-to-test-dbfile>>>"
+	}
+	```
+- Save the file by hitting `control o` and exit the nano editor by hitting `control x`.
+
 ## Creating the database
 In normal use, once you create the database, you will not need to do this again.
 When testing, however, you may need to delete and it re-make it.
 
 - Initialize the database (this creates an empty database)
-	- run `python ./scripts/create_database.py -d <database_path>` by replacing
-	`<database_path>` with a full path to where you want to save the database. The path
-	should end with a filename with the `.sqlite` extension. This same path will used
-	when you add data to the database. If you do not include the `-d <database_path>`
-	the script will create a file called `sss.sqlite` in your working directory.
+	- run `python ./scripts/create_database.py`. This will will create a new
+	database file in the location specified in your `~/.sss/sss_config.json` file.
 - To confirm the script ran successfully:
 	- run `ls`
 	- If the file "sss.sqlite" is present, the create_database.py script did its job
@@ -230,12 +248,8 @@ already existing database (this cannot be done unless the database has already b
 initialized). If you pass a file name here, the data from that file will be inserted
 into the database. If you pass a folder, **all** the files from that folder will be
 inserted (this could take awhile if there are a lot of files):
-	- Type `python ./scripts/data_to_primary.py <path_name> -d <database_path>` by
-	replacing `<path_name>` with the full path to the file you found above and 
-	`<database_path>` with a full path to the database files. The database path will be
-	the one you used when you created the database. If you do not include the
-	`-d <database_path>` the script will try to add data to a database file called
-	`sss.sqlite` in your working directory.
+	- Type `python ./scripts/data_to_primary.py <path_name>` by
+	replacing `<path_name>` with the full path to the file you found above.
 
 	-**Troubleshooting note:** ValueError: data_folder must be a file or folder on this system. 
 	Solution 1: Insert a \ in front of every space in a file pathway. Shared drives becomes Shared\ drives
@@ -247,11 +261,10 @@ inserted (this could take awhile if there are a lot of files):
 	that is already in other files.
 
 - There are similar scripts to insert data into the `geoid`, `puma`, `city` and `report`
-tables. All those scripts require you to pass at least one file or folder and accept the
-`-d` option to pass the database path. You can find out what the script requires as
-input if you call the script with the `-h` (for help) flag 
-(e.g. `python ./scripts/data_to_puma.py -h`). More details about these scripts are in
-the README in the "Inserting Data" section.
+tables. All those scripts require you to pass at least one file or folder. You can find
+out what the script requires as input if you call the script with the `-h` (for help)
+flag  (e.g. `python ./scripts/data_to_puma.py -h`). More details about these scripts
+are in the README in the "Inserting Data" section.
 
 ## Getting code updates
 
