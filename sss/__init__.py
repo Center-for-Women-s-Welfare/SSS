@@ -1,3 +1,4 @@
+"""Initialize the sss package."""
 from pathlib import Path
 
 from importlib.metadata import version, PackageNotFoundError

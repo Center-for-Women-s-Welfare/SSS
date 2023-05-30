@@ -7,17 +7,17 @@ state_sp <- st_read("cb_2018_us_state_500k/cb_2018_us_state_500k.shp")
 state <- state_sp %>% select(STATEFP,NAME,STUSPS)
 state$geometry <- NULL
 us_puma <- us_puma%>%left_join(state,by = c('STATEFP10' = 'STATEFP'))
-puma_pera <- read_csv("for_vis_pumaa.csv", 
-                         col_types = cols(state_fips = col_character(), 
+puma_pera <- read_csv("for_vis_pumaa.csv",
+                         col_types = cols(state_fips = col_character(),
                                           puma_code = col_character()))
-puma_perb <- read_csv("for_vis_pumab.csv", 
-                     col_types = cols(state_fips = col_character(), 
+puma_perb <- read_csv("for_vis_pumab.csv",
+                     col_types = cols(state_fips = col_character(),
                                       puma_code = col_character()))
-puma_perc <- read_csv("for_vis_pumac.csv", 
-                     col_types = cols(state_fips = col_character(), 
+puma_perc <- read_csv("for_vis_pumac.csv",
+                     col_types = cols(state_fips = col_character(),
                                       puma_code = col_character()))
-puma_perd <- read_csv("for_vis_pumad.csv", 
-                     col_types = cols(state_fips = col_character(), 
+puma_perd <- read_csv("for_vis_pumad.csv",
+                     col_types = cols(state_fips = col_character(),
                                       puma_code = col_character()))
 puma_per = do.call("rbind", list(puma_pera, puma_perb, puma_perc,puma_perd))
 puma_per <- puma_per %>%

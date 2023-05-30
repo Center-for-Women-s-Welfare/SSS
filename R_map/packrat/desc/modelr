@@ -1,7 +1,7 @@
 Package: modelr
 Title: Modelling Functions that Work with the Pipe
 Version: 0.1.8
-Authors@R: 
+Authors@R:
     c(person(given = "Hadley",
              family = "Wickham",
              role = c("aut", "cre"),

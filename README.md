@@ -8,7 +8,7 @@
 by the Center of Women's Welfare (CWW) at the University of Washington as an alternative
 to the Official Poverty Measure (OPM). The Self-Sufficiency Standard data is spread
 across the CWW website and this repository creates a database to hold the
-Self-Sufficiency Standard data. 
+Self-Sufficiency Standard data.
 
 ## Computer setup
 See directions [here](docs/computer_setup.md) for detailed instructions for users who

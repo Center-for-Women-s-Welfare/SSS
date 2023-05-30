@@ -3,7 +3,7 @@ Version: 1.28.1
 Title: Hexagonal Binning Routines
 Author: Dan Carr <dcarr@voxel.galaxy.gmu.edu>, ported by Nicholas
         Lewin-Koh and Martin Maechler <maechler@stat.math.ethz.ch>,
-		contains copies of lattice functions written by Deepayan Sarkar 
+		contains copies of lattice functions written by Deepayan Sarkar
 		<deepayan.sarkar@r-project.org>
 Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>
 Depends: R (>= 2.0.1), methods

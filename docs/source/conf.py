@@ -9,10 +9,12 @@
 import sys
 import os
 
-project = 'SSS'
-copyright = '2022, Cheng Ren, Aziza Mirsaidova, Priyana Patel, Hector Sosa, Bryna Hazelton'
-author = 'Cheng Ren, Aziza Mirsaidova, Priyana Patel, Hector Sosa, Bryna Hazelton'
-release = '0.1'
+project = "SSS"
+copyright = (
+    "2022, Cheng Ren, Aziza Mirsaidova, Priyana Patel, Hector Sosa, Bryna Hazelton"
+)
+author = "Cheng Ren, Aziza Mirsaidova, Priyana Patel, Hector Sosa, Bryna Hazelton"
+release = "0.1"
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -28,26 +30,29 @@ computer_setup_out = os.path.join(os.path.abspath("../source/"), "computer_setup
 
 extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon"]
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns = []
-
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'default'
-html_static_path = ['_static']
+html_theme = "default"
+html_static_path = ["_static"]
+
 
 def build_custom_docs(app):
     sys.path.append(os.getcwd())
     try:
-        import make_index, make_computer_setup
-    except:
+        import make_index
+        import make_computer_setup
+    except BaseException:
         from source import make_index, make_computer_setup
 
     make_index.write_index_rst(readme_file=readme_file, write_file=index_file)
-    make_computer_setup.write_computer_setup_rst(input_file=computer_setup_in, write_file=computer_setup_out)
+    make_computer_setup.write_computer_setup_rst(
+        input_file=computer_setup_in, write_file=computer_setup_out
+    )
 
 
 def setup(app):

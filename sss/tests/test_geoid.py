@@ -1,5 +1,6 @@
+"""Code tests the functions that create GeoID table."""
+
 import os
-import warnings
 
 import pandas as pd
 import pytest
@@ -10,7 +11,7 @@ from sss.geoid import GeoID, geo_identifier_creator
 
 @pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def testgeo_identifier_creator():
-    """ Test to see if county_table and cpi_table are joined together"""
+    """Test to see if county_table and cpi_table are joined together."""
     geoid_df = geo_identifier_creator(
         os.path.join(
             DATA_PATH,
@@ -34,7 +35,7 @@ def testgeo_identifier_creator():
         "place_fips",
         "State Name",
         "USPS Abbreviation",
-        "cpi_region"
+        "cpi_region",
     ]
     assert geoid_df.columns.tolist() == expected_cols
 
@@ -47,18 +48,19 @@ def testgeo_identifier_creator():
         "45013": "SC",
         "46129": "SD",
         "53033": "WA",
-        "55091": "WI"
+        "55091": "WI",
     }
 
     for fips in expected_fips:
-        assert geoid_df.loc[geoid_df[
-            "FIPS"] == fips, "state"].to_string(
-                index=False) == expected_fips[fips]
+        assert (
+            geoid_df.loc[geoid_df["FIPS"] == fips, "state"].to_string(index=False)
+            == expected_fips[fips]
+        )
 
 
 @pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def test_geoid_to_db(setup_and_teardown_package):
-    """ Test to see if geoid tabsle was created"""
+    """Test to see if geoid tabsle was created."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
 
@@ -70,21 +72,17 @@ def test_geoid_to_db(setup_and_teardown_package):
 
     result = session.query(GeoID).all()
     county_df = pd.read_excel(
-        os.path.join(
-            DATA_PATH,
-            "geoid_data",
-            "SSScounty-place-list_20220720.xlsx"),
-        dtype=str
-        )
+        os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
+        dtype=str,
+    )
     # add county_df columns
-    county_df['state_fips'] = county_df['fips2010'].str[:2]
-    county_df['county_fips'] = county_df['fips2010'].str[2:5]
-    county_df['place_fips'] = county_df['fips2010'].str[5:]
+    county_df["state_fips"] = county_df["fips2010"].str[:2]
+    county_df["county_fips"] = county_df["fips2010"].str[2:5]
+    county_df["place_fips"] = county_df["fips2010"].str[5:]
     cpi_df = pd.read_excel(
         os.path.join(
-            DATA_PATH,
-            "geoid_data",
-            "StateAbbreviation_Regions_07192022_AKu.xlsx")
+            DATA_PATH, "geoid_data", "StateAbbreviation_Regions_07192022_AKu.xlsx"
+        )
     )
 
     expected = {}
@@ -96,9 +94,9 @@ def test_geoid_to_db(setup_and_teardown_package):
             county_fips=county_df.loc[i, "county_fips"],
             place_fips=county_df.loc[i, "place_fips"],
             cpi_region=cpi_df.loc[
-                cpi_df["USPS Abbreviation"] == county_df.loc[
-                    i, "state_alpha"], "CPI Region"].to_string(
-                index=False)
+                cpi_df["USPS Abbreviation"] == county_df.loc[i, "state_alpha"],
+                "CPI Region",
+            ].to_string(index=False),
         )
 
     for obj in result:

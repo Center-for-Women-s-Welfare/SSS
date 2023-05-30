@@ -44,7 +44,7 @@ ui <- bootstrapPage(
                                         top = 100, left = 55, width = 400, fixed=TRUE,
                                         draggable = TRUE, height = "auto",
                                         #img(src="logo.png",height=37,width=110,align = "left"),
-                                        pickerInput("select_state", label = h3("State Selection"), inline = F, 
+                                        pickerInput("select_state", label = h3("State Selection"), inline = F,
                                                     selected = "No Selection",
                                                     choices = c('No Selection',sort(c(as.character(state_per$NAME)))),
                                                     choicesOpt = list(
@@ -66,38 +66,38 @@ ui <- bootstrapPage(
                                         h5(textOutput('fama2i1'), align = "left"),
                                         h5(textOutput('fama2p1'), align = "left"),
                                         h5(textOutput('fama2s1'), align = "left"),
-                                        
+
                           ),
                           # the logo position on the bottom left
                           absolutePanel(id = "logo", class = "card", bottom = 20, left = 60, width = 160, fixed=TRUE, draggable = FALSE, height = "auto",
                                         tags$a(href='https://selfsufficiencystandard.org/', tags$img(src='cww.png',height='50',width='300')))
-                          
+
                           )
                       )
              )
   )
-             
-  
-  
+
+
+
 cat(file=stderr(), "Starting Server", "\n")
 
 server <- function(input, output, session) {
   # Pre-define map function to be called later
-  make_leaflet_map <- function() { 
+  make_leaflet_map <- function() {
     #add base map
     map1 <- leaflet() %>%
-      
+
       addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 3), group = "Plain basemap") %>%
       addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 3), group = "plain Map")  %>%
       addMapPane("Polygons", zIndex = 400) #%>%   # Pane z-Index for polygons to stay underneath the markers
       #
-    
+
     return(map1)
   }
   # Rendering the main map
   output$main_map <- renderLeaflet({make_leaflet_map()
     })
-  
+
   #update the dataset
   update_dataset <- reactive({
     if(input$select_state == 'No Selection'){
@@ -107,7 +107,7 @@ server <- function(input, output, session) {
       data_set <- puma_per %>% filter(STATE_NAME == input$select_state)
     }
     return(data_set)})
-  
+
   #fill colors
   quantcolors <- reactive({
     # Color pallete for SSS
@@ -116,8 +116,8 @@ server <- function(input, output, session) {
     if(input$select_state != 'No Selection'){
       return(colorBin("Purples", update_dataset()$per_below_sss_puma,bins=8 ,pretty = TRUE))}
     })
-  
-    
+
+
   #get the % of below sss when the a state were chosen
   output$below_sss <- renderText({
     if(input$select_state != 'No Selection'){
@@ -135,7 +135,7 @@ server <- function(input, output, session) {
       paste0('')
     }}
   })
-  
+
   #get the % of below poverty when the polygon were chosen
   output$below_poverty <- renderText({
     if(input$select_state != 'No Selection'){
@@ -154,13 +154,13 @@ server <- function(input, output, session) {
     }
   })
 
-  
-  
+
+
 #######################################################
   # set empty click container
   data_of_click <- reactiveValues(clickedMarker = NULL, clickedGeography = NULL)
-  
-  #### layer click #### 
+
+  #### layer click ####
   # Geography click
   observeEvent(input$main_map_shape_click, {
     data_of_click$clickedGeography <- input$main_map_shape_click
@@ -186,8 +186,8 @@ server <- function(input, output, session) {
                      color = "black",
                      group = "puma")
     }
-    
-    
+
+
   })
   # return puma information for the upper right pad
   output$puma_infor <- renderText({
@@ -199,9 +199,9 @@ server <- function(input, output, session) {
         paste0("Click on a PUMA polygon to view details.")}}
     else{
       paste0("Click on a PUMA polygon to view details.")}
-    
+
   })
-  # return puma name for the upper right pad after clicking 
+  # return puma name for the upper right pad after clicking
   output$puma_name <- renderText({
     if(!is.null(data_of_click$clickedGeography$id)){
       if(nchar(data_of_click$clickedGeography$id)>3){
@@ -215,7 +215,7 @@ server <- function(input, output, session) {
     else{
       paste0("")}
   })
-  # return puma sss % for the upper right pad after clicking 
+  # return puma sss % for the upper right pad after clicking
   output$puma_sss <- renderText({
     if(!is.null(data_of_click$clickedGeography$id)){
       if(nchar(data_of_click$clickedGeography$id)>3){
@@ -229,8 +229,8 @@ server <- function(input, output, session) {
     else{
       paste0("")}
   })
-  
-  # return puma poverty % for the top right pad after clicking 
+
+  # return puma poverty % for the top right pad after clicking
   output$puma_poverty <- renderText({
     if(!is.null(data_of_click$clickedGeography$id)){
       if(nchar(data_of_click$clickedGeography$id)>3){
@@ -319,22 +319,22 @@ server <- function(input, output, session) {
     else{
       paste0("")}
   })
-  
-######################################################  
+
+######################################################
   #obsercevent select state then draw the map.
   observeEvent(list(input$select_state),{
-    
+
     if (input$select_state == 'No Selection') {
       leafletProxy("main_map")%>%
         flyToBounds(lat1 = 50, lat2 = 30, lng1 = -70, lng2=-130)}
-    
+
     if (!is.na(input$select_state) &(input$select_state!='No Selection') ) {
       coords <- st_bbox(state_per %>% filter(NAME== input$select_state)) %>% unname
       leafletProxy("main_map") %>%
         flyToBounds(lat1 = coords[2], lat2 = coords[4], lng1 = coords[1], lng2=coords[3])}
     #draw markers
     #if(!is.null(input$select_char)){
-      
+
     #}
     leafletProxy("main_map",data = update_dataset()) %>%
       clearGroup('Polygon') %>%

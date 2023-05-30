@@ -2,7 +2,7 @@ Package: blob
 Title: A Simple S3 Class for Representing Vectors of Binary Data
         ('BLOBS')
 Version: 1.2.1
-Authors@R: 
+Authors@R:
     c(person(given = "Hadley",
              family = "Wickham",
              role = "aut"),

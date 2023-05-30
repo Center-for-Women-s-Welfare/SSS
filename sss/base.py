@@ -1,3 +1,5 @@
+"""Define the database object."""
+
 from abc import ABCMeta
 from datetime import date
 import json
@@ -7,10 +9,7 @@ import numpy as np
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm.session import sessionmaker
-from sqlalchemy import (
-    create_engine,
-    MetaData
-)
+from sqlalchemy import create_engine
 
 config_file = os.path.expanduser("~/.sss/sss_config.json")
 
@@ -34,7 +33,7 @@ def get_db_file(testing=False):
     return db_file
 
 
-class Base():
+class Base:
     """Base table object."""
 
     def __repr__(self):

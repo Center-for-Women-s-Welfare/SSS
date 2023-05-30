@@ -1,4 +1,4 @@
-"""add food column to sss
+"""add food column to sss.
 
 Revision ID: 289eea117549
 Revises: 35885c2a84ba
@@ -17,8 +17,10 @@ depends_on = None
 
 
 def upgrade() -> None:
+    """Add food column."""
     op.add_column('self_sufficiency_standard', sa.Column('food', sa.Float(), nullable=True))
 
 
 def downgrade() -> None:
+    """Remove food column."""
     op.drop_column('self_sufficiency_standard', 'food')

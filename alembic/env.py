@@ -1,5 +1,4 @@
-import glob
-import os
+"""Set up for alembic migration."""
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config

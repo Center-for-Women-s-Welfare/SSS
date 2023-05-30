@@ -1,3 +1,5 @@
+"""Test the functions that create the PUMA table."""
+
 import glob
 import os
 
@@ -6,19 +8,17 @@ from sss.puma import (
     read_puma,
     puma_crosswalk,
     puma_state_numbers_to_abbreviations,
-    new_england_state_nums
+    new_england_state_nums,
 )
 from sss.data import DATA_PATH
 
 
 def test_read_puma():
-    """ Test reading puma text files"""
+    """Test reading puma text files."""
     year = 2021
-    df = read_puma(os.path.join(
-        DATA_PATH,
-        "puma_data",
-        "puma_text",
-        "PUMSEQ10_25.txt"), year)
+    df = read_puma(
+        os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_25.txt"), year
+    )
     expected_cols = [
         "summary_level",
         "state_fips",
@@ -35,19 +35,21 @@ def test_read_puma():
         "house_number",
         "area_name",
         "year",
-        "state"]
+        "state",
+    ]
     assert expected_cols == df.columns.tolist()
     assert len(df.state_fips.unique().tolist()) == 1
     assert df.year.unique() == [year]
 
 
 def test_puma_crosswalk():
-    """ Test creating the crosswalk for WA"""
+    """Test creating the crosswalk for WA."""
     year = 2015
     crosswalk = puma_crosswalk(
         os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_53.txt"),
         year,
-        os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx"))
+        os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx"),
+    )
     expected_cols = [
         "summary_level",
         "state_fips",
@@ -60,7 +62,8 @@ def test_puma_crosswalk():
         "year",
         "population_max",
         "weight",
-        "place"]
+        "place",
+    ]
     for col in expected_cols:
         assert col in crosswalk.columns.tolist()
 
@@ -68,13 +71,14 @@ def test_puma_crosswalk():
         "King County (Seattle)",
         "King County (North)",
         "King County (East)",
-        "King County (South)"]
+        "King County (South)",
+    ]
     for place in wa_places:
         assert place in crosswalk.place.tolist()
 
 
 def test_puma_to_db(setup_and_teardown_package):
-    """ Tests columns and values to match in the database"""
+    """Test columns and values to match in the database."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
     year = 2021
@@ -91,7 +95,7 @@ def test_puma_to_db(setup_and_teardown_package):
         crosswalk = puma_crosswalk(
             os.path.join(DATA_PATH, "puma_data", "puma_text", f"PUMSEQ10_{num}.txt"),
             year,
-            os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx")
+            os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx"),
         )
         result = session.query(PUMA).filter(PUMA.state == state).all()
         expected = {}
@@ -116,7 +120,7 @@ def test_puma_to_db(setup_and_teardown_package):
                 place=crosswalk.loc[i, "place"],
                 population=int(crosswalk.loc[i, "population"]),
                 weight=crosswalk.loc[i, "weight"],
-                year=int(crosswalk.loc[i, "year"])
+                year=int(crosswalk.loc[i, "year"]),
             )
 
         for obj in result:

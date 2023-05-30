@@ -11,6 +11,5 @@ dependencies:
   - pip
   - setuptools_scm==7.0.3
   - pytest
-  - coverage 
+  - coverage
   - pytest-cov
-

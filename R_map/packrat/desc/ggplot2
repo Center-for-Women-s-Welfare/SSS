@@ -11,7 +11,7 @@ Authors@R: c(
     person("Winston", "Chang", , role = "aut",
            comment = c(ORCID = "0000-0002-1576-2126")),
     person("Lionel", "Henry", , role = "aut"),
-    person("Thomas Lin", "Pedersen", , "thomas.pedersen@rstudio.com", 
+    person("Thomas Lin", "Pedersen", , "thomas.pedersen@rstudio.com",
            role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5147-4711")),
     person("Kohske", "Takahashi", role = "aut"),
     person("Claus", "Wilke", role = "aut",
