@@ -139,8 +139,7 @@ class DeclarativeDB(DB):
     """Declarative database object -- to create database tables."""
 
     def __init__(self, testing=False):
-        db_file = get_db_file(testing=testing)
-        super(DeclarativeDB, self).__init__(Base, db_file)
+        super(DeclarativeDB, self).__init__(Base, testing=testing)
 
     def create_tables(self):
         """Create all tables."""
@@ -162,13 +161,13 @@ class AutomappedDB(DB):
     """
 
     def __init__(self, testing=False):
-        db_file = get_db_file(testing=testing)
-        super(AutomappedDB, self).__init__(automap_base(), db_file)
+        super(AutomappedDB, self).__init__(automap_base(), testing=testing)
 
         from .db_check import is_valid_database
 
         with self.sessionmaker() as session:
             if not is_valid_database(Base, session):
+                db_file = get_db_file(testing=testing)
                 raise RuntimeError(
                     "database {0} does not match expected schema".format(db_file)
                 )
