@@ -89,19 +89,15 @@ def is_valid_database(base, session):
             for column in mapper.columns:
                 # Assume normal flat column
                 if column.key not in columns:
-                    raise(
-                        ValueError,
-                        f"Model {klass} declares column {column.key} which does not "
-                        "exist in database {engine}",
+                    raise ValueError(
+                        f"Model {klass} declares column {column.key} which "
+                        f"does not exist in database {engine}",
                     )
                     errors = True
         else:
-            raise(
-                ValueError,
-                "Model %s declares table %s which does not exist in database %s",
-                klass,
-                table,
-                engine,
+            raise ValueError(
+                f"Model {klass} declares column {column.key} which does not "
+                f"exist in database {engine}",
             )
             errors = True
 
