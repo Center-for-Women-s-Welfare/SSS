@@ -95,8 +95,8 @@ def is_valid_database(base, session):
                     )
                     errors = True
         else:
-            raise ValueError(
-                f"Model {klass} declares column {column.key} which does not "
+            raise 
+                f"Model {klass} declares table {table} which does not "
                 f"exist in database {engine}",
             )
             errors = True
