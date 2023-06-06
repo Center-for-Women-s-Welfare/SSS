@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Scipt for creating the primary table."""
+"""Script for creating the primary table."""
 
 import argparse
 

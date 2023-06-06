@@ -1,12 +1,12 @@
-"""Clean and read SSS data files to be used in the database."""
-import glob
-import os
+"""Clean SSS data files to be used in sss_table.py."""
 import re
 
 
 # std_col_names is to standardlize the column names in the columns
 def std_col_names(pd_dataframe):
     """
+    Standardizes the columns of the Pandas dataframe.
+
     Standardizes the columns of the Pandas dataframe.
 
     Specifically, this function cleans up column names by removing

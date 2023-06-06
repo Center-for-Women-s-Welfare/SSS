@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Script for creating the tables."""
+"""Script for entering data into geoid table."""
 
 import argparse
 from sss.geoid import geoid_to_db

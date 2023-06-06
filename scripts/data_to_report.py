@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Script for creating the tables."""
+"""Script for entering data to the report table."""
 
 import argparse
 from sss.report import report_to_db
