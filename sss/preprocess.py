@@ -1,5 +1,7 @@
 """Clean SSS data files to be used in sss_table.py."""
+import glob
 import re
+import os
 
 
 # std_col_names is to standardlize the column names in the columns
