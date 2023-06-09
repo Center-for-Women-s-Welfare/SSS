@@ -107,8 +107,8 @@ def geo_identifier_creator(county_table, cpi_table):
             )
     except Exception as err:
         raise ValueError from err(
-            'Cannot merge, please check the two columns are named as \
-                "state_alpha" and "USPS Abbreviation"'
+            "Cannot merge, please check the two columns are named as "
+            "'state_alpha' and 'USPS Abbreviation'"
         )
     if df_combine.duplicated(["state", "place"]).sum() > 0:
         places = df_combine.loc[
