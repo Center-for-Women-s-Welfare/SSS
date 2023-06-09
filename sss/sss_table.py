@@ -18,9 +18,8 @@ from sqlalchemy import (
     delete,
 )
 
-from . import preprocess 
-from .base import Base, AutomappedDB
-from .base import default_db_file
+from . import preprocess
+from .base import AutomappedDB, Base, get_db_file
 
 
 # create class
@@ -327,8 +326,9 @@ def check_extra_columns(df):
         # updates anaylisis_type if arpa columns found
         df['analysis_type'] = 'ARPA'
         arpa = df[['family_type', 'state', 'place', 'year', 'analysis_type']]
-        for i in arpa_columns:
-            arpa = pd.concat([arpa, df[i]], axis=1)
+        for col in arpa_columns:
+            arpa = pd.concat([arpa, df[col]], axis=1)
+            df = df.drop(columns=col)
         df['analysis_is_secondary'] = True
     else:
         df['analysis_is_secondary'] = False
@@ -340,8 +340,10 @@ def check_extra_columns(df):
                           'analysis_type']]
         if 'out_of_pocket' in df.columns:
             health_care = pd.concat([health_care, df['out_of_pocket']], axis=1)
+            df = df.drop(columns='out_of_pocket')
         if 'premium' in df.columns:
             health_care = pd.concat([health_care, df['premium']], axis=1)
+            df = df.drop(columns='premium')
     else:
         df['health_care_is_secondary'] = False
     miscellaneous = pd.DataFrame()
@@ -352,9 +354,11 @@ def check_extra_columns(df):
         if 'broadband_and_cell_phone' in df.columns:
             miscellaneous = pd.concat([miscellaneous,
                                       df['broadband_and_cell_phone']], axis=1)
+            df = df.drop(columns='broadband_and_cell_phone')
         if 'other_necessities' in df.columns:
             miscellaneous = pd.concat([miscellaneous, df['other_necessities']],
                                       axis=1)
+            df = df.drop(columns='other_necessities')
     else:
         df['miscellaneous_is_secondary'] = False
 
@@ -407,7 +411,8 @@ def prepare_for_database(df):
     df.reset_index(inplace=True, drop=True)
     return df
 
-def data_folder_to_database(data_path, db_file=default_db_file):
+
+def data_folder_to_database(data_path, testing=False):
     """
     Reads path of the data, adds data to SQL table
 
@@ -421,16 +426,13 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     ----------
     data_folder : str
         path name of the folder or file that we want to read into the database
-    db_file : str
-        database file name, ends with '.sqlite'.
+    testing : bool
+        If true, use the testing database rather than the default database
 
     """
-    if os.path.isfile(data_path):
-        data_files = [data_path]
-    elif os.path.isdir(data_path):
-        data_files = glob.glob(os.path.join(data_path, "*.xls*"))
-    else:
-        raise ValueError("data_folder must be a file or folder on this system")
+    data_files = preprocess.data_path_to_file_list(data_path, extension_match="xls*")
+
+    db_file = get_db_file(testing=testing)
 
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
@@ -471,8 +473,7 @@ def data_folder_to_database(data_path, db_file=default_db_file):
     session.close()
 
 
-
-def remove_state_year(state, year, db_file=default_db_file):
+def remove_state_year(state, year, testing=False):
     """
     Remove rows for a specific state and year.
 
@@ -482,13 +483,17 @@ def remove_state_year(state, year, db_file=default_db_file):
         The state to remove from live database.
     year : int
         The year to remove from live database.
-    
+    testing : bool
+        If true, use the testing database rather than the default database
+
     """
     if not isinstance(state, str):
         raise ValueError("State must be a string")
     if not isinstance(year, int):
         raise ValueError("Year must be a integer")
-    
+
+    db_file = get_db_file(testing=testing)
+
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
 
@@ -505,4 +510,93 @@ def remove_state_year(state, year, db_file=default_db_file):
     for statement in [statement_sss, statement_arpa, statement_misc, statement_hc]:
         session.execute(statement)
     session.commit()
-    
+    session.close()
+
+
+def update_columns(data_path, columns=None, testing=False):
+    """
+    Updates the specified columns using data in the data_path.
+
+    Read in the data from the data_path and update only the specified columns.
+    Assumes that the rows for this data already exist in the database.
+
+    Parameters
+    ----------
+    data_path : str
+        path name of the folder or file that we want to read into the database
+    columns : list of str
+        List of column names to update
+    testing : bool
+        If true, use the testing database rather than the default database
+
+    """
+    data_files = preprocess.data_path_to_file_list(data_path, extension_match="xls*")
+
+    if len(data_files) == 0:
+        raise ValueError(f"No data files identified in {data_path}")
+
+    pk_cols = ["family_type", "state", "place", "year", "analysis_type"]
+
+    if isinstance(columns, str):
+        columns = [columns]
+
+    for col in columns:
+        if col in pk_cols:
+            raise ValueError("Cannot update a primary key column.")
+
+    db_file = get_db_file(testing=testing)
+
+    db = AutomappedDB(db_file)
+    session = db.sessionmaker()
+
+    for file in data_files:
+        df, _ = read_file(file)
+        df, arpa, health_care, miscellaneous = check_extra_columns(df)
+        df = prepare_for_database(df)
+
+        main_columns = []
+        arpa_cols = []
+        health_care_cols = []
+        miscellaneous_cols = []
+        for col in columns:
+            if col in df.columns:
+                main_columns.append(col)
+            elif not arpa.empty and col in arpa.columns:
+                arpa_cols.append(col)
+            elif not health_care.empty and col in health_care.columns:
+                health_care_cols.append(col)
+            elif not miscellaneous.empty and col in miscellaneous.columns:
+                miscellaneous_cols.append(col)
+
+        if len(main_columns) > 0:
+            cols_to_keep = pk_cols + main_columns
+            cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
+            df.drop(columns=cols_to_drop, inplace=True)
+
+            session.bulk_update_mappings(SSS, df.to_dict('records'))
+            session.commit()
+
+        if len(arpa_cols) > 0:
+            cols_to_keep = pk_cols + arpa_cols
+            cols_to_drop = [col for col in arpa.columns if col not in cols_to_keep]
+            arpa.drop(columns=cols_to_drop, inplace=True)
+
+            session.bulk_update_mappings(ARPA, arpa.to_dict('records'))
+            session.commit()
+
+        if len(health_care_cols) > 0:
+            cols_to_keep = pk_cols + health_care_cols
+            cols_to_drop = [col for col in health_care.columns if col not in cols_to_keep]
+            health_care.drop(columns=cols_to_drop, inplace=True)
+
+            session.bulk_update_mappings(HealthCare, health_care.to_dict('records'))
+            session.commit()
+
+        if len(miscellaneous_cols) > 0:
+            cols_to_keep = pk_cols + miscellaneous_cols
+            cols_to_drop = [col for col in miscellaneous.columns if col not in cols_to_keep]
+            miscellaneous.drop(columns=cols_to_drop, inplace=True)
+
+            session.bulk_update_mappings(Miscellaneous, miscellaneous.to_dict('records'))
+            session.commit()
+    session.close()

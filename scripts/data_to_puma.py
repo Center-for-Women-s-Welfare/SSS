@@ -22,11 +22,7 @@ parser.add_argument("year", type=int,
 parser.add_argument("nyc_wa_path", type=str,
                     help="Enter path name of the file with the place breakdown for NYC and WA, so the data can be entered into the PUMA table")
 
-parser.add_argument("-d", "--db_file", type=str,
-                    help="Enter the database file that the data should be put in",
-                    default=default_db_file)
-
 args = parser.parse_args()
 
 # call the function with arguments, may need to add quotation marks for arguments
-puma_to_db(args.puma_folder, args.year, args.nyc_wa_path, db_file=args.db_file)
+puma_to_db(args.puma_folder, args.year, args.nyc_wa_path)

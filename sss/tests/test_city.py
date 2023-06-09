@@ -23,7 +23,7 @@ def test_add_city():
 
 def test_city_to_db(setup_and_teardown_package):
     """ Test to see if city table was created"""
-    db, db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
 
     result = session.query(City).all()

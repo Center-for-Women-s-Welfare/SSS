@@ -1,3 +1,5 @@
+import glob
+import os
 import re
 
 
@@ -22,7 +24,7 @@ def std_col_names(pd_dataframe):
 
     """
     # if dataframe headers have parentheses and content within , replace with empty 
-    pd_dataframe.columns = [re.sub('\(.*?\)','',col) for col in pd_dataframe.columns]
+    pd_dataframe.columns = [re.sub(r'\(.*?\)','',col) for col in pd_dataframe.columns]
     # trim the column name
     pd_dataframe.columns = [col.strip().lower() for col in pd_dataframe.columns]
 
@@ -36,3 +38,26 @@ def std_col_names(pd_dataframe):
     for key in replace_dict:
         pd_dataframe.columns = [col.replace(key, replace_dict[key]) for col in pd_dataframe.columns]
     return pd_dataframe
+
+
+def data_path_to_file_list(data_path, extension_match=None):
+    """
+    Get a list of files given a data path, which can be a file or folder.
+
+    Parameters
+    ----------
+    data_path : str
+        Path name of the folder or file that we want to read into the database.
+        For folders, get all files in that folder with extensions that match
+        `extension_match`.
+    extension_match : str
+        String to use for matching extensions. For excel files, use "xls*".
+    """
+    if os.path.isfile(data_path):
+        data_files = [data_path]
+    elif os.path.isdir(data_path):
+        data_files = glob.glob(os.path.join(data_path, "*." + extension_match))
+    else:
+        raise ValueError("data_path must be a file or folder on this system")
+
+    return data_files

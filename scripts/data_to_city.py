@@ -18,12 +18,8 @@ parser.add_argument("data_path", type = str,
 parser.add_argument("year", type = int,
                     help = "Enter the year the population data was collected, so the data can be entered into the city table")
 
-parser.add_argument("-d","--db_file", type = str,
-                    help = "Enter the database file that the data should be put in",
-                    default=default_db_file)
-
 args = parser.parse_args()
 
 # call the function with arguments
-city_to_db(args.data_path, args.year, db_file=args.db_file)
+city_to_db(args.data_path, args.year)
 

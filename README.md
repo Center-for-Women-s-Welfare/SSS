@@ -32,6 +32,7 @@ following packages before installing `sss`:
 
 Required:
 
+* alembic>=1.10
 * numpy>=1.21
 * openpyxl>=3.1.0,!=3.1.1
 * pandas>=1.5.0
@@ -56,25 +57,41 @@ Alternatively, you can specify `dev` when installing sss
 (as in `pip install .[dev]`) to install the packages needed for testing
 and documentation development.
 
+## Database configuration file
+
+A configuration file, located at `~/.sss/sss_config.json`, is needed to define where the
+database file is located on your machine.
+
+It should look like the following, with `<<<path-to-dbfile>>>` replaced with the full
+path (including the file name) on your machine to the database file and
+`<<<path-to-test-dbfile>>>` replaced with the full path (including a file name) on your
+machine to a location where a test database file can be created (one reasonable option
+is a file named `test_sss.sqlite` inside the top-level folder for the sss package):
+
+```
+{
+  "default_db_file": "<<<path-to-dbfile>>>",
+  "test_db_file": "<<<path-to-test-dbfile>>>"
+}
+```
+
 ## Tests
 Uses the `pytest` package to execute test suite.
 From the source sss directory run ```pytest``` or ```python -m pytest```.
+
 
 ## Creating the Database
 In normal use, once you create the database, you will not need to do this again.
 When testing, however, you may need to delete it (just delete the sqlite file, with a
 file browser or with `rm` in a terminal) and re-make it.
 
-To create the database, use  the `create_database.py` script.
-The script takes the optional `-d` parameter for the full path where the database file
-should be created. Currently the default is to create a file called `sss.sqlite` in the
-working directory.
+To create the database, use  the `create_database.py` script, which will create a new
+database file in the location specified in your `~/.sss/sss_config.json` file.
 
 ## Inserting Data
 To insert data into the database, use the `data_to_primary.py`, `data_to_city.py` and
 `data_to_puma.py` scripts. These scripts take a file or folder containing the data to
-upload as an argument and also take the optional `-d` parameter for the full path to
-the database file (the default is a file called `sss.sqlite` in the working directory).
+upload as an argument.
 
 - The `data_to_primary.py` script will insert Self-Sufficiency
 data into the database. It takes either an excel file or folder as an argument, if a

@@ -1,5 +1,7 @@
 from abc import ABCMeta
 from datetime import date
+import json
+import os
 
 import numpy as np
 from sqlalchemy.ext.automap import automap_base
@@ -10,7 +12,26 @@ from sqlalchemy import (
     MetaData
 )
 
-default_db_file = 'sss.sqlite'
+config_file = os.path.expanduser("~/.sss/sss_config.json")
+
+
+def get_db_file(testing=False):
+    """Get the database file from the config file."""
+    with open(config_file) as f:
+        config_data = json.load(f)
+
+    if testing:
+        db_file = config_data.get("test_db_file")
+    else:
+        db_file = config_data.get("default_db_file")
+    db_file = os.path.expanduser(db_file)
+    if db_file is None:
+        raise RuntimeError(
+            "cannot get sss database file: no default_db_file "
+            f"listed in the config file: {config_file}"
+        )
+
+    return db_file
 
 
 class Base():
@@ -100,18 +121,14 @@ class DB(object, metaclass=ABCMeta):
     This ABC is only instantiated through the AutomappedDB or DeclarativeDB
     subclasses.
 
-    Parameters
-    ----------
-    db_file : str
-        Database file name, ends with '.sqlite'.
-
     """
 
     engine = None
     sessionmaker = sessionmaker()
     sqlalchemy_base = None
 
-    def __init__(self, sqlalchemy_base, db_file=default_db_file):  # noqa
+    def __init__(self, sqlalchemy_base, testing=False):  # noqa
+        db_file = get_db_file(testing=testing)
         db_url = 'sqlite:///' + db_file
         self.sqlalchemy_base = Base
         self.engine = create_engine(db_url)
@@ -119,18 +136,10 @@ class DB(object, metaclass=ABCMeta):
 
 
 class DeclarativeDB(DB):
-    """
-    Declarative database object -- to create database tables.
+    """Declarative database object -- to create database tables."""
 
-    Parameters
-    ----------
-    db_file : str
-        database file name, ends with '.sqlite'.
-
-    """
-
-    def __init__(self, db_file=default_db_file):
-        super(DeclarativeDB, self).__init__(Base, db_file)
+    def __init__(self, testing=False):
+        super(DeclarativeDB, self).__init__(Base, testing=testing)
 
     def create_tables(self):
         """Create all tables."""
@@ -149,20 +158,16 @@ class AutomappedDB(DB):
     raises an exception if the existing database does not match the schema
     defined in the SQLAlchemy initialization magic.
 
-    Parameters
-    ----------
-    db_file : str
-        database file name, ends with '.sqlite'.
-
     """
 
-    def __init__(self, db_file=default_db_file):
-        super(AutomappedDB, self).__init__(automap_base(), db_file)
+    def __init__(self, testing=False):
+        super(AutomappedDB, self).__init__(automap_base(), testing=testing)
 
         from .db_check import is_valid_database
 
         with self.sessionmaker() as session:
             if not is_valid_database(Base, session):
+                db_file = get_db_file(testing=testing)
                 raise RuntimeError(
                     "database {0} does not match expected schema".format(db_file)
                 )

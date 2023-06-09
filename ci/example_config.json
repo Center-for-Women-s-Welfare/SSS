@@ -1,0 +1,4 @@
+{
+  "default_db_file": "~/sss.sqlite",
+  "test_db_file": "~/test_sss.sqlite"
+}

@@ -1,7 +1,6 @@
 import pandas as pd
 from sqlalchemy import Column, String
-from .base import Base, AutomappedDB
-from .base import default_db_file
+from .base import Base, AutomappedDB, get_db_file
 
 
 # declare GeoID data columns and data type
@@ -108,7 +107,7 @@ def geo_identifier_creator(county_table, cpi_table):
     return df_combine
 
 
-def geoid_to_db(county_table, cpi_table, db_file=default_db_file):
+def geoid_to_db(county_table, cpi_table, testing=False):
     """
     Reads city data into data frame and insert it to database
 
@@ -118,10 +117,11 @@ def geoid_to_db(county_table, cpi_table, db_file=default_db_file):
             The path of the county table including FIPS code
     cpi_file : str
             The path of the cpi_table including cpi region
-    db_file : str
-            database file name, ends with '.sqlite'.
+    testing : bool
+        If true, use the testing database rather than the default database
 
     """
+    db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     df_geoid = geo_identifier_creator(county_table, cpi_table)

@@ -1,8 +1,6 @@
 import glob
 import os
 
-import pytest
-
 from sss.puma import (
     PUMA,
     read_puma,
@@ -77,7 +75,7 @@ def test_puma_crosswalk():
 
 def test_puma_to_db(setup_and_teardown_package):
     """ Tests columns and values to match in the database"""
-    db,  db_file = setup_and_teardown_package
+    db = setup_and_teardown_package
     session = db.sessionmaker()
     year = 2021
 
