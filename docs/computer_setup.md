@@ -175,7 +175,9 @@ you to use `wsl`).
   there by running `ls -a`.
 - run `cd .sss` to change directories into the new folder you made.
 - run `nano sss_config.json` to create a new file called `sss_config.json` and open it
-  in the nano text editor.
+  in the nano text editor. You can also make and edit this file with any other text
+  editor (e.g. vscode) but make sure it is named `sss_config.json` and it is placed in
+  the `.sss` folder nested inside your home directory.
 - edit the file to look like this, with `<<<path-to-dbfile>>>` replaced with the full
   path (including the file name) on your machine to the database file and
   `<<<path-to-test-dbfile>>>` replaced with the full path (including a file name) on your
@@ -187,7 +189,8 @@ you to use `wsl`).
 	"test_db_file": "<<<path-to-test-dbfile>>>"
 	}
 	```
-- Save the file by hitting `control o` and exit the nano editor by hitting `control x`.
+- Save the file by hitting `control o` (or maybe `control shift o` if that doesn't work)
+then hitting enter to confirm the file name and then  exit the nano editor by hitting `control x` (or maybe `control shift x`).
 
 ## Creating the database
 In normal use, once you create the database, you will not need to do this again.
