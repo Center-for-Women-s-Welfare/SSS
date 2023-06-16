@@ -17,7 +17,7 @@ def setup_and_teardown_package(tmp_path_factory):
     # then we call the create table function
     sss_declare.create_tables()
 
-    try: 
+    try:
         # we fill each table with appropriate data
         sss_table.data_folder_to_database(os.path.join(
             DATA_PATH, "sss_data"), testing=True)
@@ -66,5 +66,5 @@ def setup_and_teardown_package(tmp_path_factory):
 
         yield sss_declare
 
-    finally: 
+    finally:
         sss_declare.drop_tables()

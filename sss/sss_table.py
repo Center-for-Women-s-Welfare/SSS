@@ -12,8 +12,6 @@ from sqlalchemy import (
     delete,
 )
 
-from sss.data import DATA_PATH
-
 from . import preprocess
 from .base import AutomappedDB, Base, get_db_file
 

@@ -185,7 +185,6 @@ def test_add_column_errors(setup_and_teardown_package):
     ):
         sss_table.update_columns("foo", "food", testing=True)
 
-    
     with pytest.raises(
         ValueError, match=re.escape(f"No data files identified in {DATA_PATH}")
     ):
