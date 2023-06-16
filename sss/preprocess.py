@@ -26,7 +26,7 @@ def std_col_names(pd_dataframe):
 
     """
     # if dataframe headers have parentheses and content within , replace with empty
-    pd_dataframe.columns = [re.sub(r'\(.*?\)', '', col) for col in pd_dataframe.columns]
+    pd_dataframe.columns = [re.sub(r"\(.*?\)", "", col) for col in pd_dataframe.columns]
     # trim the column name
     pd_dataframe.columns = [col.strip().lower() for col in pd_dataframe.columns]
 

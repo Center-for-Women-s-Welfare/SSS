@@ -126,30 +126,31 @@ def add_city(path, year):
         "United States Minor Outlying Islands": "UM",
         "U.S. Virgin Islands": "VI",
     }
-    df['state'] = df['State'].map(us_state_to_abbrev)
+    df["state"] = df["State"].map(us_state_to_abbrev)
     if df.state.isna().sum() > 0:
         raise ValueError(
-            'could not find state in State value %s' % (df[df.state.isna()]['State']))
-    df['PublicTransit'] = df['PublicTransit'].astype('bool')
+            "could not find state in State value %s" % (df[df.state.isna()]["State"])
+        )
+    df["PublicTransit"] = df["PublicTransit"].astype("bool")
     df = df[
         [
-            'state',
-            'SSS_Place',
-            'SSS_City',
-            'Census_Name',
-            'POPESTIMATE2021',
-            'PublicTransit'
+            "state",
+            "SSS_Place",
+            "SSS_City",
+            "Census_Name",
+            "POPESTIMATE2021",
+            "PublicTransit",
         ]
     ]
     df.columns = [
-        'state',
-        'place',
-        'sss_city',
-        'census_name',
-        'population',
-        'public_transit'
+        "state",
+        "place",
+        "sss_city",
+        "census_name",
+        "population",
+        "public_transit",
     ]
-    df['year'] = year
+    df["year"] = year
     # drop the duplicates if the city infor is all the same
     df = df.drop_duplicates()
     df.reset_index(inplace=True, drop=True)

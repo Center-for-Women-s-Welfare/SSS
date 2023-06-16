@@ -36,4 +36,5 @@ add_one_entry_reportdb(
     args.cpi_month,
     args.cpi_year,
     args.update_date,
-    args.update_person)
+    args.update_person,
+)

@@ -322,41 +322,39 @@ def check_extra_columns(df):
     # we check whether these arpa columns are found in a file
     if set(arpa_columns).issubset(list(df.columns)):
         # updates anaylisis_type if arpa columns found
-        df['analysis_type'] = 'ARPA'
-        arpa = df[['family_type', 'state', 'place', 'year', 'analysis_type']]
+        df["analysis_type"] = "ARPA"
+        arpa = df[["family_type", "state", "place", "year", "analysis_type"]]
         for col in arpa_columns:
             arpa = pd.concat([arpa, df[col]], axis=1)
             df = df.drop(columns=col)
-        df['analysis_is_secondary'] = True
+        df["analysis_is_secondary"] = True
     else:
         df["analysis_is_secondary"] = False
 
     health_care = pd.DataFrame()
-    if ('premium' or 'out_of_pocket') in df.columns:
-        df['health_care_is_secondary'] = True
-        health_care = df[['family_type', 'state', 'place', 'year',
-                          'analysis_type']]
-        if 'out_of_pocket' in df.columns:
-            health_care = pd.concat([health_care, df['out_of_pocket']], axis=1)
-            df = df.drop(columns='out_of_pocket')
-        if 'premium' in df.columns:
-            health_care = pd.concat([health_care, df['premium']], axis=1)
-            df = df.drop(columns='premium')
+    if ("premium" or "out_of_pocket") in df.columns:
+        df["health_care_is_secondary"] = True
+        health_care = df[["family_type", "state", "place", "year", "analysis_type"]]
+        if "out_of_pocket" in df.columns:
+            health_care = pd.concat([health_care, df["out_of_pocket"]], axis=1)
+            df = df.drop(columns="out_of_pocket")
+        if "premium" in df.columns:
+            health_care = pd.concat([health_care, df["premium"]], axis=1)
+            df = df.drop(columns="premium")
     else:
         df["health_care_is_secondary"] = False
     miscellaneous = pd.DataFrame()
-    if ('other_necessities' or 'broadband_and_cell_phone') in df.columns:
-        df['miscellaneous_is_secondary'] = True
-        miscellaneous = df[['family_type', 'state', 'place', 'year',
-                            'analysis_type']]
-        if 'broadband_and_cell_phone' in df.columns:
-            miscellaneous = pd.concat([miscellaneous,
-                                      df['broadband_and_cell_phone']], axis=1)
-            df = df.drop(columns='broadband_and_cell_phone')
-        if 'other_necessities' in df.columns:
-            miscellaneous = pd.concat([miscellaneous, df['other_necessities']],
-                                      axis=1)
-            df = df.drop(columns='other_necessities')
+    if ("other_necessities" or "broadband_and_cell_phone") in df.columns:
+        df["miscellaneous_is_secondary"] = True
+        miscellaneous = df[["family_type", "state", "place", "year", "analysis_type"]]
+        if "broadband_and_cell_phone" in df.columns:
+            miscellaneous = pd.concat(
+                [miscellaneous, df["broadband_and_cell_phone"]], axis=1
+            )
+            df = df.drop(columns="broadband_and_cell_phone")
+        if "other_necessities" in df.columns:
+            miscellaneous = pd.concat([miscellaneous, df["other_necessities"]], axis=1)
+            df = df.drop(columns="other_necessities")
     else:
         df["miscellaneous_is_secondary"] = False
 
@@ -569,7 +567,7 @@ def update_columns(data_path, columns=None, testing=False):
             cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
             df.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(SSS, df.to_dict('records'))
+            session.bulk_update_mappings(SSS, df.to_dict("records"))
             session.commit()
 
         if len(arpa_cols) > 0:
@@ -577,22 +575,28 @@ def update_columns(data_path, columns=None, testing=False):
             cols_to_drop = [col for col in arpa.columns if col not in cols_to_keep]
             arpa.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(ARPA, arpa.to_dict('records'))
+            session.bulk_update_mappings(ARPA, arpa.to_dict("records"))
             session.commit()
 
         if len(health_care_cols) > 0:
             cols_to_keep = pk_cols + health_care_cols
-            cols_to_drop = [col for col in health_care.columns if col not in cols_to_keep]
+            cols_to_drop = [
+                col for col in health_care.columns if col not in cols_to_keep
+            ]
             health_care.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(HealthCare, health_care.to_dict('records'))
+            session.bulk_update_mappings(HealthCare, health_care.to_dict("records"))
             session.commit()
 
         if len(miscellaneous_cols) > 0:
             cols_to_keep = pk_cols + miscellaneous_cols
-            cols_to_drop = [col for col in miscellaneous.columns if col not in cols_to_keep]
+            cols_to_drop = [
+                col for col in miscellaneous.columns if col not in cols_to_keep
+            ]
             miscellaneous.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(Miscellaneous, miscellaneous.to_dict('records'))
+            session.bulk_update_mappings(
+                Miscellaneous, miscellaneous.to_dict("records")
+            )
             session.commit()
     session.close()

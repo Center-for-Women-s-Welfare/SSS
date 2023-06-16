@@ -89,15 +89,11 @@ def test_remove_rows(setup_and_teardown_package):
     assert len(result) == 4
 
     remove_state_year("AR", 2022, testing=True)
-    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    result = session.query(SSS).filter(SSS.state == "AR").all()
     assert len(result) == 0
 
     data_folder_to_database(
-        os.path.join(
-            DATA_PATH,
-            "sss_data",
-            'AR2022_SSS_Full.xlsx'),
-        testing=True
+        os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx"), testing=True
     )
     result = session.query(SSS).filter(SSS.state == "AR").all()
     assert len(result) == 4
@@ -110,7 +106,7 @@ def test_remove_rows(setup_and_teardown_package):
         ["food"],
         ["food", "transportation"],
         ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
-    ]
+    ],
 )
 def test_add_column(setup_and_teardown_package, columns):
     """Test column was added."""
@@ -135,7 +131,6 @@ def test_add_column(setup_and_teardown_package, columns):
         "misc": {
             "object": Miscellaneous,
         },
-
     }
 
     for _, meta_dict in table_dict.items():
@@ -153,7 +148,7 @@ def test_add_column(setup_and_teardown_package, columns):
 
             for col in meta_dict["col_list"]:
                 update_dict = {col: None}
-                statement = (update(meta_dict["object"]).values(update_dict))
+                statement = update(meta_dict["object"]).values(update_dict)
                 session.execute(statement)
                 session.commit()
 

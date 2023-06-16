@@ -19,8 +19,9 @@ def setup_and_teardown_package(tmp_path_factory):
 
     try:
         # we fill each table with appropriate data
-        sss_table.data_folder_to_database(os.path.join(
-            DATA_PATH, "sss_data"), testing=True)
+        sss_table.data_folder_to_database(
+            os.path.join(DATA_PATH, "sss_data"), testing=True
+        )
 
         # fill city table
         city.city_to_db(
@@ -28,7 +29,8 @@ def setup_and_teardown_package(tmp_path_factory):
                 DATA_PATH, "city_data", "2020_PopulationDatabyCity_20220804_Ama.xlsx"
             ),
             2021,
-            testing=True)
+            testing=True,
+        )
 
         with warnings.catch_warnings():
             warnings.filterwarnings(
@@ -37,14 +39,14 @@ def setup_and_teardown_package(tmp_path_factory):
             # fill geoid table
             geoid.geoid_to_db(
                 os.path.join(
-                    DATA_PATH,
-                    "geoid_data",
-                    "SSScounty-place-list_20220720.xlsx"),
+                    DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"
+                ),
                 os.path.join(
                     DATA_PATH,
                     "geoid_data",
-                    "StateAbbreviation_Regions_07192022_AKu.xlsx"),
-                testing=True
+                    "StateAbbreviation_Regions_07192022_AKu.xlsx",
+                ),
+                testing=True,
             )
 
         # fill puma table
@@ -52,7 +54,7 @@ def setup_and_teardown_package(tmp_path_factory):
             os.path.join(DATA_PATH, "puma_data", "puma_text"),
             2021,
             os.path.join(DATA_PATH, "puma_data", "SSSplaces_NY&WA_PUMAcode.xlsx"),
-            testing=True
+            testing=True,
         )
 
         # fill report table
@@ -60,8 +62,9 @@ def setup_and_teardown_package(tmp_path_factory):
             os.path.join(
                 DATA_PATH,
                 "report_data",
-                "Year_Type_SSS_CPI month year_20220715_DBu.xlsx"),
-            testing=True
+                "Year_Type_SSS_CPI month year_20220715_DBu.xlsx",
+            ),
+            testing=True,
         )
 
         yield sss_declare

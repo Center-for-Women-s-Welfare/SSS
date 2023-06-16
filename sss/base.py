@@ -128,7 +128,7 @@ class DB(object, metaclass=ABCMeta):
 
     def __init__(self, sqlalchemy_base, testing=False):  # noqa
         db_file = get_db_file(testing=testing)
-        db_url = 'sqlite:///' + db_file
+        db_url = "sqlite:///" + db_file
         self.sqlalchemy_base = Base
         self.engine = create_engine(db_url)
         self.sessionmaker.configure(bind=self.engine)

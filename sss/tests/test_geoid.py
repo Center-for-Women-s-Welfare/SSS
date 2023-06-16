@@ -13,14 +13,10 @@ from sss.geoid import GeoID, geo_identifier_creator
 def testgeo_identifier_creator():
     """Test to see if county_table and cpi_table are joined together."""
     geoid_df = geo_identifier_creator(
+        os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
         os.path.join(
-            DATA_PATH,
-            "geoid_data",
-            "SSScounty-place-list_20220720.xlsx"),
-        os.path.join(
-            DATA_PATH,
-            "geoid_data",
-            "StateAbbreviation_Regions_07192022_AKu.xlsx")
+            DATA_PATH, "geoid_data", "StateAbbreviation_Regions_07192022_AKu.xlsx"
+        ),
     )
     expected_cols = [
         "FIPS",
