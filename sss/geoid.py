@@ -40,7 +40,7 @@ class GeoID(Base):
 
 def geo_identifier_creator(county_table, cpi_table):
     """
-    Create geoidentifier file for database.
+    Create geoidentifier info for database.
 
     This function needs the following files:
     SSScounty-place-list_20220720.xlsx (county_table)

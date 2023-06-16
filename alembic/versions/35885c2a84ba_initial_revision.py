@@ -1,4 +1,4 @@
-"""initial revision.
+"""initial revision
 
 Revision ID: 35885c2a84ba
 Revises:
@@ -17,7 +17,6 @@ depends_on = None
 
 
 def upgrade() -> None:
-    """Create all tables for the database."""
     op.create_table(
         "arpa",
         sa.Column("family_type", sa.String(), nullable=False),
@@ -146,7 +145,6 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    """Drop all tables in the database."""
     op.drop_table("self_sufficiency_standard")
     op.drop_table("report")
     op.drop_table("puma")

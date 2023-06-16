@@ -9,8 +9,6 @@ def std_col_names(pd_dataframe):
     """
     Standardizes the columns of the Pandas dataframe.
 
-    Standardizes the columns of the Pandas dataframe.
-
     Specifically, this function cleans up column names by removing
     any characters we do not want.
 

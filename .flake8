@@ -9,7 +9,8 @@ max-line-length = 88
 docstring-convention = numpy
 per-file-ignores =
     __init__.py: F401
-    pyradiosky/tests/*:D
+    sss/tests/*:D
+    alembic/*:D
     docs/*:D,A
     setup.py:D
 rst-roles =
