@@ -13,7 +13,7 @@ from sqlalchemy import (
 )
 
 from . import preprocess
-from .base import AutomappedDB, Base, get_db_file
+from .base import AutomappedDB, Base
 
 
 # create class
@@ -428,9 +428,7 @@ def data_folder_to_database(data_path, testing=False):
     """
     data_files = preprocess.data_path_to_file_list(data_path, extension_match="xls*")
 
-    db_file = get_db_file(testing=testing)
-
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
 
     for i in data_files:
@@ -488,9 +486,7 @@ def remove_state_year(state, year, testing=False):
     if not isinstance(year, int):
         raise ValueError("Year must be a integer")
 
-    db_file = get_db_file(testing=testing)
-
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
 
     statement_sss = delete(SSS).where(SSS.year == year, SSS.state == state)
@@ -538,9 +534,7 @@ def update_columns(data_path, columns=None, testing=False):
         if col in pk_cols:
             raise ValueError("Cannot update a primary key column.")
 
-    db_file = get_db_file(testing=testing)
-
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
 
     for file in data_files:

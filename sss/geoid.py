@@ -2,7 +2,7 @@
 
 import pandas as pd
 from sqlalchemy import Column, String
-from .base import Base, AutomappedDB, get_db_file
+from .base import Base, AutomappedDB
 
 
 # declare GeoID data columns and data type
@@ -138,8 +138,7 @@ def geoid_to_db(county_table, cpi_table, testing=False):
         If true, use the testing database rather than the default database
 
     """
-    db_file = get_db_file(testing=testing)
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
     df_geoid = geo_identifier_creator(county_table, cpi_table)
     session.bulk_insert_mappings(GeoID, df_geoid.to_dict(orient="records"))
