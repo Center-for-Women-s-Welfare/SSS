@@ -14,14 +14,14 @@ programs you will be using and interacting with.
 	when users want to control their computer programmatically. Command line interfaces
 	are a much older way to interact with computers and most people are much more
 	familiar with the newer graphical user interfaces (GUIs), which allow users to
-	control their computer by using menus, options, and windows. GUIs are a fantastic 
+	control their computer by using menus, options, and windows. GUIs are a fantastic
 	way for users to interact with computers, but they do not work very well when we
 	want to start automatting complex tasks. If you want to do the same (complicated)
 	thing to dozens or hundreds of files it becomes slow, tedious and error prone to do
 	that using a GUI. For those kinds of tasks, a command line interface is much more
 	appropriate. Command line interfaces are interacted with exclusively via a keyboard
-	(they were invented before mice existed!). 
-	
+	(they were invented before mice existed!).
+
 	Note that we will use "bash", "shell", "command line" and "terminal" more or less
 	interchangeably in this documentation. There are subtle distinctions but they do
 	not matter here.
@@ -33,7 +33,7 @@ programs you will be using and interacting with.
 	on the way you start the terminal. Also, the folder that WSL considers to be your
 	"home" directory is a folder made by WSL when you initialize it, not a folder that
 	you are familiar with from the Windows side.
-	
+
 	The folder you are in at any moment is called your "current directory" or your
 	"working directory".  To figure out what directory you are in, you can run `pwd`
 	(short for "print working directory") to print out the full path to your working
@@ -65,7 +65,7 @@ programs you will be using and interacting with.
 	directory (run `ls <path_name>` by replacing `<path_name>` with the path you are
 	interested in).
 	- `pwd`: print working directory. This prints the full path to the current
-	directory you are working in. 
+	directory you are working in.
 	- `cd`: change directory. If you run this by itself, it will move you to your "home"
 	directory. If you pass either a relative or full path to it (`cd <path_name>`) you
 	will move to that path. You can confirm that you moved by running `pwd` and you can
@@ -78,15 +78,15 @@ programs you will be using and interacting with.
 	make and allows you to see all the past changes you and others have made. It also
 	makes collaboration easier by making it easy to coordinate changes by multiple
 	people. You can access the git via command line (terminal) or a desktop app that
-	has a GUI, such as GitKraken (strongly recommended!). 
+	has a GUI, such as GitKraken (strongly recommended!).
 
 - **GitHub:**
 	Github is a website that provides hosting of git repositories, the way that Google
 	Drive provides hosting of documents, and adds some very helpful collaboration tools
 	as well. It provides a centrally located, always online, access point for git
 	repositories.
-	
-- **Python:** 
+
+- **Python:**
 	Python is a programming language that prioritizes being human-readable, adaptable
 	to many kinds of problems, and easy to write quickly without careful study. It is
 	widely used in many fields and it is particularly good at making it easy to
@@ -123,7 +123,7 @@ python code).
 running `wsl` (`bash` also appears to work but may be less specific, so we encourage
 you to use `wsl`).
 
-### Setting up conda 
+### Setting up conda
 - Download miniconda from [here](https://docs.conda.io/en/latest/miniconda.html)
 	- If using Windows Subsystem for Linux on Windows, use the Linux installer
 	(the first Linux link).
@@ -145,9 +145,9 @@ you to use `wsl`).
 	exactly how the files name is spelled (including capitalization)
 	- run `source <miniconda file name>` by replacing `<miniconda file name>` with the file
 	name you found with `ls` (e.g. `source Miniconda3`)
-- Answer yes to all the questions 
+- Answer yes to all the questions
 	- Tip: press the spacebar to go through the terms and conditions more quickly
-- Clone the repository in the terminal: 
+- Clone the repository in the terminal:
 	- Change directories to your home directory by running `cd`
 	- run `git clone https://github.com/Center-for-Women-s-Welfare/SSS.git` to get the
 	repository onto your computer. This will make a folder called "SSS" with the code
@@ -254,11 +254,11 @@ inserted (this could take awhile if there are a lot of files):
 	- Type `python ./scripts/data_to_primary.py <path_name>` by
 	replacing `<path_name>` with the full path to the file you found above.
 
-	-**Troubleshooting note:** ValueError: data_folder must be a file or folder on this system. 
+	-**Troubleshooting note:** ValueError: data_folder must be a file or folder on this system.
 	Solution 1: Insert a \ in front of every space in a file pathway. Shared drives becomes Shared\ drives
 	Solution 2: If uploading several files in succession and tabbing up to get the same file path, make sure that the file type is the same.
-	If a file is saved as .xlsx and you're uploading .xlsb, you will be thwarted. 
-	
+	If a file is saved as .xlsx and you're uploading .xlsb, you will be thwarted.
+
 	- **Note:** we typically omit NYC2018_SSS_Full.xlsx and NYC2021_SSS_Full.xlsx from
 	the data folder used to fill the database because they have repeating information
 	that is already in other files.

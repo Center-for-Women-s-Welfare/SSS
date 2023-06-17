@@ -5,7 +5,7 @@ Version: 0.61
 Date: 2015-03-30
 Author: Eric Bailey
 Maintainer: Eric Bailey <ebailey@idem.in.gov>
-Description: Adds additional Twitter Bootstrap components to Shiny. 
+Description: Adds additional Twitter Bootstrap components to Shiny.
 Imports: shiny (>= 0.11), htmltools
 URL: https://ebailey78.github.io/shinyBS
 BugReports: https://github.com/ebailey78/shinyBS/issues

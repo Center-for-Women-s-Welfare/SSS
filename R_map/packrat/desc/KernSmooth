@@ -11,7 +11,7 @@ Authors@R: c(person("Matt", "Wand", role = "aut",
 Depends: R (>= 2.5.0), stats
 Suggests: MASS
 Description: Functions for kernel smoothing (and density estimation)
-  corresponding to the book: 
+  corresponding to the book:
   Wand, M.P. and Jones, M.C. (1995) "Kernel Smoothing".
 License: Unlimited
 ByteCompile: yes

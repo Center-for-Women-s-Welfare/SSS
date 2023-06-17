@@ -2,7 +2,7 @@ Type: Package
 Package: clipr
 Title: Read and Write from the System Clipboard
 Version: 0.7.0
-Authors@R: 
+Authors@R:
     c(person(given = "Matthew",
              family = "Lincoln",
              role = c("aut", "cre"),

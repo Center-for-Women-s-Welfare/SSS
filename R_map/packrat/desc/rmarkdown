@@ -67,11 +67,11 @@ Authors@R: c(
          comment = "Ionicons"),
   person(family = "Drifty", role = "cph",
          comment = "Ionicons"),
-  person("Aidan", "Lister", role = c("ctb", "cph"), 
+  person("Aidan", "Lister", role = c("ctb", "cph"),
          comment = "jQuery StickyTabs"),
-  person("Benct Philip", "Jonsson", role = c("ctb", "cph"), 
+  person("Benct Philip", "Jonsson", role = c("ctb", "cph"),
          comment = "pagebreak lua filter"),
-  person("Albert", "Krewinkel", role = c("ctb", "cph"), 
+  person("Albert", "Krewinkel", role = c("ctb", "cph"),
          comment = "pagebreak lua filter")
   )
 Maintainer: Yihui Xie <xie@yihui.name>

@@ -1,3 +1,5 @@
+"""Define the database object."""
+
 from abc import ABCMeta
 from datetime import date
 import json
@@ -7,10 +9,7 @@ import numpy as np
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm.session import sessionmaker
-from sqlalchemy import (
-    create_engine,
-    MetaData
-)
+from sqlalchemy import create_engine
 
 config_file = os.path.expanduser("~/.sss/sss_config.json")
 
@@ -34,7 +33,7 @@ def get_db_file(testing=False):
     return db_file
 
 
-class Base():
+class Base:
     """Base table object."""
 
     def __repr__(self):
@@ -129,7 +128,7 @@ class DB(object, metaclass=ABCMeta):
 
     def __init__(self, sqlalchemy_base, testing=False):  # noqa
         db_file = get_db_file(testing=testing)
-        db_url = 'sqlite:///' + db_file
+        db_url = "sqlite:///" + db_file
         self.sqlalchemy_base = Base
         self.engine = create_engine(db_url)
         self.sessionmaker.configure(bind=self.engine)

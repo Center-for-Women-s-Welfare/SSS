@@ -1,7 +1,7 @@
 Package: withr
 Title: Run Code 'With' Temporarily Modified Global State
 Version: 2.2.0
-Authors@R: 
+Authors@R:
     c(person(given = "Jim",
              family = "Hester",
              role = c("aut", "cre"),

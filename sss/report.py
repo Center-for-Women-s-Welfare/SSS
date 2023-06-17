@@ -1,11 +1,9 @@
+"""Create the report table and functions to interact with table."""
+
 from datetime import datetime
 
 import pandas as pd
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Date)
+from sqlalchemy import Column, Integer, String, Date
 
 from .base import Base, AutomappedDB, get_db_file
 
@@ -13,7 +11,7 @@ from .base import Base, AutomappedDB, get_db_file
 # declare Report data columns and data type
 class Report(Base):
     """
-    This class defines the ``report`` table.
+    Define the ``report`` table.
 
     Attributes
     ----------
@@ -32,19 +30,20 @@ class Report(Base):
     update_person : String Column
         who update the report
     """
-    __tablename__ = 'report'
-    year = Column('year', Integer, primary_key=True)
-    state = Column('state', String, primary_key=True)
-    analysis_type = Column('analysis_type', String, primary_key=True)
-    cpi_month = Column('cpi_month', String)
-    cpi_year = Column('cpi_year', Integer)
-    update_date = Column('update_date', Date)
-    update_person = Column('update_person', String)
+
+    __tablename__ = "report"
+    year = Column("year", Integer, primary_key=True)
+    state = Column("state", String, primary_key=True)
+    analysis_type = Column("analysis_type", String, primary_key=True)
+    cpi_month = Column("cpi_month", String)
+    cpi_year = Column("cpi_year", Integer)
+    update_date = Column("update_date", Date)
+    update_person = Column("update_person", String)
 
 
 def add_report(path):
     """
-    Reads report data into data frame and perprare for database report table
+    Read report data into data frame and perprare for database report table.
 
     Parameters
     ----------
@@ -58,26 +57,35 @@ def add_report(path):
 
     """
     df = pd.read_excel(path)
-    df.columns = df.columns.str.lower().str.replace(' ', '_')
+    df.columns = df.columns.str.lower().str.replace(" ", "_")
 
     # split column into meaningful column
-    df['update_person'] = df['upload_status'].str.split(' ').str[0]
-    df['update_date'] = df['upload_status'].str.split(' ').str[1]
+    df["update_person"] = df["upload_status"].str.split(" ").str[0]
+    df["update_date"] = df["upload_status"].str.split(" ").str[1]
     df["update_date"] = pd.to_datetime(df["update_date"], format="%m/%d/%y")
     # convert to datetime that sql can recognize
-    df['update_date'] = df['update_date'].map(lambda x: datetime.date(x))
-    df['year'] = df['year'].astype(int)
-    df['cpi_year'] = df['cpi_year'].astype(int)
-    df.rename(columns={'type': 'analysis_type'}, inplace=True)
+    df["update_date"] = df["update_date"].map(lambda x: datetime.date(x))
+    df["year"] = df["year"].astype(int)
+    df["cpi_year"] = df["cpi_year"].astype(int)
+    df.rename(columns={"type": "analysis_type"}, inplace=True)
     # Note: there are some columns has no names (e.g. unnamed: 1)
-    df = df[['year', 'state', 'analysis_type', 'cpi_month',
-             'cpi_year', 'update_date', 'update_person']]
+    df = df[
+        [
+            "year",
+            "state",
+            "analysis_type",
+            "cpi_month",
+            "cpi_year",
+            "update_date",
+            "update_person",
+        ]
+    ]
     return df
 
 
 def report_to_db(path, testing=False):
     """
-    Insert report file to the report table in the db
+    Insert report file to the report table.
 
     The report file is named
     "Year_Type_SSS_CPI month year_20220715_DBu.xlsx"
@@ -110,7 +118,7 @@ def add_one_entry_reportdb(
     testing=False,
 ):
     """
-    This function inserts one record into report table
+    Insert one record into report table.
 
     Parameters
     ----------
@@ -135,13 +143,15 @@ def add_one_entry_reportdb(
     db_file = get_db_file(testing=testing)
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
-    new_record = Report(year=int(year),
-                        state=str(state),
-                        analysis_type=str(analysis_type),
-                        cpi_month=str(cpi_month),
-                        cpi_year=int(cpi_year),
-                        update_date=update_date,
-                        update_person=str(update_person))
+    new_record = Report(
+        year=int(year),
+        state=str(state),
+        analysis_type=str(analysis_type),
+        cpi_month=str(cpi_month),
+        cpi_year=int(cpi_year),
+        update_date=update_date,
+        update_person=str(update_person),
+    )
     # add to db
     session.add(new_record)
     session.commit()
@@ -155,7 +165,7 @@ def delete_one_entry_reportdb(
     testing=False,
 ):
     """
-    This deletes one record. In case some records were insert accidentally.
+    Delete one report entry.
 
     Parameters
     ----------
@@ -173,9 +183,10 @@ def delete_one_entry_reportdb(
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
     # delete the records that meets criteria
-    session.query(Report).filter(Report.year == year,
-                                 Report.state == state,
-                                 Report.analysis_type == analysis_type).delete(
-                                 )
+    session.query(Report).filter(
+        Report.year == year,
+        Report.state == state,
+        Report.analysis_type == analysis_type,
+    ).delete()
     session.commit()
     session.close()

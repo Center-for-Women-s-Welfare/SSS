@@ -1,7 +1,7 @@
 Package: rvest
 Title: Easily Harvest (Scrape) Web Pages
 Version: 0.3.6
-Authors@R: 
+Authors@R:
     c(person(given = "Hadley",
              family = "Wickham",
              role = c("aut", "cre"),

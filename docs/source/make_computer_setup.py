@@ -11,7 +11,7 @@ import time
 
 
 def write_computer_setup_rst(input_file=None, write_file=None):
-    time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())
+    time_str = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
     out = (
         ".. SSS documentation compuuter setup file, created by\n"
         f"   make_computer_setup.py on {time_str}\n\n"

@@ -1,10 +1,4 @@
-"""
-Code to define and interact with tables for SSS data.
-
-"""
-
-import glob
-import os
+"""Code to define and interact with tables for SSS data."""
 
 import numpy as np
 import pandas as pd
@@ -25,7 +19,7 @@ from .base import AutomappedDB, Base, get_db_file
 # create class
 class SSS(Base):
     """
-    This class defines the ``self_sufficiency_standard`` table.
+    Defines the ``self_sufficiency_standard`` table.
 
     Attributes
     ----------
@@ -88,51 +82,44 @@ class SSS(Base):
        Value represents whether there is a table breakdown of ARPA.
 
     """
-    __tablename__ = 'self_sufficiency_standard'
-    family_type = Column('family_type', String, primary_key=True)
-    state = Column('state', String, primary_key=True)
-    place = Column('place', String, primary_key=True)
-    year = Column('year', Integer, primary_key=True)
-    analysis_type = Column('analysis_type', String, primary_key=True)
-    adult = Column('adult', Integer)
-    infant = Column('infant', Integer)
-    preschooler = Column('preschooler', Integer)
-    schoolager = Column('schoolager', Integer)
-    teenager = Column('teenager', Integer)
-    weighted_child_count = Column('weighted_child_count', Integer)
-    housing = Column('housing', Float)
-    child_care = Column('child_care', Float)
-    food = Column('food', Float)
-    transportation = Column('transportation', Float)
-    health_care = Column('health_care', Float)
-    miscellaneous = Column('miscellaneous', Float)
-    taxes = Column('taxes', Float)
-    earned_income_tax_credit = Column('earned_income_tax_credit', Float)
-    child_care_tax_credit = Column('child_care_tax_credit', Float)
-    child_tax_credit = Column('child_tax_credit', Float)
-    hourly_self_sufficiency_wage = Column(
-        'hourly_self_sufficiency_wage', Float)
-    monthly_self_sufficiency_wage = Column(
-        'monthly_self_sufficiency_wage', Float)
-    annual_self_sufficiency_wage = Column(
-        'annual_self_sufficiency_wage', Float)
-    emergency_savings = Column('emergency_savings', Float)
-    miscellaneous_is_secondary = Column(
-        'miscellaneous_is_secondary', Boolean
-    )
-    health_care_is_secondary = Column(
-        'health_care_is_secondary', Boolean
-    )
-    analysis_is_secondary = Column(
-        'analysis_is_secondary', Boolean
-    )
 
-    Index('idx_state', 'state')
-    Index('idx_year', "year")
+    __tablename__ = "self_sufficiency_standard"
+    family_type = Column("family_type", String, primary_key=True)
+    state = Column("state", String, primary_key=True)
+    place = Column("place", String, primary_key=True)
+    year = Column("year", Integer, primary_key=True)
+    analysis_type = Column("analysis_type", String, primary_key=True)
+    adult = Column("adult", Integer)
+    infant = Column("infant", Integer)
+    preschooler = Column("preschooler", Integer)
+    schoolager = Column("schoolager", Integer)
+    teenager = Column("teenager", Integer)
+    weighted_child_count = Column("weighted_child_count", Integer)
+    housing = Column("housing", Float)
+    child_care = Column("child_care", Float)
+    food = Column("food", Float)
+    transportation = Column("transportation", Float)
+    health_care = Column("health_care", Float)
+    miscellaneous = Column("miscellaneous", Float)
+    taxes = Column("taxes", Float)
+    earned_income_tax_credit = Column("earned_income_tax_credit", Float)
+    child_care_tax_credit = Column("child_care_tax_credit", Float)
+    child_tax_credit = Column("child_tax_credit", Float)
+    hourly_self_sufficiency_wage = Column("hourly_self_sufficiency_wage", Float)
+    monthly_self_sufficiency_wage = Column("monthly_self_sufficiency_wage", Float)
+    annual_self_sufficiency_wage = Column("annual_self_sufficiency_wage", Float)
+    emergency_savings = Column("emergency_savings", Float)
+    miscellaneous_is_secondary = Column("miscellaneous_is_secondary", Boolean)
+    health_care_is_secondary = Column("health_care_is_secondary", Boolean)
+    analysis_is_secondary = Column("analysis_is_secondary", Boolean)
+
+    Index("idx_state", "state")
+    Index("idx_year", "year")
+
 
 class ARPA(Base):
     """
-    This class defines the ``arpa`` table.
+    Define the ``arpa`` table.
 
     Attributes
     ----------
@@ -158,25 +145,26 @@ class ARPA(Base):
         An adjusted annual wage to reach self-sufficiency.
 
     """
-    __tablename__ = 'arpa'
-    family_type = Column('family_type', String, primary_key=True)
-    state = Column('state', String, primary_key=True)
-    place = Column('place', String, primary_key=True)
-    year = Column('year', Integer, primary_key=True)
-    analysis_type = Column('analysis_type', String, primary_key=True)
-    federal_and_oregon_eitc = Column('federal_and_oregon_eitc', Float)
-    federal_cdctc = Column('federal_cdctc', Float)
-    federal_income_taxes = Column('federal_income_taxes', Float)
-    payroll_taxes = Column('payroll_taxes', Float)
-    state_income_taxes = Column('state_income_taxes', Float)
-    state_sales_taxes = Column('state_sales_taxes', Float)
-    total_annual_resources = Column('total_annual_resources', Float)
+
+    __tablename__ = "arpa"
+    family_type = Column("family_type", String, primary_key=True)
+    state = Column("state", String, primary_key=True)
+    place = Column("place", String, primary_key=True)
+    year = Column("year", Integer, primary_key=True)
+    analysis_type = Column("analysis_type", String, primary_key=True)
+    federal_and_oregon_eitc = Column("federal_and_oregon_eitc", Float)
+    federal_cdctc = Column("federal_cdctc", Float)
+    federal_income_taxes = Column("federal_income_taxes", Float)
+    payroll_taxes = Column("payroll_taxes", Float)
+    state_income_taxes = Column("state_income_taxes", Float)
+    state_sales_taxes = Column("state_sales_taxes", Float)
+    total_annual_resources = Column("total_annual_resources", Float)
 
 
 # declare table columns and data type
 class HealthCare(Base):
     """
-    This class defines the ``health_care`` table.
+    Define the ``health_care`` table.
 
     Attributes
     ----------
@@ -194,6 +182,7 @@ class HealthCare(Base):
         Price that family pays for health care
 
     """
+
     __tablename__ = "health_care"
     family_type = Column("family_type", String, primary_key=True)
     state = Column("state", String, primary_key=True)
@@ -207,7 +196,7 @@ class HealthCare(Base):
 # declare table columns and data type
 class Miscellaneous(Base):
     """
-    This class defines the ``miscellaneous`` table.
+    Define the ``miscellaneous`` table.
 
     Attributes
     ----------
@@ -222,6 +211,7 @@ class Miscellaneous(Base):
     broadband_and_cell_phone : Float Column
         Cost families spend on broadband and cell phone per month.
     """
+
     __tablename__ = "miscellaneous"
     family_type = Column("family_type", String, primary_key=True)
     place = Column("place", String, primary_key=True)
@@ -234,7 +224,7 @@ class Miscellaneous(Base):
 
 def read_file(file):
     """
-    This function takes in a xls file and makes it into a pandas dataframe.
+    Read SSS data file as Pandas dataframe.
 
     As a dataframe, we read the sheet of interest (family_type).
     Then we standardize the column names
@@ -263,26 +253,28 @@ def read_file(file):
 
         # if there are two sheets, we read the sheetname that is not the notes
         if n_sheets == 2:
-            state_frame = [y for y in range(len(xl.sheet_names))
-                           if 'note' not in xl.sheet_names[y].lower()]
+            state_frame = [
+                y
+                for y in range(len(xl.sheet_names))
+                if "note" not in xl.sheet_names[y].lower()
+            ]
             df = pd.read_excel(file, sheet_name=state_frame[0])
 
         if n_sheets > 2:
-            family_frame = [sheet for sheet in xl.sheet_names
-                            if 'Fam' in sheet]
+            family_frame = [sheet for sheet in xl.sheet_names if "Fam" in sheet]
             df = pd.read_excel(file, sheet_name=family_frame[0])
 
         # call the packages from preprocess
         df = preprocess.std_col_names(df)
 
     except Exception:
-        print('This file cannot be read' + ' ' + file.split('/')[-1])
+        print("This file cannot be read" + " " + file.split("/")[-1])
     return df, file
 
 
 def check_extra_columns(df):
     """
-    Adds three boolean columns to dataframe to indicate other cost breakdowns
+    Add three boolean columns to dataframe to indicate special cost breakdowns.
 
     Specifically, this function checks if the sss dataframe contains
     additional cost breakdown for arpa, health care, and
@@ -315,59 +307,63 @@ def check_extra_columns(df):
         raise ValueError("df should be a pandas dataframe.")
 
     # these are the columns found exclusively in the arpa file
-    arpa_columns = ['federal_income_taxes', 'payroll_taxes',
-                    'state_sales_taxes', 'state_income_taxes',
-                    'federal_child_tax_credit',
-                    'federal_and_oregon_eitc', 'federal_cdctc',
-                    'oregon_wfhdc', 'total_annual_resources']
+    arpa_columns = [
+        "federal_income_taxes",
+        "payroll_taxes",
+        "state_sales_taxes",
+        "state_income_taxes",
+        "federal_child_tax_credit",
+        "federal_and_oregon_eitc",
+        "federal_cdctc",
+        "oregon_wfhdc",
+        "total_annual_resources",
+    ]
     arpa = pd.DataFrame()
     # we check whether these arpa columns are found in a file
     if set(arpa_columns).issubset(list(df.columns)):
         # updates anaylisis_type if arpa columns found
-        df['analysis_type'] = 'ARPA'
-        arpa = df[['family_type', 'state', 'place', 'year', 'analysis_type']]
+        df["analysis_type"] = "ARPA"
+        arpa = df[["family_type", "state", "place", "year", "analysis_type"]]
         for col in arpa_columns:
             arpa = pd.concat([arpa, df[col]], axis=1)
             df = df.drop(columns=col)
-        df['analysis_is_secondary'] = True
+        df["analysis_is_secondary"] = True
     else:
-        df['analysis_is_secondary'] = False
+        df["analysis_is_secondary"] = False
 
     health_care = pd.DataFrame()
-    if ('premium' or 'out_of_pocket') in df.columns:
-        df['health_care_is_secondary'] = True
-        health_care = df[['family_type', 'state', 'place', 'year',
-                          'analysis_type']]
-        if 'out_of_pocket' in df.columns:
-            health_care = pd.concat([health_care, df['out_of_pocket']], axis=1)
-            df = df.drop(columns='out_of_pocket')
-        if 'premium' in df.columns:
-            health_care = pd.concat([health_care, df['premium']], axis=1)
-            df = df.drop(columns='premium')
+    if ("premium" or "out_of_pocket") in df.columns:
+        df["health_care_is_secondary"] = True
+        health_care = df[["family_type", "state", "place", "year", "analysis_type"]]
+        if "out_of_pocket" in df.columns:
+            health_care = pd.concat([health_care, df["out_of_pocket"]], axis=1)
+            df = df.drop(columns="out_of_pocket")
+        if "premium" in df.columns:
+            health_care = pd.concat([health_care, df["premium"]], axis=1)
+            df = df.drop(columns="premium")
     else:
-        df['health_care_is_secondary'] = False
+        df["health_care_is_secondary"] = False
     miscellaneous = pd.DataFrame()
-    if ('other_necessities' or 'broadband_and_cell_phone') in df.columns:
-        df['miscellaneous_is_secondary'] = True
-        miscellaneous = df[['family_type', 'state', 'place', 'year',
-                            'analysis_type']]
-        if 'broadband_and_cell_phone' in df.columns:
-            miscellaneous = pd.concat([miscellaneous,
-                                      df['broadband_and_cell_phone']], axis=1)
-            df = df.drop(columns='broadband_and_cell_phone')
-        if 'other_necessities' in df.columns:
-            miscellaneous = pd.concat([miscellaneous, df['other_necessities']],
-                                      axis=1)
-            df = df.drop(columns='other_necessities')
+    if ("other_necessities" or "broadband_and_cell_phone") in df.columns:
+        df["miscellaneous_is_secondary"] = True
+        miscellaneous = df[["family_type", "state", "place", "year", "analysis_type"]]
+        if "broadband_and_cell_phone" in df.columns:
+            miscellaneous = pd.concat(
+                [miscellaneous, df["broadband_and_cell_phone"]], axis=1
+            )
+            df = df.drop(columns="broadband_and_cell_phone")
+        if "other_necessities" in df.columns:
+            miscellaneous = pd.concat([miscellaneous, df["other_necessities"]], axis=1)
+            df = df.drop(columns="other_necessities")
     else:
-        df['miscellaneous_is_secondary'] = False
+        df["miscellaneous_is_secondary"] = False
 
     return df, arpa, health_care, miscellaneous
 
 
 def prepare_for_database(df):
     """
-    This function takes in a pandas df and prepares it for database
+    Prepare pandas dataframe for database.
 
     Specifically, this function takes in the dataframe containing
     data for the primary table. The dataframe is prepared by
@@ -389,35 +385,35 @@ def prepare_for_database(df):
     """
     # handling some issues with certain columns
     #   (i.e., NJ 2019 has column values of "#NA")
-    df['infant'] = pd.to_numeric(df['infant'], errors='coerce')
-    df['emergency_savings'] = pd.to_numeric(
-                                df['emergency_savings'], errors='coerce')
+    df["infant"] = pd.to_numeric(df["infant"], errors="coerce")
+    df["emergency_savings"] = pd.to_numeric(df["emergency_savings"], errors="coerce")
 
     # Create a 'weighted_child_count' column from a*c* values
     #   this will take the infant count and move to this column
-    df['weighted_child_count'] = df['infant']
-    df.loc[df.loc[:, 'family_type'].isin(
-        [i for i in df['family_type']
-            if 'c' not in i]),
-            'weighted_child_count'] = np.nan
-    df.loc[df.loc[:, 'family_type'].isin(
-        [i for i in df['family_type']
-            if 'c' not in i]),
-            'infant'] = 0
+    df["weighted_child_count"] = df["infant"]
+    df.loc[
+        df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" not in i]),
+        "weighted_child_count",
+    ] = np.nan
+    df.loc[
+        df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" not in i]),
+        "infant",
+    ] = 0
 
     # removing duplicate rows
-    df = df.drop_duplicates(subset=['analysis_type', 'family_type',
-                                    'state', 'year', 'place'])
+    df = df.drop_duplicates(
+        subset=["analysis_type", "family_type", "state", "year", "place"]
+    )
     df.reset_index(inplace=True, drop=True)
     return df
 
 
 def data_folder_to_database(data_path, testing=False):
     """
-    Reads path of the data, adds data to SQL table
+    Read path of the data, add data to SQL table.
 
     Here, we are using a path that holds the data to loop through the SSS data.
-    SSS data is found here: https://selfsufficiencystandard.org/state-data/. 
+    SSS data is found here: https://selfsufficiencystandard.org/state-data/.
     We create the pandas.dataframe from the file being read.
     Then we call a previous function to add boolean columns.
     We then create the SQL table.
@@ -448,7 +444,7 @@ def data_folder_to_database(data_path, testing=False):
         df = prepare_for_database(df)
 
         # prints what file we are reading
-        print("We are processing:", file.split('/')[-1])
+        print("We are processing:", file.split("/")[-1])
 
         # we are taking the primary table df and making it into a dictionary
         df_dic = df.to_dict(orient="records")
@@ -467,7 +463,7 @@ def data_folder_to_database(data_path, testing=False):
             session.bulk_insert_mappings(Miscellaneous, miscellaneous_dict)
 
         # prints out the name of the file that has been entered to db
-        print(file.split('/')[-1], "has been entered into the database")
+        print(file.split("/")[-1], "has been entered into the database")
 
         session.commit()
     session.close()
@@ -497,15 +493,13 @@ def remove_state_year(state, year, testing=False):
     db = AutomappedDB(db_file)
     session = db.sessionmaker()
 
-    statement_sss = (delete(SSS).where(SSS.year == year, SSS.state == state))
-    statement_arpa = (delete(ARPA).where(ARPA.year == year, ARPA.state == state))
-    statement_misc = (
-        delete(Miscellaneous).where(
-            Miscellaneous.year == year, Miscellaneous.state == state
-        )
+    statement_sss = delete(SSS).where(SSS.year == year, SSS.state == state)
+    statement_arpa = delete(ARPA).where(ARPA.year == year, ARPA.state == state)
+    statement_misc = delete(Miscellaneous).where(
+        Miscellaneous.year == year, Miscellaneous.state == state
     )
-    statement_hc = (
-        delete(HealthCare).where(HealthCare.year == year, HealthCare.state == state)
+    statement_hc = delete(HealthCare).where(
+        HealthCare.year == year, HealthCare.state == state
     )
     for statement in [statement_sss, statement_arpa, statement_misc, statement_hc]:
         session.execute(statement)
@@ -515,7 +509,7 @@ def remove_state_year(state, year, testing=False):
 
 def update_columns(data_path, columns=None, testing=False):
     """
-    Updates the specified columns using data in the data_path.
+    Update the specified columns using data in the data_path.
 
     Read in the data from the data_path and update only the specified columns.
     Assumes that the rows for this data already exist in the database.
@@ -573,7 +567,7 @@ def update_columns(data_path, columns=None, testing=False):
             cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
             df.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(SSS, df.to_dict('records'))
+            session.bulk_update_mappings(SSS, df.to_dict("records"))
             session.commit()
 
         if len(arpa_cols) > 0:
@@ -581,22 +575,28 @@ def update_columns(data_path, columns=None, testing=False):
             cols_to_drop = [col for col in arpa.columns if col not in cols_to_keep]
             arpa.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(ARPA, arpa.to_dict('records'))
+            session.bulk_update_mappings(ARPA, arpa.to_dict("records"))
             session.commit()
 
         if len(health_care_cols) > 0:
             cols_to_keep = pk_cols + health_care_cols
-            cols_to_drop = [col for col in health_care.columns if col not in cols_to_keep]
+            cols_to_drop = [
+                col for col in health_care.columns if col not in cols_to_keep
+            ]
             health_care.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(HealthCare, health_care.to_dict('records'))
+            session.bulk_update_mappings(HealthCare, health_care.to_dict("records"))
             session.commit()
 
         if len(miscellaneous_cols) > 0:
             cols_to_keep = pk_cols + miscellaneous_cols
-            cols_to_drop = [col for col in miscellaneous.columns if col not in cols_to_keep]
+            cols_to_drop = [
+                col for col in miscellaneous.columns if col not in cols_to_keep
+            ]
             miscellaneous.drop(columns=cols_to_drop, inplace=True)
 
-            session.bulk_update_mappings(Miscellaneous, miscellaneous.to_dict('records'))
+            session.bulk_update_mappings(
+                Miscellaneous, miscellaneous.to_dict("records")
+            )
             session.commit()
     session.close()

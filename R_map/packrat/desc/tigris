@@ -9,7 +9,7 @@ Authors@R: c(
     )
 URL: https://github.com/walkerke/tigris
 BugReports: https://github.com/walkerke/tigris/issues
-Description: Download TIGER/Line shapefiles from the United States Census Bureau 
+Description: Download TIGER/Line shapefiles from the United States Census Bureau
     (<https://www.census.gov/geo/maps-data/data/tiger-line.html>) and load into R as 'sf' objects.
 License: MIT + file LICENSE
 LazyData: TRUE

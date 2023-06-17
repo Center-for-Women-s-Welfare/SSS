@@ -1,3 +1,4 @@
+"""Code to tests the functions used to create City table."""
 import os
 
 import pandas as pd
@@ -8,13 +9,13 @@ from sss.city import add_city
 
 
 def test_add_city():
-    """ Test if the city file is being read and formatted correctly"""
+    """Test if the city file is being read and formatted correctly."""
     test_df = add_city(
         os.path.join(
-            DATA_PATH,
-            "city_data",
-            "2020_PopulationDatabyCity_20220804_Ama.xlsx"),
-        2021)
+            DATA_PATH, "city_data", "2020_PopulationDatabyCity_20220804_Ama.xlsx"
+        ),
+        2021,
+    )
 
     assert len(test_df.index) == 4
 
@@ -22,7 +23,7 @@ def test_add_city():
 
 
 def test_city_to_db(setup_and_teardown_package):
-    """ Test to see if city table was created"""
+    """Test to see if city table was created."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
 
@@ -36,16 +37,10 @@ def test_city_to_db(setup_and_teardown_package):
     expected = {}
     df = pd.read_excel(
         os.path.join(
-            DATA_PATH,
-            "city_data",
-            "2020_PopulationDatabyCity_20220804_Ama.xlsx")
+            DATA_PATH, "city_data", "2020_PopulationDatabyCity_20220804_Ama.xlsx"
+        )
     )
-    state_dict = {
-        "Arizona": "AZ",
-        "Pennsylvania": "PA",
-        "Kansas": "KS",
-        "Oregon": "OR"
-    }
+    state_dict = {"Arizona": "AZ", "Pennsylvania": "PA", "Kansas": "KS", "Oregon": "OR"}
     for i in range(len(df)):
         expected[df.loc[i, "SSS_City"]] = City(
             state=state_dict[df.loc[i, "State"]],
@@ -53,7 +48,7 @@ def test_city_to_db(setup_and_teardown_package):
             sss_city=df.loc[i, "SSS_City"],
             census_name=df.loc[i, "Census_Name"],
             population=int(df.loc[i, "POPESTIMATE2021"]),
-            public_transit=bool(df.loc[i, "PublicTransit"])
+            public_transit=bool(df.loc[i, "PublicTransit"]),
         )
 
     for obj in result:

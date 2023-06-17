@@ -1,9 +1,11 @@
+"""Test the functions that create the SSS table."""
+
 import os
 import re
 
 import pandas as pd
 import pytest
-from sqlalchemy import update, bindparam
+from sqlalchemy import update
 
 from sss import sss_table
 from sss.data import DATA_PATH
@@ -12,12 +14,10 @@ from sss.sss_table import remove_state_year, data_folder_to_database
 
 
 def test_read_file():
-    """ Test reading file """
-    df, file = sss_table.read_file(
-        os.path.join(
-            DATA_PATH,
-            "sss_data",
-            'AR2022_SSS_Full.xlsx'))
+    """Test reading files."""
+    df, _ = sss_table.read_file(
+        os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx")
+    )
 
     expected_cols = ["family_type", "analysis_type"]
 
@@ -29,19 +29,17 @@ def test_read_file():
 
 
 def test_check_extra_columns():
-    """Test checking the extra columns: miscellaneous, health_care, analysis"""
-
+    """Test checking the extra columns: miscellaneous, health_care, analysis."""
     df, file = sss_table.read_file(
-        os.path.join(
-            DATA_PATH,
-            "sss_data",
-            'OR2021_SSS_ARPA_Full.xlsx'))
+        os.path.join(DATA_PATH, "sss_data", "OR2021_SSS_ARPA_Full.xlsx")
+    )
     df, arpa, health_care, miscellaneous = sss_table.check_extra_columns(df)
 
     columns_to_check = [
-        'miscellaneous_is_secondary',
-        'health_care_is_secondary',
-        'analysis_is_secondary']
+        "miscellaneous_is_secondary",
+        "health_care_is_secondary",
+        "analysis_is_secondary",
+    ]
 
     for col in columns_to_check:
         assert col in df.columns
@@ -51,32 +49,29 @@ def test_check_extra_columns():
 
 
 def test_check_extra_columns_error():
-    """ Test occurency of the error in checking the etxra column """
+    """Test occurency of the error in checking the etxra column."""
     with pytest.raises(ValueError, match="df should be a pandas dataframe."):
         sss_table.check_extra_columns(
-            os.path.join(
-                DATA_PATH,
-                "sss_data",
-                'AR2022_SSS_Full.xlsx'))
+            os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx")
+        )
 
 
 def test_data_folder_to_database(setup_and_teardown_package):
-    """ Test data folder to database """
+    """Test data folder to database."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
-    result = session.query(SSS).filter(SSS.state == 'FL').all()
+    result = session.query(SSS).filter(SSS.state == "FL").all()
     assert len(result) == 4
-    result = session.query(SSS).filter(
-        SSS.state == 'AZ', SSS.year == 2018).all()
+    result = session.query(SSS).filter(SSS.state == "AZ", SSS.year == 2018).all()
     assert len(result) == 4
     session.close()
 
 
 def test_columns_and_values_to_match(setup_and_teardown_package):
-    """ Test columns and values to match"""
+    """Test columns and values to match."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
-    query = session.query(SSS).filter(SSS.state == 'AL')
+    query = session.query(SSS).filter(SSS.state == "AL")
     with session.get_bind().connect() as connection:
         df = pd.read_sql(query.statement, connection)
 
@@ -87,37 +82,34 @@ def test_columns_and_values_to_match(setup_and_teardown_package):
 
 
 def test_remove_rows(setup_and_teardown_package):
-    """ Test remove rows """
+    """Test remove rows."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
-    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    result = session.query(SSS).filter(SSS.state == "AR").all()
     assert len(result) == 4
 
     remove_state_year("AR", 2022, testing=True)
-    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    result = session.query(SSS).filter(SSS.state == "AR").all()
     assert len(result) == 0
 
     data_folder_to_database(
-        os.path.join(
-            DATA_PATH,
-            "sss_data",
-            'AR2022_SSS_Full.xlsx'),
-        testing=True
+        os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx"), testing=True
     )
-    result = session.query(SSS).filter(SSS.state == 'AR').all()
+    result = session.query(SSS).filter(SSS.state == "AR").all()
     assert len(result) == 4
 
 
 @pytest.mark.parametrize(
-        "columns",
-        [
-            "food",
-            ["food"],
-            ["food", "transportation"],
-            ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
-        ]
+    "columns",
+    [
+        "food",
+        ["food"],
+        ["food", "transportation"],
+        ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
+    ],
 )
 def test_add_column(setup_and_teardown_package, columns):
+    """Test column was added."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
 
@@ -139,7 +131,6 @@ def test_add_column(setup_and_teardown_package, columns):
         "misc": {
             "object": Miscellaneous,
         },
-
     }
 
     for _, meta_dict in table_dict.items():
@@ -157,7 +148,7 @@ def test_add_column(setup_and_teardown_package, columns):
 
             for col in meta_dict["col_list"]:
                 update_dict = {col: None}
-                statement = (update(meta_dict["object"]).values(update_dict))
+                statement = update(meta_dict["object"]).values(update_dict)
                 session.execute(statement)
                 session.commit()
 
@@ -183,7 +174,7 @@ def test_add_column(setup_and_teardown_package, columns):
 
 
 def test_add_column_errors(setup_and_teardown_package):
-
+    """Test errors with new column."""
     with pytest.raises(
         ValueError, match="data_path must be a file or folder on this system"
     ):

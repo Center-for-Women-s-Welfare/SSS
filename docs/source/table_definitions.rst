@@ -50,4 +50,3 @@ City table
 ----------
 .. autoclass:: sss.City
     :members:
-

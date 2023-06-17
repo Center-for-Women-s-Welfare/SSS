@@ -1,19 +1,15 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-Script for creating the tables
-"""
+"""Script for entering data to the report table."""
 
 import argparse
 from sss.report import report_to_db
-from sss.base import default_db_file
 
-# creating parser object 
-parser = argparse.ArgumentParser(description = "Creating the report database")
+# creating parser object
+parser = argparse.ArgumentParser(description="Creating the report database")
 
 # defining arguements for the parser object
-parser.add_argument("path", type = str,
-                    help = "Enter path name of the report excel file")
+parser.add_argument("path", type=str, help="Enter path name of the report excel file")
 
 args = parser.parse_args()
 

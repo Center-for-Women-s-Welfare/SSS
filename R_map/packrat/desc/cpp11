@@ -1,7 +1,7 @@
 Package: cpp11
 Title: A C++11 Interface for R's C Interface
 Version: 0.2.1
-Authors@R: 
+Authors@R:
     c(person(given = "Jim",
              family = "Hester",
              role = c("aut", "cre"),

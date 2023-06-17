@@ -1,7 +1,7 @@
 Package: lifecycle
 Title: Manage the Life Cycle of your Package Functions
 Version: 0.2.0
-Authors@R: 
+Authors@R:
     c(
       person(given = "Lionel", family = "Henry", role = c("aut", "cre"), email = "lionel@rstudio.com"),
       person(given = "RStudio", role = "cph")

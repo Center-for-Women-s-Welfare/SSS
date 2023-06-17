@@ -1,8 +1,8 @@
 Package: ellipsis
 Version: 0.3.1
 Title: Tools for Working with ...
-Description: The ellipsis is a powerful tool for extending functions. Unfortunately 
-    this power comes at a cost: misspelled arguments will be silently ignored. 
+Description: The ellipsis is a powerful tool for extending functions. Unfortunately
+    this power comes at a cost: misspelled arguments will be silently ignored.
     The ellipsis package provides a collection of functions to catch problems
     and alert the user.
 Authors@R: c(

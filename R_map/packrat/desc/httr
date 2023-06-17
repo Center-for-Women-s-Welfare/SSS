@@ -1,7 +1,7 @@
 Package: httr
 Title: Tools for Working with URLs and HTTP
 Version: 1.4.2
-Authors@R: 
+Authors@R:
     c(person(given = "Hadley",
              family = "Wickham",
              role = c("aut", "cre"),

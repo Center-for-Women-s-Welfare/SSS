@@ -2,7 +2,7 @@ Package: isoband
 Title: Generate Isolines and Isobands from Regularly Spaced Elevation
         Grids
 Version: 0.2.2
-Authors@R: 
+Authors@R:
     c(person(given = "Claus O.",
              family = "Wilke",
              role = c("aut", "cre"),
