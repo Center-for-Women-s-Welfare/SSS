@@ -10,7 +10,7 @@ from sss.data import DATA_PATH
 
 
 @pytest.fixture(autouse=True, scope="session")
-def setup_and_teardown_package(tmp_path_factory):
+def setup_and_teardown_package():
     """Set up test db file and fill all tables."""
     sss_declare = base.DeclarativeDB(testing=True)
 

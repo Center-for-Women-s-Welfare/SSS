@@ -56,7 +56,7 @@ def testgeo_identifier_creator():
 
 @pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def test_geoid_to_db(setup_and_teardown_package):
-    """Test to see if geoid tabsle was created."""
+    """Test to see if geoid table was created."""
     db = setup_and_teardown_package
     session = db.sessionmaker()
 
