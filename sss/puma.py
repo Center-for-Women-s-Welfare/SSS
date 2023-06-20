@@ -1,6 +1,6 @@
 """Create PUMA table."""
 
-from .base import Base, AutomappedDB, get_db_file
+from .base import Base, AutomappedDB
 from . import preprocess
 
 import pandas as pd
@@ -368,8 +368,7 @@ def puma_to_db(path, year, nyc_wa_path=None, testing=False):
 
     """
     data_files = preprocess.data_path_to_file_list(path, extension_match="txt")
-    db_file = get_db_file(testing=testing)
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
     for file in data_files:
         df_puma = puma_crosswalk(file, year, nyc_wa_path)

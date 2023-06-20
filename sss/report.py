@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 from sqlalchemy import Column, Integer, String, Date
 
-from .base import Base, AutomappedDB, get_db_file
+from .base import Base, AutomappedDB
 
 
 # declare Report data columns and data type
@@ -98,8 +98,7 @@ def report_to_db(path, testing=False):
         If true, use the testing database rather than the default database
 
     """
-    db_file = get_db_file(testing=testing)
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
     df_report = add_report(path)
     session.bulk_insert_mappings(Report, df_report.to_dict(orient="records"))
@@ -140,8 +139,7 @@ def add_one_entry_reportdb(
         If true, use the testing database rather than the default database
 
     """
-    db_file = get_db_file(testing=testing)
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
     new_record = Report(
         year=int(year),
@@ -179,8 +177,7 @@ def delete_one_entry_reportdb(
         If true, use the testing database rather than the default database
 
     """
-    db_file = get_db_file(testing=testing)
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
     # delete the records that meets criteria
     session.query(Report).filter(

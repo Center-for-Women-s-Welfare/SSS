@@ -5,28 +5,6 @@ from sqlalchemy import inspect
 from sqlalchemy.exc import OperationalError
 
 
-def check_connection(session):
-    """
-    Check whether the database connection is live and responsive.
-
-    Parameters
-    ----------
-    session : SQLAlchemy session
-        Session to use to check the connection, bound to an engine.
-
-    Returns
-    -------
-    True if database responds to simple SQL query. Otherwise False.
-
-    """
-    result = True
-    try:
-        session.execute("SELECT 1")
-    except OperationalError:
-        result = False
-    return result
-
-
 def is_valid_database(base, session):
     """
     Check that the current database matches the models declared in model base.
@@ -69,6 +47,7 @@ def is_valid_database(base, session):
             iengine = inspect(engine)
 
     errors = False
+    err_msg = ""
 
     tables = iengine.get_table_names()
 
@@ -88,16 +67,16 @@ def is_valid_database(base, session):
             for column in mapper.columns:
                 # Assume normal flat column
                 if column.key not in columns:
-                    raise ValueError(
+                    err_msg = (
                         f"Model {klass} declares column {column.key} which "
-                        f"does not exist in database {engine}",
+                        f"does not exist in database {engine}"
                     )
                     errors = True
         else:
-            raise ValueError(
+            err_msg = (
                 f"Model {klass} declares table {table} which does not "
-                f"exist in database {engine}",
+                f"exist in database {engine}"
             )
             errors = True
 
-    return not errors
+    return not errors, err_msg

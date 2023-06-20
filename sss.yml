@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - alembic>=1.10
+  - coverage
   - flake8
   - ipython
   - jupyter
@@ -14,6 +15,7 @@ dependencies:
   - plotly
   - pypandoc
   - pytest
+  - pytest-cov
   - pyxlsb>=1.0.8
   - seaborn
   - setuptools_scm>=7.0.3

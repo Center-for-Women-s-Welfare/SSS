@@ -24,7 +24,7 @@ def get_db_file(testing=False):
     else:
         db_file = config_data.get("default_db_file")
     db_file = os.path.expanduser(db_file)
-    if db_file is None:
+    if db_file is None:  # pragma: no cover
         raise RuntimeError(
             "cannot get sss database file: no default_db_file "
             f"listed in the config file: {config_file}"
@@ -71,13 +71,18 @@ class Base:
                     f"right is {type(other_col)}."
                 )
                 return False
-            if isinstance(self_col, int):
+            if isinstance(self_col, bool):
+                # have to check bool before int because bool is a subclass of int
                 if self_col != other_col:
-                    print(f"column {col} is int, values are not equal")
+                    print(f"column {col} is a boolean, values are not equal")
+                    return False
+            elif isinstance(self_col, int):
+                if self_col != other_col:
+                    print(f"column {col} is an int, values are not equal")
                     return False
             elif isinstance(self_col, str):
                 if self_col != other_col:
-                    print(f"column {col} is str, values are not equal")
+                    print(f"column {col} is a str, values are not equal")
                     return False
             elif isinstance(self_col, date):
                 if self_col != other_col:
@@ -96,16 +101,13 @@ class Base:
                 if isinstance(self_col, (np.ndarray, list)):
                     if not np.allclose(self_col, other_col, atol=atol, rtol=rtol):
                         print(
-                            f"column {col} is float-like or a float-like array, "
+                            f"column {col} is a float-like array, "
                             "values are not equal"
                         )
                         return False
                 else:
                     if not np.isclose(self_col, other_col, atol=atol, rtol=rtol):
-                        print(
-                            f"column {col} is float-like or a float-like array, "
-                            "values are not equal"
-                        )
+                        print(f"column {col} is float-like, values are not equal")
                         return False
         return True
 
@@ -165,8 +167,9 @@ class AutomappedDB(DB):
         from .db_check import is_valid_database
 
         with self.sessionmaker() as session:
-            if not is_valid_database(Base, session):
+            db_valid, valid_msg = is_valid_database(Base, session)
+            if not db_valid:  # pragma: no cover
                 db_file = get_db_file(testing=testing)
                 raise RuntimeError(
-                    "database {0} does not match expected schema".format(db_file)
+                    f"Database {db_file} does not match expected schema. " + valid_msg
                 )

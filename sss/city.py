@@ -8,7 +8,7 @@ from sqlalchemy import (
     Boolean,
 )
 
-from .base import Base, AutomappedDB, get_db_file
+from .base import Base, AutomappedDB
 
 
 # declare CITY data columns and data type
@@ -173,8 +173,7 @@ def city_to_db(data_path, year, testing=False):
         If true, use the testing database rather than the default database
 
     """
-    db_file = get_db_file(testing=testing)
-    db = AutomappedDB(db_file)
+    db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
     df_city = add_city(data_path, year)
     session.bulk_insert_mappings(City, df_city.to_dict(orient="records"))

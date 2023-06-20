@@ -8,7 +8,7 @@ concurrency:
 jobs:
   tests:
     env:
-      ENV_NAME: test
+      ENV_NAME: sss_testing
       PYTHON: ${{ matrix.python-version }}
       OS: ${{ matrix.os }}
     name: Testing
