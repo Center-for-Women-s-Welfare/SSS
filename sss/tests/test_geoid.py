@@ -11,6 +11,8 @@ from sss.geoid import GeoID, geo_identifier_creator
 
 @pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def testgeo_identifier_creator():
+    # https://app.codecov.io/gh/Center-for-Women-s-Welfare/SSS/blob/main/sss%2Fgeoid.py
+    # TODO: add coverage for this function
     """Test to see if county_table and cpi_table are joined together."""
     geoid_df = geo_identifier_creator(
         os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
