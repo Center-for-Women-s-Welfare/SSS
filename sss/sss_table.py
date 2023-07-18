@@ -268,7 +268,8 @@ def read_file(file):
         df = preprocess.std_col_names(df)
 
     except Exception:
-        print("This file cannot be read" + " " + file.split("/")[-1])
+        print("This file cannot be read:" + " " + file.split("/")[-1])
+        df = None
     return df, file
 
 

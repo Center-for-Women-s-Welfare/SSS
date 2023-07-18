@@ -13,8 +13,9 @@ from sss import SSS, ARPA, Miscellaneous, HealthCare
 from sss.sss_table import remove_state_year, data_folder_to_database
 
 
-def test_read_file():
+def test_read_file(capsys):
     """Test reading files."""
+    # regular file, with multiple sheets
     df, _ = sss_table.read_file(
         os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx")
     )
@@ -26,6 +27,19 @@ def test_read_file():
 
     assert len(df.columns) == 27
     assert len(df) == 4
+
+    # read a file with just two sheets
+    df_two_sheets, _ = sss_table.read_file(
+        os.path.join(DATA_PATH, "sss_data", "FL2021_SSS_Full.xlsb")
+    )
+    assert len(df_two_sheets.columns) == 25
+    assert len(df_two_sheets) == 4
+
+    # test print statement comes out when file cannot be read
+    sss_table.read_file(os.path.join(DATA_PATH, "poverty_th.csv"))
+
+    out, _ = capsys.readouterr()
+    assert out.__contains__("This file cannot be read: poverty_th.csv")
 
 
 def test_check_extra_columns():
@@ -97,6 +111,12 @@ def test_remove_rows(setup_and_teardown_package):
     )
     result = session.query(SSS).filter(SSS.state == "AR").all()
     assert len(result) == 4
+
+    with pytest.raises(ValueError, match="State must be a string"):
+        remove_state_year(2022, 2022, testing=True)
+
+    with pytest.raises(ValueError, match="Year must be a integer"):
+        remove_state_year("AR", "2022", testing=True)
 
 
 @pytest.mark.parametrize(
