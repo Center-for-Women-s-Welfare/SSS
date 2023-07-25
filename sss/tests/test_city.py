@@ -2,6 +2,7 @@
 import os
 
 import pandas as pd
+import pytest
 
 from sss.data import DATA_PATH
 from sss.city import City
@@ -20,6 +21,21 @@ def test_add_city():
     assert len(test_df.index) == 4
 
     assert list(test_df["state"]) == ["AZ", "KS", "OR", "PA"]
+
+    with pytest.raises(
+        ValueError, match="could not find state in State value"
+    ) as exc_info:
+        add_city(
+            os.path.join(
+                DATA_PATH,
+                "city_data",
+                "2020_PopulationDatabyCity_20220804_Ama_incorrect_state_name.xlsx",
+            ),
+            2021,
+        )
+
+    assert exc_info.type is ValueError
+    assert "could not find state in State value" in exc_info.value.args[0]
 
 
 def test_city_to_db(setup_and_teardown_package):

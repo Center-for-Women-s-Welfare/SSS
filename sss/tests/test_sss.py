@@ -39,7 +39,8 @@ def test_read_file(capsys):
     sss_table.read_file(os.path.join(DATA_PATH, "poverty_th.csv"))
 
     out, _ = capsys.readouterr()
-    assert out.__contains__("This file cannot be read: poverty_th.csv")
+    assert "This file cannot be read:" in out
+    assert "poverty_th.csv" in out
 
 
 def test_check_extra_columns():

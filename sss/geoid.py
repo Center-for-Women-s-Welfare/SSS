@@ -61,7 +61,7 @@ def geo_identifier_creator(county_table, cpi_table):
     Raises
     ------
     ValueError
-        If columns are not named properly in the input files
+        If columns are not named properly in the input files, ValueError is raised
 
     """
     xl = pd.ExcelFile(county_table)
@@ -105,11 +105,11 @@ def geo_identifier_creator(county_table, cpi_table):
                 "Merge sucessful, but new rows were created due to \
                     duplications in right(CPI) table"
             )
-    except Exception as err:
-        raise ValueError from err(
+    except KeyError as err:
+        raise ValueError(
             "Cannot merge, please check the two columns are named as "
             "'state_alpha' and 'USPS Abbreviation'"
-        )
+        ) from err
     if df_combine.duplicated(["state", "place"]).sum() > 0:
         places = df_combine.loc[
             df_combine.duplicated(["state", "place"], keep=False), "place"
