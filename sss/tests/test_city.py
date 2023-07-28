@@ -22,9 +22,7 @@ def test_add_city():
 
     assert list(test_df["state"]) == ["AZ", "KS", "OR", "PA"]
 
-    with pytest.raises(
-        ValueError, match="could not find state in State value"
-    ) as exc_info:
+    with pytest.raises(ValueError, match="could not find state in State value"):
         add_city(
             os.path.join(
                 DATA_PATH,
@@ -33,9 +31,6 @@ def test_add_city():
             ),
             2021,
         )
-
-    assert exc_info.type is ValueError
-    assert "could not find state in State value" in exc_info.value.args[0]
 
 
 def test_city_to_db(setup_and_teardown_package):

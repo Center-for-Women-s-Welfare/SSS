@@ -25,14 +25,18 @@ def testgeo_identifier_creator(capsys):
     )
 
     out, _ = capsys.readouterr()
+    print(out)
     assert (
-        "Merge sucessful, but new rows were created due to \
-                    duplications in right(CPI) table"
-        in out
+        "Merge sucessful, but new rows were created due to" 
+        " duplications in right(CPI) table" in out
     )
 
     # test error message
-    with pytest.raises(Exception) as exc_info:
+    with pytest.raises(
+        ValueError,
+        match="Cannot merge, please check the two columns"
+        " are named as 'state_alpha' and 'USPS Abbreviation'",
+    ):
         geo_identifier_creator(
             os.path.join(
                 DATA_PATH,
@@ -43,12 +47,6 @@ def testgeo_identifier_creator(capsys):
                 DATA_PATH, "geoid_data", "StateAbbreviation_Regions_07192022_AKu.xlsx"
             ),
         )
-
-    assert exc_info.type == ValueError
-    assert exc_info.value.args[0] == (
-        "Cannot merge, please check the two columns"
-        + " are named as 'state_alpha' and 'USPS Abbreviation'"
-    )
 
     # test dataframe is correctly created
     geoid_df = geo_identifier_creator(

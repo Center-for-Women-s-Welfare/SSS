@@ -102,8 +102,8 @@ def geo_identifier_creator(county_table, cpi_table):
         )
         if df_combine.shape[0] != df_l.shape[0]:
             print(
-                "Merge sucessful, but new rows were created due to \
-                    duplications in right(CPI) table"
+                "Merge sucessful, but new rows were created due to "
+                "duplications in right(CPI) table"
             )
     except KeyError as err:
         raise ValueError(
