@@ -27,7 +27,7 @@ def testgeo_identifier_creator(capsys):
     out, _ = capsys.readouterr()
     print(out)
     assert (
-        "Merge sucessful, but new rows were created due to" 
+        "Merge sucessful, but new rows were created due to"
         " duplications in right(CPI) table" in out
     )
 
