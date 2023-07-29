@@ -2,6 +2,7 @@
 
 import glob
 import os
+import pytest
 
 from sss.puma import (
     PUMA,
@@ -45,6 +46,14 @@ def test_read_puma():
 def test_puma_crosswalk():
     """Test creating the crosswalk for WA."""
     year = 2015
+
+    with pytest.raises(
+        ValueError, match="Must pass the nyc_wa_path if processing NY or WA"
+    ):
+        puma_crosswalk(
+            os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_53.txt"), year
+        )
+
     crosswalk = puma_crosswalk(
         os.path.join(DATA_PATH, "puma_data", "puma_text", "PUMSEQ10_53.txt"),
         year,

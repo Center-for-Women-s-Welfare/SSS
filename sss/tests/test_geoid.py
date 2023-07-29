@@ -5,13 +5,50 @@ import os
 import pandas as pd
 import pytest
 
+
 from sss.data import DATA_PATH
 from sss.geoid import GeoID, geo_identifier_creator
 
 
 @pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
-def testgeo_identifier_creator():
+def testgeo_identifier_creator(capsys):
     """Test to see if county_table and cpi_table are joined together."""
+
+    # tests print message is created when we have duplicate rows in CPI table
+    geo_identifier_creator(
+        os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
+        os.path.join(
+            DATA_PATH,
+            "geoid_data",
+            "StateAbbreviation_Regions_07192022_AKu_duplicate_rows.xlsx",
+        ),
+    )
+
+    out, _ = capsys.readouterr()
+    print(out)
+    assert (
+        "Merge sucessful, but new rows were created due to"
+        " duplications in right(CPI) table" in out
+    )
+
+    # test error message
+    with pytest.raises(
+        ValueError,
+        match="Cannot merge, please check the two columns"
+        " are named as 'state_alpha' and 'USPS Abbreviation'",
+    ):
+        geo_identifier_creator(
+            os.path.join(
+                DATA_PATH,
+                "geoid_data",
+                "SSScounty-place-list_20220720_misnamed_column.xlsx",
+            ),
+            os.path.join(
+                DATA_PATH, "geoid_data", "StateAbbreviation_Regions_07192022_AKu.xlsx"
+            ),
+        )
+
+    # test dataframe is correctly created
     geoid_df = geo_identifier_creator(
         os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
         os.path.join(
@@ -50,6 +87,32 @@ def testgeo_identifier_creator():
     for fips in expected_fips:
         assert (
             geoid_df.loc[geoid_df["FIPS"] == fips, "state"].to_string(index=False)
+            == expected_fips[fips]
+        )
+
+    # test dataframe is correctly created with duplicates across both files
+    geoid_df_duplicate = geo_identifier_creator(
+        os.path.join(
+            DATA_PATH,
+            "geoid_data",
+            "SSScounty-place-list_20220720_duplicated_rows.xlsx",
+        ),
+        os.path.join(
+            DATA_PATH,
+            "geoid_data",
+            "StateAbbreviation_Regions_07192022_AKu_duplicate_rows.xlsx",
+        ),
+    )
+
+    assert geoid_df_duplicate.columns.tolist() == expected_cols
+
+    for fips in expected_fips:
+        assert (
+            str(
+                pd.unique(
+                    geoid_df_duplicate.loc[geoid_df_duplicate["FIPS"] == fips, "state"]
+                )[0]
+            )
             == expected_fips[fips]
         )
 
