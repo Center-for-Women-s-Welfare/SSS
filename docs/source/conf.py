@@ -22,13 +22,25 @@ release = "0.1"
 # sys.path.insert(0, os.path.abspath("../sss/"))
 readme_file = os.path.join(os.path.abspath("../../"), "README.md")
 index_file = os.path.join(os.path.abspath("../source/"), "index.rst")
-computer_setup_in = os.path.join(os.path.abspath("../"), "computer_setup.md")
-computer_setup_out = os.path.join(os.path.abspath("../source/"), "computer_setup.rst")
+
+file_base_to_convert = [
+    "computer_setup",
+    "developer_documentation",
+    "user_documentation",
+]
+doc_files_in = [
+    os.path.join(os.path.abspath("../"), fname + ".md")
+    for fname in file_base_to_convert
+]
+doc_files_out = [
+    os.path.join(os.path.abspath("../source/"), fname + ".rst")
+    for fname in file_base_to_convert
+]
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon"]
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon", "sphinx_rtd_theme"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
@@ -37,21 +49,20 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "default"
-html_static_path = ["_static"]
+html_theme = "sphinx_rtd_theme"
 
 
 def build_custom_docs(app):
     sys.path.append(os.getcwd())
     try:
         import make_index
-        import make_computer_setup
+        import make_doc_rst_files
     except BaseException:
-        from source import make_index, make_computer_setup
+        from source import make_index, make_doc_rst_files
 
     make_index.write_index_rst(readme_file=readme_file, write_file=index_file)
-    make_computer_setup.write_computer_setup_rst(
-        input_file=computer_setup_in, write_file=computer_setup_out
+    make_doc_rst_files.write_rst_files(
+        input_files=doc_files_in, write_files=doc_files_out
     )
 
 

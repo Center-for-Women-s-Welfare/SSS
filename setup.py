@@ -21,7 +21,7 @@ opts = {
         "sqlalchemy>=1.4.16",
     ],
     "extras_require": {
-        "doc": ["sphinx", "pypandoc"],
+        "doc": ["sphinx>=6.2", "sphinx_rtd_theme==1.2.2", "pypandoc"],
         "dev": ["coverage", "sphinx", "pypandoc", "pytest", "pytest-cov"],
     },
 }
