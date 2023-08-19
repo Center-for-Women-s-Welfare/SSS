@@ -72,6 +72,8 @@ instance/
 docs/_build/
 docs/source/index.rst
 docs/source/computer_setup.rst
+docs/source/developer_documentation.rst
+docs/source/user_documentation.rst
 
 # PyBuilder
 target/

@@ -12,9 +12,8 @@ Self-Sufficiency Standard data.
 
 ## Computer setup
 See directions [here](docs/computer_setup.md) for detailed instructions for users who
-are not familiar with working with bash, git and python. These instructions also cover
-installation, creating the database and adding data to the database in more detail than
-the brief sections below.
+are not familiar with working with bash, git and python. These instructions cover
+installation and setup in more detail than the brief sections below.
 
 ## Installation
 Clone this repository using
@@ -41,7 +40,7 @@ Required:
 * sqlalchemy>=1.4.16
 
 If you want to do development on sss, in addition to the other dependencies
-you will need the following packages:
+you will also need the following packages:
 
 * pytest
 * pytest-cov
@@ -57,7 +56,20 @@ Alternatively, you can specify `dev` when installing sss
 (as in `pip install .[dev]`) to install the packages needed for testing
 and documentation development.
 
-## Database configuration file
+## Tests
+Uses the `pytest` package to execute test suite.
+From the source sss directory run ```pytest``` or ```python -m pytest```.
+
+
+## Using the sss package
+
+More detailed usage descriptions are [here](docs/user_documentation.md) but brief
+descriptions are included below for the experienced user.
+
+Developers wishing to modify the code and/or database schema should see the detailed
+documentation [here](docs/developer_documentation.md)
+
+### Database configuration file
 
 A configuration file, located at `~/.sss/sss_config.json`, is needed to define where the
 database file is located on your machine.
@@ -75,12 +87,8 @@ is a file named `test_sss.sqlite` inside the top-level folder for the sss packag
 }
 ```
 
-## Tests
-Uses the `pytest` package to execute test suite.
-From the source sss directory run ```pytest``` or ```python -m pytest```.
 
-
-## Creating the Database
+### Creating the Database
 In normal use, once you create the database, you will not need to do this again.
 When testing, however, you may need to delete it (just delete the sqlite file, with a
 file browser or with `rm` in a terminal) and re-make it.
@@ -88,7 +96,7 @@ file browser or with `rm` in a terminal) and re-make it.
 To create the database, use  the `create_database.py` script, which will create a new
 database file in the location specified in your `~/.sss/sss_config.json` file.
 
-## Inserting Data
+### Inserting Data
 To insert data into the database, use the `data_to_primary.py`, `data_to_city.py` and
 `data_to_puma.py` scripts. These scripts take a file or folder containing the data to
 upload as an argument.

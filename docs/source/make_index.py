@@ -28,7 +28,17 @@ def write_index_rst(readme_file=None, write_file=None):
     # convert relative links in readme to explicit links
     readme_text = readme_text.replace(
         "`here <docs/computer_setup.md>`__",
-        ":ref:`here <comp_setup>`",
+        ":ref:`here <computer_setup>`",
+    )
+
+    readme_text = readme_text.replace(
+        "`here <docs/developer_documentation.md>`__",
+        ":ref:`here <developer_documentation>`",
+    )
+
+    readme_text = readme_text.replace(
+        "`here <docs/user_documentation.md>`__",
+        ":ref:`here <user_documentation>`",
     )
 
     # readme_text = readme_text.replace(
@@ -42,6 +52,8 @@ def write_index_rst(readme_file=None, write_file=None):
         ".. toctree::\n"
         "   :maxdepth: 1\n\n"
         "   computer_setup\n"
+        "   user_documentation\n"
+        "   developer_documentation\n"
         "   table_definitions\n"
         "   functions\n"
     )
