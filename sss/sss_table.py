@@ -210,6 +210,7 @@ class Miscellaneous(Base):
         One of our primary keys, whether the file is either a town or county.
     broadband_and_cell_phone : Float Column
         Cost families spend on broadband and cell phone per month.
+
     """
 
     __tablename__ = "miscellaneous"
@@ -222,12 +223,11 @@ class Miscellaneous(Base):
     other_necessities = Column("other_necessities", Float)
 
 
-def read_file(file):
+def read_file(file: str):
     """
-    Read SSS data file as Pandas dataframe.
+    Read SSS data file into a Pandas dataframe.
 
-    As a dataframe, we read the sheet of interest (family_type).
-    Then we standardize the column names
+    Read the sheet of interest (family_type) and standardize the column names.
 
     Parameters
     ----------
@@ -273,7 +273,7 @@ def read_file(file):
     return df, file
 
 
-def check_extra_columns(df):
+def check_extra_columns(df: pd.DataFrame):
     """
     Add three boolean columns to dataframe to indicate special cost breakdowns.
 

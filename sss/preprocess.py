@@ -63,6 +63,17 @@ def data_path_to_file_list(data_path, extension_match=None):
         `extension_match`.
     extension_match : str
         String to use for matching extensions. For excel files, use "xls*".
+
+    Returns
+    -------
+    list of str
+        The list of data files.
+
+    Raises
+    ------
+    ValueError
+        If `data_path` is not a valid file or folder.
+
     """
     if os.path.isfile(data_path):
         data_files = [data_path]

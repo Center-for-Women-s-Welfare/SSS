@@ -28,7 +28,8 @@ class Report(Base):
     update_date : Date Column
         update date
     update_person : String Column
-        who update the report
+        person who updated the report
+
     """
 
     __tablename__ = "report"

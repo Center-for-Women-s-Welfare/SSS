@@ -61,7 +61,7 @@ def geo_identifier_creator(county_table, cpi_table):
     Raises
     ------
     ValueError
-        If columns are not named properly in the input files, ValueError is raised
+        If columns are not named properly in the input files.
 
     """
     xl = pd.ExcelFile(county_table)

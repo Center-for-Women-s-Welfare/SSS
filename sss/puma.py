@@ -144,8 +144,8 @@ def read_puma(path, year):
     Returns
     -------
     pandas.datafranme
-        the returned dataframe has different levels of fips,
-        population size etc. from the puma txt file
+        A dataframe built just from the puma text file with the different levels of
+        fips, population size and other details.
 
     """
     # Please refer 2010_PUMA_Equivalency_Format_Layout to see record layouts
@@ -198,8 +198,8 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
 
     If the puma is in New England Area, use sub county(level 797)
     as sss_place(place). Otherwise the county is assigned to
-    sss_place(place). For State of Washington and New York City,
-    some puma code area names are replace by more meaningful names.
+    sss_place(place). For the states of Washington and New York City,
+    some puma code area names are replaced by more meaningful names.
 
     Parameters
     ----------
@@ -213,8 +213,13 @@ def puma_crosswalk(path, year, nyc_wa_path=None):
     Returns
     -------
     pandas.datafranme
-        the returned crosswalk dataframe has variables for database such as
-        county_fips, subcounty_fips, puma_code, population, population weight
+        A crosswalked dataframe with variables for the database including
+        county_fips, subcounty_fips, puma_code, population, and population weight.
+
+    Raises
+    ------
+    ValueError
+        If the `nyc_wa_path` is None and the `path` includes NY or WA data.
 
     """
     # read txt file into datdframe
@@ -349,10 +354,9 @@ def puma_to_db(path, year, nyc_wa_path=None, testing=False):
     """
     Put PUMA data into database.
 
-    Need the PUMA .txt files found from
-    https://www2.census.gov/geo/docs/reference/puma/.
-    The year is 2021.
-    Need the crosspath file "SSSplaces_NY&WA_PUMAcode.xlsx"
+    Requires the 2021 PUMA .txt files found from
+    https://www2.census.gov/geo/docs/reference/puma/
+    and the crosspath file "SSSplaces_NY&WA_PUMAcode.xlsx".
 
     Parameters
     ----------
