@@ -34,6 +34,7 @@ class City(Base):
         number of the population of the city
     public_transit : Boolean Column
         whether the city is public transit or not
+
     """
 
     __tablename__ = "city"
@@ -63,8 +64,9 @@ def add_city(path, year):
 
     Raises
     ------
-        ValueError
-        if the state cannot be extracted from SSS_city
+    ValueError
+        If the state cannot be extracted from SSS_city.
+
     """
     df = pd.read_excel(path)
     us_state_to_abbrev = {
