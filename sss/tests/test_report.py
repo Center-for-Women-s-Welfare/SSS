@@ -60,10 +60,6 @@ def test_report_to_db(setup_and_teardown_package):
     report_df["update_person"] = report_df["upload_status"].str.split(" ").str[0]
     report_df.update_person.replace({np.nan: None}, inplace=True)
     report_df["update_date"] = report_df["upload_status"].str.split(" ").str[1]
-    print(report_df["update_date"])
-    # report_df["update_date"] = pd.to_datetime(
-    #     report_df["update_date"], format="%m/%d/%y", dayfirst=False
-    # )
     for i in range(len(report_df)):
         try:
             report_df.loc[i, "update_date"] = pd.to_datetime(
