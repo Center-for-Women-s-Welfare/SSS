@@ -1,7 +1,7 @@
 """Test the functions that create the Report table."""
 
 import os
-import datetime
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -18,7 +18,7 @@ def test_add_report():
             DATA_PATH, "report_data", "Year_Type_SSS_CPI month year_20220715_DBu.xlsx"
         )
     )
-    assert len(report_df.index) == 7
+    assert len(report_df.index) == 8
 
     nc_row = report_df.loc[report_df["state"] == "NC"]
     nc_row = nc_row.reset_index(inplace=True)
@@ -46,7 +46,7 @@ def test_report_to_db(setup_and_teardown_package):
     session = db.sessionmaker()
 
     result = session.query(Report).all()
-    assert len(result) == 7
+    assert len(result) == 8
 
     result = session.query(Report).all()
     expected = {}
@@ -60,13 +60,20 @@ def test_report_to_db(setup_and_teardown_package):
     report_df["update_person"] = report_df["upload_status"].str.split(" ").str[0]
     report_df.update_person.replace({np.nan: None}, inplace=True)
     report_df["update_date"] = report_df["upload_status"].str.split(" ").str[1]
-    print(report_df["update_date"])
-    report_df["update_date"] = pd.to_datetime(
-        report_df["update_date"], format="%m/%d/%y", dayfirst=False
-    )
-    report_df["update_date"] = report_df["update_date"].map(
-        lambda x: datetime.datetime.date(x)
-    )
+    for i in range(len(report_df)):
+        try:
+            report_df.loc[i, "update_date"] = pd.to_datetime(
+                report_df.loc[i, "update_date"], format="%m/%d/%y"
+            )
+        except ValueError:
+            report_df.loc[i, "update_date"] = datetime.strptime(
+                report_df.loc[i, "update_date"], "%m/%d/%Y"
+            ).strftime("%m/%d/%y")
+            report_df.loc[i, "update_date"] = pd.to_datetime(
+                report_df.loc[i, "update_date"], format="%m/%d/%y"
+            )
+
+    report_df["update_date"] = report_df["update_date"].map(lambda x: datetime.date(x))
 
     for i in range(len(report_df)):
         expected[report_df.loc[i, "state"]] = Report(
@@ -94,12 +101,12 @@ def test_add_one_entry_reportdb(setup_and_teardown_package):
         "Partial",
         "April",
         2022,
-        datetime.datetime(2023, 4, 14),
+        datetime(2023, 4, 14),
         "Hector",
         testing=True,
     )
     result = session.query(Report).all()
-    assert len(result) == 8
+    assert len(result) == 9
 
 
 def test_delete_one_entry_reportdb(setup_and_teardown_package):
@@ -111,4 +118,4 @@ def test_delete_one_entry_reportdb(setup_and_teardown_package):
 
     result = session.query(Report).all()
 
-    assert len(result) == 7
+    assert len(result) == 8
