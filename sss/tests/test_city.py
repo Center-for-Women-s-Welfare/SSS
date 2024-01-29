@@ -1,4 +1,5 @@
 """Code to tests the functions used to create City table."""
+
 import os
 
 import pandas as pd

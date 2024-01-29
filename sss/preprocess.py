@@ -1,4 +1,5 @@
 """Clean SSS data files to be used in sss_table.py."""
+
 import glob
 import re
 import os
