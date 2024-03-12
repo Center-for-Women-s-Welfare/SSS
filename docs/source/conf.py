@@ -57,7 +57,7 @@ def build_custom_docs(app):
     try:
         import make_index
         import make_doc_rst_files
-    except BaseException:
+    except ModuleNotFoundError:
         from source import make_index, make_doc_rst_files
 
     make_index.write_index_rst(readme_file=readme_file, write_file=index_file)
