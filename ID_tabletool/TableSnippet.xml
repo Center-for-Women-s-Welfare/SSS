@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Table Self="ue2ifa" HeaderRowCount="1" FooterRowCount="0" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" BodyRowCount="21" ColumnCount="6" AppliedTableStyle="TableStyle/Table Style 2" TableDirection="LeftToRightDirection">
+					<Row Self="ue2ifaRow0" Name="0" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" SingleRowHeight="29.519999999999982" MinimumHeight="29.519999999999982" AutoGrow="false" />
+					<Row Self="ue2ifaRow1" Name="1" TextTopInset="4.003" TextLeftInset="4.0032" TextBottomInset="4.0032" TextRightInset="4.0032" ClipContentToTextCell="false" SingleRowHeight="33.44500000000001" MinimumHeight="33.44500000000001" />
+					<Row Self="ue2ifaRow2" Name="2" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" ClipContentToTextCell="false" SingleRowHeight="19.02" MinimumHeight="19.02" />
+					<Row Self="ue2ifaRow3" Name="3" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="14.75" MinimumHeight="14.75" />
+					<Row Self="ue2ifaRow4" Name="4" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="14.75" MinimumHeight="14.75" />
+					<Row Self="ue2ifaRow5" Name="5" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="14.75" MinimumHeight="14.75" />
+					<Row Self="ue2ifaRow6" Name="6" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="14.75" MinimumHeight="14.75" />
+					<Row Self="ue2ifaRow7" Name="7" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="14.75" MinimumHeight="14.75" />
+					<Row Self="ue2ifaRow8" Name="8" TextTopInset="4.5" TextLeftInset="4.5" TextBottomInset="4.5" TextRightInset="4.5" ClipContentToTextCell="false" SingleRowHeight="15.75" MinimumHeight="15.75" />
+					<Row Self="ue2ifaRow9" Name="9" TextTopInset="4.5" TextLeftInset="4.5" TextBottomInset="4.5" TextRightInset="4.5" ClipContentToTextCell="false" SingleRowHeight="15.75" MinimumHeight="15.75" />
+					<Row Self="ue2ifaRowa" Name="10" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRowb" Name="11" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRowc" Name="12" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRowd" Name="13" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRowe" Name="14" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRowf" Name="15" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRow10" Name="16" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="15.5" MinimumHeight="15.5" />
+					<Row Self="ue2ifaRow11" Name="17" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" ClipContentToTextCell="false" SingleRowHeight="19.02" MinimumHeight="19.02" />
+					<Row Self="ue2ifaRow12" Name="18" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="16.571250000000006" MinimumHeight="16.571250000000006" />
+					<Row Self="ue2ifaRow13" Name="19" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="16.571250000000006" MinimumHeight="16.571250000000006" />
+					<Row Self="ue2ifaRow14" Name="20" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="16.571250000000006" MinimumHeight="16.571250000000006" />
+					<Row Self="ue2ifaRow15" Name="21" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" SingleRowHeight="16.571250000000006" MinimumHeight="16.571250000000006" />
+					<Column Self="ue2ifaColumn0" Name="0" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" SingleColumnWidth="125.75" />
+					<Column Self="ue2ifaColumn1" Name="1" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" SingleColumnWidth="82.8" />
+					<Column Self="ue2ifaColumn2" Name="2" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" SingleColumnWidth="82.8" />
+					<Column Self="ue2ifaColumn3" Name="3" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" SingleColumnWidth="82.8" />
+					<Column Self="ue2ifaColumn4" Name="4" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" SingleColumnWidth="82.8" />
+					<Column Self="ue2ifaColumn5" Name="5" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" SingleColumnWidth="82.8" />
+					<Cell Self="ue2ifaia1" Name="0:0" RowSpan="1" ColumnSpan="5" CellType="TextTypeCell" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTitle" AppliedCellStylePriority="5" TopEdgeStrokeWeight="0" LeftEdgeStrokePriority="976" RightEdgeStrokePriority="153" TopEdgeStrokePriority="976" BottomEdgeStrokePriority="975">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTitle.Table.Appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content> The Self-Sufficiency Standard for </Content>
+							</CharacterStyleRange>
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Bold">
+								<Content>Allegany County</Content>
+							</CharacterStyleRange>
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>, MD 2023</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai8d" Name="5:0" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTitle" AppliedCellStylePriority="5" TopEdgeStrokeWeight="0" TopEdgeStrokePriority="976" BottomEdgeStrokePriority="975">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTitle.Table.Appendix" DropcapDetail="0" TreatIdeographicSpaceAsSpace="false" ParagraphBorderTopLeftCornerRadius="1" ParagraphBorderTopRightCornerRadius="1" ParagraphBorderBottomLeftCornerRadius="1" ParagraphBorderBottomRightCornerRadius="1" ParagraphShadingTopLeftCornerRadius="1" ParagraphShadingTopRightCornerRadius="1" ParagraphShadingBottomLeftCornerRadius="1" ParagraphShadingBottomRightCornerRadius="1">
+							<Properties>
+								<ParagraphBorderGapColor type="object">Swatch/None</ParagraphBorderGapColor>
+							</Properties>
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]" FillColor="Color/C=98 M=70 Y=22 K=6" FontStyle="Semibold" PointSize="11" KerningMethod="$ID/Optical" Tracking="0" Capitalization="Normal" FillTint="100">
+								<Properties>
+									<Leading type="unit">12</Leading>
+								</Properties>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai9" Name="0:1" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4.003" TextLeftInset="4.0032" TextBottomInset="4.0032" TextRightInset="4.0032" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aColumn Header L1" AppliedCellStylePriority="35" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="978" TopEdgeStrokePriority="979" BottomEdgeStrokePriority="970">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L1">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]" />
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaia" Name="1:1" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aColumn Header L2 - Appendix" AppliedCellStylePriority="71" LeftInset="1.44" TopInset="2.16" RightInset="1.44" BottomInset="2.16" LeftEdgeStrokePriority="978" RightEdgeStrokePriority="977" TopEdgeStrokePriority="979" BottomEdgeStrokePriority="970">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>1 Adult</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaib" Name="2:1" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aColumn Header L2 - Appendix" AppliedCellStylePriority="71" LeftInset="1.44" TopInset="2.16" RightInset="1.44" BottomInset="2.16" LeftEdgeStrokePriority="977" RightEdgeStrokePriority="977" TopEdgeStrokePriority="979" BottomEdgeStrokePriority="970">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>1 Adult</Content>
+								<Br />
+								<Content>1 Preschooler</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaic" Name="3:1" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aColumn Header L2 - Appendix" AppliedCellStylePriority="71" LeftInset="1.44" TopInset="2.16" RightInset="1.44" BottomInset="2.16" LeftEdgeStrokePriority="977" RightEdgeStrokePriority="977" TopEdgeStrokePriority="979" BottomEdgeStrokePriority="970">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>1 Adult</Content>
+								<Br />
+								<Content>1 Infant</Content>
+								<Br />
+								<Content>1 Preschooler</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaid" Name="4:1" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aColumn Header L2 - Appendix" AppliedCellStylePriority="71" LeftInset="1.44" TopInset="2.16" RightInset="1.44" BottomInset="2.16" LeftEdgeStrokePriority="977" RightEdgeStrokePriority="977" TopEdgeStrokePriority="979" BottomEdgeStrokePriority="970">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>1 Adult</Content>
+								<Br />
+								<Content>1 Preschooler</Content>
+								<Br />
+								<Content>1 School-age</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai7b" Name="5:1" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="2.16" TextLeftInset="1.44" TextBottomInset="2.16" TextRightInset="1.44" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aColumn Header L2 - Appendix" AppliedCellStylePriority="73" LeftInset="1.44" TopInset="2.16" RightInset="1.44" BottomInset="2.16" LeftEdgeStrokePriority="977" RightEdgeStrokePriority="977" TopEdgeStrokePriority="979" BottomEdgeStrokePriority="998">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>1 Adult</Content>
+								<Br />
+								<Content>1 Preschooler</Content>
+								<Br />
+								<Content>1 School-age</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai8" Name="0:2" RowSpan="1" ColumnSpan="5" CellType="TextTypeCell" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L1" AppliedCellStylePriority="72" RightEdgeStrokeWeight="0" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="1" TopEdgeStrokePriority="970" BottomEdgeStrokePriority="970">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H1">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Monthly Costs</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai72" Name="5:2" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L1" AppliedCellStylePriority="72" LeftEdgeStrokeWeight="0" RightEdgeStrokeWeight="0" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="998" RightEdgeStrokePriority="998" TopEdgeStrokePriority="998" BottomEdgeStrokePriority="998">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H1">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]" />
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai12" Name="0:3" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="979" TopEdgeStrokePriority="970" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Housing</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai13" Name="1:3" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="34" BottomEdgeStrokePriority="129">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$670 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai14" Name="2:3" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" RightEdgeStrokeTint="100" TopEdgeStrokeTint="100" RightEdgeStrokePriority="966" TopEdgeStrokePriority="970" BottomEdgeStrokePriority="130">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$839 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai15" Name="3:3" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" TopEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="970" BottomEdgeStrokePriority="130">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$839 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai16" Name="4:3" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" TopEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="970" BottomEdgeStrokePriority="130">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$839 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaid1" Name="5:3" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="260" TopEdgeStrokeWeight="0.5" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="998" BottomEdgeStrokePriority="130">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$839 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai1b" Name="0:4" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="979" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Child Care</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai1c" Name="1:4" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" TopEdgeStrokePriority="129" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai1d" Name="2:4" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" RightEdgeStrokeTint="100" RightEdgeStrokePriority="966" TopEdgeStrokePriority="130" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$813 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai1e" Name="3:4" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="130" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,764 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai1f" Name="4:4" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="130" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,322 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaic8" Name="5:4" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="261" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="130" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,322 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai24" Name="0:5" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="979" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Food </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai25" Name="1:5" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$322 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai26" Name="2:5" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" RightEdgeStrokeTint="100" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$476 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai27" Name="3:5" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$617 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai28" Name="4:5" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$706 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaibf" Name="5:5" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="261" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$706 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai2d" Name="0:6" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="979" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Transportation</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai2e" Name="1:6" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$394 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai2f" Name="2:6" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" RightEdgeStrokeTint="100" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$405 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai30" Name="3:6" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$405 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai31" Name="4:6" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$405 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai4e" Name="5:6" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="261" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$405 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai36" Name="0:7" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" BottomEdgeStrokeColor="Color/Black" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeTint="100" BottomEdgeStrokeOverprint="false" LeftEdgeStrokePriority="979" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="996" BottomEdgeStrokeGapTint="100" BottomEdgeStrokeGapColor="Color/Paper">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Health Care</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai37" Name="1:7" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$246 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai38" Name="2:7" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" RightEdgeStrokeTint="100" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$699 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai39" Name="3:7" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$720 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai3a" Name="4:7" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$728 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai56" Name="5:7" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="261" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$728 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaif7" Name="0:8" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4.5" TextLeftInset="4.5" TextBottomInset="4.5" TextRightInset="4.5" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="111" LeftInset="4.5" TopInset="4.5" RightInset="4.5" BottomInset="4.5" LeftEdgeStrokeWeight="0.5" TopEdgeStrokeColor="Color/Black" BottomEdgeStrokeColor="Color/Black" TopEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokeOverprint="true" TopEdgeStrokeOverprint="false" BottomEdgeStrokeOverprint="false" LeftEdgeStrokePriority="996" RightEdgeStrokePriority="996" TopEdgeStrokePriority="996" BottomEdgeStrokePriority="996" TopEdgeStrokeGapTint="100" BottomEdgeStrokeGapTint="100" TopEdgeStrokeGapColor="Color/Paper" BottomEdgeStrokeGapColor="Color/Paper">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H4 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Premium</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaif8" Name="1:8" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="222" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="996" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaif9" Name="2:8" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="223" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaifa" Name="3:8" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="223" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai98" Name="4:8" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="223" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaia8" Name="5:8" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="448" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai97" Name="0:9" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4.5" TextLeftInset="4.5" TextBottomInset="4.5" TextRightInset="4.5" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="111" LeftInset="4.5" TopInset="4.5" RightInset="4.5" BottomInset="4.5" LeftEdgeStrokeWeight="0.5" TopEdgeStrokeColor="Color/Black" BottomEdgeStrokeColor="Color/Black" TopEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokeOverprint="true" TopEdgeStrokeOverprint="false" BottomEdgeStrokeOverprint="false" LeftEdgeStrokePriority="996" RightEdgeStrokePriority="996" TopEdgeStrokePriority="996" BottomEdgeStrokePriority="996" TopEdgeStrokeGapTint="100" BottomEdgeStrokeGapTint="100" TopEdgeStrokeGapColor="Color/Paper" BottomEdgeStrokeGapColor="Color/Paper">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H4 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Out-of-Pocket</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai96" Name="1:9" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="222" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="996" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$163 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai95" Name="2:9" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="223" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$323 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai8f" Name="3:9" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="223" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$435 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai8e" Name="4:9" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="223" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$400 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai45" Name="5:9" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="448" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$400 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai3f" Name="0:10" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" TopEdgeStrokeColor="Color/Black" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="false" LeftEdgeStrokePriority="979" TopEdgeStrokePriority="996" BottomEdgeStrokePriority="44" TopEdgeStrokeGapTint="100" TopEdgeStrokeGapColor="Color/Paper">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Miscellaneous</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai40" Name="1:10" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$274 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai41" Name="2:10" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" RightEdgeStrokeTint="100" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$434 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai42" Name="3:10" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$546 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai43" Name="4:10" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$511 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai3c" Name="5:10" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="261" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$511 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaide" Name="0:11" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="150" LeftEdgeStrokeWeight="0.5" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="779" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H4 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Broadband &amp; Cell Phone</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaid6" Name="1:11" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="148" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="779" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaice" Name="2:11" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="149" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaic6" Name="3:11" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="149" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaibe" Name="4:11" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="149" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai33" Name="5:11" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="374" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$111 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaidd" Name="0:12" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="150" LeftEdgeStrokeWeight="0.5" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="779" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H4 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Other Necessities</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai51" Name="1:12" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="148" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="779" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$163 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai52" Name="2:12" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="149" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$323 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai53" Name="3:12" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="149" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$435 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai54" Name="4:12" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="149" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$400 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai2a" Name="5:12" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="374" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aSubtitle Body ">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$400 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai48" Name="0:13" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="37" LeftEdgeStrokeWeight="0.5" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="779" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Taxes</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai49" Name="1:13" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="35" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="779" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$575 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai4a" Name="2:13" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,084 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai4b" Name="3:13" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,491 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai4c" Name="4:13" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,320 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai21" Name="5:13" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="261" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$1,320 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaie6" Name="0:14" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="76" LeftEdgeStrokeWeight="0.5" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="779" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Earned Income Tax Credit (-)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaiee" Name="1:14" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="74" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="779" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaif6" Name="2:14" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaiaf" Name="3:14" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaia7" Name="4:14" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai18" Name="5:14" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="300" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaie7" Name="0:15" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="76" LeftEdgeStrokeWeight="0.5" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="779" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Child Care Tax Credit (-)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaief" Name="1:15" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="74" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="779" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaiae" Name="2:15" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($50)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaia6" Name="3:15" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($100)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaib8" Name="4:15" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($100)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai2" Name="5:15" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="300" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($100)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaif0" Name="0:16" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="76" LeftEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" RightEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="779" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="973">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Child Tax Credit (-)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaiad" Name="1:16" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="74" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokePriority="779" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="973">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$0 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaia5" Name="2:16" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="973">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($167)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaib9" Name="3:16" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="973">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($333)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaic1" Name="4:16" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="75" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" BottomEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="973">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($333)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaif" Name="5:16" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="300" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokeTint="100" RightEdgeStrokeTint="100" LeftEdgeStrokePriority="966" RightEdgeStrokePriority="966" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="1000">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>($333)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai6c" Name="0:17" RowSpan="1" ColumnSpan="5" CellType="TextTypeCell" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L1" AppliedCellStylePriority="46" RightEdgeStrokeWeight="0" TopEdgeStrokeWeight="0.5" TopEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="1" TopEdgeStrokePriority="973" BottomEdgeStrokePriority="973">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H1">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Self-Sufficiency Wage </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai9b" Name="5:17" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L1" AppliedCellStylePriority="46" LeftEdgeStrokeWeight="0" RightEdgeStrokeWeight="0" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="1000" RightEdgeStrokePriority="1000" TopEdgeStrokePriority="1000" BottomEdgeStrokePriority="1000">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H1">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]" />
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai75" Name="0:18" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3 Emphasis (shaded)" AppliedCellStylePriority="44" FillColor="Color/C=4 M=3 Y=2 K=0" FillTint="100" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="837" TopEdgeStrokePriority="973" BottomEdgeStrokePriority="499">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Hourly (per adult)</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai76" Name="1:18" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" AppliedCellStylePriority="45" FillColor="Color/C=4 M=3 Y=2 K=0" FillTint="100" LeftEdgeStrokePriority="837" RightEdgeStrokePriority="840" TopEdgeStrokePriority="973" BottomEdgeStrokePriority="503">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$14.10 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai77" Name="2:18" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" AppliedCellStylePriority="45" FillColor="Color/C=4 M=3 Y=2 K=0" FillTint="100" LeftEdgeStrokePriority="840" RightEdgeStrokePriority="843" TopEdgeStrokePriority="973" BottomEdgeStrokePriority="503">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$25.76 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai78" Name="3:18" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" AppliedCellStylePriority="45" FillColor="Color/C=4 M=3 Y=2 K=0" FillTint="100" LeftEdgeStrokePriority="843" RightEdgeStrokePriority="846" TopEdgeStrokePriority="973" BottomEdgeStrokePriority="503">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$33.79 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai79" Name="4:18" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" AppliedCellStylePriority="45" FillColor="Color/C=4 M=3 Y=2 K=0" FillTint="100" LeftEdgeStrokePriority="846" RightEdgeStrokePriority="846" TopEdgeStrokePriority="973" BottomEdgeStrokePriority="503">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$30.68 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaie8" Name="5:18" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" AppliedCellStylePriority="47" FillColor="Color/C=4 M=3 Y=2 K=0" FillTint="100" TopEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="846" RightEdgeStrokePriority="846" TopEdgeStrokePriority="1000" BottomEdgeStrokePriority="503">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$30.68 </Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai87" Name="0:19" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="41" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="875" TopEdgeStrokePriority="499" BottomEdgeStrokePriority="44">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Monthly</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai88" Name="1:19" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="36" LeftEdgeStrokePriority="875" RightEdgeStrokePriority="877" TopEdgeStrokePriority="503" BottomEdgeStrokePriority="146">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$2,482</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai89" Name="2:19" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="37" LeftEdgeStrokePriority="877" RightEdgeStrokePriority="879" TopEdgeStrokePriority="503" BottomEdgeStrokePriority="147">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$4,534</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai8a" Name="3:19" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="38" LeftEdgeStrokePriority="879" RightEdgeStrokePriority="881" TopEdgeStrokePriority="503" BottomEdgeStrokePriority="147">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$5,948</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai8b" Name="4:19" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="38" LeftEdgeStrokePriority="881" RightEdgeStrokePriority="881" TopEdgeStrokePriority="503" BottomEdgeStrokePriority="147">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$5,399</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai83" Name="5:19" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="40" LeftEdgeStrokePriority="881" RightEdgeStrokePriority="881" TopEdgeStrokePriority="503" BottomEdgeStrokePriority="147">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$5,399</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai90" Name="0:20" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="41" LeftEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" BottomEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="890" TopEdgeStrokePriority="44" BottomEdgeStrokePriority="981">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Annual</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai91" Name="1:20" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="37" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="890" RightEdgeStrokePriority="893" TopEdgeStrokePriority="146" BottomEdgeStrokePriority="910">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$29,782</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai92" Name="2:20" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="39" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="893" RightEdgeStrokePriority="896" TopEdgeStrokePriority="147" BottomEdgeStrokePriority="914">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$54,402</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai93" Name="3:20" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="39" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="896" RightEdgeStrokePriority="897" TopEdgeStrokePriority="147" BottomEdgeStrokePriority="918">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$71,374</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifai94" Name="4:20" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="39" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="897" RightEdgeStrokePriority="897" TopEdgeStrokePriority="147" BottomEdgeStrokePriority="918">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$64,786</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaie5" Name="5:20" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="41" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="897" RightEdgeStrokePriority="897" TopEdgeStrokePriority="147" BottomEdgeStrokePriority="918">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$64,786</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaiff" Name="0:21" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aRow Header L3" AppliedCellStylePriority="42" LeftEdgeStrokeWeight="0.5" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" TopEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" BottomEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" BottomEdgeStrokeTint="100" LeftEdgeStrokePriority="979" RightEdgeStrokePriority="909" TopEdgeStrokePriority="981" BottomEdgeStrokePriority="979">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>Emergency Savings Fund</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaife" Name="1:21" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="24" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="909" RightEdgeStrokePriority="913" TopEdgeStrokePriority="910" BottomEdgeStrokePriority="979">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$67</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaifd" Name="2:21" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="26" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="913" RightEdgeStrokePriority="917" TopEdgeStrokePriority="914" BottomEdgeStrokePriority="979">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$211</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaifc" Name="3:21" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="26" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="917" RightEdgeStrokePriority="919" TopEdgeStrokePriority="918" BottomEdgeStrokePriority="979">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$355</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaifb" Name="4:21" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="26" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="919" RightEdgeStrokePriority="919" TopEdgeStrokePriority="918" BottomEdgeStrokePriority="979">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$309</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+					<Cell Self="ue2ifaia2" Name="5:21" RowSpan="1" ColumnSpan="1" CellType="TextTypeCell" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedCellStyle="CellStyle/Text Tables%3aTable Body" AppliedCellStylePriority="28" TopEdgeStrokeWeight="0.5" BottomEdgeStrokeWeight="0.5" LeftEdgeStrokePriority="919" RightEdgeStrokePriority="919" TopEdgeStrokePriority="918" BottomEdgeStrokePriority="979">
+						<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix">
+							<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
+								<Content>$309</Content>
+							</CharacterStyleRange>
+						</ParagraphStyleRange>
+					</Cell>
+				</Table>
