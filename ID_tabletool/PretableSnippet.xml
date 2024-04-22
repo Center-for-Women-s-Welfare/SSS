@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?aid style="50" type="snippet" readerVersion="6.0" featureSet="257" product="19.0(205)" ?>
+<?aid style="50" type="snippet" readerVersion="6.0" featureSet="257" product="19.3(58)" ?>
 <?aid SnippetType="PageItem"?>
-<Document DOMVersion="19.0" Self="d">
-	<Color Self="Color/C=98 M=70 Y=22 K=6" Model="Process" Space="CMYK" ColorValue="97.84999489784241 70.38999795913696 21.67999893426895 5.59999980032444" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="C=98 M=70 Y=22 K=6" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u18ColorGroupSwatcha" />
-	<Color Self="Color/Black" Model="Process" Space="CMYK" ColorValue="0 0 0 100" ColorOverride="Specialblack" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="Black" ColorEditable="false" ColorRemovable="false" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u18ColorGroupSwatch3" />
-	<Color Self="Color/Paper" Model="Process" Space="CMYK" ColorValue="0 0 0 0" ColorOverride="Specialpaper" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="Paper" ColorEditable="true" ColorRemovable="false" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u18ColorGroupSwatch2" />
-	<Color Self="Color/C=4 M=3 Y=2 K=0" Model="Process" Space="CMYK" ColorValue="3.9400000125169754 2.9099998995661736 2.319999970495701 0" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="C=4 M=3 Y=2 K=0" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u18ColorGroupSwatchc" />
-	<Color Self="Color/C=0 M=0 Y=0 K=100" Model="Process" Space="CMYK" ColorValue="0 0 0 100" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="C=0 M=0 Y=0 K=100" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u18ColorGroupSwatchb" />
-	<Swatch Self="Swatch/None" Name="None" ColorEditable="false" ColorRemovable="false" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u18ColorGroupSwatch0" />
+<Document DOMVersion="19.3" Self="d">
+	<Color Self="Color/WY light peach" Model="Process" Space="CMYK" ColorValue="0 24 38 0" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="WY light peach" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatch14" />
+	<Color Self="Color/C=98 M=70 Y=22 K=6" Model="Process" Space="CMYK" ColorValue="97.84999489784241 70.38999795913696 21.67999893426895 5.59999980032444" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="C=98 M=70 Y=22 K=6" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatch1e" />
+	<Color Self="Color/WY magenta" Model="Process" Space="CMYK" ColorValue="20 93 100 11" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="WY magenta" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatch15" />
+	<Color Self="Color/Black" Model="Process" Space="CMYK" ColorValue="0 0 0 100" ColorOverride="Specialblack" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="Black" ColorEditable="false" ColorRemovable="false" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatch2" />
+	<Color Self="Color/Paper" Model="Process" Space="CMYK" ColorValue="0 0 0 0" ColorOverride="Specialpaper" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="Paper" ColorEditable="true" ColorRemovable="false" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatch1" />
+	<Color Self="Color/C=0 M=0 Y=0 K=100" Model="Process" Space="CMYK" ColorValue="0 0 0 100" ColorOverride="Normal" ConvertToHsb="false" AlternateSpace="NoAlternateColor" AlternateColorValue="" Name="C=0 M=0 Y=0 K=100" ColorEditable="true" ColorRemovable="true" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatchc" />
+	<Swatch Self="Swatch/None" Name="None" ColorEditable="false" ColorRemovable="false" Visible="true" SwatchCreatorID="7937" SwatchColorGroupReference="u8b2bColorGroupSwatch0" />
 	<StrokeStyle Self="StrokeStyle/$ID/Solid" Name="$ID/Solid" />
-	<RootCharacterStyleGroup Self="u7f">
+	<StrokeStyle Self="StrokeStyle/$ID/Canned Dashed 4x4" Name="$ID/Canned Dashed 4x4" />
+	<RootCharacterStyleGroup Self="u6a">
 		<CharacterStyle Self="CharacterStyle/$ID/[No character style]" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="$ID/" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" Name="$ID/[No character style]" />
 		<CharacterStyle Self="CharacterStyle/Bold" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="b88392b9-ae8c-49f5-8e26-91fae9237497" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" KeyboardShortcut="0 0" Name="Bold" FillColor="Color/C=0 M=0 Y=0 K=100">
 			<Properties>
@@ -17,13 +19,13 @@
 				<PreviewColor type="enumeration">Nothing</PreviewColor>
 			</Properties>
 		</CharacterStyle>
-		<CharacterStyle Self="CharacterStyle/ChartHeader.Number" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="d27c707d-f3f9-4bf9-9cf3-25a941eed6ce" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" KeyboardShortcut="0 0" Name="ChartHeader.Number">
+		<CharacterStyle Self="CharacterStyle/ChartHeader.Number" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="a373f75d-09f7-4f14-aed7-a67358e3d45e" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" KeyboardShortcut="0 0" Name="ChartHeader.Number">
 			<Properties>
 				<BasedOn type="object">CharacterStyle/Heading L4</BasedOn>
 				<PreviewColor type="enumeration">Nothing</PreviewColor>
 			</Properties>
 		</CharacterStyle>
-		<CharacterStyle Self="CharacterStyle/Heading L4" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="9ea19188-9c0a-4803-8cdd-7f50937d80c7" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" KeyboardShortcut="0 0" Name="Heading L4" FillColor="Color/C=98 M=70 Y=22 K=6" FontStyle="Semibold" PointSize="11" KerningMethod="$ID/Optical" Tracking="0" Capitalization="Normal" FillTint="100">
+		<CharacterStyle Self="CharacterStyle/Heading L4" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="8426f620-7883-4cbc-b4f1-e1a408f89792" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" KeyboardShortcut="0 0" Name="Heading L4" FillColor="Color/WY magenta" FontStyle="Regular" PointSize="11" KerningMethod="$ID/Optical" Tracking="0" Capitalization="Normal" FillTint="100">
 			<Properties>
 				<BasedOn type="string">$ID/[No character style]</BasedOn>
 				<PreviewColor type="enumeration">Nothing</PreviewColor>
@@ -34,15 +36,16 @@
 	</RootCharacterStyleGroup>
 	<NumberingList Self="NumberingList/Text Tables" Name="Text Tables" ContinueNumbersAcrossStories="true" ContinueNumbersAcrossDocuments="true" />
 	<NumberingList Self="NumberingList/$ID/[Default]" Name="$ID/[Default]" ContinueNumbersAcrossStories="false" ContinueNumbersAcrossDocuments="false" />
-	<RootParagraphStyleGroup Self="u7e">
-		<ParagraphStyle Self="ParagraphStyle/$ID/NormalParagraphStyle" Name="$ID/NormalParagraphStyle" Imported="false" NextStyle="ParagraphStyle/$ID/NormalParagraphStyle" SplitDocument="false" EmitCss="true" StyleUniqueId="771888e2-944e-42ec-89d5-874cd945e62b" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0">
+	<RootParagraphStyleGroup Self="u69">
+		<ParagraphStyle Self="ParagraphStyle/$ID/NormalParagraphStyle" Name="$ID/NormalParagraphStyle" Imported="false" NextStyle="ParagraphStyle/$ID/NormalParagraphStyle" SplitDocument="false" EmitCss="true" StyleUniqueId="$ID/" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" DropcapDetail="1" TreatIdeographicSpaceAsSpace="true">
 			<Properties>
 				<BasedOn type="string">$ID/[No paragraph style]</BasedOn>
 				<PreviewColor type="enumeration">Nothing</PreviewColor>
+				<AppliedFont type="string">Minion Pro</AppliedFont>
 			</Properties>
 		</ParagraphStyle>
 		<ParagraphStyleGroup Self="ParagraphStyleGroup/$ID/Text Tables" Name="$ID/Text Tables">
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTitle.Table.Appendix" Name="Text Tables:Title.Table.Appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTitle.Table.Appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="3812ff48-cd8c-4333-96c6-2e78792ce3c0" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="false" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Light" PointSize="11" KerningMethod="$ID/Optical" FillTint="90" BulletsAndNumberingListType="NumberedList" NumberingLevel="3" NumberingApplyRestartPolicy="false" NumberingExpression="Table ^#.">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTitle.Table.Appendix" Name="Text Tables:Title.Table.Appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTitle.Table.Appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="de99289c-76d4-4f61-8eb5-9e320add2257" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="false" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Light" PointSize="11" KerningMethod="$ID/Optical" FillTint="100" BulletsAndNumberingListType="NumberedList" NumberingLevel="3" NumberingApplyRestartPolicy="false" NumberingExpression="Table ^#.">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
@@ -58,33 +61,33 @@
 					<NumberingCharacterStyle type="object">CharacterStyle/ChartHeader.Number</NumberingCharacterStyle>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aColumn Heading L1" Name="Text Tables:Column Heading L1" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aColumn Heading L1" SplitDocument="false" EmitCss="true" StyleUniqueId="18d43907-12f7-420a-b61e-049f8afd2dbc" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FillColor="Color/C=0 M=0 Y=0 K=100" Capitalization="AllCaps" Justification="CenterAlign">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aColumn Heading L1" Name="Text Tables:Column Heading L1" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aColumn Heading L1" SplitDocument="false" EmitCss="true" StyleUniqueId="8d31c7b5-87a8-4bf2-b43a-b4f8ee395169" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" Capitalization="AllCaps" Justification="CenterAlign">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/Text Tables%3aRow H3</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix" Name="Text Tables:Column Heading L2 Appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="2f86fb32-929b-45b2-ae90-1a1e418d3b8a" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FillColor="Color/Black" PointSize="9.5" Capitalization="Normal" LeftIndent="4.5" RightIndent="4.5" Justification="RightAlign">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix" Name="Text Tables:Column Heading L2 Appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aColumn Heading L2 Appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="8fc10a76-25aa-4046-83f0-68bb1787242c" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FillColor="Color/Black" PointSize="9.5" Capitalization="Normal" LeftIndent="4.5" RightIndent="4.5" FillTint="100" Justification="RightAlign">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/Text Tables%3aColumn Heading L1</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H1" Name="Text Tables:Row H1" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H1" SplitDocument="false" EmitCss="true" StyleUniqueId="aabb0cb1-245b-419f-b941-437e4ce8af76" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FillColor="Color/C=98 M=70 Y=22 K=6" LeftIndent="0" FillTint="100">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H1" Name="Text Tables:Row H1" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H1" SplitDocument="false" EmitCss="true" StyleUniqueId="e98796be-0d1e-4ede-8b17-e3d94dce1bcd" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FillColor="Color/WY magenta" FontStyle="Regular" LeftIndent="0">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/Text Tables%3aRow H3</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H3 appendix" Name="Text Tables:Row H3 appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H3 appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="ff24fe15-d199-4e0d-9b4d-9a429b22f88a" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="9" KerningMethod="$ID/Optical" LeftIndent="4.5" Hyphenation="false" FillTint="90" Justification="LeftJustified">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H3 appendix" Name="Text Tables:Row H3 appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H3 appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="75502d92-7198-4358-b3c0-d0f27ed851ff" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="9.5" KerningMethod="$ID/Optical" LeftIndent="4.5" Hyphenation="false" FillTint="100" Justification="LeftJustified">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
-					<Leading type="unit">9</Leading>
+					<Leading type="unit">13</Leading>
 					<AppliedFont type="string">Source Sans Variable</AppliedFont>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTable Body" Name="Text Tables:Table Body" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTable Body" SplitDocument="false" EmitCss="true" StyleUniqueId="35df50c7-c442-4cba-a100-93b9440f0b16" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="9" LeftIndent="4.5" RightIndent="4.5" Justification="RightAlign">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTable Body" Name="Text Tables:Table Body" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTable Body" SplitDocument="false" EmitCss="true" StyleUniqueId="aab40597-ee55-4eb6-b0f2-d7b0591b50eb" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="9.5" RightIndent="4.5" SpaceAfter="9" FillTint="95" Justification="RightAlign">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/Text Styles%3aBody</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
@@ -104,6 +107,29 @@
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
 				</Properties>
 			</ParagraphStyle>
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H3 appendix sub cost" Name="Text Tables:Row H3 appendix sub cost" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H3 appendix sub cost" SplitDocument="false" EmitCss="true" StyleUniqueId="0755c5b9-2391-4b88-b97e-dde84bbbfa82" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Light" PointSize="9.5" KerningMethod="$ID/Optical" LeftIndent="13.5" Hyphenation="false" FillTint="100" Justification="LeftJustified">
+				<Properties>
+					<BasedOn type="object">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn>
+					<PreviewColor type="enumeration">Nothing</PreviewColor>
+					<Leading type="unit">13</Leading>
+					<AppliedFont type="string">Source Sans Variable</AppliedFont>
+				</Properties>
+			</ParagraphStyle>
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTable Body (credit) costs" Name="Text Tables:Table Body (credit) costs" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTable Body (credit) costs" SplitDocument="false" EmitCss="true" StyleUniqueId="91a33dd2-11ec-4c9f-8c73-a3ec1dd5e2f4" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="9.5" RightIndent="1.8" SpaceAfter="9" FillTint="95" Justification="RightAlign">
+				<Properties>
+					<BasedOn type="object">ParagraphStyle/Text Styles%3aBody</BasedOn>
+					<PreviewColor type="enumeration">Nothing</PreviewColor>
+					<Leading type="unit">11</Leading>
+				</Properties>
+			</ParagraphStyle>
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H3" Name="Text Tables:Row H3" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H3" SplitDocument="false" EmitCss="true" StyleUniqueId="f20ac033-902c-4dfc-a9e8-9a852f4b9a05" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="9.5" KerningMethod="$ID/Optical" LeftIndent="4.5" Hyphenation="false" FillTint="100">
+				<Properties>
+					<BasedOn type="object">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn>
+					<PreviewColor type="enumeration">Nothing</PreviewColor>
+					<Leading type="unit">11</Leading>
+					<AppliedFont type="string">Source Sans Variable</AppliedFont>
+				</Properties>
+			</ParagraphStyle>
 			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTable Body appendix" Name="Text Tables:Table Body appendix" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTable Body appendix" SplitDocument="false" EmitCss="true" StyleUniqueId="6e30ea26-82db-4d46-a50e-5afeef7d893d" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" LeftIndent="0" RightIndent="4.5" Justification="RightAlign">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/Text Tables%3aRow H3</BasedOn>
@@ -111,7 +137,14 @@
 					<Leading type="unit">12</Leading>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTitle.Table" Name="Text Tables:Title.Table" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTitle.Table" SplitDocument="false" EmitCss="true" StyleUniqueId="5eaa2d66-7923-4b7a-8dc8-0d5ccbc81b84" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="false" EmptyGrepStyles="true" KeyboardShortcut="0 0" FillColor="Color/C=0 M=0 Y=0 K=100" FontStyle="Regular" PointSize="11" KerningMethod="$ID/Optical" FillTint="100" BulletsAndNumberingListType="NumberedList" NumberingLevel="2" NumberingApplyRestartPolicy="false" NumberingExpression="Table ^#." ParagraphBorderTopLeftCornerRadius="1" ParagraphBorderTopRightCornerRadius="1" ParagraphBorderBottomLeftCornerRadius="1" ParagraphBorderBottomRightCornerRadius="1" ParagraphShadingTopLeftCornerRadius="1" ParagraphShadingTopRightCornerRadius="1" ParagraphShadingBottomLeftCornerRadius="1" ParagraphShadingBottomRightCornerRadius="1">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aNotes" Name="Text Tables:Notes" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aNotes" SplitDocument="false" EmitCss="true" StyleUniqueId="c625001e-036f-4b3d-92e7-8ed53ceef773" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Light" PointSize="8.5" Hyphenation="false" FillTint="100">
+				<Properties>
+					<BasedOn type="string">$ID/[No paragraph style]</BasedOn>
+					<PreviewColor type="enumeration">Nothing</PreviewColor>
+					<AppliedFont type="string">Source Sans Variable</AppliedFont>
+				</Properties>
+			</ParagraphStyle>
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aTitle.Table" Name="Text Tables:Title.Table" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aTitle.Table" SplitDocument="false" EmitCss="true" StyleUniqueId="69adda13-3ba9-41b4-b7ed-c1b5687fec08" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="false" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="11" KerningMethod="$ID/Optical" FillTint="90" DropcapDetail="1" TreatIdeographicSpaceAsSpace="true" BulletsAndNumberingListType="NumberedList" NumberingLevel="2" NumberingApplyRestartPolicy="false" NumberingExpression="Table ^#.">
 				<Properties>
 					<BasedOn type="string">$ID/[No paragraph style]</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
@@ -123,32 +156,24 @@
 							<RepeatLast type="long">-1</RepeatLast>
 						</ListItem>
 					</AllLineStyles>
-					<ParagraphBorderGapColor type="object">Swatch/None</ParagraphBorderGapColor>
 					<AppliedNumberingList type="object">NumberingList/Text Tables</AppliedNumberingList>
 					<NumberingCharacterStyle type="object">CharacterStyle/ChartHeader.Number</NumberingCharacterStyle>
 				</Properties>
 			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aRow H3" Name="Text Tables:Row H3" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aRow H3" SplitDocument="false" EmitCss="true" StyleUniqueId="f6e366fa-76cb-4e4d-9e62-21e8e63c9c0f" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Regular" PointSize="10" KerningMethod="$ID/Optical" LeftIndent="3" Hyphenation="false" FillTint="90">
-				<Properties>
-					<BasedOn type="object">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn>
-					<PreviewColor type="enumeration">Nothing</PreviewColor>
-					<Leading type="unit">11</Leading>
-					<AppliedFont type="string">Source Sans Variable</AppliedFont>
-				</Properties>
-			</ParagraphStyle>
-			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aColumn Heading L2" Name="Text Tables:Column Heading L2" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aColumn Heading L2" SplitDocument="false" EmitCss="true" StyleUniqueId="cdd5ad37-62ee-436f-b259-9c01138e6d66" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" Capitalization="Normal">
+			<ParagraphStyle Self="ParagraphStyle/Text Tables%3aColumn Heading L2" Name="Text Tables:Column Heading L2" Imported="false" NextStyle="ParagraphStyle/Text Tables%3aColumn Heading L2" SplitDocument="false" EmitCss="true" StyleUniqueId="dd611f9b-b3cd-41af-bfe4-3256e5cb2226" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" Capitalization="Normal" Justification="RightAlign">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/Text Tables%3aColumn Heading L1</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
+					<Leading type="unit">10</Leading>
 				</Properties>
 			</ParagraphStyle>
 		</ParagraphStyleGroup>
-		<ParagraphStyle Self="ParagraphStyle/$ID/[No paragraph style]" Name="$ID/[No paragraph style]" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="$ID/" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" FillColor="Color/Black" FontStyle="Regular" PointSize="12" HorizontalScale="100" KerningMethod="$ID/Metrics" Ligatures="true" PageNumberType="AutoPageNumber" StrokeWeight="1" Tracking="0" Composer="HL Composer" DropCapCharacters="0" DropCapLines="0" BaselineShift="0" Capitalization="Normal" StrokeColor="Swatch/None" HyphenateLadderLimit="3" VerticalScale="100" LeftIndent="0" RightIndent="0" FirstLineIndent="0" AutoLeading="120" AppliedLanguage="$ID/English: USA" Hyphenation="true" HyphenateAfterFirst="2" HyphenateBeforeLast="2" HyphenateCapitalizedWords="true" HyphenateWordsLongerThan="5" NoBreak="false" HyphenationZone="36" SpaceBefore="0" SpaceAfter="0" Underline="false" OTFFigureStyle="Default" DesiredWordSpacing="100" MaximumWordSpacing="133" MinimumWordSpacing="80" DesiredLetterSpacing="0" MaximumLetterSpacing="0" MinimumLetterSpacing="0" DesiredGlyphScaling="100" MaximumGlyphScaling="100" MinimumGlyphScaling="100" StartParagraph="Anywhere" KeepAllLinesTogether="false" KeepWithNext="0" KeepFirstLines="2" KeepLastLines="2" Position="Normal" StrikeThru="false" CharacterAlignment="AlignEmCenter" KeepLinesTogether="false" StrokeTint="-1" FillTint="-1" OverprintStroke="false" OverprintFill="false" GradientStrokeAngle="0" GradientFillAngle="0" GradientStrokeLength="-1" GradientFillLength="-1" GradientStrokeStart="0 0" GradientFillStart="0 0" Skew="0" RuleAboveLineWeight="1" RuleAboveTint="-1" RuleAboveOffset="0" RuleAboveLeftIndent="0" RuleAboveRightIndent="0" RuleAboveWidth="ColumnWidth" RuleBelowLineWeight="1" RuleBelowTint="-1" RuleBelowOffset="0" RuleBelowLeftIndent="0" RuleBelowRightIndent="0" RuleBelowWidth="ColumnWidth" RuleAboveOverprint="false" RuleBelowOverprint="false" RuleAbove="false" RuleBelow="false" LastLineIndent="0" HyphenateLastWord="true" ParagraphBreakType="Anywhere" SingleWordJustification="FullyJustified" OTFOrdinal="false" OTFFraction="false" OTFDiscretionaryLigature="false" OTFTitling="false" RuleAboveGapTint="-1" RuleAboveGapOverprint="false" RuleBelowGapTint="-1" RuleBelowGapOverprint="false" Justification="LeftAlign" DropcapDetail="1" PositionalForm="None" OTFMark="true" HyphenWeight="5" OTFLocale="true" HyphenateAcrossColumns="true" KeepRuleAboveInFrame="false" IgnoreEdgeAlignment="false" OTFSlashedZero="false" OTFStylisticSets="0" OTFHistorical="false" OTFContextualAlternate="true" UnderlineGapOverprint="false" UnderlineGapTint="-1" UnderlineOffset="-9999" UnderlineOverprint="false" UnderlineTint="-1" UnderlineWeight="-9999" StrikeThroughGapOverprint="false" StrikeThroughGapTint="-1" StrikeThroughOffset="-9999" StrikeThroughOverprint="false" StrikeThroughTint="-1" StrikeThroughWeight="-9999" MiterLimit="4" StrokeAlignment="OutsideAlignment" EndJoin="MiterEndJoin" SpanColumnType="SingleColumn" SplitColumnInsideGutter="6" SplitColumnOutsideGutter="0" KeepWithPrevious="false" SpanColumnMinSpaceBefore="0" SpanColumnMinSpaceAfter="0" OTFSwash="false" ParagraphShadingTint="20" ParagraphShadingOverprint="false" ParagraphShadingWidth="ColumnWidth" ParagraphShadingOn="false" ParagraphShadingClipToFrame="false" ParagraphShadingSuppressPrinting="false" ParagraphShadingLeftOffset="0" ParagraphShadingRightOffset="0" ParagraphShadingTopOffset="0" ParagraphShadingBottomOffset="0" ParagraphShadingTopOrigin="AscentTopOrigin" ParagraphShadingBottomOrigin="DescentBottomOrigin" ParagraphBorderTint="-1" ParagraphBorderOverprint="false" ParagraphBorderOn="false" ParagraphBorderGapTint="-1" ParagraphBorderGapOverprint="false" Tsume="0" LeadingAki="-1" TrailingAki="-1" KinsokuType="KinsokuPushInFirst" KinsokuHangType="None" BunriKinshi="true" RubyOpenTypePro="true" RubyFontSize="-1" RubyAlignment="RubyJIS" RubyType="PerCharacterRuby" RubyParentSpacing="RubyParent121Aki" RubyXScale="100" RubyYScale="100" RubyXOffset="0" RubyYOffset="0" RubyPosition="AboveRight" RubyAutoAlign="true" RubyParentOverhangAmount="RubyOverhangOneRuby" RubyOverhang="false" RubyAutoScaling="false" RubyParentScalingPercent="66" RubyTint="-1" RubyOverprintFill="Auto" RubyStrokeTint="-1" RubyOverprintStroke="Auto" RubyWeight="-1" KentenKind="None" KentenFontSize="-1" KentenXScale="100" KentenYScale="100" KentenPlacement="0" KentenAlignment="AlignKentenCenter" KentenPosition="AboveRight" KentenCustomCharacter="" KentenCharacterSet="CharacterInput" KentenTint="-1" KentenOverprintFill="Auto" KentenStrokeTint="-1" KentenOverprintStroke="Auto" KentenWeight="-1" Tatechuyoko="false" TatechuyokoXOffset="0" TatechuyokoYOffset="0" AutoTcy="0" AutoTcyIncludeRoman="false" Jidori="0" GridGyoudori="0" GridAlignFirstLineOnly="false" GridAlignment="None" CharacterRotation="0" RotateSingleByteCharacters="false" Rensuuji="true" ShataiMagnification="0" ShataiDegreeAngle="4500" ShataiAdjustTsume="true" ShataiAdjustRotation="false" Warichu="false" WarichuLines="2" WarichuSize="50" WarichuLineSpacing="0" WarichuAlignment="Auto" WarichuCharsBeforeBreak="2" WarichuCharsAfterBreak="2" OTFHVKana="false" OTFProportionalMetrics="false" OTFRomanItalics="false" LeadingModel="LeadingModelAkiBelow" ScaleAffectsLineHeight="false" ParagraphGyoudori="false" CjkGridTracking="false" GlyphForm="None" RubyAutoTcyDigits="0" RubyAutoTcyIncludeRoman="false" RubyAutoTcyAutoScale="true" TreatIdeographicSpaceAsSpace="true" AllowArbitraryHyphenation="false" BulletsAndNumberingListType="NoList" NumberingStartAt="1" NumberingLevel="1" NumberingContinue="true" NumberingApplyRestartPolicy="true" BulletsAlignment="LeftAlign" NumberingAlignment="LeftAlign" NumberingExpression="^#.^t" BulletsTextAfter="^t" ParagraphBorderLeftOffset="0" ParagraphBorderRightOffset="0" ParagraphBorderTopOffset="0" ParagraphBorderBottomOffset="0" ParagraphBorderStrokeEndJoin="MiterEndJoin" ParagraphBorderTopLeftCornerOption="None" ParagraphBorderTopRightCornerOption="None" ParagraphBorderBottomLeftCornerOption="None" ParagraphBorderBottomRightCornerOption="None" ParagraphBorderTopLeftCornerRadius="12" ParagraphBorderTopRightCornerRadius="12" ParagraphBorderBottomLeftCornerRadius="12" ParagraphBorderBottomRightCornerRadius="12" ParagraphShadingTopLeftCornerOption="None" ParagraphShadingTopRightCornerOption="None" ParagraphShadingBottomLeftCornerOption="None" ParagraphShadingBottomRightCornerOption="None" ParagraphShadingTopLeftCornerRadius="12" ParagraphShadingTopRightCornerRadius="12" ParagraphShadingBottomLeftCornerRadius="12" ParagraphShadingBottomRightCornerRadius="12" ParagraphBorderStrokeEndCap="ButtEndCap" ParagraphBorderWidth="ColumnWidth" ParagraphBorderTopOrigin="AscentTopOrigin" ParagraphBorderBottomOrigin="DescentBottomOrigin" ParagraphBorderTopLineWeight="1" ParagraphBorderBottomLineWeight="1" ParagraphBorderLeftLineWeight="1" ParagraphBorderRightLineWeight="1" ParagraphBorderDisplayIfSplits="false" MergeConsecutiveParaBorders="true" ProviderHyphenationStyle="HyphAll" DigitsType="DefaultDigits" Kashidas="DefaultKashidas" DiacriticPosition="OpentypePositionFromBaseline" CharacterDirection="DefaultDirection" ParagraphDirection="LeftToRightDirection" ParagraphJustification="DefaultJustification" ParagraphKashidaWidth="2" XOffsetDiacritic="0" YOffsetDiacritic="0" OTFOverlapSwash="false" OTFStylisticAlternate="false" OTFJustificationAlternate="false" OTFStretchedAlternate="false" KeyboardDirection="DefaultDirection">
+		<ParagraphStyle Self="ParagraphStyle/$ID/[No paragraph style]" Name="$ID/[No paragraph style]" Imported="false" SplitDocument="false" EmitCss="true" StyleUniqueId="$ID/" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" FillColor="Color/Black" FontStyle="Regular" PointSize="12" HorizontalScale="100" KerningMethod="$ID/Metrics" Ligatures="true" PageNumberType="AutoPageNumber" StrokeWeight="1" Tracking="0" Composer="HL Composer" DropCapCharacters="0" DropCapLines="0" BaselineShift="0" Capitalization="Normal" StrokeColor="Swatch/None" HyphenateLadderLimit="3" VerticalScale="100" LeftIndent="0" RightIndent="0" FirstLineIndent="0" AutoLeading="120" AppliedLanguage="$ID/English: USA" Hyphenation="true" HyphenateAfterFirst="2" HyphenateBeforeLast="2" HyphenateCapitalizedWords="true" HyphenateWordsLongerThan="5" NoBreak="false" HyphenationZone="36" SpaceBefore="0" SpaceAfter="0" Underline="false" OTFFigureStyle="Default" DesiredWordSpacing="100" MaximumWordSpacing="133" MinimumWordSpacing="80" DesiredLetterSpacing="0" MaximumLetterSpacing="0" MinimumLetterSpacing="0" DesiredGlyphScaling="100" MaximumGlyphScaling="100" MinimumGlyphScaling="100" StartParagraph="Anywhere" KeepAllLinesTogether="false" KeepWithNext="0" KeepFirstLines="2" KeepLastLines="2" Position="Normal" StrikeThru="false" CharacterAlignment="AlignEmCenter" KeepLinesTogether="false" StrokeTint="-1" FillTint="-1" OverprintStroke="false" OverprintFill="false" GradientStrokeAngle="0" GradientFillAngle="0" GradientStrokeLength="-1" GradientFillLength="-1" GradientStrokeStart="0 0" GradientFillStart="0 0" Skew="0" RuleAboveLineWeight="1" RuleAboveTint="-1" RuleAboveOffset="0" RuleAboveLeftIndent="0" RuleAboveRightIndent="0" RuleAboveWidth="ColumnWidth" RuleBelowLineWeight="1" RuleBelowTint="-1" RuleBelowOffset="0" RuleBelowLeftIndent="0" RuleBelowRightIndent="0" RuleBelowWidth="ColumnWidth" RuleAboveOverprint="false" RuleBelowOverprint="false" RuleAbove="false" RuleBelow="false" LastLineIndent="0" HyphenateLastWord="true" ParagraphBreakType="Anywhere" SingleWordJustification="FullyJustified" OTFOrdinal="false" OTFFraction="false" OTFDiscretionaryLigature="false" OTFTitling="false" RuleAboveGapTint="-1" RuleAboveGapOverprint="false" RuleBelowGapTint="-1" RuleBelowGapOverprint="false" Justification="LeftAlign" DropcapDetail="0" PositionalForm="None" OTFMark="true" HyphenWeight="5" OTFLocale="true" HyphenateAcrossColumns="true" KeepRuleAboveInFrame="false" IgnoreEdgeAlignment="false" OTFSlashedZero="false" OTFStylisticSets="0" OTFHistorical="false" OTFContextualAlternate="true" UnderlineGapOverprint="false" UnderlineGapTint="-1" UnderlineOffset="-9999" UnderlineOverprint="false" UnderlineTint="-1" UnderlineWeight="-9999" StrikeThroughGapOverprint="false" StrikeThroughGapTint="-1" StrikeThroughOffset="-9999" StrikeThroughOverprint="false" StrikeThroughTint="-1" StrikeThroughWeight="-9999" MiterLimit="4" StrokeAlignment="OutsideAlignment" EndJoin="MiterEndJoin" SpanColumnType="SingleColumn" SplitColumnInsideGutter="6" SplitColumnOutsideGutter="0" KeepWithPrevious="false" SpanColumnMinSpaceBefore="0" SpanColumnMinSpaceAfter="0" OTFSwash="false" ParagraphShadingTint="20" ParagraphShadingOverprint="false" ParagraphShadingWidth="ColumnWidth" ParagraphShadingOn="false" ParagraphShadingClipToFrame="false" ParagraphShadingSuppressPrinting="false" ParagraphShadingLeftOffset="0" ParagraphShadingRightOffset="0" ParagraphShadingTopOffset="0" ParagraphShadingBottomOffset="0" ParagraphShadingTopOrigin="AscentTopOrigin" ParagraphShadingBottomOrigin="DescentBottomOrigin" ParagraphBorderTint="-1" ParagraphBorderOverprint="false" ParagraphBorderOn="false" ParagraphBorderGapTint="-1" ParagraphBorderGapOverprint="false" Tsume="0" LeadingAki="-1" TrailingAki="-1" KinsokuType="KinsokuPushInFirst" KinsokuHangType="None" BunriKinshi="true" RubyOpenTypePro="true" RubyFontSize="-1" RubyAlignment="RubyJIS" RubyType="PerCharacterRuby" RubyParentSpacing="RubyParent121Aki" RubyXScale="100" RubyYScale="100" RubyXOffset="0" RubyYOffset="0" RubyPosition="AboveRight" RubyAutoAlign="true" RubyParentOverhangAmount="RubyOverhangOneRuby" RubyOverhang="false" RubyAutoScaling="false" RubyParentScalingPercent="66" RubyTint="-1" RubyOverprintFill="Auto" RubyStrokeTint="-1" RubyOverprintStroke="Auto" RubyWeight="-1" KentenKind="None" KentenFontSize="-1" KentenXScale="100" KentenYScale="100" KentenPlacement="0" KentenAlignment="AlignKentenCenter" KentenPosition="AboveRight" KentenCustomCharacter="" KentenCharacterSet="CharacterInput" KentenTint="-1" KentenOverprintFill="Auto" KentenStrokeTint="-1" KentenOverprintStroke="Auto" KentenWeight="-1" Tatechuyoko="false" TatechuyokoXOffset="0" TatechuyokoYOffset="0" AutoTcy="0" AutoTcyIncludeRoman="false" Jidori="0" GridGyoudori="0" GridAlignFirstLineOnly="false" GridAlignment="None" CharacterRotation="0" RotateSingleByteCharacters="false" Rensuuji="true" ShataiMagnification="0" ShataiDegreeAngle="4500" ShataiAdjustTsume="true" ShataiAdjustRotation="false" Warichu="false" WarichuLines="2" WarichuSize="50" WarichuLineSpacing="0" WarichuAlignment="Auto" WarichuCharsBeforeBreak="2" WarichuCharsAfterBreak="2" OTFHVKana="false" OTFProportionalMetrics="false" OTFRomanItalics="false" LeadingModel="LeadingModelAkiBelow" ScaleAffectsLineHeight="false" ParagraphGyoudori="false" CjkGridTracking="false" GlyphForm="None" RubyAutoTcyDigits="0" RubyAutoTcyIncludeRoman="false" RubyAutoTcyAutoScale="true" TreatIdeographicSpaceAsSpace="false" AllowArbitraryHyphenation="false" BulletsAndNumberingListType="NoList" NumberingStartAt="1" NumberingLevel="1" NumberingContinue="true" NumberingApplyRestartPolicy="true" BulletsAlignment="LeftAlign" NumberingAlignment="LeftAlign" NumberingExpression="^#.^t" BulletsTextAfter="^t" ParagraphBorderLeftOffset="0" ParagraphBorderRightOffset="0" ParagraphBorderTopOffset="0" ParagraphBorderBottomOffset="0" ParagraphBorderStrokeEndJoin="MiterEndJoin" ParagraphBorderTopLeftCornerOption="None" ParagraphBorderTopRightCornerOption="None" ParagraphBorderBottomLeftCornerOption="None" ParagraphBorderBottomRightCornerOption="None" ParagraphBorderTopLeftCornerRadius="1" ParagraphBorderTopRightCornerRadius="1" ParagraphBorderBottomLeftCornerRadius="1" ParagraphBorderBottomRightCornerRadius="1" ParagraphShadingTopLeftCornerOption="None" ParagraphShadingTopRightCornerOption="None" ParagraphShadingBottomLeftCornerOption="None" ParagraphShadingBottomRightCornerOption="None" ParagraphShadingTopLeftCornerRadius="1" ParagraphShadingTopRightCornerRadius="1" ParagraphShadingBottomLeftCornerRadius="1" ParagraphShadingBottomRightCornerRadius="1" ParagraphBorderStrokeEndCap="ButtEndCap" ParagraphBorderWidth="ColumnWidth" ParagraphBorderTopOrigin="AscentTopOrigin" ParagraphBorderBottomOrigin="DescentBottomOrigin" ParagraphBorderTopLineWeight="1" ParagraphBorderBottomLineWeight="1" ParagraphBorderLeftLineWeight="1" ParagraphBorderRightLineWeight="1" ParagraphBorderDisplayIfSplits="false" MergeConsecutiveParaBorders="true" ProviderHyphenationStyle="HyphAll" DigitsType="DefaultDigits" Kashidas="DefaultKashidas" DiacriticPosition="OpentypePositionFromBaseline" CharacterDirection="DefaultDirection" ParagraphDirection="LeftToRightDirection" ParagraphJustification="DefaultJustification" ParagraphKashidaWidth="2" XOffsetDiacritic="0" YOffsetDiacritic="0" OTFOverlapSwash="false" OTFStylisticAlternate="false" OTFJustificationAlternate="false" OTFStretchedAlternate="false" KeyboardDirection="DefaultDirection">
 			<Properties>
 				<Leading type="enumeration">Auto</Leading>
 				<TabList type="list">
 				</TabList>
-				<AppliedFont type="string">Minion Pro</AppliedFont>
+				<AppliedFont type="string">Times New Roman</AppliedFont>
 				<RuleAboveColor type="string">Text Color</RuleAboveColor>
 				<RuleBelowColor type="string">Text Color</RuleBelowColor>
 				<RuleAboveType type="object">StrokeStyle/$ID/Solid</RuleAboveType>
@@ -189,7 +214,7 @@
 			</Properties>
 		</ParagraphStyle>
 		<ParagraphStyleGroup Self="ParagraphStyleGroup/$ID/Text Styles" Name="$ID/Text Styles">
-			<ParagraphStyle Self="ParagraphStyle/Text Styles%3aBody" Name="Text Styles:Body" Imported="false" NextStyle="ParagraphStyle/Text Styles%3aBody" SplitDocument="false" EmitCss="true" StyleUniqueId="198f6d1b-7d60-42f1-8858-696158a8f209" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Light" PointSize="10.5" KerningMethod="$ID/Optical" HyphenateLadderLimit="2" Hyphenation="false" HyphenateAfterFirst="3" HyphenateBeforeLast="3" HyphenateWordsLongerThan="7" SpaceAfter="13.5" KeepLinesTogether="true" FillTint="90" HyphenateLastWord="false" HyphenWeight="9" HyphenateAcrossColumns="false">
+			<ParagraphStyle Self="ParagraphStyle/Text Styles%3aBody" Name="Text Styles:Body" Imported="false" NextStyle="ParagraphStyle/Text Styles%3aBody" SplitDocument="false" EmitCss="true" StyleUniqueId="e6e69839-43a2-4aab-9105-3328922b31d8" IncludeClass="true" ExtendedKeyboardShortcut="0 0 0" EmptyNestedStyles="true" EmptyLineStyles="true" EmptyGrepStyles="true" KeyboardShortcut="0 0" FontStyle="Light" PointSize="10.5" KerningMethod="$ID/Optical" HyphenateLadderLimit="2" Hyphenation="false" HyphenateAfterFirst="3" HyphenateBeforeLast="3" HyphenateWordsLongerThan="7" SpaceAfter="13.5" KeepLinesTogether="true" FillTint="90" HyphenateLastWord="false" HyphenWeight="9" HyphenateAcrossColumns="false">
 				<Properties>
 					<BasedOn type="object">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn>
 					<PreviewColor type="enumeration">Nothing</PreviewColor>
@@ -199,72 +224,97 @@
 			</ParagraphStyle>
 		</ParagraphStyleGroup>
 	</RootParagraphStyleGroup>
-	<RootCellStyleGroup Self="u8e">
+	<RootCellStyleGroup Self="u76">
 		<CellStyleGroup Self="CellStyleGroup/$ID/Text Tables" Name="$ID/Text Tables">
-			<CellStyle Self="CellStyle/Text Tables%3aTitle" ExtendedKeyboardShortcut="0 0 0" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTitle.Table" TopInset="9" LeftInset="0" BottomInset="9" RightInset="4.0032" FillColor="Swatch/None" ClipContentToCell="false" FirstBaselineOffset="AscentOffset" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0" LeftEdgeStrokeColor="Swatch/None" TopEdgeStrokeWeight="0" TopEdgeStrokeColor="Swatch/None" RightEdgeStrokeWeight="0" RightEdgeStrokeColor="Swatch/None" BottomEdgeStrokeWeight="0.5" BottomEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" KeyboardShortcut="0 0" Name="Text Tables:Title">
+			<CellStyle Self="CellStyle/Text Tables%3aTitle" ExtendedKeyboardShortcut="0 0 0" TextTopInset="9" TextLeftInset="0" TextBottomInset="9" TextRightInset="4.0032" ClipContentToTextCell="false" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTitle.Table" TopInset="9" LeftInset="0" BottomInset="9" RightInset="4.0032" FillColor="Swatch/None" ClipContentToCell="false" FirstBaselineOffset="AscentOffset" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0" LeftEdgeStrokeColor="Swatch/None" TopEdgeStrokeWeight="0" TopEdgeStrokeColor="Swatch/None" RightEdgeStrokeWeight="0" RightEdgeStrokeColor="Swatch/None" BottomEdgeStrokeWeight="0" BottomEdgeStrokeColor="Swatch/None" KeyboardShortcut="0 0" Name="Text Tables:Title">
 				<Properties>
 					<BasedOn type="string">$ID/[None]</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aColumn Header L1" ExtendedKeyboardShortcut="0 0 0" TextTopInset="4.003" TextLeftInset="4.0032" TextBottomInset="4.0032" TextRightInset="4.0032" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L1" TopInset="4.003" LeftInset="4.0032" BottomInset="4.0032" RightInset="4.0032" FillColor="Swatch/None" FillTint="-1" FirstBaselineOffset="AscentOffset" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokeType="StrokeStyle/$ID/Solid" LeftEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" LeftEdgeStrokeTint="100" LeftEdgeStrokeOverprint="false" TopEdgeStrokeWeight="0.5" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="true" RightEdgeStrokeWeight="0.5" RightEdgeStrokeType="StrokeStyle/$ID/Solid" RightEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" RightEdgeStrokeTint="100" RightEdgeStrokeOverprint="false" RightEdgeStrokeGapColor="Color/Paper" RightEdgeStrokeGapTint="100" BottomEdgeStrokeWeight="0.5" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" BottomEdgeStrokeTint="100" BottomEdgeStrokeOverprint="false" BottomEdgeStrokeGapColor="Color/Paper" BottomEdgeStrokeGapTint="100" KeyboardShortcut="0 0" Name="Text Tables:Column Header L1">
+			<CellStyle Self="CellStyle/Text Tables%3aColumn Header L1" ExtendedKeyboardShortcut="0 0 0" TextTopInset="4.003" TextLeftInset="4.0032" TextBottomInset="4.0032" TextRightInset="4.0032" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L1" TopInset="4.003" LeftInset="4.0032" BottomInset="4.0032" RightInset="4.0032" FillColor="Swatch/None" FillTint="-1" FirstBaselineOffset="AscentOffset" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0" LeftEdgeStrokeType="StrokeStyle/$ID/Solid" LeftEdgeStrokeColor="Color/WY light peach" LeftEdgeStrokeTint="100" LeftEdgeStrokeOverprint="false" TopEdgeStrokeWeight="0" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Color/WY light peach" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="true" RightEdgeStrokeWeight="0" RightEdgeStrokeType="StrokeStyle/$ID/Solid" RightEdgeStrokeColor="Color/WY light peach" RightEdgeStrokeTint="100" RightEdgeStrokeOverprint="false" RightEdgeStrokeGapColor="Color/Paper" RightEdgeStrokeGapTint="100" BottomEdgeStrokeWeight="0.5" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeColor="Color/WY light peach" BottomEdgeStrokeTint="100" BottomEdgeStrokeOverprint="false" BottomEdgeStrokeGapColor="Color/Paper" BottomEdgeStrokeGapTint="100" KeyboardShortcut="0 0" Name="Text Tables:Column Header L1">
 				<Properties>
 					<BasedOn type="string">$ID/[None]</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aColumn Header L2 - Appendix" ExtendedKeyboardShortcut="0 0 0" TextTopInset="0" TextLeftInset="0" TextBottomInset="9" TextRightInset="0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" TopInset="0" LeftInset="0" BottomInset="9" RightInset="0" VerticalJustification="BottomAlign" KeyboardShortcut="0 0" Name="Text Tables:Column Header L2 - Appendix">
+			<CellStyle Self="CellStyle/Text Tables%3aColumn Header L2 - Appendix" ExtendedKeyboardShortcut="0 0 0" TextTopInset="0" TextLeftInset="0" TextBottomInset="4.5" TextRightInset="0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" TopInset="0" LeftInset="0" BottomInset="4.5" RightInset="0" VerticalJustification="BottomAlign" KeyboardShortcut="0 0" Name="Text Tables:Column Header L2 - Appendix">
 				<Properties>
 					<BasedOn type="object">CellStyle/Text Tables%3aColumn Header L2</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aRow Header L1" ExtendedKeyboardShortcut="0 0 0" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H1" TopInset="5.76" LeftInset="4.5" BottomInset="5.76" RightInset="4.5" FillTint="100" LeftEdgeStrokeWeight="0.5" TopEdgeStrokeWeight="0.5" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="true" BottomEdgeStrokeWeight="0.5" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" BottomEdgeStrokeTint="100" BottomEdgeStrokeOverprint="true" KeyboardShortcut="0 0" Name="Text Tables:Row Header L1">
+			<CellStyle Self="CellStyle/Text Tables%3aRow Header L1" ExtendedKeyboardShortcut="0 0 0" TextTopInset="5.76" TextLeftInset="4.5" TextBottomInset="5.76" TextRightInset="4.5" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H1" TopInset="5.76" LeftInset="4.5" BottomInset="5.76" RightInset="4.5" FillTint="100" LeftEdgeStrokeOverprint="true" TopEdgeStrokeWeight="1" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Color/WY light peach" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="true" RightEdgeStrokeOverprint="true" BottomEdgeStrokeWeight="1" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeColor="Color/WY light peach" BottomEdgeStrokeTint="100" BottomEdgeStrokeOverprint="true" KeyboardShortcut="0 0" Name="Text Tables:Row Header L1">
 				<Properties>
-					<BasedOn type="object">CellStyle/Text Tables%3aRow Header L3</BasedOn>
+					<BasedOn type="object">CellStyle/Text Tables%3aBroadband + Cell</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aRow Header L3" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3" FillColor="Swatch/None" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0" LeftEdgeStrokeType="StrokeStyle/$ID/Solid" LeftEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" LeftEdgeStrokeTint="100" LeftEdgeStrokeGapColor="Color/Paper" LeftEdgeStrokeGapTint="100" TopEdgeStrokeWeight="0" RightEdgeStrokeWeight="0.5" RightEdgeStrokeType="StrokeStyle/$ID/Solid" RightEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" RightEdgeStrokeTint="100" BottomEdgeStrokeWeight="0" KeyboardShortcut="0 0" Name="Text Tables:Row Header L3">
+			<CellStyle Self="CellStyle/Text Tables%3aRow Header L3" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix" FillColor="Swatch/None" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0" LeftEdgeStrokeType="StrokeStyle/$ID/Solid" LeftEdgeStrokeColor="Swatch/None" LeftEdgeStrokeTint="100" LeftEdgeStrokeGapColor="Color/Paper" LeftEdgeStrokeGapTint="100" TopEdgeStrokeWeight="0" TopEdgeStrokeColor="Swatch/None" RightEdgeStrokeWeight="0" RightEdgeStrokeType="StrokeStyle/$ID/Solid" RightEdgeStrokeColor="Swatch/None" RightEdgeStrokeTint="100" BottomEdgeStrokeWeight="0" BottomEdgeStrokeColor="Swatch/None" KeyboardShortcut="0 0" Name="Text Tables:Row Header L3">
 				<Properties>
 					<BasedOn type="string">$ID/[None]</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aTable Body" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body" LeftEdgeStrokeWeight="0.5" LeftEdgeStrokeOverprint="false" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" TopEdgeStrokeTint="100" TopEdgeStrokeGapColor="Color/Paper" TopEdgeStrokeGapTint="100" RightEdgeStrokeOverprint="false" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" BottomEdgeStrokeTint="100" BottomEdgeStrokeGapColor="Color/Paper" BottomEdgeStrokeGapTint="100" KeyboardShortcut="0 0" Name="Text Tables:Table Body">
+			<CellStyle Self="CellStyle/Text Tables%3aTable Body" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body" LeftEdgeStrokeOverprint="false" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeTint="100" TopEdgeStrokeGapColor="Color/Paper" TopEdgeStrokeGapTint="100" RightEdgeStrokeOverprint="false" BottomEdgeStrokeType="StrokeStyle/$ID/Solid" BottomEdgeStrokeTint="100" BottomEdgeStrokeGapColor="Color/Paper" BottomEdgeStrokeGapTint="100" KeyboardShortcut="0 0" Name="Text Tables:Table Body">
 				<Properties>
-					<BasedOn type="object">CellStyle/Text Tables%3aRow Header L3</BasedOn>
+					<BasedOn type="object">CellStyle/Text Tables%3aBroadband + Cell</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aRow Header L3 Emphasis (shaded)" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" FillColor="Color/C=98 M=70 Y=22 K=6" FillTint="10" KeyboardShortcut="0 0" Name="Text Tables:Row Header L3 Emphasis (shaded)">
+			<CellStyle Self="CellStyle/Text Tables%3aRow Header L3 Emphasis (shaded)" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" FillColor="Color/WY light peach" FillTint="10" KeyboardShortcut="0 0" Name="Text Tables:Row Header L3 Emphasis (shaded)">
 				<Properties>
-					<BasedOn type="object">CellStyle/Text Tables%3aRow Header L3</BasedOn>
+					<BasedOn type="object">CellStyle/Text Tables%3aBroadband + Cell</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" FillColor="Color/C=98 M=70 Y=22 K=6" FillTint="10" KeyboardShortcut="0 0" Name="Text Tables:Table Body Emphasis (shaded)">
+			<CellStyle Self="CellStyle/Text Tables%3aTable Body Emphasis (shaded)" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" FillColor="Color/WY light peach" FillTint="10" KeyboardShortcut="0 0" Name="Text Tables:Table Body Emphasis (shaded)">
 				<Properties>
 					<BasedOn type="object">CellStyle/Text Tables%3aTable Body</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aColumn Header L2" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2" KeyboardShortcut="0 0" Name="Text Tables:Column Header L2">
+			<CellStyle Self="CellStyle/Text Tables%3aEmergency savings body" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aTable Body appendix" KeyboardShortcut="0 0" Name="Text Tables:Emergency savings body">
+				<Properties>
+					<BasedOn type="object">CellStyle/Text Tables%3aEmergency Savings</BasedOn>
+				</Properties>
+			</CellStyle>
+			<CellStyle Self="CellStyle/Text Tables%3aColumn Header L2" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aColumn Heading L2" LeftEdgeStrokeColor="Swatch/None" TopEdgeStrokeColor="Swatch/None" RightEdgeStrokeColor="Swatch/None" KeyboardShortcut="0 0" Name="Text Tables:Column Header L2">
 				<Properties>
 					<BasedOn type="object">CellStyle/Text Tables%3aColumn Header L1</BasedOn>
 				</Properties>
 			</CellStyle>
-			<CellStyle Self="CellStyle/Text Tables%3aNotes" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" LeftEdgeStrokeWeight="0" TopEdgeStrokeWeight="1" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Color/C=98 M=70 Y=22 K=6" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="true" RightEdgeStrokeWeight="0" BottomEdgeStrokeWeight="0" KeyboardShortcut="0 0" Name="Text Tables:Notes">
+			<CellStyle Self="CellStyle/Text Tables%3aBroadband + Cell" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3" FillColor="Swatch/None" VerticalJustification="CenterAlign" LeftEdgeStrokeWeight="0" LeftEdgeStrokeType="StrokeStyle/$ID/Solid" LeftEdgeStrokeColor="Swatch/None" LeftEdgeStrokeTint="100" LeftEdgeStrokeGapColor="Color/Paper" LeftEdgeStrokeGapTint="100" TopEdgeStrokeWeight="0" TopEdgeStrokeColor="Swatch/None" RightEdgeStrokeWeight="0" RightEdgeStrokeType="StrokeStyle/$ID/Solid" RightEdgeStrokeColor="Swatch/None" RightEdgeStrokeTint="100" BottomEdgeStrokeWeight="0" BottomEdgeStrokeColor="Swatch/None" KeyboardShortcut="0 0" Name="Text Tables:Broadband + Cell">
+				<Properties>
+					<BasedOn type="string">$ID/[None]</BasedOn>
+				</Properties>
+			</CellStyle>
+			<CellStyle Self="CellStyle/Text Tables%3aEmergency Savings" ExtendedKeyboardShortcut="0 0 0" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedParagraphStyle="ParagraphStyle/Text Tables%3aRow H3 appendix" TopInset="4" LeftInset="4" BottomInset="4" RightInset="4" ClipContentToCell="false" LeftEdgeStrokeWeight="1" LeftEdgeStrokeOverprint="true" TopEdgeStrokeWeight="1" TopEdgeStrokeColor="Color/WY light peach" TopEdgeStrokeOverprint="false" RightEdgeStrokeWeight="1" BottomEdgeStrokeWeight="1" BottomEdgeStrokeColor="Color/WY light peach" BottomEdgeStrokeOverprint="true" KeyboardShortcut="0 0" Name="Text Tables:Emergency Savings">
+				<Properties>
+					<BasedOn type="object">CellStyle/Text Tables%3aTable Body</BasedOn>
+				</Properties>
+			</CellStyle>
+			<CellStyle Self="CellStyle/Text Tables%3aNotes" ExtendedKeyboardShortcut="0 0 0" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" LeftEdgeStrokeWeight="0" TopEdgeStrokeWeight="0" TopEdgeStrokeType="StrokeStyle/$ID/Solid" TopEdgeStrokeColor="Swatch/None" TopEdgeStrokeTint="100" TopEdgeStrokeOverprint="true" RightEdgeStrokeWeight="0" BottomEdgeStrokeWeight="0" KeyboardShortcut="0 0" Name="Text Tables:Notes">
 				<Properties>
 					<BasedOn type="string">$ID/[None]</BasedOn>
 				</Properties>
 			</CellStyle>
 		</CellStyleGroup>
-	</RootCellStyleGroup>
-	<RootTableStyleGroup Self="u90">
-		<TableStyle Self="TableStyle/Table Style 2" ExtendedKeyboardShortcut="0 0 0" Name="Table Style 2" KeyboardShortcut="0 0">
+		<CellStyle Self="CellStyle/Cell Style 3" ExtendedKeyboardShortcut="0 0 0" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" TopInset="4" LeftInset="4" BottomInset="4" RightInset="4" ClipContentToCell="false" TopEdgeStrokeWeight="1" TopEdgeStrokeColor="Color/WY light peach" TopEdgeStrokeGapColor="Color/WY light peach" BottomEdgeStrokeWeight="1" BottomEdgeStrokeColor="Color/WY light peach" BottomEdgeStrokeTint="100" BottomEdgeStrokeGapColor="Color/WY light peach" KeyboardShortcut="0 0" Name="Cell Style 3">
 			<Properties>
-				<BasedOn type="object">TableStyle/Table Style 1</BasedOn>
+				<BasedOn type="object">CellStyle/Text Tables%3aRow Header L3</BasedOn>
+			</Properties>
+		</CellStyle>
+		<CellStyle Self="CellStyle/Cell Style 1" ExtendedKeyboardShortcut="0 0 0" TextTopInset="4" TextLeftInset="4" TextBottomInset="4" TextRightInset="4" ClipContentToTextCell="false" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" TopInset="4" LeftInset="4" BottomInset="4" RightInset="4" ClipContentToCell="false" BottomEdgeStrokeWeight="1" BottomEdgeStrokeColor="Color/WY light peach" BottomEdgeStrokeTint="100" KeyboardShortcut="0 0" Name="Cell Style 1">
+			<Properties>
+				<BasedOn type="object">CellStyle/Text Tables%3aRow Header L3</BasedOn>
+			</Properties>
+		</CellStyle>
+	</RootCellStyleGroup>
+	<RootTableStyleGroup Self="u78">
+		<TableStyle Self="TableStyle/Table Style 2" ExtendedKeyboardShortcut="0 0 0" Name="Table Style 2" FooterRegionCellStyle="CellStyle/Cell Style 1" KeyboardShortcut="0 0">
+			<Properties>
+				<BasedOn type="object">TableStyle/WY Tables</BasedOn>
 			</Properties>
 		</TableStyle>
-		<TableStyle Self="TableStyle/Table Style 1" ExtendedKeyboardShortcut="0 0 0" Name="Table Style 1" KeyboardShortcut="0 0">
+		<TableStyle Self="TableStyle/WY Tables" ExtendedKeyboardShortcut="0 0 0" Name="WY Tables" KeyboardShortcut="0 0">
 			<Properties>
 				<BasedOn type="object">TableStyle/Text Table 1</BasedOn>
 			</Properties>
 		</TableStyle>
-		<TableStyle Self="TableStyle/Text Table 1" ExtendedKeyboardShortcut="0 0 0" Name="Text Table 1" TopBorderStrokeColor="Color/C=98 M=70 Y=22 K=6" TopBorderStrokeOverprint="true" LeftBorderStrokeColor="Color/C=98 M=70 Y=22 K=6" LeftBorderStrokeOverprint="true" BottomBorderStrokeColor="Color/C=98 M=70 Y=22 K=6" BottomBorderStrokeOverprint="true" RightBorderStrokeColor="Color/C=98 M=70 Y=22 K=6" RightBorderStrokeOverprint="true" StartColumnStrokeColor="Color/C=98 M=70 Y=22 K=6" StartColumnStrokeWeight="0.5" EndColumnStrokeColor="Color/C=98 M=70 Y=22 K=6" EndColumnStrokeWeight="0.5" SkipFirstAlternatingFillRows="3" StartRowFillColor="Color/C=98 M=70 Y=22 K=6" StartRowFillTint="50" HeaderRegionSameAsBodyRegion="false" FooterRegionSameAsBodyRegion="false" LeftColumnRegionSameAsBodyRegion="false" HeaderRegionCellStyle="CellStyle/Text Tables%3aTitle" FooterRegionCellStyle="CellStyle/Text Tables%3aNotes" LeftColumnRegionCellStyle="CellStyle/Text Tables%3aRow Header L3" BodyRegionCellStyle="CellStyle/Text Tables%3aTable Body" KeyboardShortcut="0 0">
+		<TableStyle Self="TableStyle/Text Table 1" ExtendedKeyboardShortcut="0 0 0" Name="Text Table 1" TopBorderStrokeColor="Color/WY light peach" TopBorderStrokeOverprint="true" LeftBorderStrokeColor="Color/WY light peach" LeftBorderStrokeOverprint="true" BottomBorderStrokeColor="Color/WY light peach" BottomBorderStrokeOverprint="true" RightBorderStrokeColor="Color/WY light peach" RightBorderStrokeOverprint="true" StartColumnStrokeColor="Color/WY light peach" StartColumnStrokeWeight="0.5" EndColumnStrokeColor="Color/WY light peach" EndColumnStrokeWeight="0.5" SkipFirstAlternatingFillRows="3" StartRowFillColor="Color/WY light peach" StartRowFillTint="50" HeaderRegionSameAsBodyRegion="false" FooterRegionSameAsBodyRegion="false" LeftColumnRegionSameAsBodyRegion="false" HeaderRegionCellStyle="CellStyle/Text Tables%3aTitle" FooterRegionCellStyle="CellStyle/Text Tables%3aNotes" LeftColumnRegionCellStyle="CellStyle/Text Tables%3aBroadband + Cell" BodyRegionCellStyle="CellStyle/Text Tables%3aTable Body" KeyboardShortcut="0 0">
 			<Properties>
 				<BasedOn type="object">TableStyle/$ID/[Basic Table]</BasedOn>
 			</Properties>
@@ -275,16 +325,16 @@
 			</Properties>
 		</TableStyle>
 	</RootTableStyleGroup>
-	<RootObjectStyleGroup Self="u99">
-		<ObjectStyle Self="ObjectStyle/$ID/[None]" TopLeftCornerOption="None" TopRightCornerOption="None" BottomLeftCornerOption="None" BottomRightCornerOption="None" TopLeftCornerRadius="12" TopRightCornerRadius="12" BottomLeftCornerRadius="12" BottomRightCornerRadius="12" EmitCss="true" IncludeClass="true" Name="$ID/[None]" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" CornerRadius="12" FillColor="Swatch/None" FillTint="-1" StrokeWeight="0" MiterLimit="4" EndCap="ButtEndCap" EndJoin="MiterEndJoin" StrokeType="StrokeStyle/$ID/Solid" LeftLineEnd="None" RightLineEnd="None" StrokeColor="Swatch/None" StrokeTint="-1" GapColor="Swatch/None" GapTint="-1" StrokeAlignment="CenterAlignment" Nonprinting="false" GradientFillAngle="0" GradientStrokeAngle="0" AppliedNamedGrid="n" CornerOption="None" ArrowHeadAlignment="InsidePath" LeftArrowHeadScale="100" RightArrowHeadScale="100">
+	<RootObjectStyleGroup Self="u81">
+		<ObjectStyle Self="ObjectStyle/$ID/[None]" EmitCss="true" IncludeClass="true" Name="$ID/[None]" AppliedParagraphStyle="ParagraphStyle/$ID/[No paragraph style]" CornerRadius="12" FillColor="Swatch/None" FillTint="-1" StrokeWeight="0" MiterLimit="4" EndCap="ButtEndCap" EndJoin="MiterEndJoin" StrokeType="StrokeStyle/$ID/Solid" LeftLineEnd="None" RightLineEnd="None" StrokeColor="Swatch/None" StrokeTint="-1" GapColor="Swatch/None" GapTint="-1" StrokeAlignment="CenterAlignment" Nonprinting="false" GradientFillAngle="0" GradientStrokeAngle="0" AppliedNamedGrid="n" TopLeftCornerOption="None" TopRightCornerOption="None" BottomLeftCornerOption="None" BottomRightCornerOption="None" TopLeftCornerRadius="12" TopRightCornerRadius="12" BottomLeftCornerRadius="12" BottomRightCornerRadius="12" CornerOption="None" ArrowHeadAlignment="InsidePath" LeftArrowHeadScale="100" RightArrowHeadScale="100">
 			<TransformAttributeOption TransformAttrLeftReference="PageEdgeReference" TransformAttrTopReference="PageEdgeReference" TransformAttrRefAnchorPoint="TopLeftAnchor" />
-			<ObjectExportOption AltTextSourceType="SourceXMLStructure" ActualTextSourceType="SourceXMLStructure" CustomAltText="$ID/" CustomActualText="$ID/" ApplyTagType="TagFromStructure" ImageConversionType="JPEG" ImageExportResolution="Ppi300" GIFOptionsPalette="AdaptivePalette" GIFOptionsInterlaced="true" JPEGOptionsQuality="High" JPEGOptionsFormat="BaselineEncoding" ImageAlignment="AlignLeft" ImageSpaceBefore="0" ImageSpaceAfter="0" UseImagePageBreak="false" ImagePageBreak="PageBreakBefore" CustomImageAlignment="false" SpaceUnit="CssPixel" CustomLayout="false" CustomLayoutType="AlignmentAndSpacing" EpubType="$ID/" SizeType="DefaultSize" CustomSize="$ID/" PreserveAppearanceFromLayout="PreserveAppearanceDefault">
+			<ObjectExportOption EpubType="$ID/" SizeType="DefaultSize" CustomSize="$ID/" PreserveAppearanceFromLayout="PreserveAppearanceDefault" AltTextSourceType="SourceXMLStructure" ActualTextSourceType="SourceXMLStructure" CustomAltText="$ID/" CustomActualText="$ID/" ApplyTagType="TagFromStructure" ImageConversionType="JPEG" ImageExportResolution="Ppi300" GIFOptionsPalette="AdaptivePalette" GIFOptionsInterlaced="true" JPEGOptionsQuality="High" JPEGOptionsFormat="BaselineEncoding" ImageAlignment="AlignLeft" ImageSpaceBefore="0" ImageSpaceAfter="0" UseImagePageBreak="false" ImagePageBreak="PageBreakBefore" CustomImageAlignment="false" SpaceUnit="CssPixel" CustomLayout="false" CustomLayoutType="AlignmentAndSpacing">
 				<Properties>
 					<AltMetadataProperty NamespacePrefix="$ID/" PropertyPath="$ID/" />
 					<ActualMetadataProperty NamespacePrefix="$ID/" PropertyPath="$ID/" />
 				</Properties>
 			</ObjectExportOption>
-			<TextFramePreference FootnotesEnableOverrides="false" FootnotesSpanAcrossColumns="false" FootnotesMinimumSpacing="12" FootnotesSpaceBetween="6" TextColumnCount="1" TextColumnGutter="12" TextColumnFixedWidth="144" UseFixedColumnWidth="false" FirstBaselineOffset="AscentOffset" MinimumFirstBaselineOffset="0" VerticalJustification="TopAlign" VerticalThreshold="0" IgnoreWrap="false" VerticalBalanceColumns="false" UseFlexibleColumnWidth="false" TextColumnMaxWidth="0" AutoSizingType="Off" AutoSizingReferencePoint="CenterPoint" UseMinimumHeightForAutoSizing="false" MinimumHeightForAutoSizing="0" UseMinimumWidthForAutoSizing="false" MinimumWidthForAutoSizing="0" UseNoLineBreaksForAutoSizing="false" ColumnRuleOverride="false" ColumnRuleOffset="0" ColumnRuleTopInset="0" ColumnRuleInsetChainOverride="true" ColumnRuleBottomInset="0" ColumnRuleStrokeWidth="1" ColumnRuleStrokeColor="Color/Black" ColumnRuleStrokeType="StrokeStyle/$ID/Solid" ColumnRuleStrokeTint="100" ColumnRuleOverprintOverride="false">
+			<TextFramePreference TextColumnCount="1" TextColumnGutter="12" TextColumnFixedWidth="144" UseFixedColumnWidth="false" FirstBaselineOffset="AscentOffset" MinimumFirstBaselineOffset="0" VerticalJustification="TopAlign" VerticalThreshold="0" IgnoreWrap="false" UseFlexibleColumnWidth="false" TextColumnMaxWidth="0" AutoSizingType="Off" AutoSizingReferencePoint="CenterPoint" UseMinimumHeightForAutoSizing="false" MinimumHeightForAutoSizing="0" UseMinimumWidthForAutoSizing="false" MinimumWidthForAutoSizing="0" UseNoLineBreaksForAutoSizing="false" ColumnRuleOverride="false" ColumnRuleOffset="0" ColumnRuleTopInset="0" ColumnRuleInsetChainOverride="true" ColumnRuleBottomInset="0" ColumnRuleStrokeWidth="0" ColumnRuleStrokeColor="n" ColumnRuleStrokeType="StrokeStyle/$ID/Solid" ColumnRuleStrokeTint="100" ColumnRuleOverprintOverride="false" FootnotesEnableOverrides="false" FootnotesSpanAcrossColumns="false" FootnotesMinimumSpacing="12" FootnotesSpaceBetween="6" VerticalBalanceColumns="false">
 				<Properties>
 					<InsetSpacing type="list">
 						<ListItem type="unit">0</ListItem>
@@ -306,8 +356,8 @@
 				</Properties>
 				<ContourOption ContourType="SameAsClipping" IncludeInsideEdges="false" ContourPathName="$ID/" />
 			</TextWrapPreference>
-			<StoryPreference OpticalMarginAlignment="false" OpticalMarginSize="12" FrameType="TextFrameType" StoryOrientation="Horizontal" StoryDirection="LeftToRightDirection" />
-			<FrameFittingOption AutoFit="false" LeftCrop="0" TopCrop="0" RightCrop="0" BottomCrop="0" FittingOnEmptyFrame="None" FittingAlignment="CenterAnchor" />
+			<StoryPreference OpticalMarginAlignment="false" OpticalMarginSize="12" FrameType="TextFrameType" StoryOrientation="Horizontal" StoryDirection="UnknownDirection" />
+			<FrameFittingOption AutoFit="false" LeftCrop="0" TopCrop="0" RightCrop="0" BottomCrop="0" FittingOnEmptyFrame="None" FittingAlignment="TopLeftAnchor" />
 			<TextFrameFootnoteOptionsObject EnableOverrides="false" SpanFootnotesAcross="false" MinimumSpacingOption="12" SpaceBetweenFootnotes="6" />
 		</ObjectStyle>
 	</RootObjectStyleGroup>
@@ -366,32 +416,26 @@
 			<GradientFeatherSetting Applied="false" Type="Linear" Angle="0" Length="0" GradientStart="0 0" HiliteAngle="0" HiliteLength="0" />
 		</ContentTransparencySetting>
 	</TransparencyDefaultContainerObject>
-	<Layer Self="ucd" Name="Layer 1" Visible="true" Locked="false" IgnoreWrap="false" ShowGuides="true" LockGuides="false" UI="true" Expendable="true" Printable="true">
+	<Layer Self="ua9" Name="Layer 1" Visible="true" Locked="false" IgnoreWrap="false" ShowGuides="true" LockGuides="false" UI="true" Expendable="true" Printable="true">
 		<Properties>
 			<LayerColor type="enumeration">LightBlue</LayerColor>
 		</Properties>
 	</Layer>
-	<Spread Self="ud0">
-		<TextFrame Self="udf" ParentStory="ue2" PreviousTextFrame="n" NextTextFrame="n" ContentType="TextType" OverriddenPageItemProps="" Visible="true" Name="$ID/" HorizontalLayoutConstraints="FlexibleDimension FixedDimension FlexibleDimension" VerticalLayoutConstraints="FlexibleDimension FixedDimension FlexibleDimension" StrokeWeight="1" GradientFillStart="0 0" GradientFillLength="0" GradientFillAngle="0" GradientStrokeStart="0 0" GradientStrokeLength="0" GradientStrokeAngle="0" ItemLayer="ucd" Locked="false" LocalDisplaySetting="Default" GradientFillHiliteLength="0" GradientFillHiliteAngle="0" GradientStrokeHiliteLength="0" GradientStrokeHiliteAngle="0" AppliedObjectStyle="ObjectStyle/$ID/[None]" ItemTransform="1 0 0 1 111 -302" ParentInterfaceChangeCount="" TargetInterfaceChangeCount="" LastUpdatedInterfaceChangeCount="">
+	<Spread Self="u13c83">
+		<TextFrame Self="u18900" ParentStory="u188ec" PreviousTextFrame="n" NextTextFrame="n" ContentType="TextType" ParentInterfaceChangeCount="" TargetInterfaceChangeCount="" LastUpdatedInterfaceChangeCount="" OverriddenPageItemProps="" HorizontalLayoutConstraints="FlexibleDimension FixedDimension FlexibleDimension" VerticalLayoutConstraints="FlexibleDimension FixedDimension FlexibleDimension" StrokeWeight="1" GradientFillStart="0 0" GradientFillLength="0" GradientFillAngle="0" GradientStrokeStart="0 0" GradientStrokeLength="0" GradientStrokeAngle="0" ItemLayer="ua9" Locked="false" LocalDisplaySetting="Default" GradientFillHiliteLength="0" GradientFillHiliteAngle="0" GradientStrokeHiliteLength="0" GradientStrokeHiliteAngle="0" AppliedObjectStyle="ObjectStyle/$ID/[None]" Visible="true" Name="$ID/" ItemTransform="1 0 0 1 -500.12 -267">
 			<Properties>
 				<PathGeometry>
 					<GeometryPathType PathOpen="false">
 						<PathPointArray>
 							<PathPointType Anchor="-75 -75" LeftDirection="-75 -75" RightDirection="-75 -75" />
-							<PathPointType Anchor="-75 681" LeftDirection="-75 681" RightDirection="-75 681" />
-							<PathPointType Anchor="465.0000000000003 681" LeftDirection="465.0000000000003 681" RightDirection="465.0000000000003 681" />
+							<PathPointType Anchor="-75 454.2" LeftDirection="-75 454.2" RightDirection="-75 454.2" />
+							<PathPointType Anchor="465.0000000000003 454.2" LeftDirection="465.0000000000003 454.2" RightDirection="465.0000000000003 454.2" />
 							<PathPointType Anchor="465.0000000000003 -75" LeftDirection="465.0000000000003 -75" RightDirection="465.0000000000003 -75" />
 						</PathPointArray>
 					</GeometryPathType>
 				</PathGeometry>
 			</Properties>
-			<ObjectExportOption AltTextSourceType="SourceXMLStructure" ActualTextSourceType="SourceXMLStructure" CustomAltText="$ID/" CustomActualText="$ID/" ApplyTagType="TagFromStructure" ImageConversionType="JPEG" ImageExportResolution="Ppi300" GIFOptionsPalette="AdaptivePalette" GIFOptionsInterlaced="true" JPEGOptionsQuality="High" JPEGOptionsFormat="BaselineEncoding" ImageAlignment="AlignLeft" ImageSpaceBefore="0" ImageSpaceAfter="0" UseImagePageBreak="false" ImagePageBreak="PageBreakBefore" CustomImageAlignment="false" SpaceUnit="CssPixel" CustomLayout="false" CustomLayoutType="AlignmentAndSpacing" EpubType="$ID/" SizeType="DefaultSize" CustomSize="$ID/" PreserveAppearanceFromLayout="PreserveAppearanceDefault">
-				<Properties>
-					<AltMetadataProperty NamespacePrefix="$ID/" PropertyPath="$ID/" />
-					<ActualMetadataProperty NamespacePrefix="$ID/" PropertyPath="$ID/" />
-				</Properties>
-			</ObjectExportOption>
-			<TextFramePreference TextColumnCount="1" TextColumnFixedWidth="540.0000000000002" TextColumnMaxWidth="0">
+			<TextFramePreference TextColumnCount="1" TextColumnFixedWidth="540.0000000000002" TextColumnMaxWidth="0" AutoSizingType="Off" AutoSizingReferencePoint="CenterPoint" UseMinimumHeightForAutoSizing="false" MinimumHeightForAutoSizing="0" UseMinimumWidthForAutoSizing="false" MinimumWidthForAutoSizing="0" UseNoLineBreaksForAutoSizing="false" ColumnRuleOverride="false" ColumnRuleOffset="0" ColumnRuleTopInset="0" ColumnRuleInsetChainOverride="true" ColumnRuleBottomInset="0" ColumnRuleStrokeWidth="0" ColumnRuleStrokeColor="Color/WY light peach" ColumnRuleStrokeType="StrokeStyle/$ID/Solid" ColumnRuleStrokeTint="100" ColumnRuleOverprintOverride="false" FootnotesEnableOverrides="false" FootnotesSpanAcrossColumns="false" FootnotesMinimumSpacing="12" FootnotesSpaceBetween="6">
 				<Properties>
 					<InsetSpacing type="list">
 						<ListItem type="unit">0</ListItem>
@@ -401,21 +445,25 @@
 					</InsetSpacing>
 				</Properties>
 			</TextFramePreference>
+			<TextFrameFootnoteOptionsObject EnableOverrides="false" SpanFootnotesAcross="false" MinimumSpacingOption="12" SpaceBetweenFootnotes="6" />
 			<TextWrapPreference Inverse="false" ApplyToMasterPageOnly="false" TextWrapSide="BothSides" TextWrapMode="None">
 				<Properties>
 					<TextWrapOffset Top="0" Left="0" Bottom="0" Right="0" />
 				</Properties>
 			</TextWrapPreference>
+			<ObjectExportOption EpubType="$ID/" SizeType="DefaultSize" CustomSize="$ID/" PreserveAppearanceFromLayout="PreserveAppearanceDefault" AltTextSourceType="SourceXMLStructure" ActualTextSourceType="SourceXMLStructure" CustomAltText="$ID/" CustomActualText="$ID/" ApplyTagType="TagFromStructure" ImageConversionType="JPEG" ImageExportResolution="Ppi300" GIFOptionsPalette="AdaptivePalette" GIFOptionsInterlaced="true" JPEGOptionsQuality="High" JPEGOptionsFormat="BaselineEncoding" ImageAlignment="AlignLeft" ImageSpaceBefore="0" ImageSpaceAfter="0" UseImagePageBreak="false" ImagePageBreak="PageBreakBefore" CustomImageAlignment="false" SpaceUnit="CssPixel" CustomLayout="false" CustomLayoutType="AlignmentAndSpacing">
+				<Properties>
+					<AltMetadataProperty NamespacePrefix="$ID/" PropertyPath="$ID/" />
+					<ActualMetadataProperty NamespacePrefix="$ID/" PropertyPath="$ID/" />
+				</Properties>
+			</ObjectExportOption>
 		</TextFrame>
 	</Spread>
-	<Story Self="ue2" UserText="true" IsEndnoteStory="false" AppliedTOCStyle="n" TrackChanges="false" StoryTitle="$ID/" AppliedNamedGrid="n">
+	<Story Self="u188ec" AppliedTOCStyle="n" UserText="true" IsEndnoteStory="false" TrackChanges="false" StoryTitle="$ID/" AppliedNamedGrid="n">
 		<StoryPreference OpticalMarginAlignment="false" OpticalMarginSize="12" FrameType="TextFrameType" StoryOrientation="Horizontal" StoryDirection="LeftToRightDirection" />
 		<InCopyExportOption IncludeGraphicProxies="true" IncludeAllResources="false" />
-		<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/$ID/NormalParagraphStyle" DropcapDetail="0" TreatIdeographicSpaceAsSpace="false" ParagraphBorderTopLeftCornerRadius="1" ParagraphBorderTopRightCornerRadius="1" ParagraphBorderBottomLeftCornerRadius="1" ParagraphBorderBottomRightCornerRadius="1" ParagraphShadingTopLeftCornerRadius="1" ParagraphShadingTopRightCornerRadius="1" ParagraphShadingBottomLeftCornerRadius="1" ParagraphShadingBottomRightCornerRadius="1">
+		<ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/$ID/NormalParagraphStyle" DropcapDetail="0" TreatIdeographicSpaceAsSpace="false">
 			<Properties>
 				<ParagraphBorderGapColor type="object">Swatch/None</ParagraphBorderGapColor>
 			</Properties>
 			<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]">
-				<Properties>
-					<AppliedFont type="string">Times New Roman</AppliedFont>
-				</Properties>

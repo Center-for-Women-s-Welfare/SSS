@@ -10,7 +10,7 @@ NUM_COLUMNS_READ = 250  # columns of data (family types)
 # rowdata = the Excel row with all the data
 # prevcell = the table cell in the snippet to the left of our target
 # columns = the list of column indices to insert
-def copy_numbers(rowdata: list, prevcell, columns: list, hourly: bool):
+def copy_numbers(rowdata, prevcell, columns: list, keep_cents: bool):
     # for each column index (e.g. 'a', 'ai', 'ap', 'at')
     for colidx in columns:
         colvalue = rowdata[colidx]  # value in the Excel file in the right column
@@ -18,12 +18,23 @@ def copy_numbers(rowdata: list, prevcell, columns: list, hourly: bool):
             colvalue = float(colvalue)
         if colvalue < 0.0:
             colvalue = "(${:,.0f})".format(-colvalue)
-        elif hourly:
+        elif keep_cents:
             colvalue = "${:,.2f}".format(colvalue)
         else:
             colvalue = "${:,.0f}".format(colvalue)
         prevcell = prevcell.getnext()  # move to the correct cell & replace content
         prevcell[0][0][0].text = colvalue  # 1st paragraph - 2nd character range - Content
+
+
+def sum_tax_amounts(rowdata: list, columns: list, amount_dict):
+    for colidx in columns:
+        colvalue = rowdata[colidx]  # value in the Excel file in the right column
+        if type(colvalue) == str:  # if it's a string, make it a number
+            colvalue = float(colvalue)
+        if colidx in amount_dict:
+            amount_dict[colidx] += colvalue
+        else:
+            amount_dict[colidx] = colvalue
 
 
 # complicated code to find the cells in the snippet XML to replace
@@ -61,20 +72,19 @@ class Snippet4ID:
         # close the InDesign file (causes it to write to disk)
         # we open and close it repeatedly
         self.id_file.close()
-        # read & parse the 2 table snippets
+        # read & parse the table snippet
         self.snippet1_xml = lxml.etree.parse('TableSnippet.xml')
-        self.snippet2_xml = lxml.etree.parse('TableSnippet2.xml')
-        # get the root of the XML tree representation for the 2 tables
+        # get the root of the XML tree representation for the table
         self.snippet1_root = self.snippet1_xml.getroot()
-        self.snippet2_root = self.snippet2_xml.getroot()
         # start with empty columns (filled out later)
         self.table1_columns = []
-        self.table2_columns = []
         # we create unique IDs for each table, not sure if it's necessary...
         self.defaultTableID = "u777777"
         self.nextTableID = "u" + str(int(self.defaultTableID[1:]) + 1)
-        # the row_iterator walks through the excel file (row by row)
+        # the row_iterator walks through the Excel file (row by row)
         self.row_iterator = None
+        # list of columns summed as tax credits
+        self.sum_taxes = ["Earned Income Tax Credit (-)", "Child Care Tax Credit (-)", "Child Tax Credit (-)"]
 
     # table snippet has all IDs in the form u777777______ with some suffix,
     # we change them to u 777777x+n _____ (increment the number part)
@@ -91,17 +101,19 @@ class Snippet4ID:
             if "Self" in child.attrib:
                 newid = self.new_self_id(child.attrib["Self"], "1")
                 child.attrib["Self"] = newid
-        for child in self.snippet2_root:
-            if "Self" in child.attrib:
-                newid = self.new_self_id(child.attrib["Self"], "2")
-                child.attrib["Self"] = newid
 
     # county / state / date table header -- only in table 1
     # the Excel file has something like:
     # 'Table 1_x000D_\nThe Self-Sufficiency Standard_x000D_\nfor_x000D_\nAllegany County, MD, 2023'
     # we break this string into the 4 sections, pulling out relevant fields
     def format_head(self, head_cell: str):
-        lines = head_cell.split("_x000D_\n")
+        if "_x000D_\n" in head_cell:
+            lines = head_cell.split("_x000D_\n")
+        elif "_x000d_\n" in head_cell:
+            lines = head_cell.split("_x000d_\n")
+        else:
+            assert False, "Can't split head row" + head_cell
+
         assert lines[0].startswith("Table"), "Unrecognized format head: " + head_cell
         assert lines[1].endswith("The Self-Sufficiency Standard"), "Unrecognized format head: " + head_cell
         assert lines[2] == "for", "Unrecognized format head: " + head_cell
@@ -118,7 +130,7 @@ class Snippet4ID:
         x[0][0][1][0].text = county_name  # 1st cell - 1st paragraph - 2nd character range - Content
         x[0][0][2][0].text = state_etc  # 1st cell - 1st paragraph - 3rd character range - Content
 
-    # read the column header rows from the excel file. The first time, we
+    # read the column header rows from the Excel file. The first time, we
     # parse the cells to create keys for each column. Once we've read it once,
     # then we just skip those rows
     def build_column_map(self):
@@ -153,10 +165,6 @@ class Snippet4ID:
             key = self.table1_columns[i]
             assert key in xl_column_map, "can't find table 1 column: " + key
             self.table1_columns[i] = xl_column_map[key]
-        for i in range(len(self.table2_columns)):
-            key = self.table2_columns[i]
-            assert key in xl_column_map, "can't find table 2 column: " + key
-            self.table2_columns[i] = xl_column_map[key]
 
     # append the next table entries from excel starting at "first_row"
     # it's split between 2 tables in InDesign
@@ -187,6 +195,8 @@ class Snippet4ID:
         # read or skip the column headers
         self.build_column_map()
 
+        sum_tax_credits = {}
+        taxes = {}
         count = 0
         for row in self.row_iterator:
             count += 1
@@ -198,24 +208,39 @@ class Snippet4ID:
             elif row[1] is None:  # skip empty rows with just a label
                 continue
             # find the matching row in the ID table to copy the data into
-            cell = row_label_match(rowhead, self.snippet1_root)
-            copy_numbers(row, cell, self.table1_columns, rowhead == "Hourly")
+            if rowhead in self.sum_taxes:
+                sum_tax_amounts(row, self.table1_columns, sum_tax_credits)
+                cell = None
+            elif rowhead == "Taxes":
+                sum_tax_amounts(row, self.table1_columns, taxes)
+            else:
+                cell = row_label_match(rowhead, self.snippet1_root)
+            if cell:
+                copy_numbers(row, cell, self.table1_columns, rowhead == "Hourly")
             # find the row in the 2nd ID table to copy data from this row into
-            cell = row_label_match(rowhead, self.snippet2_root)
-            copy_numbers(row, cell, self.table2_columns, rowhead == "Hourly")
+            # cell = row_label_match(rowhead, self.snippet2_root)
+            # copy_numbers(row, cell, self.table2_columns, rowhead == "Hourly")
             if count == 20:
                 break  # if we read 18 lines, stop.
             elif count > 20:
                 print("ERROR parsing Excel file")
                 break
 
-        # we just filled out the 2 XML trees representing the InDesign tables as snippets
-        # append them to the end of the file we are building
+        # we just filled out the XML tree representing the InDesign table as a snippet
+        # fill out the couple of calculated entries: Taxes (Net) and Tax Credits
+        for k in taxes:
+            taxes[k] += sum_tax_credits[k]
+        cell = row_label_match("Taxes (Net)", self.snippet1_root)
+        copy_numbers(taxes, cell, self.table1_columns, False)
+        cell = row_label_match("Tax Credits", self.snippet1_root)
+        copy_numbers(sum_tax_credits, cell, self.table1_columns, False)
+
+        # append it to the end of the file we are building
         self.id_file = open(self.id_filename, "ab")
         self.snippet1_xml.write(self.id_file)
-        self.id_file.write(b"<Br />\n")
-        self.snippet2_xml.write(self.id_file)
-        self.id_file.write(b"<Br />\n")
+
+        # add a "force-page-break" after the table
+        self.id_file.write(b'''<CharacterStyleRange AppliedCharacterStyle="CharacterStyle/$ID/[No character style]" ParagraphBreakType="NextPage"><Br /></CharacterStyleRange>\n''')
         self.id_file.close()
         return True
 

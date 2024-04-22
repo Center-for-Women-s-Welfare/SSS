@@ -10,14 +10,11 @@ INPUT_XLSX_PATH = easygui.fileopenbox("Choose the Excel data file", "Excel Data"
 # create path/filename for indesign snippet
 id_filename = easygui.filesavebox("Choose the ID snippet file", "InDesign Table File", "output.idms")
 
-TABLE_1_COLS = ["a", "app", "aii", "aps", "aps"]   # data columns to pull for first table
-TABLE_2_COLS = ["ast", "aips", "2ip", "2ps", "2ps"]  # data columns to pull for second table
-
 # create helper object to do the real work
 id_outfile = SSSnippet.Snippet4ID(id_filename)
-# tell the help which columns to use
-id_outfile.table1_columns = TABLE_1_COLS
-id_outfile.table2_columns = TABLE_2_COLS
+
+TABLE_COLS = ["a", "ap", "aip", "aps", "ast", "2ip", "2ps"]   # data columns to pull for first table
+id_outfile.table1_columns = TABLE_COLS
 
 # open the Excel file
 xlwb = openpyxl.load_workbook(INPUT_XLSX_PATH, True, keep_vba=False)
