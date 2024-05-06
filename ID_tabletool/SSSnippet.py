@@ -84,7 +84,7 @@ class Snippet4ID:
         # the row_iterator walks through the Excel file (row by row)
         self.row_iterator = None
         # list of columns summed as tax credits
-        self.sum_taxes = ["Earned Income Tax Credit (-)", "Child Care Tax Credit (-)", "Child Tax Credit (-)"]
+        self.tax_credits = ["Earned Income Tax Credit (-)", "Child Care Tax Credit (-)", "Child Tax Credit (-)"]
 
     # table snippet has all IDs in the form u777777______ with some suffix,
     # we change them to u 777777x+n _____ (increment the number part)
@@ -207,24 +207,23 @@ class Snippet4ID:
                 continue
             elif row[1] is None:  # skip empty rows with just a label
                 continue
-            # find the matching row in the ID table to copy the data into
-            if rowhead in self.sum_taxes:
+
+            cell = None
+            if rowhead in self.tax_credits:
+                # add rows about tax credits into temporary buckets, added in later
                 sum_tax_amounts(row, self.table1_columns, sum_tax_credits)
-                cell = None
             elif rowhead == "Taxes":
+                # add taxes into temp. bucket, too
                 sum_tax_amounts(row, self.table1_columns, taxes)
             else:
+                # find the matching row in the ID table to copy the data into
                 cell = row_label_match(rowhead, self.snippet1_root)
-            if cell:
+
+            if cell is not None:
                 copy_numbers(row, cell, self.table1_columns, rowhead == "Hourly")
-            # find the row in the 2nd ID table to copy data from this row into
-            # cell = row_label_match(rowhead, self.snippet2_root)
-            # copy_numbers(row, cell, self.table2_columns, rowhead == "Hourly")
+
             if count == 20:
-                break  # if we read 18 lines, stop.
-            elif count > 20:
-                print("ERROR parsing Excel file")
-                break
+                break  # if we read 20 lines, stop.
 
         # we just filled out the XML tree representing the InDesign table as a snippet
         # fill out the couple of calculated entries: Taxes (Net) and Tax Credits
