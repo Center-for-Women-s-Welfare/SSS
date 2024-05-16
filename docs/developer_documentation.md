@@ -19,8 +19,10 @@ the package as needed to use the new code (see step 4 above).
 6. Add new tests as required to cover your changes and run them using `pytest`.
 See the test files in the `tests` folder for examples. Reinstall the package as needed
 to use the new code (see step 4 above).
-7. Add and commit your changes to git. Push your commits to github.
-8. Create a pull request on github to run all the continuous integration checks and to
+7. Make sure that you have `pre-commit` installed (run `pre-commit install` in the
+top level `sss` directory) to prevent committing code that does not follow our style.
+8. Add and commit your changes to git. Push your commits to github.
+9. Create a pull request on github to run all the continuous integration checks and to
 ask for a code review. Fix any errors in the continuous integration checks. When all the
 checks pass and you get an approving review, your changes can be integrated into main
 via the pull request.
@@ -51,9 +53,11 @@ the package as needed to use the new code (see step 4 above).
 6. Add new tests as required to cover your changes and run them using `pytest`.
 See the test files in the `tests` folder for examples. Reinstall the package as needed
 to use the new code (see step 4 above).
-7. Add and commit your changes to git, including the alembic version files that was
+7. Make sure that you have `pre-commit` installed (run `pre-commit install` in the
+top level `sss` directory) to prevent committing code that does not follow our style.
+8. Add and commit your changes to git, including the alembic version files that was
 created. Push your commits to github.
-8. Create a pull request on github to run all the continuous integration checks and to
+9. Create a pull request on github to run all the continuous integration checks and to
 ask for a code review. Fix any errors in the continuous integration checks. When all the
 checks pass and you get an approving review, your changes can be integrated into main
 via the pull request.
@@ -88,9 +92,11 @@ the package as needed to use the new code (see step 5 above).
 created a python file for your changes, create a new test file to contain tests for your
 new table. See the test files in the `tests` folder for examples. Reinstall the package
 as needed to use the new code (see step 5 above).
-8. Add and commit your changes to git, including the alembic version files that was
+8. Make sure that you have `pre-commit` installed (run `pre-commit install` in the
+top level `sss` directory) to prevent committing code that does not follow our style.
+9. Add and commit your changes to git, including the alembic version files that was
 created. Push your commits to github.
-9. Create a pull request on github to run all the continuous integration checks and to
+10. Create a pull request on github to run all the continuous integration checks and to
 ask for a code review. Fix any errors in the continuous integration checks. When all the
 checks pass and you get an approving review, your changes can be integrated into main
 via the pull request.
