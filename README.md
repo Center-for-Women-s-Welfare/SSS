@@ -42,11 +42,12 @@ Required:
 If you want to do development on sss, in addition to the other dependencies
 you will also need the following packages:
 
+* coverage
+* pre-commit
+* pypandoc
 * pytest
 * pytest-cov
-* coverage
 * sphinx
-* pypandoc
 
 One way to ensure you have all the needed packages is to use the included
 `sss.yaml` file to create a new environment that will
@@ -56,10 +57,12 @@ Alternatively, you can specify `dev` when installing sss
 (as in `pip install .[dev]`) to install the packages needed for testing
 and documentation development.
 
+To use pre-commit to prevent committing code that does not follow our style, you'll
+need to run `pre-commit install` in the top level `sss` directory.
+
 ## Tests
 Uses the `pytest` package to execute test suite.
 From the source sss directory run ```pytest``` or ```python -m pytest```.
-
 
 ## Using the sss package
 

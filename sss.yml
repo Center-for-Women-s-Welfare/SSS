@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - alembic>=1.10
+  - black
   - coverage
   - flake8
   - ipython
@@ -12,6 +13,7 @@ dependencies:
   - numpy>=1.21
   - openpyxl>=3.1.0,!=3.1.1
   - pandas>=1.5.0
+  - pre-commit
   - plotly
   - pypandoc
   - pytest
@@ -22,5 +24,3 @@ dependencies:
   - sphinx
   - sqlalchemy>=1.4.16
   - pip
-  - pre-commit
-  - black

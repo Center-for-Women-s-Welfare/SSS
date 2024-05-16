@@ -22,7 +22,7 @@ opts = {
     ],
     "extras_require": {
         "doc": ["sphinx>=6.2", "sphinx_rtd_theme==1.2.2", "pypandoc"],
-        "dev": ["coverage", "sphinx", "pypandoc", "pytest", "pytest-cov"],
+        "dev": ["coverage", "sphinx", "pre-commit", "pypandoc", "pytest", "pytest-cov"],
     },
 }
 
