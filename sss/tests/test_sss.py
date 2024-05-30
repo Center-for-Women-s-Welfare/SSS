@@ -26,7 +26,7 @@ def test_read_file(capsys):
         assert col in df.columns
 
     assert len(df.columns) == 27
-    assert len(df) == 4
+    assert len(df) == 9
 
     # read a file with just two sheets
     df_two_sheets, _ = sss_table.read_file(
@@ -79,6 +79,21 @@ def test_data_folder_to_database(setup_and_teardown_package):
     assert len(result) == 4
     result = session.query(SSS).filter(SSS.state == "AZ", SSS.year == 2018).all()
     assert len(result) == 4
+
+    result_infant = session.query(SSS).filter(SSS.family_type == "a1i1p0s0t0").all()
+    assert len(result_infant) == 5
+    for res in result_infant:
+        assert res.infant == 1
+        assert res.weighted_child_count is None
+
+    result_weighted_child = (
+        session.query(SSS).filter(SSS.family_type.like("a%c%")).all()
+    )
+    assert len(result_weighted_child) == 5
+    for res in result_weighted_child:
+        assert res.infant == 0
+        assert res.weighted_child_count > 0
+
     session.close()
 
 
@@ -101,7 +116,7 @@ def test_remove_rows(setup_and_teardown_package):
     db = setup_and_teardown_package
     session = db.sessionmaker()
     result = session.query(SSS).filter(SSS.state == "AR").all()
-    assert len(result) == 4
+    assert len(result) == 9
 
     remove_state_year("AR", 2022, testing=True)
     result = session.query(SSS).filter(SSS.state == "AR").all()
@@ -111,7 +126,7 @@ def test_remove_rows(setup_and_teardown_package):
         os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx"), testing=True
     )
     result = session.query(SSS).filter(SSS.state == "AR").all()
-    assert len(result) == 4
+    assert len(result) == 9
 
     with pytest.raises(ValueError, match="State must be a string"):
         remove_state_year(2022, 2022, testing=True)
@@ -210,3 +225,35 @@ def test_add_column_errors(setup_and_teardown_package):
         sss_table.update_columns(
             os.path.join(DATA_PATH, "sss_data"), "state", testing=True
         )
+
+
+def test_fix_infant(setup_and_teardown_package):
+    db = setup_and_teardown_package
+    session = db.sessionmaker()
+
+    all_sss_records = session.query(SSS).all()
+
+    # apply old, incorrect logic
+    for rec in all_sss_records:
+        if "c" in rec.family_type:
+            update_dict = {"infant": rec.weighted_child_count}
+        else:
+            update_dict = {"infant": 0}
+
+        statement = update(SSS).values(update_dict)
+        session.execute(statement)
+        session.commit()
+
+    # update the columns
+    sss_table.update_columns(
+        os.path.join(DATA_PATH, "sss_data"), "infant", testing=True
+    )
+
+    all_sss_records = session.query(SSS).all()
+    # check correction
+    for rec in all_sss_records:
+        if "c" in rec.family_type:
+            assert rec.infant == 0
+            assert rec.weighted_child_count == int(rec.family_type.split("c")[-1])
+        else:
+            assert rec.infant == int(rec.family_type.split("i")[-1].split("p")[0])
