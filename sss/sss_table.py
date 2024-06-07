@@ -392,12 +392,14 @@ def prepare_for_database(df):
     # Create a 'weighted_child_count' column from a*c* values
     #   this will take the infant count and move to this column
     df["weighted_child_count"] = df["infant"]
+    # first set the weighted_child_count to NaN for family types without "c"s
     df.loc[
         df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" not in i]),
         "weighted_child_count",
     ] = np.nan
+    # then set the infant to 0 for family types *with* "c"s
     df.loc[
-        df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" not in i]),
+        df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" in i]),
         "infant",
     ] = 0
 
@@ -432,9 +434,9 @@ def data_folder_to_database(data_path, testing=False):
     db = AutomappedDB(testing=testing)
     session = db.sessionmaker()
 
-    for i in data_files:
+    for fi in data_files:
         # read file and conduct pre-processing
-        df, file = read_file(i)
+        df, file = read_file(fi)
 
         # store dataframes created
         df, arpa, health_care, miscellaneous = check_extra_columns(df)
