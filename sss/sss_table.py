@@ -393,9 +393,9 @@ def prepare_for_database(df):
         df["emergency_savings"] = pd.to_numeric(
             df["emergency_savings"], errors="coerce"
         )
-    except KeyError as ke:
-        print("No emergency_savings column present. Columns are: {df.columns}")
-        raise ke
+    except KeyError:
+        df["emergency_savings"] = df["housing"]
+        df["emergency_savings"] = np.nan
 
     # Create a 'weighted_child_count' column from a*c* values
     #   this will take the infant count and move to this column
