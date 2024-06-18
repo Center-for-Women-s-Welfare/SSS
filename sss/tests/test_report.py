@@ -3,7 +3,6 @@
 import os
 from datetime import datetime
 
-import numpy as np
 import pandas as pd
 
 from sss.data import DATA_PATH
@@ -57,8 +56,10 @@ def test_report_to_db(setup_and_teardown_package):
     )
     report_df.columns = report_df.columns.str.lower().str.replace(" ", "_")
     report_df["year"] = report_df["year"].astype(int)
+    report_df["upload_status"] = report_df["upload_status"].where(
+        pd.notnull(report_df["upload_status"]), None
+    )
     report_df["update_person"] = report_df["upload_status"].str.split(" ").str[0]
-    report_df.update_person.replace({np.nan: None}, inplace=True)
     report_df["update_date"] = report_df["upload_status"].str.split(" ").str[1]
     for i in range(len(report_df)):
         try:
@@ -73,7 +74,9 @@ def test_report_to_db(setup_and_teardown_package):
                 report_df.loc[i, "update_date"], format="%m/%d/%y"
             )
 
-    report_df["update_date"] = report_df["update_date"].map(lambda x: datetime.date(x))
+    report_df["update_date"] = report_df["update_date"].map(
+        lambda x: datetime.date(x), na_action="ignore"
+    )
 
     for i in range(len(report_df)):
         expected[report_df.loc[i, "state"]] = Report(

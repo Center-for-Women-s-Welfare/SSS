@@ -60,6 +60,11 @@ def add_report(path):
     df = pd.read_excel(path)
     df.columns = df.columns.str.lower().str.replace(" ", "_")
 
+    # make nans and other null types be None
+    df["upload_status"] = df["upload_status"].where(
+        pd.notnull(df["upload_status"]), None
+    )
+
     # split column into meaningful column
     df["update_person"] = df["upload_status"].str.split(" ").str[0]
     df["update_date"] = df["upload_status"].str.split(" ").str[1]
@@ -77,7 +82,9 @@ def add_report(path):
                 df.loc[i, "update_date"], format="%m/%d/%y"
             )
     # convert to datetime that sql can recognize
-    df["update_date"] = df["update_date"].map(lambda x: datetime.date(x))
+    df["update_date"] = df["update_date"].map(
+        lambda x: datetime.date(x), na_action="ignore"
+    )
     df["year"] = df["year"].astype(int)
     df["cpi_year"] = df["cpi_year"].astype(int)
     df.rename(columns={"type": "analysis_type"}, inplace=True)
