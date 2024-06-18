@@ -389,13 +389,10 @@ def prepare_for_database(df):
     # handling some issues with certain columns
     #   (i.e., NJ 2019 has column values of "#NA")
     df["infant"] = pd.to_numeric(df["infant"], errors="coerce")
-    try:
+    if "emergency_savings" in df.columns:
         df["emergency_savings"] = pd.to_numeric(
             df["emergency_savings"], errors="coerce"
         )
-    except KeyError:
-        df["emergency_savings"] = df["housing"]
-        df["emergency_savings"] = np.nan
 
     # Create a 'weighted_child_count' column from a*c* values
     #   this will take the infant count and move to this column
