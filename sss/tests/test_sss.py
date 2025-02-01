@@ -118,6 +118,11 @@ def test_data_folder_to_database(setup_and_teardown_package):
         assert res.infant == 0
         assert res.weighted_child_count > 0
 
+    result_2009 = session.query(SSS).filter(SSS.year == 2009).all()
+    assert len(result_2009) == 6
+    for res in result_2009:
+        assert res.emergency_savings is None
+
     session.close()
 
 

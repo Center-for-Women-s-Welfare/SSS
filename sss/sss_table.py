@@ -1,5 +1,7 @@
 """Code to define and interact with tables for SSS data."""
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from sqlalchemy import (
@@ -268,7 +270,7 @@ def read_file(file: str):
         df = preprocess.std_col_names(df)
 
     except Exception:
-        print("This file cannot be read:" + " " + file.split("/")[-1])
+        print("This file cannot be read:" + " " + Path(file).parts[-1])
         df = None
     return df, file
 
@@ -387,7 +389,10 @@ def prepare_for_database(df):
     # handling some issues with certain columns
     #   (i.e., NJ 2019 has column values of "#NA")
     df["infant"] = pd.to_numeric(df["infant"], errors="coerce")
-    df["emergency_savings"] = pd.to_numeric(df["emergency_savings"], errors="coerce")
+    if "emergency_savings" in df.columns:
+        df["emergency_savings"] = pd.to_numeric(
+            df["emergency_savings"], errors="coerce"
+        )
 
     # Create a 'weighted_child_count' column from a*c* values
     #   this will take the infant count and move to this column
@@ -445,7 +450,7 @@ def data_folder_to_database(data_path, testing=False):
         df = prepare_for_database(df)
 
         # prints what file we are reading
-        print("We are processing:", file.split("/")[-1])
+        print("Processing:", Path(file).parts[-1])
 
         # we are taking the primary table df and making it into a dictionary
         df_dic = df.to_dict(orient="records")
@@ -464,7 +469,7 @@ def data_folder_to_database(data_path, testing=False):
             session.bulk_insert_mappings(Miscellaneous, miscellaneous_dict)
 
         # prints out the name of the file that has been entered to db
-        print(file.split("/")[-1], "has been entered into the database")
+        print(Path(file).parts[-1], "has been entered into the database")
 
         session.commit()
     session.close()
@@ -541,6 +546,8 @@ def update_columns(data_path, columns=None, testing=False):
     session = db.sessionmaker()
 
     for file in data_files:
+        print("Processing:", Path(file).parts[-1])
+
         df, _ = read_file(file)
         df, arpa, health_care, miscellaneous = check_extra_columns(df)
         df = prepare_for_database(df)
