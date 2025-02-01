@@ -3,6 +3,7 @@
 import os
 import re
 
+import numpy as np
 import pandas as pd
 import pytest
 from sqlalchemy import update
@@ -43,11 +44,17 @@ def test_read_file(capsys):
     assert "poverty_th.csv" in out
 
 
-def test_check_extra_columns():
+@pytest.mark.parametrize(
+    ("file", "misc_present", "health_present", "arpa_present"),
+    [
+        ("OR2021_SSS_ARPA_Full.xlsx", False, True, True),
+        ("AR2022_SSS_Full.xlsx", True, False, False),
+        ("AZ2025_SSS_Full.xlsx", True, True, False),
+    ],
+)
+def test_check_extra_columns(file, misc_present, health_present, arpa_present):
     """Test checking the extra columns: miscellaneous, health_care, analysis."""
-    df, file = sss_table.read_file(
-        os.path.join(DATA_PATH, "sss_data", "OR2021_SSS_ARPA_Full.xlsx")
-    )
+    df, file = sss_table.read_file(os.path.join(DATA_PATH, "sss_data", file))
     df, arpa, health_care, miscellaneous = sss_table.check_extra_columns(df)
 
     columns_to_check = [
@@ -60,7 +67,24 @@ def test_check_extra_columns():
         assert col in df.columns
 
     assert not df.empty
-    assert not arpa.empty
+
+    if arpa_present:
+        assert not arpa.empty
+        for col in arpa.columns:
+            assert not np.all(pd.isnull(arpa[col]))
+        assert np.all(df["analysis_is_secondary"])
+
+    if health_present:
+        assert not health_care.empty
+        for col in health_care.columns:
+            assert not np.all(pd.isnull(health_care[col]))
+        assert np.all(df["health_care_is_secondary"])
+
+    if misc_present:
+        assert not miscellaneous.empty
+        for col in miscellaneous.columns:
+            assert not np.all(pd.isnull(miscellaneous[col]))
+        assert np.all(df["miscellaneous_is_secondary"])
 
 
 def test_check_extra_columns_error():

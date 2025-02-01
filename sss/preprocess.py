@@ -44,6 +44,7 @@ def std_col_names(pd_dataframe):
         "county": "place",
         "status": "analysis_type",
         "&": "and",
+        "health_care:_": "",
     }
     for key in replace_dict:
         pd_dataframe.columns = [
