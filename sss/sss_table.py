@@ -322,7 +322,7 @@ def check_extra_columns(df: pd.DataFrame):
     arpa = pd.DataFrame()
     # we check whether these arpa columns are found in a file
     if set(arpa_columns).issubset(list(df.columns)):
-        # updates anaylisis_type if arpa columns found
+        # updates analysis_type if arpa columns found
         df["analysis_type"] = "ARPA"
         arpa = df[["family_type", "state", "place", "year", "analysis_type"]]
         for col in arpa_columns:
