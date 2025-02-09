@@ -11,7 +11,11 @@ from sqlalchemy import update
 from sss import sss_table
 from sss.data import DATA_PATH
 from sss import SSS, ARPA, Miscellaneous, HealthCare
-from sss.sss_table import remove_state_year, data_folder_to_database
+from sss.sss_table import (
+    remove_state_year,
+    data_folder_to_database,
+    prepare_for_database,
+)
 
 
 def test_read_file(capsys):
@@ -124,6 +128,31 @@ def test_data_folder_to_database(setup_and_teardown_package):
         assert res.emergency_savings is None
 
     session.close()
+
+
+def test_duplicate_rows():
+    df, _ = sss_table.read_file(
+        os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx")
+    )
+    df2 = df.copy()
+    dup_df = pd.concat([df, df2], ignore_index=True)
+    assert len(dup_df) == 2 * len(df)
+
+    prep_df = prepare_for_database(df)
+    prep_dup_df = prepare_for_database(dup_df)
+
+    assert prep_df.equals(prep_dup_df)
+
+    df_altered = df.copy()
+    print(df.columns)
+    df_altered["food"] = df["food"] * 2
+    dup_pk_df = pd.concat([df, df_altered], ignore_index=True)
+    assert len(dup_pk_df) == 2 * len(df)
+
+    with pytest.raises(
+        ValueError, match="Some rows have identical primary keys with different data"
+    ):
+        prepare_for_database(dup_pk_df)
 
 
 def test_columns_and_values_to_match(setup_and_teardown_package):
