@@ -14,7 +14,8 @@ from .preprocess import std_col_names
 
 try:
     # get accurate version for developer installs
-    version_str = get_version(Path(__file__).parent.parent)
+    # must point to folder that contains the .git file!
+    version_str = get_version(Path(__file__).parent.parent.parent)
 
     __version__ = version_str
 

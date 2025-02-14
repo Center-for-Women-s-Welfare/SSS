@@ -1,9 +1,67 @@
 [build-system]
-requires = [
-    "setuptools>=30.3.0",
-    "wheel",
-    "setuptools_scm>=7.0.3",
-]
+requires = ["setuptools>=64", "wheel", "setuptools_scm>=8.1"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "sss"
+authors = [
+    {name = "Cheng Ren", email = "cheng.ren@berkley.edu"},
+    {name = "Aziza Mirsaidova", email = "azizakhon@u.northwestern.edu"},
+    {name = "Priyana Patel", email = "priyanap@uw.edu"},
+    {name = "Hector Sosa", email = "hectorso@buffalo.edu"},
+    {name = "Bryna Hazelton", email = "brynah@phys.washington.edu"},
+]
+maintainers = [
+    {name = "Bryna Hazelton", email = "brynah@phys.washington.edu"},
+    {name = "Annie Kucklick", email = "brynah@phys.washington.edu"},
+]
+description = "Python interface for Self-Sufficiency Standard Database"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "alembic>=1.10",
+    "numpy>=1.21",
+    "openpyxl>=3.1.0,!=3.1.1",
+    "pandas>=1.5.0",
+    "pyxlsb>=1.0.8",
+    "setuptools_scm>=8.1",
+    "sqlalchemy>=1.4.16",
+]
+requires-python = ">=3.8"
+keywords = ["radio astronomy"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Sociology",
+    "Topic :: Other/Nonlisted Topic",
+]
+
+[project.optional-dependencies]
+doc = ["sphinx>=6.2", "sphinx_rtd_theme==1.2.2", "pypandoc"]
+test = ["coverage", "pre-commit", "pytest", "pytest-cov"]
+dev = ["sss[test,doc]"]
+
+[project.urls]
+Repository = "https://github.com/Center-for-Women-s-Welfare/SSS"
+Documentation = "https://self-sufficiency-standard.readthedocs.io/en/latest/"
+
+# Note that this approach is "discouraged" in favor of [project.scripts], but
+# that requires entry-point functions, which would require some refactoring.
+[tool.setuptools]
+script-files = [
+    "scripts/add_one_entry_reportdb.py",
+    "scripts/create_database.py",
+    "scripts/data_to_city.py",
+    "scripts/data_to_geoid.py",
+    "scripts/data_to_primary.py",
+    "scripts/data_to_puma.py",
+    "scripts/data_to_report.py",
+]
 
 [tool.setuptools_scm]
