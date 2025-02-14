@@ -9,7 +9,7 @@ max-line-length = 88
 docstring-convention = numpy
 per-file-ignores =
     __init__.py: F401
-    sss/tests/*:D
+    tests/*:D
     alembic/*:D
     docs/*:D,A
     setup.py:D
