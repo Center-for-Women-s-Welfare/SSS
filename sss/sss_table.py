@@ -410,6 +410,10 @@ def prepare_for_database(df):
 
     # removing duplicate rows
     df = df.drop_duplicates()
+
+    # Check for rows with duplicate primary keys and error if any present.
+    # These will error when entered into the database anyway and the code doesn't
+    # know which one to keep, user should fix this in the data.
     primary_keys = ["analysis_type", "family_type", "state", "year", "place"]
     primary_key_duplicates = df[df.duplicated(subset=primary_keys)]
     if len(primary_key_duplicates) > 0:
