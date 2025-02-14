@@ -144,7 +144,6 @@ def test_duplicate_rows():
     assert prep_df.equals(prep_dup_df)
 
     df_altered = df.copy()
-    print(df.columns)
     df_altered["food"] = df["food"] * 2
     dup_pk_df = pd.concat([df, df_altered], ignore_index=True)
     assert len(dup_pk_df) == 2 * len(df)
