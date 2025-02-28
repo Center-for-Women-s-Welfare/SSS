@@ -117,7 +117,7 @@ def test_data_folder_to_database(setup_and_teardown_package):
     result_weighted_child = (
         session.query(SSS).filter(SSS.family_type.like("a%c%")).all()
     )
-    assert len(result_weighted_child) == 5
+    assert len(result_weighted_child) == 9
     for res in result_weighted_child:
         assert res.infant == 0
         assert res.weighted_child_count > 0

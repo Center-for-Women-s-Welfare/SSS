@@ -33,6 +33,7 @@ def std_col_names(pd_dataframe):
     # the keys are being replaced by their value
     replace_dict = {
         " ": "_",
+        ".": "_",
         "-": "_",
         "__": "_",
         "_costs": "",
@@ -45,6 +46,11 @@ def std_col_names(pd_dataframe):
         "status": "analysis_type",
         "&": "and",
         "health_care:_": "",
+        "adults": "adult",
+        "infants": "infant",
+        "preschoolers": "preschooler",
+        "schoolagers": "schoolager",
+        "teenagers": "teenager",
     }
     for key in replace_dict:
         pd_dataframe.columns = [
