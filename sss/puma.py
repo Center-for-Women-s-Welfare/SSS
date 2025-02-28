@@ -11,10 +11,6 @@ from sqlalchemy import (
     Float,
 )
 
-import warnings
-from pandas.errors import SettingWithCopyWarning
-
-warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
 puma_state_numbers_to_abbreviations = {
     "53": "WA",
