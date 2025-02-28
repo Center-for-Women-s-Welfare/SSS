@@ -394,19 +394,32 @@ def prepare_for_database(df):
             df["emergency_savings"], errors="coerce"
         )
 
-    # Create a 'weighted_child_count' column from a*c* values
-    #   this will take the infant count and move to this column
-    df["weighted_child_count"] = df["infant"]
+    # Create a 'weighted_child_count' column from a*c* values initialized to zeros
+    df["weighted_child_count"] = int(0)
+
     # first set the weighted_child_count to NaN for family types without "c"s
     df.loc[
         df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" not in i]),
         "weighted_child_count",
     ] = np.nan
-    # then set the infant to 0 for family types *with* "c"s
-    df.loc[
-        df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" in i]),
-        "infant",
-    ] = 0
+
+    # for the rows with "c" in the family type, extract the value after the c
+    # and assign it to the weighted_child_count column
+    c_rows = df.loc[:, "family_type"].isin([i for i in df["family_type"] if "c" in i])
+    if np.sum(c_rows) > 0:
+        # pandas split with the "expand" option returns a dataframe with number
+        # of splits + 1 columns. We're asking for one split, so we get two columns
+        # the second one has the data we want.
+        child_count_df = df.loc[c_rows, "family_type"].str.split(
+            pat="c", n=1, expand=True
+        )
+        df.loc[c_rows, "weighted_child_count"] = child_count_df[1].astype(int)
+
+        # then set the other kid age columns to 0 for family types *with* "c"s
+        df.loc[
+            c_rows,
+            ["infant", "preschooler", "schoolager", "teenager"],
+        ] = 0
 
     # removing duplicate rows
     df = df.drop_duplicates(
