@@ -280,7 +280,7 @@ def check_extra_columns(df: pd.DataFrame):
 
     Specifically, this function checks if the sss dataframe contains
     additional cost breakdown for arpa, health care, and
-    broadband_&_cell_phone. If these additional breakdowns are
+    miscellaneous costs. If these additional breakdowns are
     present in the dataframe, we fill each of the breakdown
     dataframe. If these breakdowns are not present, the
     new dataframes will be empty. We then update the boolean column to
@@ -320,47 +320,58 @@ def check_extra_columns(df: pd.DataFrame):
         "oregon_wfhdc",
         "total_annual_resources",
     ]
-    arpa = pd.DataFrame()
-    # we check whether these arpa columns are found in a file
-    if set(arpa_columns).issubset(list(df.columns)):
-        # updates analysis_type if arpa columns found
-        df["analysis_type"] = "ARPA"
-        arpa = df[["family_type", "state", "place", "year", "analysis_type"]]
-        for col in arpa_columns:
-            arpa = pd.concat([arpa, df[col]], axis=1)
-            df = df.drop(columns=col)
-        df["analysis_is_secondary"] = True
-    else:
-        df["analysis_is_secondary"] = False
 
-    health_care = pd.DataFrame()
-    if ("premium" or "out_of_pocket") in df.columns:
-        df["health_care_is_secondary"] = True
-        health_care = df[["family_type", "state", "place", "year", "analysis_type"]]
-        if "out_of_pocket" in df.columns:
-            health_care = pd.concat([health_care, df["out_of_pocket"]], axis=1)
-            df = df.drop(columns="out_of_pocket")
-        if "premium" in df.columns:
-            health_care = pd.concat([health_care, df["premium"]], axis=1)
-            df = df.drop(columns="premium")
-    else:
-        df["health_care_is_secondary"] = False
-    miscellaneous = pd.DataFrame()
-    if ("other_necessities" or "broadband_and_cell_phone") in df.columns:
-        df["miscellaneous_is_secondary"] = True
-        miscellaneous = df[["family_type", "state", "place", "year", "analysis_type"]]
-        if "broadband_and_cell_phone" in df.columns:
-            miscellaneous = pd.concat(
-                [miscellaneous, df["broadband_and_cell_phone"]], axis=1
-            )
-            df = df.drop(columns="broadband_and_cell_phone")
-        if "other_necessities" in df.columns:
-            miscellaneous = pd.concat([miscellaneous, df["other_necessities"]], axis=1)
-            df = df.drop(columns="other_necessities")
-    else:
-        df["miscellaneous_is_secondary"] = False
+    # columns for health_care secondary table
+    health_care_columns = [
+        "premium",
+        "out_of_pocket",
+    ]
 
-    return df, arpa, health_care, miscellaneous
+    # columns for miscellaneous secondary table
+    miscellaneous_columns = [
+        "other_necessities",
+        "broadband_and_cell_phone",
+    ]
+
+    secondary_tables = {
+        "arpa": {
+            "df": pd.DataFrame(),
+            "cols": arpa_columns,
+            "main_col": "analysis_is_secondary",
+        },
+        "health_care": {
+            "df": pd.DataFrame(),
+            "cols": health_care_columns,
+            "main_col": "health_care_is_secondary",
+        },
+        "miscellaneous": {
+            "df": pd.DataFrame(),
+            "cols": miscellaneous_columns,
+            "main_col": "miscellaneous_is_secondary",
+        },
+    }
+
+    for table, tbl_dict in secondary_tables.items():
+        if set(tbl_dict["cols"]).issubset(list(df.columns)):
+            # update the table if cols are found
+            if table == "arpa":
+                df["analysis_type"] = "ARPA"
+            tbl_dict["df"] = df[
+                ["family_type", "state", "place", "year", "analysis_type"]
+            ]
+            for col in tbl_dict["cols"]:
+                tbl_dict["df"] = pd.concat([tbl_dict["df"], df[col]], axis=1)
+                df = df.drop(columns=col)
+            df[tbl_dict["main_col"]] = True
+        else:
+            df[tbl_dict["main_col"]] = False
+
+    return (
+        df,
+        secondary_tables["arpa"]["df"],
+        secondary_tables["health_care"]["df"],
+        secondary_tables["miscellaneous"]["df"],
+    )
 
 
 def prepare_for_database(df):

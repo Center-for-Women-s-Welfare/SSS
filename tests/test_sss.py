@@ -217,6 +217,7 @@ def test_remove_rows(setup_and_teardown_package):
         ["food"],
         ["food", "transportation"],
         ["food", "payroll_taxes", "premium", "broadband_and_cell_phone"],
+        "premium",
     ],
 )
 def test_add_column(setup_and_teardown_package, columns):

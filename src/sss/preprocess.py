@@ -46,6 +46,7 @@ def std_col_names(pd_dataframe):
         "status": "analysis_type",
         "&": "and",
         "health_care:_": "",
+        "oop": "out_of_pocket",
         "adults": "adult",
         "infants": "infant",
         "preschoolers": "preschooler",
