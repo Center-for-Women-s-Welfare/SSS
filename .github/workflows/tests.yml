@@ -65,7 +65,7 @@ jobs:
         if: success()
         with:
           token: ${{secrets.CODECOV_TOKEN}} #required
-          file: ./coverage.xml #optional
+          files: ./coverage.xml #optional
 
   min_versions:
     env:
@@ -103,7 +103,7 @@ jobs:
 
       - name: Install
         run: |
-          pip install --no-deps .
+          pip install --no-deps -e .
 
       - name: Upgrade Database Schema
         run: |
@@ -118,7 +118,7 @@ jobs:
         if: success()
         with:
           token: ${{secrets.CODECOV_TOKEN}} #required
-          file: ./coverage.xml #optional
+          files: ./coverage.xml #optional
 
   # Use pip for diversity
   warning_test:
