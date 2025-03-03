@@ -119,11 +119,10 @@ def report_to_db(path, testing=False):
 
     """
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
     df_report = add_report(path)
-    session.bulk_insert_mappings(Report, df_report.to_dict(orient="records"))
-    session.commit()
-    session.close()
+    with db.sessionmaker() as session:
+        session.bulk_insert_mappings(Report, df_report.to_dict(orient="records"))
+        session.commit()
 
 
 def add_one_entry_reportdb(
@@ -160,7 +159,6 @@ def add_one_entry_reportdb(
 
     """
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
     new_record = Report(
         year=int(year),
         state=str(state),
@@ -171,9 +169,9 @@ def add_one_entry_reportdb(
         update_person=str(update_person),
     )
     # add to db
-    session.add(new_record)
-    session.commit()
-    session.close()
+    with db.sessionmaker() as session:
+        session.add(new_record)
+        session.commit()
 
 
 def delete_one_entry_reportdb(
@@ -198,12 +196,11 @@ def delete_one_entry_reportdb(
 
     """
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
     # delete the records that meets criteria
-    session.query(Report).filter(
-        Report.year == year,
-        Report.state == state,
-        Report.analysis_type == analysis_type,
-    ).delete()
-    session.commit()
-    session.close()
+    with db.sessionmaker() as session:
+        session.query(Report).filter(
+            Report.year == year,
+            Report.state == state,
+            Report.analysis_type == analysis_type,
+        ).delete()
+        session.commit()

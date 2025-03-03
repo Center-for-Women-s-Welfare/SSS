@@ -1,5 +1,6 @@
 # -*- mode: python; coding: utf-8 -*-
 import re
+import warnings
 
 import pytest
 import sqlalchemy
@@ -8,6 +9,13 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import declarative_base, declared_attr, relationship, sessionmaker
 
 from sss.db_check import is_valid_database
+
+# We get this warning in the warnings test where we pass `-W error`, but it
+# doesn't produce an error or even a warning under normal testing.
+# developers in the pykernel and flask-sqlalchemy ignore it, we will too.
+pytestmark = pytest.mark.filterwarnings(
+    "ignore:unclosed database in <sqlite3.Connection:ResourceWarning"
+)
 
 
 def gen_test_model():
@@ -67,10 +75,23 @@ def temp_db(tmp_path_factory):
     db_file = tmp_path_factory.mktemp("db") / "sss.sqlite"
     db_url = "sqlite:///" + str(db_file)
     engine = create_engine(db_url)
-    Session = sessionmaker(bind=engine)
-    session = Session()
 
-    yield engine, session
+    with engine.connect() as test_conn:
+        with test_conn.begin() as test_trans:
+            Session = sessionmaker(bind=test_conn)
+            with Session() as session:
+                yield engine, session
+
+            # rollback - everything that happened with the
+            # Session above (including calls to commit())
+            # is rolled back.
+            with warnings.catch_warnings():
+                # If an error was raised, rollback may have already been called. If so, this
+                # will give a warning which we filter out here.
+                warnings.filterwarnings(
+                    "ignore", "transaction already deassociated from connection"
+                )
+                test_trans.rollback()
 
 
 def test_validity_pass(temp_db):
@@ -122,14 +143,13 @@ def test_validity_column_missing(temp_db):
 
     with engine.begin() as conn:
         Session = sessionmaker(bind=engine)
-        session = Session()
-        Base, ValidTestModel = gen_test_model()
-        try:
-            Base.metadata.drop_all(engine, tables=[ValidTestModel.__table__])
-        except sqlalchemy.exc.NoSuchTableError:
-            pass
-        Base.metadata.create_all(engine, tables=[ValidTestModel.__table__])
-        session.close()
+        with Session() as session:
+            Base, ValidTestModel = gen_test_model()
+            try:
+                Base.metadata.drop_all(engine, tables=[ValidTestModel.__table__])
+            except sqlalchemy.exc.NoSuchTableError:
+                pass
+            Base.metadata.create_all(engine, tables=[ValidTestModel.__table__])
 
         # Delete one of the columns
         conn.execute(text("ALTER TABLE validity_check_test DROP COLUMN foo"))
@@ -138,13 +158,13 @@ def test_validity_column_missing(temp_db):
     # without this it hangs
     with engine.begin() as conn:
         Session = sessionmaker(bind=engine)
-        session = Session()
-        db_valid, valid_msg = is_valid_database(Base, session)
-        assert not db_valid
-        expected_msg = (
-            "Model validity_check_test declares column foo which does not exist in "
-            "database"
-        )
+        with Session() as session:
+            db_valid, valid_msg = is_valid_database(Base, session)
+            assert not db_valid
+            expected_msg = (
+                "Model validity_check_test declares column foo which does not exist in "
+                "database"
+            )
 
         assert re.compile(expected_msg).search(valid_msg)
 
