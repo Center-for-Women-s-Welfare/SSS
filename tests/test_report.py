@@ -4,10 +4,18 @@ import os
 from datetime import datetime
 
 import pandas as pd
+import pytest
 
 from sss.data import DATA_PATH
 from sss.report import Report, add_report
 from sss.report import add_one_entry_reportdb, delete_one_entry_reportdb
+
+# We get this warning in the warnings test where we pass `-W error`, but it
+# doesn't produce an error or even a warning under normal testing.
+# developers in the pykernel and flask-sqlalchemy ignore it, we will too.
+pytestmark = pytest.mark.filterwarnings(
+    "ignore:unclosed database in <sqlite3.Connection:ResourceWarning"
+)
 
 
 def test_add_report():
@@ -42,12 +50,12 @@ def test_add_report():
 def test_report_to_db(setup_and_teardown_package):
     """Test to see if report table was created."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
 
-    result = session.query(Report).all()
-    assert len(result) == 8
+    with db.sessionmaker() as session:
+        result = session.query(Report).all()
+        assert len(result) == 8
 
-    result = session.query(Report).all()
+        result = session.query(Report).all()
     expected = {}
     report_df = pd.read_excel(
         os.path.join(
@@ -96,7 +104,6 @@ def test_report_to_db(setup_and_teardown_package):
 def test_add_one_entry_reportdb(setup_and_teardown_package):
     """Test to add one report."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
 
     add_one_entry_reportdb(
         2023,
@@ -108,17 +115,18 @@ def test_add_one_entry_reportdb(setup_and_teardown_package):
         "Hector",
         testing=True,
     )
-    result = session.query(Report).all()
+    with db.sessionmaker() as session:
+        result = session.query(Report).all()
     assert len(result) == 9
 
 
 def test_delete_one_entry_reportdb(setup_and_teardown_package):
     """Test to delete one report."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
 
     delete_one_entry_reportdb(2018, "FL", "Full", testing=True)
 
-    result = session.query(Report).all()
+    with db.sessionmaker() as session:
+        result = session.query(Report).all()
 
     assert len(result) == 8

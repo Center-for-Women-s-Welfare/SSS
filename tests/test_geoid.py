@@ -9,6 +9,13 @@ import pytest
 from sss.data import DATA_PATH
 from sss.geoid import GeoID, geo_identifier_creator
 
+# We get this warning in the warnings test where we pass `-W error`, but it
+# doesn't produce an error or even a warning under normal testing.
+# developers in the pykernel and flask-sqlalchemy ignore it, we will too.
+pytestmark = pytest.mark.filterwarnings(
+    "ignore:unclosed database in <sqlite3.Connection:ResourceWarning"
+)
+
 
 @pytest.mark.filterwarnings("ignore:Unknown extension is not supported and will be")
 def testgeo_identifier_creator(capsys):
@@ -121,15 +128,15 @@ def testgeo_identifier_creator(capsys):
 def test_geoid_to_db(setup_and_teardown_package):
     """Test to see if geoid table was created."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
 
-    result = session.query(GeoID).all()
-    assert len(result) == 9
+    with db.sessionmaker() as session:
+        result = session.query(GeoID).all()
+        assert len(result) == 9
 
-    result = session.query(GeoID).filter(GeoID.cpi_region == "South").all()
-    assert len(result) == 2
+        result = session.query(GeoID).filter(GeoID.cpi_region == "South").all()
+        assert len(result) == 2
 
-    result = session.query(GeoID).all()
+        result = session.query(GeoID).all()
     county_df = pd.read_excel(
         os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
         dtype=str,

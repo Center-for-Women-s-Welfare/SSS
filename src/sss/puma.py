@@ -369,9 +369,8 @@ def puma_to_db(path, year, nyc_wa_path=None, testing=False):
     """
     data_files = preprocess.data_path_to_file_list(path, extension_match="txt")
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
-    for file in data_files:
-        df_puma = puma_crosswalk(file, year, nyc_wa_path)
-        session.bulk_insert_mappings(PUMA, df_puma.to_dict(orient="records"))
-        session.commit()
-    session.close()
+    with db.sessionmaker() as session:
+        for file in data_files:
+            df_puma = puma_crosswalk(file, year, nyc_wa_path)
+            session.bulk_insert_mappings(PUMA, df_puma.to_dict(orient="records"))
+            session.commit()
