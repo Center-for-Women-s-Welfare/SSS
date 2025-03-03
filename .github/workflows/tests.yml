@@ -61,7 +61,7 @@ jobs:
       - name: Run Tests
         run: |
           python -m pytest --cov=sss --cov-config=.coveragerc --cov-report xml:./coverage.xml --junitxml=test-reports/xunit.xml
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v5
         if: success()
         with:
           token: ${{secrets.CODECOV_TOKEN}} #required
@@ -114,7 +114,7 @@ jobs:
       - name: Run Tests
         run: |
           python -m pytest --cov=sss --cov-config=.coveragerc --cov-report xml:./coverage.xml --junitxml=test-reports/xunit.xml
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v5
         if: success()
         with:
           token: ${{secrets.CODECOV_TOKEN}} #required
@@ -157,7 +157,7 @@ jobs:
         run: |
           python -m pytest -W error --cov=sss --cov-config=.coveragerc --cov-report xml:./coverage.xml
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v5
         if: success()
         with:
           token: ${{secrets.CODECOV_TOKEN}} #required
