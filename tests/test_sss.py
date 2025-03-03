@@ -17,6 +17,13 @@ from sss.sss_table import (
     prepare_for_database,
 )
 
+# We get this warning in the warnings test where we pass `-W error`, but it
+# doesn't produce an error or even a warning under normal testing.
+# developers in the pykernel and flask-sqlalchemy ignore it, we will too.
+pytestmark = pytest.mark.filterwarnings(
+    "ignore:unclosed database in <sqlite3.Connection:ResourceWarning"
+)
+
 
 def test_read_file(capsys):
     """Test reading files."""
@@ -102,42 +109,41 @@ def test_check_extra_columns_error():
 def test_data_folder_to_database(setup_and_teardown_package):
     """Test data folder to database."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
-    result = session.query(SSS).filter(SSS.state == "FL").all()
-    assert len(result) == 4
-    result = session.query(SSS).filter(SSS.state == "AZ", SSS.year == 2018).all()
-    assert len(result) == 4
 
-    result_infant = session.query(SSS).filter(SSS.family_type == "a1i1p0s0t0").all()
-    assert len(result_infant) == 5
-    for res in result_infant:
-        assert res.infant == 1
-        assert res.weighted_child_count is None
+    with db.sessionmaker() as session:
+        result = session.query(SSS).filter(SSS.state == "FL").all()
+        assert len(result) == 4
+        result = session.query(SSS).filter(SSS.state == "AZ", SSS.year == 2018).all()
+        assert len(result) == 4
 
-    result_weighted_child = (
-        session.query(SSS).filter(SSS.family_type.like("a%c%")).all()
-    )
-    assert len(result_weighted_child) == 9
-    for res in result_weighted_child:
-        assert res.infant == 0
-        assert res.weighted_child_count > 0
+        result_infant = session.query(SSS).filter(SSS.family_type == "a1i1p0s0t0").all()
+        assert len(result_infant) == 5
+        for res in result_infant:
+            assert res.infant == 1
+            assert res.weighted_child_count is None
 
-    result_2009 = session.query(SSS).filter(SSS.year == 2009).all()
-    assert len(result_2009) == 6
-    for res in result_2009:
-        assert res.emergency_savings is None
+        result_weighted_child = (
+            session.query(SSS).filter(SSS.family_type.like("a%c%")).all()
+        )
+        assert len(result_weighted_child) == 9
+        for res in result_weighted_child:
+            assert res.infant == 0
+            assert res.weighted_child_count > 0
 
-    result_arpa = session.query(SSS).filter(SSS.analysis_type == "ARPA").all()
-    for col in [
-        "earned_income_tax_credit",
-        "child_care_tax_credit",
-        "child_tax_credit",
-    ]:
-        col_obj = getattr(SSS, col)
-        result_tax_credit = session.query(SSS).filter(col_obj.is_(None)).all()
-        assert len(result_tax_credit) == len(result_arpa)
+        result_2009 = session.query(SSS).filter(SSS.year == 2009).all()
+        assert len(result_2009) == 6
+        for res in result_2009:
+            assert res.emergency_savings is None
 
-    session.close()
+        result_arpa = session.query(SSS).filter(SSS.analysis_type == "ARPA").all()
+        for col in [
+            "earned_income_tax_credit",
+            "child_care_tax_credit",
+            "child_tax_credit",
+        ]:
+            col_obj = getattr(SSS, col)
+            result_tax_credit = session.query(SSS).filter(col_obj.is_(None)).all()
+            assert len(result_tax_credit) == len(result_arpa)
 
 
 def test_duplicate_rows():
@@ -167,10 +173,11 @@ def test_duplicate_rows():
 def test_columns_and_values_to_match(setup_and_teardown_package):
     """Test columns and values to match."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
-    query = session.query(SSS).filter(SSS.state == "AL")
-    with session.get_bind().connect() as connection:
-        df = pd.read_sql(query.statement, connection)
+
+    with db.sessionmaker() as session:
+        query = session.query(SSS).filter(SSS.state == "AL")
+        with session.get_bind().connect() as connection:
+            df = pd.read_sql(query.statement, connection)
 
     cols_to_check_for_val = ["housing"]
 
@@ -181,19 +188,20 @@ def test_columns_and_values_to_match(setup_and_teardown_package):
 def test_remove_rows(setup_and_teardown_package):
     """Test remove rows."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
-    result = session.query(SSS).filter(SSS.state == "AR").all()
-    assert len(result) == 9
 
-    remove_state_year("AR", 2022, testing=True)
-    result = session.query(SSS).filter(SSS.state == "AR").all()
-    assert len(result) == 0
+    with db.sessionmaker() as session:
+        result = session.query(SSS).filter(SSS.state == "AR").all()
+        assert len(result) == 9
 
-    data_folder_to_database(
-        os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx"), testing=True
-    )
-    result = session.query(SSS).filter(SSS.state == "AR").all()
-    assert len(result) == 9
+        remove_state_year("AR", 2022, testing=True)
+        result = session.query(SSS).filter(SSS.state == "AR").all()
+        assert len(result) == 0
+
+        data_folder_to_database(
+            os.path.join(DATA_PATH, "sss_data", "AR2022_SSS_Full.xlsx"), testing=True
+        )
+        result = session.query(SSS).filter(SSS.state == "AR").all()
+        assert len(result) == 9
 
     with pytest.raises(ValueError, match="State must be a string"):
         remove_state_year(2022, 2022, testing=True)
@@ -214,7 +222,6 @@ def test_remove_rows(setup_and_teardown_package):
 def test_add_column(setup_and_teardown_package, columns):
     """Test column was added."""
     db = setup_and_teardown_package
-    session = db.sessionmaker()
 
     if isinstance(columns, str):
         columns_list = [columns]
@@ -236,44 +243,47 @@ def test_add_column(setup_and_teardown_package, columns):
         },
     }
 
-    for _, meta_dict in table_dict.items():
-        meta_dict["obj_list"] = session.query(meta_dict["object"]).all()
+    with db.sessionmaker() as session:
+        for _, meta_dict in table_dict.items():
+            meta_dict["obj_list"] = session.query(meta_dict["object"]).all()
 
-        meta_dict["col_list"] = []
-        for col in columns_list:
-            if hasattr(meta_dict["obj_list"][0], col):
-                meta_dict["col_list"].append(col)
+            meta_dict["col_list"] = []
+            for col in columns_list:
+                if hasattr(meta_dict["obj_list"][0], col):
+                    meta_dict["col_list"].append(col)
 
-        if len(meta_dict["col_list"]) > 0:
-            for obj in meta_dict["obj_list"]:
+            if len(meta_dict["col_list"]) > 0:
+                for obj in meta_dict["obj_list"]:
+                    for col in meta_dict["col_list"]:
+                        assert getattr(obj, col) is not None
+
                 for col in meta_dict["col_list"]:
-                    assert getattr(obj, col) is not None
+                    update_dict = {col: None}
+                    statement = update(meta_dict["object"]).values(update_dict)
+                    session.execute(statement)
+                    session.commit()
 
-            for col in meta_dict["col_list"]:
-                update_dict = {col: None}
-                statement = update(meta_dict["object"]).values(update_dict)
-                session.execute(statement)
-                session.commit()
+                result = session.query(meta_dict["object"]).all()
+                for obj in result:
+                    for col in meta_dict["col_list"]:
+                        assert getattr(obj, col) is None
 
-            result = session.query(meta_dict["object"]).all()
-            for obj in result:
-                for col in meta_dict["col_list"]:
-                    assert getattr(obj, col) is None
+        # update the columns
+        sss_table.update_columns(
+            os.path.join(DATA_PATH, "sss_data"), columns, testing=True
+        )
 
-    # update the columns
-    sss_table.update_columns(os.path.join(DATA_PATH, "sss_data"), columns, testing=True)
+        # this commit should not be necessary since it's being done in the function,
+        # but it seems to be required.
+        session.commit()
 
-    # this commit should not be necessary since it's being done in the function,
-    # but it seems to be required.
-    session.commit()
-
-    # check that the food column has good data in it again
-    for _, meta_dict in table_dict.items():
-        if len(meta_dict["col_list"]) > 0:
-            result = session.query(meta_dict["object"]).all()
-            for obj in result:
-                for col in meta_dict["col_list"]:
-                    assert getattr(obj, col) is not None
+        # check that the food column has good data in it again
+        for _, meta_dict in table_dict.items():
+            if len(meta_dict["col_list"]) > 0:
+                result = session.query(meta_dict["object"]).all()
+                for obj in result:
+                    for col in meta_dict["col_list"]:
+                        assert getattr(obj, col) is not None
 
 
 def test_add_column_errors(setup_and_teardown_package):
@@ -296,27 +306,27 @@ def test_add_column_errors(setup_and_teardown_package):
 
 def test_fix_infant(setup_and_teardown_package):
     db = setup_and_teardown_package
-    session = db.sessionmaker()
 
-    all_sss_records = session.query(SSS).all()
+    with db.sessionmaker() as session:
+        all_sss_records = session.query(SSS).all()
 
-    # apply old, incorrect logic
-    for rec in all_sss_records:
-        if "c" in rec.family_type:
-            update_dict = {"infant": rec.weighted_child_count}
-        else:
-            update_dict = {"infant": 0}
+        # apply old, incorrect logic
+        for rec in all_sss_records:
+            if "c" in rec.family_type:
+                update_dict = {"infant": rec.weighted_child_count}
+            else:
+                update_dict = {"infant": 0}
 
-        statement = update(SSS).values(update_dict)
-        session.execute(statement)
-        session.commit()
+            statement = update(SSS).values(update_dict)
+            session.execute(statement)
+            session.commit()
 
-    # update the columns
-    sss_table.update_columns(
-        os.path.join(DATA_PATH, "sss_data"), "infant", testing=True
-    )
+        # update the columns
+        sss_table.update_columns(
+            os.path.join(DATA_PATH, "sss_data"), "infant", testing=True
+        )
 
-    all_sss_records = session.query(SSS).all()
+        all_sss_records = session.query(SSS).all()
     # check correction
     for rec in all_sss_records:
         if "c" in rec.family_type:

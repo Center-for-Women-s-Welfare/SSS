@@ -1,7 +1,6 @@
 """Fill the test database with data."""
 
 import os
-import warnings
 
 import pytest
 
@@ -32,22 +31,16 @@ def setup_and_teardown_package():
             testing=True,
         )
 
-        with warnings.catch_warnings():
-            warnings.filterwarnings(
-                "ignore", "Unknown extension is not supported and will be removed"
-            )
-            # fill geoid table
-            geoid.geoid_to_db(
-                os.path.join(
-                    DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"
-                ),
-                os.path.join(
-                    DATA_PATH,
-                    "geoid_data",
-                    "StateAbbreviation_Regions_07192022_AKu.xlsx",
-                ),
-                testing=True,
-            )
+        # fill geoid table
+        geoid.geoid_to_db(
+            os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
+            os.path.join(
+                DATA_PATH,
+                "geoid_data",
+                "StateAbbreviation_Regions_07192022_AKu.xlsx",
+            ),
+            testing=True,
+        )
 
         # fill puma table
         puma.puma_to_db(

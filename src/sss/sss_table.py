@@ -245,26 +245,25 @@ def read_file(file: str):
 
     """
     try:
-        xl = pd.ExcelFile(file)
+        with pd.ExcelFile(file) as xl:
+            # gets the number of spreadsheets
+            n_sheets = len(xl.sheet_names)
 
-        # gets the number of spreadsheets
-        n_sheets = len(xl.sheet_names)
+            if n_sheets == 1:
+                df = pd.read_excel(file, sheet_name=0)
 
-        if n_sheets == 1:
-            df = pd.read_excel(file, sheet_name=0)
+            # if there are two sheets, we read the sheetname that is not the notes
+            if n_sheets == 2:
+                state_frame = [
+                    y
+                    for y in range(len(xl.sheet_names))
+                    if "note" not in xl.sheet_names[y].lower()
+                ]
+                df = pd.read_excel(file, sheet_name=state_frame[0])
 
-        # if there are two sheets, we read the sheetname that is not the notes
-        if n_sheets == 2:
-            state_frame = [
-                y
-                for y in range(len(xl.sheet_names))
-                if "note" not in xl.sheet_names[y].lower()
-            ]
-            df = pd.read_excel(file, sheet_name=state_frame[0])
-
-        if n_sheets > 2:
-            family_frame = [sheet for sheet in xl.sheet_names if "Fam" in sheet]
-            df = pd.read_excel(file, sheet_name=family_frame[0])
+            if n_sheets > 2:
+                family_frame = [sheet for sheet in xl.sheet_names if "Fam" in sheet]
+                df = pd.read_excel(file, sheet_name=family_frame[0])
 
         # call the packages from preprocess
         df = preprocess.std_col_names(df)
@@ -460,42 +459,40 @@ def data_folder_to_database(data_path, testing=False):
     data_files = preprocess.data_path_to_file_list(data_path, extension_match="xls*")
 
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
+    with db.sessionmaker() as session:
+        for fi in data_files:
+            # read file and conduct pre-processing
+            df, file = read_file(fi)
 
-    for fi in data_files:
-        # read file and conduct pre-processing
-        df, file = read_file(fi)
+            # store dataframes created
+            df, arpa, health_care, miscellaneous = check_extra_columns(df)
 
-        # store dataframes created
-        df, arpa, health_care, miscellaneous = check_extra_columns(df)
+            # update the primary table df
+            df = prepare_for_database(df)
 
-        # update the primary table df
-        df = prepare_for_database(df)
+            # prints what file we are reading
+            print("Processing:", Path(file).parts[-1])
 
-        # prints what file we are reading
-        print("Processing:", Path(file).parts[-1])
+            # we are taking the primary table df and making it into a dictionary
+            df_dic = df.to_dict(orient="records")
 
-        # we are taking the primary table df and making it into a dictionary
-        df_dic = df.to_dict(orient="records")
+            # we insert dataframe
+            session.bulk_insert_mappings(SSS, df_dic)
 
-        # we insert dataframe
-        session.bulk_insert_mappings(SSS, df_dic)
+            if not arpa.empty:
+                arpa_dict = arpa.to_dict(orient="records")
+                session.bulk_insert_mappings(ARPA, arpa_dict)
+            if not health_care.empty:
+                health_dict = health_care.to_dict(orient="records")
+                session.bulk_insert_mappings(HealthCare, health_dict)
+            if not miscellaneous.empty:
+                miscellaneous_dict = miscellaneous.to_dict(orient="records")
+                session.bulk_insert_mappings(Miscellaneous, miscellaneous_dict)
 
-        if not arpa.empty:
-            arpa_dict = arpa.to_dict(orient="records")
-            session.bulk_insert_mappings(ARPA, arpa_dict)
-        if not health_care.empty:
-            health_dict = health_care.to_dict(orient="records")
-            session.bulk_insert_mappings(HealthCare, health_dict)
-        if not miscellaneous.empty:
-            miscellaneous_dict = miscellaneous.to_dict(orient="records")
-            session.bulk_insert_mappings(Miscellaneous, miscellaneous_dict)
+            # prints out the name of the file that has been entered to db
+            print(Path(file).parts[-1], "has been entered into the database")
 
-        # prints out the name of the file that has been entered to db
-        print(Path(file).parts[-1], "has been entered into the database")
-
-        session.commit()
-    session.close()
+            session.commit()
 
 
 def remove_state_year(state, year, testing=False):
@@ -518,8 +515,6 @@ def remove_state_year(state, year, testing=False):
         raise ValueError("Year must be a integer")
 
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
-
     statement_sss = delete(SSS).where(SSS.year == year, SSS.state == state)
     statement_arpa = delete(ARPA).where(ARPA.year == year, ARPA.state == state)
     statement_misc = delete(Miscellaneous).where(
@@ -528,10 +523,10 @@ def remove_state_year(state, year, testing=False):
     statement_hc = delete(HealthCare).where(
         HealthCare.year == year, HealthCare.state == state
     )
-    for statement in [statement_sss, statement_arpa, statement_misc, statement_hc]:
-        session.execute(statement)
-    session.commit()
-    session.close()
+    with db.sessionmaker() as session:
+        for statement in [statement_sss, statement_arpa, statement_misc, statement_hc]:
+            session.execute(statement)
+        session.commit()
 
 
 def update_columns(data_path, columns=None, testing=False):
@@ -566,64 +561,62 @@ def update_columns(data_path, columns=None, testing=False):
             raise ValueError("Cannot update a primary key column.")
 
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
+    with db.sessionmaker() as session:
+        for file in data_files:
+            print("Processing:", Path(file).parts[-1])
 
-    for file in data_files:
-        print("Processing:", Path(file).parts[-1])
+            df, _ = read_file(file)
+            df, arpa, health_care, miscellaneous = check_extra_columns(df)
+            df = prepare_for_database(df)
 
-        df, _ = read_file(file)
-        df, arpa, health_care, miscellaneous = check_extra_columns(df)
-        df = prepare_for_database(df)
+            main_columns = []
+            arpa_cols = []
+            health_care_cols = []
+            miscellaneous_cols = []
+            for col in columns:
+                if col in df.columns:
+                    main_columns.append(col)
+                elif not arpa.empty and col in arpa.columns:
+                    arpa_cols.append(col)
+                elif not health_care.empty and col in health_care.columns:
+                    health_care_cols.append(col)
+                elif not miscellaneous.empty and col in miscellaneous.columns:
+                    miscellaneous_cols.append(col)
 
-        main_columns = []
-        arpa_cols = []
-        health_care_cols = []
-        miscellaneous_cols = []
-        for col in columns:
-            if col in df.columns:
-                main_columns.append(col)
-            elif not arpa.empty and col in arpa.columns:
-                arpa_cols.append(col)
-            elif not health_care.empty and col in health_care.columns:
-                health_care_cols.append(col)
-            elif not miscellaneous.empty and col in miscellaneous.columns:
-                miscellaneous_cols.append(col)
+            if len(main_columns) > 0:
+                cols_to_keep = pk_cols + main_columns
+                cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
+                df.drop(columns=cols_to_drop, inplace=True)
 
-        if len(main_columns) > 0:
-            cols_to_keep = pk_cols + main_columns
-            cols_to_drop = [col for col in df.columns if col not in cols_to_keep]
-            df.drop(columns=cols_to_drop, inplace=True)
+                session.bulk_update_mappings(SSS, df.to_dict("records"))
+                session.commit()
 
-            session.bulk_update_mappings(SSS, df.to_dict("records"))
-            session.commit()
+            if len(arpa_cols) > 0:
+                cols_to_keep = pk_cols + arpa_cols
+                cols_to_drop = [col for col in arpa.columns if col not in cols_to_keep]
+                arpa.drop(columns=cols_to_drop, inplace=True)
 
-        if len(arpa_cols) > 0:
-            cols_to_keep = pk_cols + arpa_cols
-            cols_to_drop = [col for col in arpa.columns if col not in cols_to_keep]
-            arpa.drop(columns=cols_to_drop, inplace=True)
+                session.bulk_update_mappings(ARPA, arpa.to_dict("records"))
+                session.commit()
 
-            session.bulk_update_mappings(ARPA, arpa.to_dict("records"))
-            session.commit()
+            if len(health_care_cols) > 0:
+                cols_to_keep = pk_cols + health_care_cols
+                cols_to_drop = [
+                    col for col in health_care.columns if col not in cols_to_keep
+                ]
+                health_care.drop(columns=cols_to_drop, inplace=True)
 
-        if len(health_care_cols) > 0:
-            cols_to_keep = pk_cols + health_care_cols
-            cols_to_drop = [
-                col for col in health_care.columns if col not in cols_to_keep
-            ]
-            health_care.drop(columns=cols_to_drop, inplace=True)
+                session.bulk_update_mappings(HealthCare, health_care.to_dict("records"))
+                session.commit()
 
-            session.bulk_update_mappings(HealthCare, health_care.to_dict("records"))
-            session.commit()
+            if len(miscellaneous_cols) > 0:
+                cols_to_keep = pk_cols + miscellaneous_cols
+                cols_to_drop = [
+                    col for col in miscellaneous.columns if col not in cols_to_keep
+                ]
+                miscellaneous.drop(columns=cols_to_drop, inplace=True)
 
-        if len(miscellaneous_cols) > 0:
-            cols_to_keep = pk_cols + miscellaneous_cols
-            cols_to_drop = [
-                col for col in miscellaneous.columns if col not in cols_to_keep
-            ]
-            miscellaneous.drop(columns=cols_to_drop, inplace=True)
-
-            session.bulk_update_mappings(
-                Miscellaneous, miscellaneous.to_dict("records")
-            )
-            session.commit()
-    session.close()
+                session.bulk_update_mappings(
+                    Miscellaneous, miscellaneous.to_dict("records")
+                )
+                session.commit()

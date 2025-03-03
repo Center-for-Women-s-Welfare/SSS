@@ -64,30 +64,28 @@ def geo_identifier_creator(county_table, cpi_table):
         If columns are not named properly in the input files.
 
     """
-    xl = pd.ExcelFile(county_table)
-    # n_sheets = len(xl.sheet_names)
-    df_l = pd.read_excel(county_table, sheet_name=0, dtype=str)
-    print(
-        "Read the first sheet of COUNTY table"
-        + " "
-        + xl.sheet_names[0]
-        + ".\
-            Please adjust the sheet order if your target table is not first"
-    )
-    df_l["state_fips"] = df_l["fips2010"].str[:2]
-    df_l["county_fips"] = df_l["fips2010"].str[2:5]
-    df_l["place_fips"] = df_l["fips2010"].str[5:]
+    with pd.ExcelFile(county_table) as xl:
+        df_l = pd.read_excel(county_table, sheet_name=0, dtype=str)
+        print(
+            "Read the first sheet of COUNTY table"
+            + " "
+            + xl.sheet_names[0]
+            + ".\
+                Please adjust the sheet order if your target table is not first"
+        )
+        df_l["state_fips"] = df_l["fips2010"].str[:2]
+        df_l["county_fips"] = df_l["fips2010"].str[2:5]
+        df_l["place_fips"] = df_l["fips2010"].str[5:]
 
-    xl_r = pd.ExcelFile(cpi_table)
-    # n_sheets_r = len(xl_r.sheet_names)
-    df_r = pd.read_excel(cpi_table, sheet_name=0)
-    print(
-        "Read the first sheet of CPI table"
-        + " "
-        + xl_r.sheet_names[0]
-        + ".\
-         Please adjust the sheet order if your target table is not first"
-    )
+    with pd.ExcelFile(cpi_table) as xl_r:
+        df_r = pd.read_excel(cpi_table, sheet_name=0)
+        print(
+            "Read the first sheet of CPI table"
+            + " "
+            + xl_r.sheet_names[0]
+            + ".\
+            Please adjust the sheet order if your target table is not first"
+        )
 
     try:
         df_combine = df_l.merge(
@@ -139,8 +137,7 @@ def geoid_to_db(county_table, cpi_table, testing=False):
 
     """
     db = AutomappedDB(testing=testing)
-    session = db.sessionmaker()
     df_geoid = geo_identifier_creator(county_table, cpi_table)
-    session.bulk_insert_mappings(GeoID, df_geoid.to_dict(orient="records"))
-    session.commit()
-    session.close()
+    with db.sessionmaker() as session:
+        session.bulk_insert_mappings(GeoID, df_geoid.to_dict(orient="records"))
+        session.commit()
