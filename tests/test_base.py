@@ -1,11 +1,12 @@
 """Test base."""
 
+import datetime
 import json
 import os
-import datetime
 
 import numpy as np
 
+import sss
 from sss import Report, GeoID, SSS
 from sss.base import config_file, get_db_file
 
@@ -202,3 +203,9 @@ def test_isclose_float_array():
 
     test_obj8 = sss_obj(hourly_wage=[5.1, 4.202, 3.3])
     assert not test_obj5.isclose(test_obj8)
+
+
+def test_version():
+    # this just exercises the version code in `__init__.py`
+
+    assert sss.__version__ is not None
