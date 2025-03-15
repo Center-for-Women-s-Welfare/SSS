@@ -56,6 +56,7 @@ def std_col_names(pd_dataframe):
         pd_dataframe.columns = [
             col.replace(key, replace_dict[key]) for col in pd_dataframe.columns
         ]
+    pd_dataframe.columns = [col.strip("_").lower() for col in pd_dataframe.columns]
     return pd_dataframe
 
 

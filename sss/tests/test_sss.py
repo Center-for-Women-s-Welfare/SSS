@@ -127,6 +127,16 @@ def test_data_folder_to_database(setup_and_teardown_package):
     for res in result_2009:
         assert res.emergency_savings is None
 
+    result_arpa = session.query(SSS).filter(SSS.analysis_type == "ARPA").all()
+    for col in [
+        "earned_income_tax_credit",
+        "child_care_tax_credit",
+        "child_tax_credit",
+    ]:
+        col_obj = getattr(SSS, col)
+        result_tax_credit = session.query(SSS).filter(col_obj.is_(None)).all()
+        assert len(result_tax_credit) == len(result_arpa)
+
     session.close()
 
 
