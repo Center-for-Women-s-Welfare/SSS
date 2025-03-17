@@ -1,10 +1,10 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """Script for creating the tables."""
 
 import argparse
-from sss.report import add_one_entry_reportdb
 from datetime import date
+
+from sss.report import add_one_entry_reportdb
 
 # creating parser object
 parser = argparse.ArgumentParser(description="Creating the report database")

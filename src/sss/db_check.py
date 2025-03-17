@@ -1,4 +1,3 @@
-# -*- mode: python; coding: utf-8 -*-
 """Database consistency checking functions."""
 
 from sqlalchemy import inspect

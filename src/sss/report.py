@@ -3,9 +3,9 @@
 from datetime import datetime
 
 import pandas as pd
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Date, Integer, String
 
-from .base import Base, AutomappedDB
+from .base import AutomappedDB, Base
 
 
 # declare Report data columns and data type
@@ -68,7 +68,8 @@ def add_report(path):
     # split column into meaningful column
     df["update_person"] = df["upload_status"].str.split(" ").str[0]
     df["update_date"] = df["upload_status"].str.split(" ").str[1]
-    # this code handles whether there are different date formats in the "update_date" column
+    # this code handles whether there are different date formats in the
+    # "update_date" column
     for i in range(len(df)):
         try:
             df.loc[i, "update_date"] = pd.to_datetime(
@@ -174,12 +175,7 @@ def add_one_entry_reportdb(
         session.commit()
 
 
-def delete_one_entry_reportdb(
-    year,
-    state,
-    analysis_type,
-    testing=False,
-):
+def delete_one_entry_reportdb(year, state, analysis_type, testing=False):
     """
     Delete one report entry.
 

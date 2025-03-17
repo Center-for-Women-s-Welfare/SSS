@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 import sss
-from sss import Report, GeoID, SSS
+from sss import SSS, GeoID, Report
 from sss.base import config_file, get_db_file
 
 default_datetime = datetime.datetime(2023, 4, 14)

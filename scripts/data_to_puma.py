@@ -1,8 +1,8 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """Script for entering data into the puma table."""
 
 import argparse
+
 from sss.puma import puma_to_db
 
 # creating parser object

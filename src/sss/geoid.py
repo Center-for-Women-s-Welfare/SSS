@@ -2,7 +2,8 @@
 
 import pandas as pd
 from sqlalchemy import Column, String
-from .base import Base, AutomappedDB
+
+from .base import AutomappedDB, Base
 
 
 # declare GeoID data columns and data type

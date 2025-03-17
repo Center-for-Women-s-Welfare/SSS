@@ -2,12 +2,10 @@
 
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
-from sss.base import Base, get_db_file
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
+from sss.base import Base, get_db_file
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

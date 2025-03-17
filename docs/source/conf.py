@@ -6,8 +6,8 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-import sys
 import os
+import sys
 
 project = "SSS"
 copyright = (
@@ -55,10 +55,10 @@ html_theme = "sphinx_rtd_theme"
 def build_custom_docs(app):
     sys.path.append(os.getcwd())
     try:
-        import make_index
         import make_doc_rst_files
+        import make_index
     except ModuleNotFoundError:
-        from source import make_index, make_doc_rst_files
+        from source import make_doc_rst_files, make_index
 
     make_index.write_index_rst(readme_file=readme_file, write_file=index_file)
     make_doc_rst_files.write_rst_files(
