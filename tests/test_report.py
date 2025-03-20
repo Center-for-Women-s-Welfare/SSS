@@ -7,8 +7,12 @@ import pandas as pd
 import pytest
 
 from sss.data import DATA_PATH
-from sss.report import Report, add_report
-from sss.report import add_one_entry_reportdb, delete_one_entry_reportdb
+from sss.report import (
+    Report,
+    add_one_entry_reportdb,
+    add_report,
+    delete_one_entry_reportdb,
+)
 
 # We get this warning in the warnings test where we pass `-W error`, but it
 # doesn't produce an error or even a warning under normal testing.

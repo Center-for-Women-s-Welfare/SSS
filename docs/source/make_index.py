@@ -1,13 +1,12 @@
-# -*- mode: python; coding: utf-8 -*-
-
 """
 Format the readme.md file into the sphinx index.rst file.
 """
-import os
+
 import inspect
+import os
+import time
 
 import pypandoc
-import time
 
 
 def write_index_rst(readme_file=None, write_file=None):
@@ -27,8 +26,7 @@ def write_index_rst(readme_file=None, write_file=None):
 
     # convert relative links in readme to explicit links
     readme_text = readme_text.replace(
-        "`here <docs/computer_setup.md>`__",
-        ":ref:`here <computer_setup>`",
+        "`here <docs/computer_setup.md>`__", ":ref:`here <computer_setup>`"
     )
 
     readme_text = readme_text.replace(
@@ -37,8 +35,7 @@ def write_index_rst(readme_file=None, write_file=None):
     )
 
     readme_text = readme_text.replace(
-        "`here <docs/user_documentation.md>`__",
-        ":ref:`here <user_documentation>`",
+        "`here <docs/user_documentation.md>`__", ":ref:`here <user_documentation>`"
     )
 
     # readme_text = readme_text.replace(
@@ -63,6 +60,6 @@ def write_index_rst(readme_file=None, write_file=None):
     if write_file is None:
         write_path = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
         write_file = os.path.join(write_path, "index.rst")
-    F = open(write_file, "w")
-    F.write(out)
+    with open(write_file, "w") as file:
+        file.write(out)
     print("wrote " + write_file)

@@ -4,15 +4,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Float,
-    Boolean,
-    Index,
-    delete,
-)
+from sqlalchemy import Boolean, Column, Float, Index, Integer, String, delete
 
 from . import preprocess
 from .base import AutomappedDB, Base
@@ -322,16 +314,10 @@ def check_extra_columns(df: pd.DataFrame):
     ]
 
     # columns for health_care secondary table
-    health_care_columns = [
-        "premium",
-        "out_of_pocket",
-    ]
+    health_care_columns = ["premium", "out_of_pocket"]
 
     # columns for miscellaneous secondary table
-    miscellaneous_columns = [
-        "other_necessities",
-        "broadband_and_cell_phone",
-    ]
+    miscellaneous_columns = ["other_necessities", "broadband_and_cell_phone"]
 
     secondary_tables = {
         "arpa": {
@@ -405,7 +391,7 @@ def prepare_for_database(df):
         )
 
     # Create a 'weighted_child_count' column from a*c* values initialized to zeros
-    df["weighted_child_count"] = int(0)
+    df["weighted_child_count"] = 0
 
     # first set the weighted_child_count to NaN for family types without "c"s
     df.loc[
@@ -426,10 +412,7 @@ def prepare_for_database(df):
         df.loc[c_rows, "weighted_child_count"] = child_count_df[1].astype(int)
 
         # then set the other kid age columns to 0 for family types *with* "c"s
-        df.loc[
-            c_rows,
-            ["infant", "preschooler", "schoolager", "teenager"],
-        ] = 0
+        df.loc[c_rows, ["infant", "preschooler", "schoolager", "teenager"]] = 0
 
     # removing duplicate rows
     df = df.drop_duplicates()

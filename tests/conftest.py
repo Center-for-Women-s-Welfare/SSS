@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from sss import base, sss_table, city, geoid, puma, report
+from sss import base, city, geoid, puma, report, sss_table
 from sss.data import DATA_PATH
 
 
@@ -35,9 +35,7 @@ def setup_and_teardown_package():
         geoid.geoid_to_db(
             os.path.join(DATA_PATH, "geoid_data", "SSScounty-place-list_20220720.xlsx"),
             os.path.join(
-                DATA_PATH,
-                "geoid_data",
-                "StateAbbreviation_Regions_07192022_AKu.xlsx",
+                DATA_PATH, "geoid_data", "StateAbbreviation_Regions_07192022_AKu.xlsx"
             ),
             testing=True,
         )

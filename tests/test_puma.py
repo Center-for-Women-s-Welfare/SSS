@@ -2,16 +2,17 @@
 
 import glob
 import os
+
 import pytest
 
+from sss.data import DATA_PATH
 from sss.puma import (
     PUMA,
-    read_puma,
+    new_england_state_nums,
     puma_crosswalk,
     puma_state_numbers_to_abbreviations,
-    new_england_state_nums,
+    read_puma,
 )
-from sss.data import DATA_PATH
 
 # We get this warning in the warnings test where we pass `-W error`, but it
 # doesn't produce an error or even a warning under normal testing.

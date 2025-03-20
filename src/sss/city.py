@@ -1,14 +1,9 @@
 """Code to define and interact with the City table."""
 
 import pandas as pd
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Boolean,
-)
+from sqlalchemy import Boolean, Column, Integer, String
 
-from .base import Base, AutomappedDB
+from .base import AutomappedDB, Base
 
 
 # declare CITY data columns and data type
@@ -131,7 +126,7 @@ def add_city(path, year):
     df["state"] = df["State"].map(us_state_to_abbrev)
     if df.state.isna().sum() > 0:
         raise ValueError(
-            "could not find state in State value %s" % (df[df.state.isna()]["State"])
+            f"could not find state in State value {df[df.state.isna()]['State']}"
         )
     df["PublicTransit"] = df["PublicTransit"].astype("bool")
     df = df[

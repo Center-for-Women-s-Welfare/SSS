@@ -5,7 +5,6 @@ import os
 import pandas as pd
 import pytest
 
-
 from sss.data import DATA_PATH
 from sss.geoid import GeoID, geo_identifier_creator
 

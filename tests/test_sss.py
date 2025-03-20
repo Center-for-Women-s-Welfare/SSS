@@ -8,13 +8,12 @@ import pandas as pd
 import pytest
 from sqlalchemy import update
 
-from sss import sss_table
+from sss import ARPA, SSS, HealthCare, Miscellaneous, sss_table
 from sss.data import DATA_PATH
-from sss import SSS, ARPA, Miscellaneous, HealthCare
 from sss.sss_table import (
-    remove_state_year,
     data_folder_to_database,
     prepare_for_database,
+    remove_state_year,
 )
 
 # We get this warning in the warnings test where we pass `-W error`, but it
@@ -230,18 +229,10 @@ def test_add_column(setup_and_teardown_package, columns):
         columns_list = columns
 
     table_dict = {
-        "sss": {
-            "object": SSS,
-        },
-        "arpa": {
-            "object": ARPA,
-        },
-        "health_care": {
-            "object": HealthCare,
-        },
-        "misc": {
-            "object": Miscellaneous,
-        },
+        "sss": {"object": SSS},
+        "arpa": {"object": ARPA},
+        "health_care": {"object": HealthCare},
+        "misc": {"object": Miscellaneous},
     }
 
     with db.sessionmaker() as session:

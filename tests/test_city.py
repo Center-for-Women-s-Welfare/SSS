@@ -5,9 +5,8 @@ import os
 import pandas as pd
 import pytest
 
+from sss.city import City, add_city
 from sss.data import DATA_PATH
-from sss.city import City
-from sss.city import add_city
 
 # We get this warning in the warnings test where we pass `-W error`, but it
 # doesn't produce an error or even a warning under normal testing.

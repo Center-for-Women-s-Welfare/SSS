@@ -1,13 +1,12 @@
-# -*- mode: python; coding: utf-8 -*-
-
 """
 Format the readme.md file into the sphinx index.rst file.
 """
-import os
+
 import inspect
+import os
+import time
 
 import pypandoc
-import time
 
 md_files_to_convert = [
     "computer_setup.md",
@@ -48,6 +47,6 @@ def write_rst_files(input_files=None, write_files=None):
 
         out.replace("\u2018", "'").replace("\u2019", "'").replace("\xa0", " ")
 
-        F = open(write_files[f_ind], "w")
-        F.write(out)
+        with open(write_files[f_ind], "w") as file:
+            file.write(out)
         print("wrote " + write_files[f_ind])
