@@ -69,6 +69,9 @@ script-files = [
 [tool.pytest.ini_options]
 addopts = "--ignore=scripts"
 
+[tool.ruff]
+src = ["src"]
+
 [tool.ruff.lint]
 select = [
     "E", # pycodestyle
