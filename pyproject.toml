@@ -71,6 +71,11 @@ addopts = "--ignore=scripts"
 
 [tool.ruff]
 src = ["src"]
+exclude = [
+    "jupyter_notebooks",
+    "ID_tabletool",
+    "src/sss/data/"
+]
 
 [tool.ruff.lint]
 select = [
