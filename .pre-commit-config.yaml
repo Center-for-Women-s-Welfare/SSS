@@ -1,4 +1,4 @@
-exclude: '(^src/sss/data/)'
+exclude: '(^src/sss/data/|^jupyter_notebooks|^ID_tabletool)'
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

@@ -69,12 +69,6 @@ script-files = [
 [tool.pytest.ini_options]
 addopts = "--ignore=scripts"
 
-[tool.ruff]
-exclude = [
-    "jupyter_notebooks",
-    "ID_tabletool",
-]
-
 [tool.ruff.lint]
 select = [
     "E", # pycodestyle
