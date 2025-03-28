@@ -1,16 +1,10 @@
 """Create PUMA table."""
 
-from .base import Base, AutomappedDB
-from . import preprocess
-
 import pandas as pd
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Float,
-)
+from sqlalchemy import Column, Float, Integer, String
 
+from . import preprocess
+from .base import AutomappedDB, Base
 
 puma_state_numbers_to_abbreviations = {
     "53": "WA",

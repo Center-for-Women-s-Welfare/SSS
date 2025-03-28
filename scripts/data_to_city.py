@@ -1,8 +1,8 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """Script for creating the tables."""
 
 import argparse
+
 from sss.city import city_to_db
 
 # creating parser object

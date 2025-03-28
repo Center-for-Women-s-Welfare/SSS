@@ -1,4 +1,4 @@
-exclude: '(^sss/data/)'
+exclude: '(^src/sss/data/|^jupyter_notebooks|^ID_tabletool)'
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -15,20 +15,16 @@ repos:
           args: ['--fix=no']
         - id: 'name-tests-test'
           args: ['--pytest-test-first']
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.1.1
-    hooks:
-      - id: flake8
-        additional_dependencies:
-          - flake8-bugbear
-          - flake8-builtins
-          - flake8-comprehensions
-          - flake8-docstrings
-          - flake8-pytest-style
-          - flake8-rst-docstrings
-          - pep8-naming
 
-  - repo: https://github.com/psf/black
-    rev: 25.1.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.6
     hooks:
-        - id: black
+      - id: ruff
+      - id: ruff-format
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.2
+    hooks:
+      - id: bandit
+        args: ["-c", "pyproject.toml", "--recursive"]
+        additional_dependencies: ["bandit[toml]"]

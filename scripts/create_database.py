@@ -1,8 +1,8 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """Script for creating the tables."""
 
 import argparse
+
 from sss import base
 
 parser = argparse.ArgumentParser(description="Create the SSS database")

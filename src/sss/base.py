@@ -1,15 +1,15 @@
 """Define the database object."""
 
-from abc import ABCMeta
-from datetime import date
 import json
 import os
+from abc import ABCMeta
+from datetime import date
 
 import numpy as np
+from sqlalchemy import create_engine
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm.session import sessionmaker
-from sqlalchemy import create_engine
 
 config_file = os.path.expanduser("~/.sss/sss_config.json")
 
@@ -54,14 +54,15 @@ class Base:
 
         self_columns = self.__table__.columns
         other_columns = other.__table__.columns
-        # the following is structured as an assert because I cannot make it fail but
+        # the following has a no cover pragma because I cannot make it fail but
         # think it should be checked.
-        assert {col.name for col in self_columns} == {
+        if not {col.name for col in self_columns} == {  # pragma: no cover
             col.name for col in other_columns
-        }, (
-            "Set of columns are not the same. This should not happen, please make an "
-            "issue in our repo."
-        )
+        }:
+            raise ValueError(
+                "Set of columns are not the same. This should not happen, please "
+                "make an issue in our repo."
+            )
         for col in self_columns:
             self_col = getattr(self, col.name)
             other_col = getattr(other, col.name)
@@ -89,9 +90,10 @@ class Base:
                     print(f"column {col} is a datetime, values are not equal")
                     return False
             elif self_col is None:
-                pass  # nullable columns, both null (otherwise caught as different types)
+                # nullable columns, both null (otherwise caught as different types)
+                pass
             else:
-                if hasattr(self, "tols") and col.name in self.tols.keys():
+                if hasattr(self, "tols") and col.name in self.tols:
                     atol = self.tols[col.name]["atol"]
                     rtol = self.tols[col.name]["rtol"]
                 else:
@@ -101,8 +103,7 @@ class Base:
                 if isinstance(self_col, (np.ndarray, list)):
                     if not np.allclose(self_col, other_col, atol=atol, rtol=rtol):
                         print(
-                            f"column {col} is a float-like array, "
-                            "values are not equal"
+                            f"column {col} is a float-like array, values are not equal"
                         )
                         return False
                 else:
@@ -115,7 +116,7 @@ class Base:
 Base = declarative_base(cls=Base)
 
 
-class DB(object, metaclass=ABCMeta):
+class DB(metaclass=ABCMeta):  # noqa: B024
     """
     Abstract base class for SSS database object.
 
@@ -140,7 +141,7 @@ class DeclarativeDB(DB):
     """Declarative database object -- to create database tables."""
 
     def __init__(self, testing=False):
-        super(DeclarativeDB, self).__init__(Base, testing=testing)
+        super().__init__(Base, testing=testing)
 
     def create_tables(self):
         """Create all tables."""
@@ -162,7 +163,7 @@ class AutomappedDB(DB):
     """
 
     def __init__(self, testing=False):
-        super(AutomappedDB, self).__init__(automap_base(), testing=testing)
+        super().__init__(automap_base(), testing=testing)
 
         from .db_check import is_valid_database
 

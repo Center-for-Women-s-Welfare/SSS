@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """Script for creating the primary table."""
 
 import argparse
@@ -13,8 +12,7 @@ parser = argparse.ArgumentParser(description="Add file(s) to the SSS database")
 parser.add_argument(
     "data_folder",
     type=str,
-    help="Enter path name that contains the SSS data,"
-    "so it can be entered into table",
+    help="Enter path name that contains the SSS data, so it can be entered into table",
 )
 
 args = parser.parse_args()
